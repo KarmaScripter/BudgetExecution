@@ -1,0 +1,1761 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{951F3364-D9E4-4F11-9041-D45FFF98FDDE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>BudgetExecution</RootNamespace>
+    <AssemblyName>BudgetExecution</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>8</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>8</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>BudgetExecution.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BudgetEnumerations">
+      <HintPath>..\Enumerations\bin\Debug\BudgetEnumerations.dll</HintPath>
+    </Reference>
+    <Reference Include="BudgetExtensions">
+      <HintPath>..\Extensions\bin\Debug\BudgetExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="BudgetStatic">
+      <HintPath>..\Static\bin\Debug\BudgetStatic.dll</HintPath>
+    </Reference>
+    <Reference Include="CharmNotification, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\CharmNotification.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\DocumentFormat.OpenXml.2.5\lib\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=0.0.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Expander, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Expander.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqStatistics, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\LinqStatistics.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroSet UI, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\MetroSet UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Syncfusion.Chart.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Syncfusion.Chart.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Chart.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Syncfusion.Chart.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Compression.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Syncfusion.Compression.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Syncfusion.Grid.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Syncfusion.Grid.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Syncfusion.Pdf.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Syncfusion.Pdf.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.PdfViewer.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Syncfusion.PdfViewer.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Syncfusion.Shared.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Syncfusion.Shared.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Spreadsheet.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Syncfusion.Spreadsheet.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Tools.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Syncfusion.Tools.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Tools.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Syncfusion.Tools.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.XlsIO.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Syncfusion.XlsIO.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\Ninja\lib\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6">
+      <HintPath>..\Ninja\lib\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq">
+      <HintPath>..\Ninja\lib\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="VisualPlus, Version=0.4.1.7, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\VisualPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="badger\binding\BindingBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\binding\BindingData.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\binding\BudgetBinding.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\binding\IBindingSource.cs" />
+    <Compile Include="badger\forms\budgetchart\bindingmodel\ChartBinding.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\budgetchart\bindingmodel\SeriesConfig.cs" />
+    <Compile Include="badger\forms\budgetchart\bindingmodel\SeriesModel.cs" />
+    <Compile Include="badger\forms\budgetchart\BudgetChartControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="badger\forms\budgetchart\BudgetChartControl.Designer.cs">
+      <DependentUpon>BudgetChartControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\budgetchart\BudgetChartPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\budgetchart\CallOut.cs" />
+    <Compile Include="badger\forms\budgetchart\ChartBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\budgetchart\ChartData.cs" />
+    <Compile Include="badger\forms\budgetchart\ibindingmodel\IChartBinding.cs" />
+    <Compile Include="badger\forms\budgetchart\ibindingmodel\IChartSeriesModel.cs" />
+    <Compile Include="badger\forms\budgetchart\ibindingmodel\ISeriesConfig.cs" />
+    <Compile Include="badger\forms\budgetchart\ibindingmodel\ISourceModel.cs" />
+    <Compile Include="badger\forms\budgetchart\IBudgetChart.cs" />
+    <Compile Include="badger\forms\budgetchart\iseriesmodel\ISeriesModel.cs" />
+    <Compile Include="badger\forms\budgetchart\iseriesmodel\ITitleInfo.cs" />
+    <Compile Include="badger\forms\budgetchart\LegendItem.cs" />
+    <Compile Include="badger\forms\budgetchart\seriesmodel\DataSeries.cs" />
+    <Compile Include="badger\forms\budgetchart\seriesmodel\IDataSeries.cs" />
+    <Compile Include="badger\forms\budgetchart\seriesmodel\SourceModel.cs" />
+    <Compile Include="badger\forms\budgetchart\seriesmodel\TitleInfo.cs" />
+    <Compile Include="badger\forms\button\ButtonBase.cs" />
+    <Compile Include="badger\forms\button\ButtonPanel.cs" />
+    <Compile Include="badger\forms\button\IButton.cs" />
+    <Compile Include="badger\forms\calculator\CalculationControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\calculator\CalculationControl.Designer.cs">
+      <DependentUpon>CalculationControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\calculator\CalculationPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\calculator\CalculatorData.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\calculator\ICalculator.cs" />
+    <Compile Include="badger\forms\calendar\CalendarControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="badger\forms\calendar\CalendarControl.Designer.cs">
+      <DependentUpon>CalendarControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\calendar\CalendarData.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="badger\forms\calendar\CalendarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="badger\forms\calendar\CalendarForm.Designer.cs">
+      <DependentUpon>CalendarForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\calendar\CalendarPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="badger\forms\chartdatagrid\ChartDataGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="badger\forms\chartdatagrid\ChartDataGrid.Designer.cs">
+      <DependentUpon>ChartDataGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\clock\ClockPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\closebox\ClosePanel.cs" />
+    <Compile Include="badger\forms\combobox\ComboBoxData.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\combobox\ComboBoxPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\combobox\IComboBox.cs" />
+    <Compile Include="badger\forms\combobox\IDataSource.cs" />
+    <Compile Include="badger\forms\control\ControlBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="badger\forms\control\ControlBase.Designer.cs">
+      <DependentUpon>ControlBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\control\ControlData.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="badger\forms\control\IDataControl.cs" />
+    <Compile Include="badger\forms\dialog\calculator\CalculatorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="badger\forms\dialog\calculator\CalculatorForm.Designer.cs">
+      <DependentUpon>CalculatorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\dialog\column\ColumnConfiguration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="badger\forms\dialog\column\ColumnConfiguration.Designer.cs">
+      <DependentUpon>ColumnConfiguration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\dialog\error\Error.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="badger\forms\dialog\error\Error.Designer.cs">
+      <DependentUpon>Error.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\dialog\excel\ExcelBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="badger\forms\dialog\excel\ExcelBrowser.Designer.cs">
+      <DependentUpon>ExcelBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\dialog\message\Message.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="badger\forms\dialog\message\Message.Designer.cs">
+      <DependentUpon>Message.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\dialog\pdf\PdfBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="badger\forms\dialog\pdf\PdfBrowser.Designer.cs">
+      <DependentUpon>PdfBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\dropmenu\DropMenuPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\dropmenu\IDropMenu.cs" />
+    <Compile Include="badger\forms\editor\DataEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="badger\forms\editor\DataEditor.Designer.cs">
+      <DependentUpon>DataEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\excel\ExcelData.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="badger\forms\excel\ExcelDocument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="badger\forms\excel\ExcelDocument.Designer.cs">
+      <DependentUpon>ExcelDocument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\excel\sheet\ISpreadsheet.cs" />
+    <Compile Include="badger\forms\excel\sheet\RibbonPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\excel\sheet\SheetPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\flowpanel\FlowPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\flowpanel\IFlowPanel.cs" />
+    <Compile Include="badger\forms\form\BadgerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="badger\forms\form\BadgerForm.Designer.cs">
+      <DependentUpon>BadgerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\form\NinjaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="badger\forms\form\NinjaForm.Designer.cs">
+      <DependentUpon>NinjaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\gridcontrol\budgetgrid\BudgetGridControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="badger\forms\gridcontrol\budgetgrid\BudgetGridControl.Designer.cs">
+      <DependentUpon>BudgetGridControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\gridcontrol\budgetgrid\BudgetGridData.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\gridcontrol\budgetgrid\BudgetGridPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\gridcontrol\budgetgrid\IBudgetGrid.cs" />
+    <Compile Include="badger\forms\gridcontrol\datagrid\DataGridControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="badger\forms\gridcontrol\datagrid\DataGridControl.Designer.cs">
+      <DependentUpon>DataGridControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\gridcontrol\datagrid\DataGridPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\gridcontrol\datagrid\DataGridPanel.Designer.cs">
+      <DependentUpon>DataGridPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\gridcontrol\datagrid\GridData.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\gridcontrol\datagrid\IDataGrid.cs" />
+    <Compile Include="badger\forms\groupbox\GroupBoxData.cs" />
+    <Compile Include="badger\forms\groupbox\GroupBoxPanel.cs" />
+    <Compile Include="badger\forms\groupbox\IGroupBox.cs" />
+    <Compile Include="badger\forms\hover\HoverBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\hover\HoverData.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\hover\IHover.cs" />
+    <Compile Include="badger\forms\hover\Info.cs" />
+    <Compile Include="badger\forms\label\ILabel.cs" />
+    <Compile Include="badger\forms\label\LabelData.cs" />
+    <Compile Include="badger\forms\label\LabelPanel.cs" />
+    <Compile Include="badger\forms\layout\ILayout.cs" />
+    <Compile Include="badger\forms\layout\LayoutPanel.cs" />
+    <Compile Include="badger\forms\listbox\IListBox.cs" />
+    <Compile Include="badger\forms\listbox\ListBoxControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="badger\forms\listbox\ListBoxControl.Designer.cs">
+      <DependentUpon>ListBoxControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\listbox\ListBoxData.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\listbox\ListPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\loader\Loader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="badger\forms\loader\Loader.Designer.cs">
+      <DependentUpon>Loader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\main\BadgerMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="badger\forms\main\BadgerMain.Designer.cs">
+      <DependentUpon>BadgerMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\metric\DataMetric.cs" />
+    <Compile Include="badger\forms\metric\imetric\IDataMetric.cs" />
+    <Compile Include="badger\forms\metric\imetric\IMetric.cs" />
+    <Compile Include="badger\forms\metric\MetricBase.cs" />
+    <Compile Include="badger\forms\notification\Notification.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\notification\SplashConfig.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\pdf\PdfDocument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="badger\forms\pdf\PdfDocument.Designer.cs">
+      <DependentUpon>PdfDocument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\pdf\PdfPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\picturebox\IPictureBox.cs" />
+    <Compile Include="badger\forms\picturebox\PicturePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\record\RecordControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="badger\forms\record\RecordControl.Designer.cs">
+      <DependentUpon>RecordControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\richtextbox\IRichTextBox.cs" />
+    <Compile Include="badger\forms\richtextbox\RichTextData.cs" />
+    <Compile Include="badger\forms\richtextbox\RichTextPanel.cs" />
+    <Compile Include="badger\forms\selector\SelectionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="badger\forms\selector\SelectionControl.Designer.cs">
+      <DependentUpon>SelectionControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\selector\SelectionPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\splitter\ISplitter.cs" />
+    <Compile Include="badger\forms\splitter\SplitBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\splitter\SplitPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\streamer\IStreamer.cs" />
+    <Compile Include="badger\forms\streamer\Streamer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\streamer\StreamerBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\streamer\StreamerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="badger\forms\streamer\StreamerControl.Designer.cs">
+      <DependentUpon>StreamerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\tabpanel\ITabControl.cs" />
+    <Compile Include="badger\forms\tabpanel\ITabPage.cs" />
+    <Compile Include="badger\forms\tabpanel\TabControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="badger\forms\tabpanel\TabControl.Designer.cs">
+      <DependentUpon>TabControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\tabpanel\TabPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\tabpanel\TabPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\textbox\ITextBox.cs" />
+    <Compile Include="badger\forms\textbox\TextBoxData.cs" />
+    <Compile Include="badger\forms\textbox\TextBoxPanel.cs" />
+    <Compile Include="badger\forms\tilelayout\TileLayoutControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="badger\forms\tilelayout\TileLayoutControl.Designer.cs">
+      <DependentUpon>TileLayoutControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\tilelayout\TilePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\tile\base\TileBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\tile\base\TileConfig.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\tile\buttontile\ButtonTilePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\tile\itile\IButtonTile.cs" />
+    <Compile Include="badger\forms\tile\itile\IPulsingTile.cs" />
+    <Compile Include="badger\forms\tile\itile\IRotatingTile.cs" />
+    <Compile Include="badger\forms\tile\itile\ITile.cs" />
+    <Compile Include="badger\forms\tile\pulsingtile\PulsingTilePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\tile\rotatingtile\RotatingTilePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\toolbar\BarButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\toolbar\BarComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\toolbar\BarLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\toolbar\BarProgress.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\toolbar\BarTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\toolbar\BarButtonBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\toolbar\BarComboBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\toolbar\BarLabelBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\toolbar\IToolBar.cs" />
+    <Compile Include="badger\forms\toolbar\IToolButton.cs" />
+    <Compile Include="badger\forms\toolbar\IToolComboBox.cs" />
+    <Compile Include="badger\forms\toolbar\IToolLabel.cs" />
+    <Compile Include="badger\forms\toolbar\IToolTextBox.cs" />
+    <Compile Include="badger\forms\toolbar\ToolControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="badger\forms\toolbar\ToolControl.Designer.cs">
+      <DependentUpon>ToolControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="badger\forms\toolbar\ToolControlBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="badger\forms\toolbar\ToolPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\toolbar\ToolPanelBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\toolbar\ToolPanelData.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\toolbar\ToolSeparator.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\forms\tooltip\ToolTip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\image\BudgetImage.cs" />
+    <Compile Include="badger\image\IBudgetImage.cs" />
+    <Compile Include="badger\image\ImageBuilder.cs" />
+    <Compile Include="badger\image\ImageConfig.cs" />
+    <Compile Include="badger\image\ImageFactory.cs" />
+    <Compile Include="badger\image\ImageList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="data\adapter\AdapterBuilder.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="data\adapter\AdapterFactory.cs" />
+    <Compile Include="data\adapter\IAdapter.cs" />
+    <Compile Include="data\builder\Builder.cs" />
+    <Compile Include="data\builder\BuilderBase.cs" />
+    <Compile Include="data\builder\DataAccess.cs" />
+    <Compile Include="data\builder\DataBuilder.cs" />
+    <Compile Include="data\builder\DataConfig.cs" />
+    <Compile Include="data\builder\IBuilder.cs" />
+    <Compile Include="data\builder\IDataAccess.cs" />
+    <Compile Include="data\builder\IDataBuilder.cs" />
+    <Compile Include="data\builder\IDataSchema.cs" />
+    <Compile Include="data\command\CommandBase.cs" />
+    <Compile Include="data\command\CommandBuilder.cs" />
+    <Compile Include="data\command\CommandFactory.cs" />
+    <Compile Include="data\command\ICommandBuilder.cs" />
+    <Compile Include="data\command\ICommandFactory.cs" />
+    <Compile Include="data\connection\ConnectionBase.cs" />
+    <Compile Include="data\connection\ConnectionBuilder.cs" />
+    <Compile Include="data\connection\ConnectionFactory.cs" />
+    <Compile Include="data\connection\IConnectionBuilder.cs" />
+    <Compile Include="data\connection\IConnectionFactory.cs" />
+    <Compile Include="data\connection\IProvider.cs" />
+    <Compile Include="data\connection\ISource.cs" />
+    <Compile Include="data\conversion\ColumnSchema.cs" />
+    <Compile Include="data\conversion\DatabaseSchema.cs" />
+    <Compile Include="data\conversion\FailedViewDefinitionHandler.cs" />
+    <Compile Include="data\conversion\ForeignKeySchema.cs" />
+    <Compile Include="data\conversion\IndexSchema.cs" />
+    <Compile Include="data\conversion\SqlConversionHandler.cs" />
+    <Compile Include="data\conversion\SqlServerConverter.cs" />
+    <Compile Include="data\conversion\SqlTableSelectionHandler.cs" />
+    <Compile Include="data\conversion\TableSchema.cs" />
+    <Compile Include="data\conversion\TriggerBuilder.cs" />
+    <Compile Include="data\conversion\TriggerSchema.cs" />
+    <Compile Include="data\conversion\ViewSchema.cs" />
+    <Compile Include="data\map\Amount.cs" />
+    <Compile Include="data\map\AmountBase.cs" />
+    <Compile Include="data\map\Arg.cs" />
+    <Compile Include="data\map\Element.cs" />
+    <Compile Include="data\map\ElementBase.cs" />
+    <Compile Include="data\map\IAmount.cs" />
+    <Compile Include="data\map\IElement.cs" />
+    <Compile Include="data\map\IKey.cs" />
+    <Compile Include="data\map\IMap.cs" />
+    <Compile Include="data\map\IUnit.cs" />
+    <Compile Include="data\map\Key.cs" />
+    <Compile Include="data\map\KeyBase.cs" />
+    <Compile Include="data\map\Map.cs" />
+    <Compile Include="data\map\Unit.cs" />
+    <Compile Include="data\map\UnitBase.cs" />
+    <Compile Include="data\query\AccessQuery.cs" />
+    <Compile Include="data\query\CsvQuery.cs" />
+    <Compile Include="data\query\ExcelQuery.cs" />
+    <Compile Include="data\query\IQuery.cs" />
+    <Compile Include="data\query\Query.cs" />
+    <Compile Include="data\query\QueryBase.cs" />
+    <Compile Include="data\query\SqlCeQuery.cs" />
+    <Compile Include="data\query\SQLiteQuery.cs" />
+    <Compile Include="data\query\SqlServerQuery.cs" />
+    <Compile Include="data\schema\DataSchema.cs" />
+    <Compile Include="data\sql\ISqlStatement.cs" />
+    <Compile Include="data\sql\SqlBase.cs" />
+    <Compile Include="data\sql\SqlConfig.cs" />
+    <Compile Include="data\sql\SqlFactory.cs" />
+    <Compile Include="data\sql\SqlStatement.cs" />
+    <Compile Include="data\worker\DataWorker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="badger\config\AlignConfig.cs" />
+    <Compile Include="badger\config\BorderConfig.cs" />
+    <Compile Include="badger\config\ChartConfig.cs" />
+    <Compile Include="badger\config\ColorConfig.cs" />
+    <Compile Include="badger\config\ControlConfig.cs" />
+    <Compile Include="badger\config\FontConfig.cs" />
+    <Compile Include="badger\config\FormConfig.cs" />
+    <Compile Include="badger\config\IChartConfig.cs" />
+    <Compile Include="badger\config\SizeConfig.cs" />
+    <Compile Include="badger\format\AlignFormat.cs" />
+    <Compile Include="badger\format\BorderFormat.cs" />
+    <Compile Include="badger\format\ColorForrmat.cs" />
+    <Compile Include="badger\format\FontFormat.cs" />
+    <Compile Include="badger\format\SizeFomat.cs" />
+    <Compile Include="ninja\budget\account\FullTimeEquivalent.cs" />
+    <Compile Include="ninja\budget\account\IFullTimeEquivalent.cs" />
+    <Compile Include="ninja\budget\account\IProgramResultsCode.cs" />
+    <Compile Include="ninja\budget\account\ProgramResultsCode.cs" />
+    <Compile Include="ninja\budget\allocation\Allocation.cs" />
+    <Compile Include="ninja\budget\allocation\AllocationData.cs" />
+    <Compile Include="ninja\budget\allocation\IAllocation.cs" />
+    <Compile Include="ninja\budget\authority\Authority.cs" />
+    <Compile Include="ninja\budget\authority\DivisionAuthority.cs" />
+    <Compile Include="ninja\budget\authority\IAuthority.cs" />
+    <Compile Include="ninja\budget\authority\PrcBase.cs" />
+    <Compile Include="ninja\budget\authority\PrcConfig.cs" />
+    <Compile Include="ninja\budget\authority\RegionalAuthority.cs" />
+    <Compile Include="ninja\budget\program\Account.cs" />
+    <Compile Include="ninja\budget\program\AccountBase.cs" />
+    <Compile Include="ninja\budget\program\Activity.cs" />
+    <Compile Include="ninja\budget\program\AllowanceHolder.cs" />
+    <Compile Include="ninja\budget\program\BudgetLevel.cs" />
+    <Compile Include="ninja\budget\program\BudgetObjectClass.cs" />
+    <Compile Include="ninja\budget\program\FinanceObjectClass.cs" />
+    <Compile Include="ninja\budget\program\Fund.cs" />
+    <Compile Include="ninja\budget\program\Goal.cs" />
+    <Compile Include="ninja\budget\program\InformationTechnology.cs" />
+    <Compile Include="ninja\budget\program\iprogram\IAccount.cs" />
+    <Compile Include="ninja\budget\program\iprogram\IActivity.cs" />
+    <Compile Include="ninja\budget\program\iprogram\IAllowanceHolder.cs" />
+    <Compile Include="ninja\budget\program\iprogram\IBudgetLevel.cs" />
+    <Compile Include="ninja\budget\program\iprogram\IBudgetObjectClass.cs" />
+    <Compile Include="ninja\budget\program\iprogram\IFinanceObjectClass.cs" />
+    <Compile Include="ninja\budget\program\iprogram\IFund.cs" />
+    <Compile Include="ninja\budget\program\iprogram\IGoal.cs" />
+    <Compile Include="ninja\budget\program\iprogram\IInformationTechnology.cs" />
+    <Compile Include="ninja\budget\program\iprogram\INationalProgram.cs" />
+    <Compile Include="ninja\budget\program\iprogram\IObjective.cs" />
+    <Compile Include="ninja\budget\program\iprogram\IOrganization.cs" />
+    <Compile Include="ninja\budget\program\iprogram\IProgramArea.cs" />
+    <Compile Include="ninja\budget\program\iprogram\IProgramElement.cs" />
+    <Compile Include="ninja\budget\program\iprogram\IProgramProject.cs" />
+    <Compile Include="ninja\budget\program\iprogram\IResourcePlanningOffice.cs" />
+    <Compile Include="ninja\budget\program\iprogram\IResponsibilityCenter.cs" />
+    <Compile Include="ninja\budget\program\NationalProgram.cs" />
+    <Compile Include="ninja\budget\program\Objective.cs" />
+    <Compile Include="ninja\budget\program\Organization.cs" />
+    <Compile Include="ninja\budget\program\ProgramArea.cs" />
+    <Compile Include="ninja\budget\program\ProgramBase.cs" />
+    <Compile Include="ninja\budget\program\ProgramProject.cs" />
+    <Compile Include="ninja\budget\program\ResourcePlanningOffice.cs" />
+    <Compile Include="ninja\budget\program\ResponsibilityCenter.cs" />
+    <Compile Include="ninja\budget\supplemental\Awards.cs" />
+    <Compile Include="ninja\budget\supplemental\ISupplemental.cs" />
+    <Compile Include="ninja\budget\supplemental\Overtime.cs" />
+    <Compile Include="ninja\budget\supplemental\Supplemental.cs" />
+    <Compile Include="ninja\budget\supplemental\TimeOff.cs" />
+    <Compile Include="ninja\division\Division.cs" />
+    <Compile Include="ninja\division\DivisionBase.cs" />
+    <Compile Include="ninja\division\IDivision.cs" />
+    <Compile Include="ninja\excel\budget\BudgetConfig.cs" />
+    <Compile Include="ninja\excel\budget\BudgetFactory.cs" />
+    <Compile Include="ninja\excel\budget\ExcelBase.cs" />
+    <Compile Include="ninja\excel\budget\ExcelBudget.cs" />
+    <Compile Include="ninja\excel\budget\ExcelConfig.cs" />
+    <Compile Include="ninja\excel\budget\ExcelSettings.cs" />
+    <Compile Include="ninja\excel\budget\Grid.cs" />
+    <Compile Include="ninja\excel\budget\Heading.cs" />
+    <Compile Include="ninja\excel\budget\IGrid.cs" />
+    <Compile Include="ninja\excel\budget\Section.cs" />
+    <Compile Include="ninja\excel\iexcel\IExcelOp.cs" />
+    <Compile Include="ninja\excel\number\BudgetNumber.cs" />
+    <Compile Include="ninja\excel\number\ControlInfo.cs" />
+    <Compile Include="ninja\excel\number\ControlNumber.cs" />
+    <Compile Include="ninja\excel\number\IControlNumber.cs" />
+    <Compile Include="ninja\excel\report\ExcelReport.cs" />
+    <Compile Include="ninja\excel\report\ReportContent.cs" />
+    <Compile Include="ninja\excel\report\ReportFormat.cs" />
+    <Compile Include="ninja\file\DataFile.cs" />
+    <Compile Include="ninja\file\FileBase.cs" />
+    <Compile Include="ninja\file\IFile.cs" />
+    <Compile Include="ninja\fiscalyear\bfy\BudgetFiscalYear.cs" />
+    <Compile Include="ninja\fiscalyear\bfy\CalendarYear.cs" />
+    <Compile Include="ninja\fiscalyear\bfy\FiscalYear.cs" />
+    <Compile Include="ninja\fiscalyear\bfy\HolidayFactory.cs" />
+    <Compile Include="ninja\fiscalyear\bfy\IBudgetFiscalYear.cs" />
+    <Compile Include="ninja\fiscalyear\bfy\ICalendarYear.cs" />
+    <Compile Include="ninja\fiscalyear\bfy\IFederalHoliday.cs" />
+    <Compile Include="ninja\fiscalyear\bfy\IFiscalYear.cs" />
+    <Compile Include="ninja\fiscalyear\time\ITime.cs" />
+    <Compile Include="ninja\fiscalyear\time\Time.cs" />
+    <Compile Include="ninja\fiscalyear\time\TimeBase.cs" />
+    <Compile Include="ninja\folder\Folder.cs" />
+    <Compile Include="ninja\folder\FolderBase.cs" />
+    <Compile Include="ninja\folder\IFolder.cs" />
+    <Compile Include="ninja\outlay\account\CostAccount.cs" />
+    <Compile Include="ninja\outlay\account\CostBase.cs" />
+    <Compile Include="ninja\outlay\account\ExpenseBase.cs" />
+    <Compile Include="ninja\outlay\account\ICostAccount.cs" />
+    <Compile Include="ninja\outlay\account\ICostBase.cs" />
+    <Compile Include="ninja\outlay\account\IExpenseBase.cs" />
+    <Compile Include="ninja\outlay\benefits\BenefitFactory.cs" />
+    <Compile Include="ninja\outlay\benefits\ILeave.cs" />
+    <Compile Include="ninja\outlay\benefits\Leave.cs" />
+    <Compile Include="ninja\outlay\benefits\LeaveBase.cs" />
+    <Compile Include="ninja\outlay\employee\Employee.cs" />
+    <Compile Include="ninja\outlay\employee\EmployeeBase.cs" />
+    <Compile Include="ninja\outlay\employee\IEmployee.cs" />
+    <Compile Include="ninja\outlay\employee\IPerson.cs" />
+    <Compile Include="ninja\outlay\hrdata\ContactFactory.cs" />
+    <Compile Include="ninja\outlay\hrdata\EmploymentBase.cs" />
+    <Compile Include="ninja\outlay\hrdata\IEmploymentInfo.cs" />
+    <Compile Include="ninja\outlay\hrdata\IWorkforceData.cs" />
+    <Compile Include="ninja\outlay\hrdata\Personnel.cs" />
+    <Compile Include="ninja\outlay\hrdata\WorkforceData.cs" />
+    <Compile Include="ninja\outlay\measures\Commitment.cs" />
+    <Compile Include="ninja\outlay\measures\Deobligation.cs" />
+    <Compile Include="ninja\outlay\measures\Expenditure.cs" />
+    <Compile Include="ninja\outlay\measures\ICommitment.cs" />
+    <Compile Include="ninja\outlay\measures\IDeobligation.cs" />
+    <Compile Include="ninja\outlay\measures\IObligation.cs" />
+    <Compile Include="ninja\outlay\measures\IOpenCommitment.cs" />
+    <Compile Include="ninja\outlay\measures\IOutlay.cs" />
+    <Compile Include="ninja\outlay\measures\IUnliquidatedObligation.cs" />
+    <Compile Include="ninja\outlay\measures\Obligation.cs" />
+    <Compile Include="ninja\outlay\measures\OpenCommitment.cs" />
+    <Compile Include="ninja\outlay\measures\Outlay.cs" />
+    <Compile Include="ninja\outlay\measures\UnliquidatedObligation.cs" />
+    <Compile Include="ninja\outlay\outflows\IPurchase.cs" />
+    <Compile Include="ninja\outlay\outflows\IVendor.cs" />
+    <Compile Include="ninja\outlay\outflows\Payment.cs" />
+    <Compile Include="ninja\outlay\outflows\PayrollObligation.cs" />
+    <Compile Include="ninja\outlay\outflows\Procurement.cs" />
+    <Compile Include="ninja\outlay\outflows\ProcurementData.cs" />
+    <Compile Include="ninja\outlay\outflows\Purchase.cs" />
+    <Compile Include="ninja\outlay\outflows\Reimbursable.cs" />
+    <Compile Include="ninja\outlay\outflows\Requisition.cs" />
+    <Compile Include="ninja\outlay\outflows\RequisitionData.cs" />
+    <Compile Include="ninja\outlay\outflows\Site.cs" />
+    <Compile Include="ninja\outlay\outflows\SiteData.cs" />
+    <Compile Include="ninja\outlay\outflows\TravelData.cs" />
+    <Compile Include="ninja\outlay\outflows\TravelObligation.cs" />
+    <Compile Include="ninja\outlay\outflows\Vendor.cs" />
+    <Compile Include="ninja\outlay\outflows\VendorData.cs" />
+    <Compile Include="ninja\outlay\payroll\IPayrollBase.cs" />
+    <Compile Include="ninja\outlay\payroll\IPayrollCostData.cs" />
+    <Compile Include="ninja\outlay\payroll\PayrollBase.cs" />
+    <Compile Include="ninja\outlay\payroll\PayrollFactory.cs" />
+    <Compile Include="ninja\outlay\payroll\PayrollHours.cs" />
+    <Compile Include="ninja\outlay\workcode\HumanResourceOrganization.cs" />
+    <Compile Include="ninja\outlay\workcode\IHumanResourceOrganization.cs" />
+    <Compile Include="ninja\outlay\workcode\IWorkCode.cs" />
+    <Compile Include="ninja\outlay\workcode\WorkCode.cs" />
+    <Compile Include="ninja\outlay\workcode\WorkCodeBase.cs" />
+    <Compile Include="ninja\path\DataPath.cs" />
+    <Compile Include="ninja\path\IPath.cs" />
+    <Compile Include="ninja\reader\ExcelReader.cs" />
+    <Compile Include="ninja\reader\FileReader.cs" />
+    <Compile Include="ninja\transfer\DataOp.cs" />
+    <Compile Include="ninja\transfer\FundTransfer.cs" />
+    <Compile Include="ninja\transfer\IReprogramming.cs" />
+    <Compile Include="ninja\transfer\Reprogramming.cs" />
+    <Compile Include="ninja\watcher\FileWatcher.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ninja\writer\FileWriter.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="badger\forms\budgetchart\BudgetChartControl.resx">
+      <DependentUpon>BudgetChartControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="badger\forms\calculator\CalculationControl.resx">
+      <DependentUpon>CalculationControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="badger\forms\calendar\CalendarControl.resx">
+      <DependentUpon>CalendarControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="badger\forms\calendar\CalendarForm.resx">
+      <DependentUpon>CalendarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="badger\forms\chartdatagrid\ChartDataGrid.resx">
+      <DependentUpon>ChartDataGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="badger\forms\control\ControlBase.resx">
+      <DependentUpon>ControlBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="badger\forms\dialog\calculator\CalculatorForm.resx">
+      <DependentUpon>CalculatorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="badger\forms\dialog\column\ColumnConfiguration.resx">
+      <DependentUpon>ColumnConfiguration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="badger\forms\dialog\error\Error.resx">
+      <DependentUpon>Error.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="badger\forms\dialog\excel\ExcelBrowser.resx">
+      <DependentUpon>ExcelBrowser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="badger\forms\dialog\message\Message.resx">
+      <DependentUpon>Message.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="badger\forms\dialog\pdf\PdfBrowser.resx">
+      <DependentUpon>PdfBrowser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="badger\forms\editor\DataEditor.resx">
+      <DependentUpon>DataEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="badger\forms\excel\ExcelDocument.resx">
+      <DependentUpon>ExcelDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="badger\forms\form\BadgerForm.resx">
+      <DependentUpon>BadgerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="badger\forms\form\NinjaForm.resx">
+      <DependentUpon>NinjaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="badger\forms\gridcontrol\budgetgrid\BudgetGridControl.resx">
+      <DependentUpon>BudgetGridControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="badger\forms\gridcontrol\datagrid\DataGridControl.resx">
+      <DependentUpon>DataGridControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="badger\forms\listbox\ListBoxControl.resx">
+      <DependentUpon>ListBoxControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="badger\forms\loader\Loader.resx">
+      <DependentUpon>Loader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="badger\forms\main\BadgerMain.resx">
+      <DependentUpon>BadgerMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="badger\forms\pdf\PdfDocument.resx">
+      <DependentUpon>PdfDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="badger\forms\record\RecordControl.resx">
+      <DependentUpon>RecordControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="badger\forms\selector\SelectionControl.resx">
+      <DependentUpon>SelectionControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="badger\forms\streamer\StreamerControl.resx">
+      <DependentUpon>StreamerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="badger\forms\tabpanel\TabControl.resx">
+      <DependentUpon>TabControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="badger\forms\tilelayout\TileLayoutControl.resx">
+      <DependentUpon>TileLayoutControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="badger\forms\toolbar\ToolControl.resx">
+      <DependentUpon>ToolControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include=".editorconfig" />
+    <None Include="App.config" />
+    <None Include="badger\guidance\FundsControlManual.pdf" />
+    <None Include="BudgetExecution.DotSettings" />
+    <None Include="db\sqlce\UPDATE\R6.db" />
+    <None Include="db\sqlite\R6.db" />
+    <None Include="db\sqlite\UPDATE\R6.db" />
+    <None Include="db\sqlserver\R6.db" />
+    <None Include="lib\MetroSet UI.dll.config" />
+    <None Include="ninja\fiscalyear\Year" />
+    <None Include="ninja\template\Control.xlsx" />
+    <None Include="ninja\template\Report.xlsx" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
+    <Content Include="badger\icons\badger\ico\badger.ico" />
+    <Content Include="badger\icons\badger\ico\epabadger.ico" />
+    <Content Include="badger\icons\badger\ico\logo.ico" />
+    <Content Include="badger\icons\badger\png\badger.png" />
+    <Content Include="badger\icons\badger\png\epabadger.png" />
+    <Content Include="badger\icons\badger\png\logo.png" />
+    <Content Include="badger\icons\badger\png\runningbadger.png" />
+    <Content Include="badger\icons\close\png\CloseButton.png" />
+    <Content Include="badger\icons\close\png\ExitButton.png" />
+    <Content Include="badger\icons\close\png\HelpButton.png" />
+    <Content Include="badger\icons\close\png\InfoButton.png" />
+    <Content Include="badger\icons\close\png\MaximizeButton.png" />
+    <Content Include="badger\icons\close\png\MinimizeButton.png" />
+    <Content Include="badger\icons\database\png\Access.png" />
+    <Content Include="badger\icons\database\png\Excel.png" />
+    <Content Include="badger\icons\database\png\SqlCe.png" />
+    <Content Include="badger\icons\database\png\SQLite.png" />
+    <Content Include="badger\icons\database\png\SqlServer.png" />
+    <Content Include="badger\icons\data\png\Add.png" />
+    <Content Include="badger\icons\data\png\AddColumn.png" />
+    <Content Include="badger\icons\data\png\AddFilter.png" />
+    <Content Include="badger\icons\data\png\AddRow.png" />
+    <Content Include="badger\icons\data\png\Connect.png" />
+    <Content Include="badger\icons\data\png\Copy.png" />
+    <Content Include="badger\icons\data\png\DataFilter.png" />
+    <Content Include="badger\icons\data\png\Delete.png" />
+    <Content Include="badger\icons\data\png\DeleteColumn.png" />
+    <Content Include="badger\icons\data\png\DeleteRow.png" />
+    <Content Include="badger\icons\data\png\Download.png" />
+    <Content Include="badger\icons\data\png\Edit.png" />
+    <Content Include="badger\icons\data\png\EditFilter.png" />
+    <Content Include="badger\icons\data\png\Error.png" />
+    <Content Include="badger\icons\data\png\Export.png" />
+    <Content Include="badger\icons\data\png\FirstRow.png" />
+    <Content Include="badger\icons\data\png\Grouping.png" />
+    <Content Include="badger\icons\data\png\Import.png" />
+    <Content Include="badger\icons\data\png\Insert.png" />
+    <Content Include="badger\icons\data\png\LastRow.png" />
+    <Content Include="badger\icons\data\png\Query.png" />
+    <Content Include="badger\icons\data\png\Refresh.png" />
+    <Content Include="badger\icons\data\png\Restricted.png" />
+    <Content Include="badger\icons\data\png\Server.png" />
+    <Content Include="badger\icons\data\png\Settings.png" />
+    <Content Include="badger\icons\data\png\Sort.png" />
+    <Content Include="badger\icons\data\png\Transfer.png" />
+    <Content Include="badger\icons\division\png\ARD.png" />
+    <Content Include="badger\icons\division\png\D6.png" />
+    <Content Include="badger\icons\division\png\ECAD.png" />
+    <Content Include="badger\icons\division\png\EJ.png" />
+    <Content Include="badger\icons\division\png\LCARD.png" />
+    <Content Include="badger\icons\division\png\LSASD.png" />
+    <Content Include="badger\icons\division\png\MDR.png" />
+    <Content Include="badger\icons\division\png\MSD.png" />
+    <Content Include="badger\icons\division\png\ORA.png" />
+    <Content Include="badger\icons\division\png\ORC.png" />
+    <Content Include="badger\icons\division\png\R6.png" />
+    <Content Include="badger\icons\division\png\SEMD.png" />
+    <Content Include="badger\icons\division\png\WCF.png" />
+    <Content Include="badger\icons\division\png\WD.png" />
+    <Content Include="badger\icons\division\png\WSA.png" />
+    <Content Include="badger\icons\division\png\XA.png" />
+    <Content Include="badger\icons\email\png\Add.png" />
+    <Content Include="badger\icons\email\png\Browse.png" />
+    <Content Include="badger\icons\email\png\Delete.png" />
+    <Content Include="badger\icons\email\png\Download.png" />
+    <Content Include="badger\icons\email\png\Email.png" />
+    <Content Include="badger\icons\email\png\Favourites.png" />
+    <Content Include="badger\icons\email\png\Filter.png" />
+    <Content Include="badger\icons\email\png\Forward.png" />
+    <Content Include="badger\icons\email\png\From.png" />
+    <Content Include="badger\icons\email\png\Help.png" />
+    <Content Include="badger\icons\email\png\Inbox.png" />
+    <Content Include="badger\icons\email\png\Info.png" />
+    <Content Include="badger\icons\email\png\New.png" />
+    <Content Include="badger\icons\email\png\Next.png" />
+    <Content Include="badger\icons\email\png\Open.png" />
+    <Content Include="badger\icons\email\png\Previous.png" />
+    <Content Include="badger\icons\email\png\Refresh.png" />
+    <Content Include="badger\icons\email\png\Remove.png" />
+    <Content Include="badger\icons\email\png\Save.png" />
+    <Content Include="badger\icons\email\png\Search.png" />
+    <Content Include="badger\icons\email\png\Secure.png" />
+    <Content Include="badger\icons\email\png\Send.png" />
+    <Content Include="badger\icons\email\png\Settings.png" />
+    <Content Include="badger\icons\email\png\To.png" />
+    <Content Include="badger\icons\email\png\Unlock.png" />
+    <Content Include="badger\icons\email\png\Uppload.png" />
+    <Content Include="badger\icons\email\png\Verify.png" />
+    <Content Include="badger\icons\employee\png\Add.png" />
+    <Content Include="badger\icons\employee\png\Delete.png" />
+    <Content Include="badger\icons\employee\png\Download.png" />
+    <Content Include="badger\icons\employee\png\Ediit.png" />
+    <Content Include="badger\icons\employee\png\Help.png" />
+    <Content Include="badger\icons\employee\png\Info.png" />
+    <Content Include="badger\icons\employee\png\Locked.png" />
+    <Content Include="badger\icons\employee\png\Next.png" />
+    <Content Include="badger\icons\employee\png\Ok.png" />
+    <Content Include="badger\icons\employee\png\Profile.png" />
+    <Content Include="badger\icons\employee\png\Remove.png" />
+    <Content Include="badger\icons\employee\png\Save.png" />
+    <Content Include="badger\icons\employee\png\Search.png" />
+    <Content Include="badger\icons\employee\png\Settings.png" />
+    <Content Include="badger\icons\employee\png\Sync.png" />
+    <Content Include="badger\icons\employee\png\Unlocked.png" />
+    <Content Include="badger\icons\employee\png\Upload.png" />
+    <Content Include="badger\icons\employee\png\User.png" />
+    <Content Include="badger\icons\epa\png\Epa.png" />
+    <Content Include="badger\icons\epa\png\EpaBlue.png" />
+    <Content Include="badger\icons\epa\png\EpaDark.png" />
+    <Content Include="badger\icons\epa\png\EpaGreen.png" />
+    <Content Include="badger\icons\file\png\Add.png" />
+    <Content Include="badger\icons\file\png\Copy.png" />
+    <Content Include="badger\icons\file\png\Delete.png" />
+    <Content Include="badger\icons\file\png\Download.png" />
+    <Content Include="badger\icons\file\png\Edit.png" />
+    <Content Include="badger\icons\file\png\File.png" />
+    <Content Include="badger\icons\file\png\Help.png" />
+    <Content Include="badger\icons\file\png\Info.png" />
+    <Content Include="badger\icons\file\png\Lock.png" />
+    <Content Include="badger\icons\file\png\Log.png" />
+    <Content Include="badger\icons\file\png\Query.png" />
+    <Content Include="badger\icons\file\png\Refresh.png" />
+    <Content Include="badger\icons\file\png\Remove.png" />
+    <Content Include="badger\icons\file\png\Save.png" />
+    <Content Include="badger\icons\file\png\Search.png" />
+    <Content Include="badger\icons\file\png\Security.png" />
+    <Content Include="badger\icons\file\png\Settings.png" />
+    <Content Include="badger\icons\file\png\Transfer.png" />
+    <Content Include="badger\icons\file\png\Upload.png" />
+    <Content Include="badger\icons\file\png\Verify.png" />
+    <Content Include="badger\icons\filter\png\Add.png" />
+    <Content Include="badger\icons\filter\png\Ascending.png" />
+    <Content Include="badger\icons\filter\png\ColumnFilter.png" />
+    <Content Include="badger\icons\filter\png\Descending.png" />
+    <Content Include="badger\icons\filter\png\Edit.png" />
+    <Content Include="badger\icons\filter\png\Filter.png" />
+    <Content Include="badger\icons\filter\png\New.png" />
+    <Content Include="badger\icons\filter\png\RowFilter.png" />
+    <Content Include="badger\icons\filter\png\Verify.png" />
+    <Content Include="badger\icons\folder\png\Add.png" />
+    <Content Include="badger\icons\folder\png\Copy.png" />
+    <Content Include="badger\icons\folder\png\Delete.png" />
+    <Content Include="badger\icons\folder\png\Download.png" />
+    <Content Include="badger\icons\folder\png\Edit.png" />
+    <Content Include="badger\icons\folder\png\Information.png" />
+    <Content Include="badger\icons\folder\png\Ok.png" />
+    <Content Include="badger\icons\folder\png\Open.png" />
+    <Content Include="badger\icons\folder\png\Picture.png" />
+    <Content Include="badger\icons\folder\png\Refresh.png" />
+    <Content Include="badger\icons\folder\png\Search.png" />
+    <Content Include="badger\icons\folder\png\Settings.png" />
+    <Content Include="badger\icons\folder\png\SharedFolder.png" />
+    <Content Include="badger\icons\folder\png\Temp.png" />
+    <Content Include="badger\icons\folder\png\Upload.png" />
+    <Content Include="badger\icons\format\png\BMP.png" />
+    <Content Include="badger\icons\format\png\EPS.png" />
+    <Content Include="badger\icons\format\png\GIF.png" />
+    <Content Include="badger\icons\format\png\JPG.png" />
+    <Content Include="badger\icons\format\png\PNG.png" />
+    <Content Include="badger\icons\format\png\PPT.png" />
+    <Content Include="badger\icons\format\png\TGA.png" />
+    <Content Include="badger\icons\format\png\ZIP.png" />
+    <Content Include="badger\icons\fund\pic\DWH.png" />
+    <Content Include="badger\icons\fund\pic\EPM.png" />
+    <Content Include="badger\icons\fund\pic\LUST.png" />
+    <Content Include="badger\icons\fund\pic\OIL.png" />
+    <Content Include="badger\icons\fund\pic\SF6A.png" />
+    <Content Include="badger\icons\fund\pic\STAG.png" />
+    <Content Include="badger\icons\fund\pic\SUPERFUND.png" />
+    <Content Include="badger\icons\identification\png\Contact.png" />
+    <Content Include="badger\icons\identification\png\Delete.png" />
+    <Content Include="badger\icons\identification\png\Error.png" />
+    <Content Include="badger\icons\identification\png\Identification.png" />
+    <Content Include="badger\icons\identification\png\Search.png" />
+    <Content Include="badger\icons\interface\png\Analysis.png" />
+    <Content Include="badger\icons\interface\png\Appropriation.png" />
+    <Content Include="badger\icons\interface\png\Bluetooth.png" />
+    <Content Include="badger\icons\interface\png\Bucket.png" />
+    <Content Include="badger\icons\interface\png\Calendar.png" />
+    <Content Include="badger\icons\interface\png\Category.png" />
+    <Content Include="badger\icons\interface\png\Chart.png" />
+    <Content Include="badger\icons\interface\png\CircleAdd.png" />
+    <Content Include="badger\icons\interface\png\Clean.png" />
+    <Content Include="badger\icons\interface\png\Configuration.png" />
+    <Content Include="badger\icons\interface\png\Construction.png" />
+    <Content Include="badger\icons\interface\png\Contacts.png" />
+    <Content Include="badger\icons\interface\png\Ecology.png" />
+    <Content Include="badger\icons\interface\png\EPA.png" />
+    <Content Include="badger\icons\interface\png\ErrorMessage.png" />
+    <Content Include="badger\icons\interface\png\Exchange.png" />
+    <Content Include="badger\icons\interface\png\Explosion.png" />
+    <Content Include="badger\icons\interface\png\Flag.png" />
+    <Content Include="badger\icons\interface\png\Fund.png" />
+    <Content Include="badger\icons\interface\png\Home.png" />
+    <Content Include="badger\icons\interface\png\Idea.png" />
+    <Content Include="badger\icons\interface\png\Information.png" />
+    <Content Include="badger\icons\interface\png\Lock.png" />
+    <Content Include="badger\icons\interface\png\Login.png" />
+    <Content Include="badger\icons\interface\png\Logout.png" />
+    <Content Include="badger\icons\interface\png\MainForm.png" />
+    <Content Include="badger\icons\interface\png\Map.png" />
+    <Content Include="badger\icons\interface\png\MenuInterface.png" />
+    <Content Include="badger\icons\interface\png\Message.png" />
+    <Content Include="badger\icons\interface\png\Metrics.png" />
+    <Content Include="badger\icons\interface\png\Network.png" />
+    <Content Include="badger\icons\interface\png\Ninja.png" />
+    <Content Include="badger\icons\interface\png\Notify.png" />
+    <Content Include="badger\icons\interface\png\Ok.png" />
+    <Content Include="badger\icons\interface\png\Question.png" />
+    <Content Include="badger\icons\interface\png\Recertify.png" />
+    <Content Include="badger\icons\interface\png\RegionalOffice.png" />
+    <Content Include="badger\icons\interface\png\RemoteLocation.png" />
+    <Content Include="badger\icons\interface\png\Section.png" />
+    <Content Include="badger\icons\interface\png\Signin.png" />
+    <Content Include="badger\icons\interface\png\Signout.png" />
+    <Content Include="badger\icons\interface\png\Sleep.png" />
+    <Content Include="badger\icons\interface\png\Target.png" />
+    <Content Include="badger\icons\interface\png\Unlock.png" />
+    <Content Include="badger\icons\interface\png\Update.png" />
+    <Content Include="badger\icons\interface\png\Worker.png" />
+    <Content Include="badger\icons\interface\png\WorkLocation.png" />
+    <Content Include="badger\icons\loaders\png\circle_loader.gif" />
+    <Content Include="badger\icons\loaders\png\loading.gif" />
+    <Content Include="badger\icons\math\png\Alpha.png" />
+    <Content Include="badger\icons\math\png\Approximate.png" />
+    <Content Include="badger\icons\math\png\Average.png" />
+    <Content Include="badger\icons\math\png\Beta.png" />
+    <Content Include="badger\icons\math\png\Delta.png" />
+    <Content Include="badger\icons\math\png\Division.png" />
+    <Content Include="badger\icons\math\png\Exponent.png" />
+    <Content Include="badger\icons\math\png\Function.png" />
+    <Content Include="badger\icons\math\png\GreaterThanEqualTo.png" />
+    <Content Include="badger\icons\math\png\Inequality.png" />
+    <Content Include="badger\icons\math\png\Infinity.png" />
+    <Content Include="badger\icons\math\png\Integral.png" />
+    <Content Include="badger\icons\math\png\LessThanEqualTo.png" />
+    <Content Include="badger\icons\math\png\Mu.png" />
+    <Content Include="badger\icons\math\png\Number.png" />
+    <Content Include="badger\icons\math\png\Omega.png" />
+    <Content Include="badger\icons\math\png\Percntage.png" />
+    <Content Include="badger\icons\math\png\Phi.png" />
+    <Content Include="badger\icons\math\png\Pi.png" />
+    <Content Include="badger\icons\math\png\PlusMinus.png" />
+    <Content Include="badger\icons\math\png\Ranking.png" />
+    <Content Include="badger\icons\math\png\Sample.png" />
+    <Content Include="badger\icons\math\png\Sigma.png" />
+    <Content Include="badger\icons\math\png\Statistics.png" />
+    <Content Include="badger\icons\math\png\Superscript.png" />
+    <Content Include="badger\icons\math\png\Variance.png" />
+    <Content Include="badger\icons\navigation\png\BackUndo.png" />
+    <Content Include="badger\icons\navigation\png\BottomLeft.png" />
+    <Content Include="badger\icons\navigation\png\BottomRight.png" />
+    <Content Include="badger\icons\navigation\png\CircledCheckBox.png" />
+    <Content Include="badger\icons\navigation\png\CircleDown.png" />
+    <Content Include="badger\icons\navigation\png\CircleForward.png" />
+    <Content Include="badger\icons\navigation\png\CircleNext.png" />
+    <Content Include="badger\icons\navigation\png\CirclePause.png" />
+    <Content Include="badger\icons\navigation\png\CirclePrevious.png" />
+    <Content Include="badger\icons\navigation\png\CircleRewind.png" />
+    <Content Include="badger\icons\navigation\png\CircleStop.png" />
+    <Content Include="badger\icons\navigation\png\CircleUp.png" />
+    <Content Include="badger\icons\navigation\png\CirlcePlay.png" />
+    <Content Include="badger\icons\navigation\png\Down.png" />
+    <Content Include="badger\icons\navigation\png\End.png" />
+    <Content Include="badger\icons\navigation\png\First.png" />
+    <Content Include="badger\icons\navigation\png\Forward.png" />
+    <Content Include="badger\icons\navigation\png\Home.png" />
+    <Content Include="badger\icons\navigation\png\Interface.png" />
+    <Content Include="badger\icons\navigation\png\Key.png" />
+    <Content Include="badger\icons\navigation\png\Last.png" />
+    <Content Include="badger\icons\navigation\png\Left.png" />
+    <Content Include="badger\icons\navigation\png\Location.png" />
+    <Content Include="badger\icons\navigation\png\Map.png" />
+    <Content Include="badger\icons\navigation\png\Menu.png" />
+    <Content Include="badger\icons\navigation\png\Pause.png" />
+    <Content Include="badger\icons\navigation\png\Play.png" />
+    <Content Include="badger\icons\navigation\png\Restricted.png" />
+    <Content Include="badger\icons\navigation\png\Rewind.png" />
+    <Content Include="badger\icons\navigation\png\Right.png" />
+    <Content Include="badger\icons\navigation\png\Start.png" />
+    <Content Include="badger\icons\navigation\png\Stop.png" />
+    <Content Include="badger\icons\navigation\png\TopLeft.png" />
+    <Content Include="badger\icons\navigation\png\TopRight.png" />
+    <Content Include="badger\icons\navigation\png\Up.png" />
+    <Content Include="badger\icons\objectclass\png\Contracts.png" />
+    <Content Include="badger\icons\objectclass\png\Expenses.png" />
+    <Content Include="badger\icons\objectclass\png\FTE.png" />
+    <Content Include="badger\icons\objectclass\png\Grants.png" />
+    <Content Include="badger\icons\objectclass\png\Payroll.png" />
+    <Content Include="badger\icons\objectclass\png\SiteTravel.png" />
+    <Content Include="badger\icons\objectclass\png\Travel.png" />
+    <Content Include="badger\icons\objectclass\png\WCF.png" />
+    <Content Include="badger\icons\office\png\Admin.png" />
+    <Content Include="badger\icons\office\png\Adobe.png" />
+    <Content Include="badger\icons\office\png\Android.png" />
+    <Content Include="badger\icons\office\png\Contacts.png" />
+    <Content Include="badger\icons\office\png\Delve.png" />
+    <Content Include="badger\icons\office\png\Facebook.png" />
+    <Content Include="badger\icons\office\png\Fax.png" />
+    <Content Include="badger\icons\office\png\Firefox.png" />
+    <Content Include="badger\icons\office\png\FlashDrive.png" />
+    <Content Include="badger\icons\office\png\GMail.png" />
+    <Content Include="badger\icons\office\png\Google.png" />
+    <Content Include="badger\icons\office\png\GoogleDrive.png" />
+    <Content Include="badger\icons\office\png\Linux.png" />
+    <Content Include="badger\icons\office\png\OneDrive.png" />
+    <Content Include="badger\icons\office\png\OneNote.png" />
+    <Content Include="badger\icons\office\png\Printer.png" />
+    <Content Include="badger\icons\office\png\Project.png" />
+    <Content Include="badger\icons\office\png\Publisher.png" />
+    <Content Include="badger\icons\office\png\SharePoint.png" />
+    <Content Include="badger\icons\office\png\Sway.png" />
+    <Content Include="badger\icons\office\png\XLSX.png" />
+    <Content Include="badger\icons\outlays\png\Available.png" />
+    <Content Include="badger\icons\outlays\png\Awards.png" />
+    <Content Include="badger\icons\outlays\png\Balance.png" />
+    <Content Include="badger\icons\outlays\png\BankCard.png" />
+    <Content Include="badger\icons\outlays\png\Commitment.png" />
+    <Content Include="badger\icons\outlays\png\Deobligations.png" />
+    <Content Include="badger\icons\outlays\png\Expenditures.png" />
+    <Content Include="badger\icons\outlays\png\Invoice.png" />
+    <Content Include="badger\icons\outlays\png\Money.png" />
+    <Content Include="badger\icons\outlays\png\Obligations.png" />
+    <Content Include="badger\icons\outlays\png\OpenCommitement.png" />
+    <Content Include="badger\icons\outlays\png\Payments.png" />
+    <Content Include="badger\icons\outlays\png\POV.png" />
+    <Content Include="badger\icons\outlays\png\Procurements.png" />
+    <Content Include="badger\icons\outlays\png\PurchaseActivity.png" />
+    <Content Include="badger\icons\outlays\png\PurchaseRequest.png" />
+    <Content Include="badger\icons\outlays\png\Purchases.png" />
+    <Content Include="badger\icons\outlays\png\Transit.png" />
+    <Content Include="badger\icons\outlays\png\TravelObligation.png" />
+    <Content Include="badger\icons\outlays\png\Vendor.png" />
+    <Content Include="badger\icons\provider\png\ACCDB.png" />
+    <Content Include="badger\icons\provider\png\CSV.png" />
+    <Content Include="badger\icons\provider\png\DB.png" />
+    <Content Include="badger\icons\provider\png\MDB.png" />
+    <Content Include="badger\icons\provider\png\MDF.png" />
+    <Content Include="badger\icons\provider\png\SDF.png" />
+    <Content Include="badger\icons\provider\png\XLS.png" />
+    <Content Include="badger\icons\provider\png\XLSX.png" />
+    <Content Include="badger\icons\reference\pic\Employees.png" />
+    <Content Include="badger\icons\summary\pic\Appropriation.png" />
+    <Content Include="badger\icons\summary\pic\DivisionAuthority.png" />
+    <Content Include="badger\icons\summary\pic\ObjectClass.png" />
+    <Content Include="badger\icons\summary\pic\RegionalAuthority.png" />
+    <Content Include="badger\icons\summary\pic\Transfers.png" />
+    <Content Include="badger\icons\toolbar\png\AddButton.png" />
+    <Content Include="badger\icons\toolbar\png\AddColumn.png" />
+    <Content Include="badger\icons\toolbar\png\AddRow.png" />
+    <Content Include="badger\icons\toolbar\png\Available.png" />
+    <Content Include="badger\icons\toolbar\png\BrowseButton.png" />
+    <Content Include="badger\icons\toolbar\png\CalculatorButton.png" />
+    <Content Include="badger\icons\toolbar\png\CSV.png" />
+    <Content Include="badger\icons\toolbar\png\CsvExport.png" />
+    <Content Include="badger\icons\toolbar\png\DataSearch.png" />
+    <Content Include="badger\icons\toolbar\png\DataTableButton.png" />
+    <Content Include="badger\icons\toolbar\png\DB.png" />
+    <Content Include="badger\icons\toolbar\png\DeleteButton.png" />
+    <Content Include="badger\icons\toolbar\png\DivisionButton.png" />
+    <Content Include="badger\icons\toolbar\png\EditButton.png" />
+    <Content Include="badger\icons\toolbar\png\ExcelButton.png" />
+    <Content Include="badger\icons\toolbar\png\ExcelExport.png" />
+    <Content Include="badger\icons\toolbar\png\ExitButton.png" />
+    <Content Include="badger\icons\toolbar\png\ExportButton.png" />
+    <Content Include="badger\icons\toolbar\png\FileAddButton.png" />
+    <Content Include="badger\icons\toolbar\png\FileCopyButton.png" />
+    <Content Include="badger\icons\toolbar\png\FileDeleteButton.png" />
+    <Content Include="badger\icons\toolbar\png\FileDownloadButton.png" />
+    <Content Include="badger\icons\toolbar\png\FileUploadButton.png" />
+    <Content Include="badger\icons\toolbar\png\FirstButton.png" />
+    <Content Include="badger\icons\toolbar\png\FolderAddButton.png" />
+    <Content Include="badger\icons\toolbar\png\FolderBrowseButton.png" />
+    <Content Include="badger\icons\toolbar\png\FolderDeleteButton.png" />
+    <Content Include="badger\icons\toolbar\png\FolderDownloadButton.png" />
+    <Content Include="badger\icons\toolbar\png\FolderEditButton.png" />
+    <Content Include="badger\icons\toolbar\png\FolderOpenButton.png" />
+    <Content Include="badger\icons\toolbar\png\FolderUploadButton.png" />
+    <Content Include="badger\icons\toolbar\png\GMail.png" />
+    <Content Include="badger\icons\toolbar\png\ImportButton.png" />
+    <Content Include="badger\icons\toolbar\png\InsertButton.png" />
+    <Content Include="badger\icons\toolbar\png\LastButton.png" />
+    <Content Include="badger\icons\toolbar\png\MDF.png" />
+    <Content Include="badger\icons\toolbar\png\NavigationButton.png" />
+    <Content Include="badger\icons\toolbar\png\NextButton.png" />
+    <Content Include="badger\icons\toolbar\png\Outlook.png" />
+    <Content Include="badger\icons\toolbar\png\PdfButton.png" />
+    <Content Include="badger\icons\toolbar\png\PdfExport.png" />
+    <Content Include="badger\icons\toolbar\png\PreviousButton.png" />
+    <Content Include="badger\icons\toolbar\png\PrintButton.png" />
+    <Content Include="badger\icons\toolbar\png\QueryButton.png" />
+    <Content Include="badger\icons\toolbar\png\RefreshButton.png" />
+    <Content Include="badger\icons\toolbar\png\SaveButton.png" />
+    <Content Include="badger\icons\toolbar\png\SDF.png" />
+    <Content Include="badger\icons\toolbar\png\Server.png" />
+    <Content Include="badger\icons\toolbar\png\UndoButton.png" />
+    <Content Include="badger\icons\toolbar\png\UpdateButton.png" />
+    <Content Include="db\accdb\R6.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="db\sqlce\CREATE\DATABASE\R6.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\Accounts.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\Activity.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\Allocations.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\AllowanceHolders.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\AppropriationBills.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\Appropriations.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\BudgetLevels.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\BudgetObjectClass.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\ControlNumbers.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\Divisions.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\Employees.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\FinanceObjectClass.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\FiscalYears.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\FullTimeUtilization.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\Funds.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\Goals.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\HumanResourceOrganizations.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\InformationTechnology.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\LeaveProjections.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\NationalPrograms.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\Objectives.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\Organizations.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\Outlays.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\Payments.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\PayrollHours.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\PayrollObligations.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\PRC.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\Procurements.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\ProgramAreas.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\ProgramProjects.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\Projects.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\Purchases.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\Reimbursables.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\Requisitions.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\ResourcePlanningOffice.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\ResponsibilityCenter.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\Sites.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\Supplemental.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\Transfers.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\TravelObligations.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\Vendors.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\WorkCodes.sql" />
+    <Content Include="db\sqlce\CREATE\TABLE\WorkforceData.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\AppropriationBills.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\ARD.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\Awards.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\BudgetLevels.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\Carryover.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\CategoricalGrants.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\CleanWaterStateRevolvingFund.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\Commitments.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\CongressionalProjects.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\Contracts.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\DeepWaterHorizon.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\Deobligations.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\DivisionAccounts.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\DivisionAuthority.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\DivisionExecution.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\DrinkingWaterStateRevolvingFund.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\Earmarks.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\ECAD.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\EPM.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\Expenditures.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\Expenses.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\FTE.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\Grants.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\LCARD.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\LSASD.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\LUST.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\LustSupplemental.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\MSD.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\NetTransfers.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\NewObligationalAuthority.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\NonSiteTravel.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\Obligations.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\OldEarmarks.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\OpenCommitments.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\ORA.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\ORC.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\Overtime.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\Payroll.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\PurchaseActivity.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\RegionAuthority.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\RegionExecution.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\Reprogrammings.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\Schema.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\SEMD.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\SF6A.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\SiteTravel.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\SpecialAccounts.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\STAG.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\StatusOfFunds.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\Superfund.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\SuperfundSupplemental.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\TimeOff.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\Travel.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\UnliquidatedObligations.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\Utilization.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\WCF.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\WD.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\WorkingCapitalFund.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\WSA.sql" />
+    <Content Include="db\sqlce\CREATE\VIEW\XA.sql" />
+    <Content Include="db\sqlce\DELETE\DeleteOperationsTables.sql" />
+    <Content Include="db\sqlce\R6.sdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="db\sqlce\SELECT\CategoricalGrants.sql" />
+    <Content Include="db\sqlce\SELECT\DivisionObligationsCaseStatement.sql" />
+    <Content Include="db\sqlce\SELECT\PrcCleanerQuery.sql" />
+    <Content Include="db\sqlce\SELECT\PrcReferenceQuery.sql" />
+    <Content Include="db\sqlce\SELECT\Utilization.sql" />
+    <Content Include="db\sqlce\UPDATE\CleanAllocations.sql" />
+    <Content Include="db\sqlce\UPDATE\CleanOutlaysImport.sql" />
+    <Content Include="db\sqlce\UPDATE\ElementQuery.sql" />
+    <Content Include="db\sqlite\CREATE\DATABASE\R6.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\Accounts.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\Activity.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\Allocations.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\AllowanceHolders.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\AppropriationBills.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\Appropriations.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\BudgetLevels.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\BudgetObjectClass.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\ControlNumbers.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\Divisions.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\Employees.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\FinanceObjectClass.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\FiscalYears.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\FullTimeUtilization.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\Funds.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\Goals.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\HumanResourceOrganizations.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\InformationTechnology.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\LeaveProjections.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\NationalPrograms.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\Objectives.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\Organizations.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\Outlays.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\Payments.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\PayrollHours.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\PayrollObligations.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\PRC.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\Procurements.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\ProgramAreas.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\ProgramProjects.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\Projects.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\Purchases.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\Reimbursables.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\Requisitions.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\ResourcePlanningOffice.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\ResponsibilityCenter.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\Sites.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\Supplemental.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\Transfers.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\TravelObligations.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\Vendors.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\WorkCodes.sql" />
+    <Content Include="db\sqlite\CREATE\TABLE\WorkforceData.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\AppropriationBills.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\ARD.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\Awards.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\BudgetLevels.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\Carryover.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\CategoricalGrants.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\CleanWaterStateRevolvingFund.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\Commitments.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\CongressionalProjects.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\Contracts.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\DeepWaterHorizon.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\Deobligations.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\DivisionAccounts.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\DivisionAuthority.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\DivisionExecution.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\DrinkingWaterStateRevolvingFund.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\Earmarks.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\ECAD.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\EPM.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\Expenditures.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\Expenses.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\FTE.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\Grants.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\LCARD.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\LSASD.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\LUST.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\LustSupplemental.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\MSD.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\NetTransfers.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\NewObligationalAuthority.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\NonSiteTravel.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\Obligations.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\OldEarmarks.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\OpenCommitments.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\ORA.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\ORC.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\Overtime.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\Payroll.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\PurchaseActivity.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\RegionAuthority.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\RegionExecution.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\Reprogrammings.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\Schema.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\SEMD.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\SF6A.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\SiteTravel.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\SpecialAccounts.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\STAG.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\StatusOfFunds.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\Superfund.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\SuperfundSupplemental.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\TimeOff.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\Travel.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\UnliquidatedObligations.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\Utilization.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\WCF.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\WD.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\WorkingCapitalFund.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\WSA.sql" />
+    <Content Include="db\sqlite\CREATE\VIEW\XA.sql" />
+    <Content Include="db\sqlite\DELETE\DeleteOperationsTables.sql" />
+    <Content Include="db\sqlite\SELECT\CategoricalGrants.sql" />
+    <Content Include="db\sqlite\SELECT\DivisionObligationsCaseStatement.sql" />
+    <Content Include="db\sqlite\SELECT\PrcCleanerQuery.sql" />
+    <Content Include="db\sqlite\SELECT\PrcReferenceQuery.sql" />
+    <Content Include="db\sqlite\SELECT\Utilization.sql" />
+    <Content Include="db\sqlite\UPDATE\CleanAllocations.sql" />
+    <Content Include="db\sqlite\UPDATE\CleanOutlaysImport.sql" />
+    <Content Include="db\sqlite\UPDATE\ElementQuery.sql" />
+    <Content Include="db\sqlserver\CREATE\DATABASE\R6.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.Accounts.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.Activity.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.Allocations.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.AllowanceHolders.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.BudgetLevels.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.BudgetObjectClass.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.ControlNumbers.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.Divisions.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.Employees.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.FinanceObjectClass.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.FiscalYears.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.Funds.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.Goals.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.HumanResourceOrganizations.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.InformationTechnology.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.NationalPrograms.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.Objectives.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.Organizations.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.Outlays.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.PayrollHours.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.PayrollObligations.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.PRC.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.ProgramAreas.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.ProgramProjects.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.Projects.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.Purchases.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.ResourcePlanningOffices.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.ResponsibilityCenters.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.Sites.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.SubAppropriations.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.Supplemental.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.Transfers.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.TravelObligations.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.Vendors.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\TABLE\dbo.WorkCodes.Table.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.ARD.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.BudgetLevels.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.Carryover.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.CategoricalGrants.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.CleanWaterStateRevolvingFund.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.Commitments.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.Contracts.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.DivisionAccounts.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.DWH.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.ECAD.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.EJ.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.EPM.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.ExecutionLevel7.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.ExecutionLevel8.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.Expenses.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.ExpiringFunds.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.FTE.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.Grants.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.LCARD.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.LSASD.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.LUST.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.NewObligationalAuthority.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.OilSpill.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.ORA.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.ORC.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.Payroll.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.RegionalAccounts.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.SEMD.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.SF6A.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.SiteTravel.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.STAG.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.Superfund.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.Travel.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.Utilization.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.WCF.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.WD.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.WQ.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.WSA.View.sql" />
+    <Content Include="db\sqlserver\CREATE\VIEW\dbo.XA.View.sql" />
+    <Content Include="lib\CharmNotification.dll" />
+    <Content Include="lib\DataGridViewExtension.dll" />
+    <Content Include="lib\EPPlus.dll" />
+    <Content Include="lib\EPPlus.XML" />
+    <Content Include="lib\Expander.dll" />
+    <Content Include="lib\LinqStatistics.dll" />
+    <Content Include="lib\MetroSet UI.dll" />
+    <Content Include="lib\SQLite.Designer.dll" />
+    <Content Include="lib\SQLite.Designer.xml" />
+    <Content Include="lib\Syncfusion.Chart.Base.dll" />
+    <Content Include="lib\Syncfusion.Chart.Base.xml" />
+    <Content Include="lib\Syncfusion.Chart.Windows.dll" />
+    <Content Include="lib\Syncfusion.Chart.Windows.xml" />
+    <Content Include="lib\Syncfusion.Compression.Base.dll" />
+    <Content Include="lib\Syncfusion.Compression.Base.xml" />
+    <Content Include="lib\Syncfusion.Grid.Base.dll" />
+    <Content Include="lib\Syncfusion.Grid.Base.xml" />
+    <Content Include="lib\Syncfusion.Grid.Windows.dll" />
+    <Content Include="lib\Syncfusion.Pdf.Base.dll" />
+    <Content Include="lib\Syncfusion.Pdf.Base.xml" />
+    <Content Include="lib\Syncfusion.Pdf.Windows.dll" />
+    <Content Include="lib\Syncfusion.Pdf.Windows.xml" />
+    <Content Include="lib\Syncfusion.PdfViewer.Windows.dll" />
+    <Content Include="lib\Syncfusion.PdfViewer.Windows.xml" />
+    <Content Include="lib\Syncfusion.Shared.Base.dll" />
+    <Content Include="lib\Syncfusion.Shared.Windows.dll" />
+    <Content Include="lib\Syncfusion.Spreadsheet.Windows.dll" />
+    <Content Include="lib\Syncfusion.Tools.Base.dll" />
+    <Content Include="lib\Syncfusion.Tools.Windows.dll" />
+    <Content Include="lib\Syncfusion.XlsIO.Base.dll" />
+    <Content Include="lib\Syncfusion.XlsIO.Base.xml" />
+    <Content Include="lib\VisualPlus.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="badger\icons\epa\ico\" />
+    <Folder Include="db\oledb\" />
+    <Folder Include="db\sqlce\ALTER\ADD\" />
+    <Folder Include="db\sqlce\ALTER\RENAME\" />
+    <Folder Include="db\sqlce\COMMIT\" />
+    <Folder Include="db\sqlce\DETACH\" />
+    <Folder Include="db\sqlce\DROP\TABLE\" />
+    <Folder Include="db\sqlce\DROP\VIEW\" />
+    <Folder Include="db\sqlce\INSERT\" />
+    <Folder Include="db\sqlce\ROLLBACK\" />
+    <Folder Include="db\sqlce\TRANSACTION\" />
+    <Folder Include="db\sqlite\ALTER\ADD\" />
+    <Folder Include="db\sqlite\ALTER\RENAME\" />
+    <Folder Include="db\sqlite\COMMIT\" />
+    <Folder Include="db\sqlite\DETACH\" />
+    <Folder Include="db\sqlite\DROP\TABLE\" />
+    <Folder Include="db\sqlite\DROP\VIEW\" />
+    <Folder Include="db\sqlite\INSERT\" />
+    <Folder Include="db\sqlite\ROLLBACK\" />
+    <Folder Include="db\sqlite\TRANSACTION\" />
+    <Folder Include="db\sqlserver\ALTER\" />
+    <Folder Include="db\sqlserver\COMMIT\" />
+    <Folder Include="db\sqlserver\DELETE\" />
+    <Folder Include="db\sqlserver\DETACH\" />
+    <Folder Include="db\sqlserver\DROP\" />
+    <Folder Include="db\sqlserver\INSERT\" />
+    <Folder Include="db\sqlserver\ROLLBACK\" />
+    <Folder Include="db\sqlserver\SELECT\" />
+    <Folder Include="db\sqlserver\TRANSACTION\" />
+    <Folder Include="db\sqlserver\UPDATE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    if not exist "$(TargetDir)x86" md "$(TargetDir)x86"
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\x86\*.*" "$(TargetDir)x86"
+    if not exist "$(TargetDir)amd64" md "$(TargetDir)amd64"
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\amd64\*.*" "$(TargetDir)amd64"</PostBuildEvent>
+  </PropertyGroup>
+</Project>
