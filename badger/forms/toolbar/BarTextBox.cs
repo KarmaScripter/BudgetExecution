@@ -11,12 +11,11 @@ namespace BudgetExecution
     using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
-    using System.Threading;
     using System.Windows.Forms;
 
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "UnusedParameter.Global" ) ]
-    public class BarTextBox : ToolStripTextBox, IToolTextBox
+    public class BarTextBox : ToolStripTextBox, IBarTextBox
     {
         // ***************************************************************************************************************************
         // ******************************************************  CONSTRUCTORS  *****************************************************
@@ -27,8 +26,8 @@ namespace BudgetExecution
         /// </summary>
         public BarTextBox()
         {
-            Margin = new Padding( 10, 5, 10, 0 );
-            Padding = new Padding( 1 );
+            Margin = new Padding( 5, 5, 5, 5 );
+            Padding = new Padding( 0 );
             Size = new Size( 150, 23 );
             BackColor = ColorConfig.BackColorBlack;
             ForeColor = ColorConfig.ForeColorGray;
@@ -56,10 +55,6 @@ namespace BudgetExecution
         /// <summary> Gets or sets the field. </summary>
         /// <value> The field. </value>
         public Field Field { get; set; }
-
-        /// <summary> Gets or sets the tip. </summary>
-        /// <value> The tip. </value>
-        public ToolTip ToolTip { get; set; }
 
         // ***************************************************************************************************************************
         // *******************************************************      METHODS        ***********************************************
@@ -131,7 +126,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    ToolTip = new ToolTip( item, text );
+                    var _ = new ToolTip( item, text );
                 }
                 catch( Exception ex )
                 {
@@ -161,13 +156,13 @@ namespace BudgetExecution
                     if( Verify.Input( HoverText ) )
                     {
                         var text = textbox?.HoverText;
-                        ToolTip = new ToolTip( this, text );
+                        var _ = new ToolTip( this, text );
                     }
                     else
                     {
                         if( Verify.Input( Tag?.ToString() ) )
                         {
-                            ToolTip = new ToolTip( this, Tag?.ToString()?.SplitPascal() );
+                            var _ = new ToolTip( this, Tag?.ToString()?.SplitPascal() );
                         }
                     }
                 }

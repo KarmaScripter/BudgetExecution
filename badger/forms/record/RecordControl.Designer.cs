@@ -99,7 +99,6 @@ namespace BudgetExecution
             this.Separator13 = new System.Windows.Forms.ToolStripSeparator();
             this.UploadButton = new BudgetExecution.BarButton();
             this.Separator14 = new System.Windows.Forms.ToolStripSeparator();
-            this.ProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.BackPanel.SuspendLayout();
             this.Table.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BindingSource)).BeginInit();
@@ -140,7 +139,6 @@ namespace BudgetExecution
             this.BackPanel.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.BackPanel.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.BackPanel.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.BackPanel.ToolTip = null;
             // 
             // Table
             // 
@@ -185,7 +183,7 @@ namespace BudgetExecution
             this.Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.Table.Size = new System.Drawing.Size(1064, 140);
+            this.Table.Size = new System.Drawing.Size(1064, 145);
             this.Table.TabIndex = 1;
             // 
             // TextBox12
@@ -226,7 +224,7 @@ namespace BudgetExecution
             this.TextBox12.ImageSize = new System.Drawing.Size(16, 16);
             this.TextBox12.ImageVisible = false;
             this.TextBox12.ImageWidth = 35;
-            this.TextBox12.Location = new System.Drawing.Point(888, 108);
+            this.TextBox12.Location = new System.Drawing.Point(888, 111);
             this.TextBox12.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.TextBox12.Name = "TextBox12";
             this.TextBox12.Numeric = BudgetExecution.Numeric.Default;
@@ -244,13 +242,17 @@ namespace BudgetExecution
             this.TextBox12.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.TextBox12.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.TextBox12.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.TextBox12.ToolTip = null;
             this.TextBox12.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.TextBox12.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBox12.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
             this.TextBox12.Watermark.Text = "Watermark text";
             this.TextBox12.Watermark.Visible = false;
             this.TextBox12.WordWrap = true;
+            // 
+            // BindingSource
+            // 
+            this.BindingSource.DataFilter = null;
+            this.BindingSource.Numeric = BudgetExecution.Numeric.Default;
             // 
             // TextBox11
             // 
@@ -290,7 +292,7 @@ namespace BudgetExecution
             this.TextBox11.ImageSize = new System.Drawing.Size(16, 16);
             this.TextBox11.ImageVisible = false;
             this.TextBox11.ImageWidth = 35;
-            this.TextBox11.Location = new System.Drawing.Point(711, 108);
+            this.TextBox11.Location = new System.Drawing.Point(711, 111);
             this.TextBox11.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.TextBox11.Name = "TextBox11";
             this.TextBox11.Numeric = BudgetExecution.Numeric.Default;
@@ -308,7 +310,6 @@ namespace BudgetExecution
             this.TextBox11.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.TextBox11.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.TextBox11.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.TextBox11.ToolTip = null;
             this.TextBox11.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.TextBox11.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBox11.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
@@ -325,7 +326,7 @@ namespace BudgetExecution
             this.Label12.Field = BudgetExecution.Field.NS;
             this.Label12.Font = new System.Drawing.Font("Roboto", 8F);
             this.Label12.ForeColor = System.Drawing.Color.LightGray;
-            this.Label12.Location = new System.Drawing.Point(888, 73);
+            this.Label12.Location = new System.Drawing.Point(888, 75);
             this.Label12.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Label12.Name = "Label12";
             this.Label12.Numeric = BudgetExecution.Numeric.Default;
@@ -339,7 +340,7 @@ namespace BudgetExecution
             this.Label12.ShadowDirection = 315;
             this.Label12.ShadowLocation = new System.Drawing.Point(0, 0);
             this.Label12.ShadowOpacity = 100;
-            this.Label12.Size = new System.Drawing.Size(173, 29);
+            this.Label12.Size = new System.Drawing.Size(173, 30);
             this.Label12.TabIndex = 21;
             this.Label12.Text = "Label 12";
             this.Label12.TextAlignment = System.Drawing.StringAlignment.Near;
@@ -351,7 +352,6 @@ namespace BudgetExecution
             this.Label12.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.Label12.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.Label12.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.Label12.ToolTip = null;
             // 
             // Label11
             // 
@@ -362,7 +362,7 @@ namespace BudgetExecution
             this.Label11.Field = BudgetExecution.Field.NS;
             this.Label11.Font = new System.Drawing.Font("Roboto", 8F);
             this.Label11.ForeColor = System.Drawing.Color.LightGray;
-            this.Label11.Location = new System.Drawing.Point(711, 73);
+            this.Label11.Location = new System.Drawing.Point(711, 75);
             this.Label11.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Label11.Name = "Label11";
             this.Label11.Numeric = BudgetExecution.Numeric.Default;
@@ -376,7 +376,7 @@ namespace BudgetExecution
             this.Label11.ShadowDirection = 315;
             this.Label11.ShadowLocation = new System.Drawing.Point(0, 0);
             this.Label11.ShadowOpacity = 100;
-            this.Label11.Size = new System.Drawing.Size(171, 29);
+            this.Label11.Size = new System.Drawing.Size(171, 30);
             this.Label11.TabIndex = 20;
             this.Label11.Text = "Label 11";
             this.Label11.TextAlignment = System.Drawing.StringAlignment.Near;
@@ -388,8 +388,6 @@ namespace BudgetExecution
             this.Label11.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.Label11.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.Label11.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.Label11.ToolTip = null;
-            // 
             // TextBox7
             // 
             this.TextBox7.AlphaNumeric = false;
@@ -428,7 +426,7 @@ namespace BudgetExecution
             this.TextBox7.ImageSize = new System.Drawing.Size(16, 16);
             this.TextBox7.ImageVisible = false;
             this.TextBox7.ImageWidth = 35;
-            this.TextBox7.Location = new System.Drawing.Point(3, 108);
+            this.TextBox7.Location = new System.Drawing.Point(3, 111);
             this.TextBox7.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.TextBox7.Name = "TextBox7";
             this.TextBox7.Numeric = BudgetExecution.Numeric.Default;
@@ -446,7 +444,6 @@ namespace BudgetExecution
             this.TextBox7.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.TextBox7.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.TextBox7.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.TextBox7.ToolTip = null;
             this.TextBox7.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.TextBox7.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBox7.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
@@ -492,7 +489,7 @@ namespace BudgetExecution
             this.TextBox6.ImageSize = new System.Drawing.Size(16, 16);
             this.TextBox6.ImageVisible = false;
             this.TextBox6.ImageWidth = 35;
-            this.TextBox6.Location = new System.Drawing.Point(357, 108);
+            this.TextBox6.Location = new System.Drawing.Point(357, 111);
             this.TextBox6.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.TextBox6.Name = "TextBox6";
             this.TextBox6.Numeric = BudgetExecution.Numeric.Default;
@@ -510,7 +507,6 @@ namespace BudgetExecution
             this.TextBox6.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.TextBox6.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.TextBox6.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.TextBox6.ToolTip = null;
             this.TextBox6.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.TextBox6.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBox6.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
@@ -556,7 +552,7 @@ namespace BudgetExecution
             this.TextBox9.ImageSize = new System.Drawing.Size(16, 16);
             this.TextBox9.ImageVisible = false;
             this.TextBox9.ImageWidth = 35;
-            this.TextBox9.Location = new System.Drawing.Point(180, 108);
+            this.TextBox9.Location = new System.Drawing.Point(180, 111);
             this.TextBox9.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.TextBox9.Name = "TextBox9";
             this.TextBox9.Numeric = BudgetExecution.Numeric.Default;
@@ -574,7 +570,6 @@ namespace BudgetExecution
             this.TextBox9.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.TextBox9.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.TextBox9.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.TextBox9.ToolTip = null;
             this.TextBox9.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.TextBox9.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBox9.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
@@ -620,7 +615,7 @@ namespace BudgetExecution
             this.TextBox5.ImageSize = new System.Drawing.Size(16, 16);
             this.TextBox5.ImageVisible = false;
             this.TextBox5.ImageWidth = 35;
-            this.TextBox5.Location = new System.Drawing.Point(711, 38);
+            this.TextBox5.Location = new System.Drawing.Point(711, 39);
             this.TextBox5.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.TextBox5.Name = "TextBox5";
             this.TextBox5.Numeric = BudgetExecution.Numeric.Default;
@@ -638,7 +633,6 @@ namespace BudgetExecution
             this.TextBox5.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.TextBox5.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.TextBox5.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.TextBox5.ToolTip = null;
             this.TextBox5.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.TextBox5.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBox5.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
@@ -684,7 +678,7 @@ namespace BudgetExecution
             this.TextBox4.ImageSize = new System.Drawing.Size(16, 16);
             this.TextBox4.ImageVisible = false;
             this.TextBox4.ImageWidth = 35;
-            this.TextBox4.Location = new System.Drawing.Point(534, 38);
+            this.TextBox4.Location = new System.Drawing.Point(534, 39);
             this.TextBox4.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.TextBox4.Name = "TextBox4";
             this.TextBox4.Numeric = BudgetExecution.Numeric.Default;
@@ -702,7 +696,6 @@ namespace BudgetExecution
             this.TextBox4.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.TextBox4.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.TextBox4.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.TextBox4.ToolTip = null;
             this.TextBox4.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.TextBox4.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBox4.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
@@ -748,7 +741,7 @@ namespace BudgetExecution
             this.TextBox3.ImageSize = new System.Drawing.Size(16, 16);
             this.TextBox3.ImageVisible = false;
             this.TextBox3.ImageWidth = 35;
-            this.TextBox3.Location = new System.Drawing.Point(357, 38);
+            this.TextBox3.Location = new System.Drawing.Point(357, 39);
             this.TextBox3.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.TextBox3.Name = "TextBox3";
             this.TextBox3.Numeric = BudgetExecution.Numeric.Default;
@@ -766,7 +759,6 @@ namespace BudgetExecution
             this.TextBox3.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.TextBox3.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.TextBox3.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.TextBox3.ToolTip = null;
             this.TextBox3.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.TextBox3.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBox3.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
@@ -812,7 +804,7 @@ namespace BudgetExecution
             this.TextBox2.ImageSize = new System.Drawing.Size(16, 16);
             this.TextBox2.ImageVisible = false;
             this.TextBox2.ImageWidth = 35;
-            this.TextBox2.Location = new System.Drawing.Point(180, 38);
+            this.TextBox2.Location = new System.Drawing.Point(180, 39);
             this.TextBox2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.TextBox2.Name = "TextBox2";
             this.TextBox2.Numeric = BudgetExecution.Numeric.Default;
@@ -830,7 +822,6 @@ namespace BudgetExecution
             this.TextBox2.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.TextBox2.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.TextBox2.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.TextBox2.ToolTip = null;
             this.TextBox2.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.TextBox2.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBox2.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
@@ -861,7 +852,7 @@ namespace BudgetExecution
             this.Label5.ShadowDirection = 315;
             this.Label5.ShadowLocation = new System.Drawing.Point(0, 0);
             this.Label5.ShadowOpacity = 100;
-            this.Label5.Size = new System.Drawing.Size(171, 29);
+            this.Label5.Size = new System.Drawing.Size(171, 30);
             this.Label5.TabIndex = 5;
             this.Label5.Text = "Label 5";
             this.Label5.TextAlignment = System.Drawing.StringAlignment.Near;
@@ -873,7 +864,6 @@ namespace BudgetExecution
             this.Label5.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.Label5.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.Label5.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.Label5.ToolTip = null;
             // 
             // Label4
             // 
@@ -898,7 +888,7 @@ namespace BudgetExecution
             this.Label4.ShadowDirection = 315;
             this.Label4.ShadowLocation = new System.Drawing.Point(0, 0);
             this.Label4.ShadowOpacity = 100;
-            this.Label4.Size = new System.Drawing.Size(171, 29);
+            this.Label4.Size = new System.Drawing.Size(171, 30);
             this.Label4.TabIndex = 4;
             this.Label4.Text = "Label 4";
             this.Label4.TextAlignment = System.Drawing.StringAlignment.Near;
@@ -910,7 +900,6 @@ namespace BudgetExecution
             this.Label4.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.Label4.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.Label4.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.Label4.ToolTip = null;
             // 
             // Label3
             // 
@@ -935,7 +924,7 @@ namespace BudgetExecution
             this.Label3.ShadowDirection = 315;
             this.Label3.ShadowLocation = new System.Drawing.Point(0, 0);
             this.Label3.ShadowOpacity = 100;
-            this.Label3.Size = new System.Drawing.Size(171, 29);
+            this.Label3.Size = new System.Drawing.Size(171, 30);
             this.Label3.TabIndex = 3;
             this.Label3.Text = "Label 3";
             this.Label3.TextAlignment = System.Drawing.StringAlignment.Near;
@@ -947,8 +936,6 @@ namespace BudgetExecution
             this.Label3.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.Label3.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.Label3.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.Label3.ToolTip = null;
-            // 
             // Label2
             // 
             this.Label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
@@ -972,7 +959,7 @@ namespace BudgetExecution
             this.Label2.ShadowDirection = 315;
             this.Label2.ShadowLocation = new System.Drawing.Point(0, 0);
             this.Label2.ShadowOpacity = 100;
-            this.Label2.Size = new System.Drawing.Size(171, 29);
+            this.Label2.Size = new System.Drawing.Size(171, 30);
             this.Label2.TabIndex = 2;
             this.Label2.Text = "Label 2";
             this.Label2.TextAlignment = System.Drawing.StringAlignment.Near;
@@ -984,7 +971,6 @@ namespace BudgetExecution
             this.Label2.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.Label2.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.Label2.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.Label2.ToolTip = null;
             // 
             // Label1
             // 
@@ -1009,7 +995,7 @@ namespace BudgetExecution
             this.Label1.ShadowDirection = 315;
             this.Label1.ShadowLocation = new System.Drawing.Point(0, 0);
             this.Label1.ShadowOpacity = 100;
-            this.Label1.Size = new System.Drawing.Size(171, 29);
+            this.Label1.Size = new System.Drawing.Size(171, 30);
             this.Label1.TabIndex = 0;
             this.Label1.Text = "Label 1";
             this.Label1.TextAlignment = System.Drawing.StringAlignment.Near;
@@ -1021,7 +1007,6 @@ namespace BudgetExecution
             this.Label1.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.Label1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.Label1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.Label1.ToolTip = null;
             // 
             // TextBox1
             // 
@@ -1061,7 +1046,7 @@ namespace BudgetExecution
             this.TextBox1.ImageSize = new System.Drawing.Size(16, 16);
             this.TextBox1.ImageVisible = false;
             this.TextBox1.ImageWidth = 35;
-            this.TextBox1.Location = new System.Drawing.Point(3, 38);
+            this.TextBox1.Location = new System.Drawing.Point(3, 39);
             this.TextBox1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.TextBox1.Name = "TextBox1";
             this.TextBox1.Numeric = BudgetExecution.Numeric.Default;
@@ -1079,7 +1064,6 @@ namespace BudgetExecution
             this.TextBox1.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.TextBox1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.TextBox1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.TextBox1.ToolTip = null;
             this.TextBox1.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.TextBox1.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBox1.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
@@ -1125,7 +1109,7 @@ namespace BudgetExecution
             this.TextBox10.ImageSize = new System.Drawing.Size(16, 16);
             this.TextBox10.ImageVisible = false;
             this.TextBox10.ImageWidth = 35;
-            this.TextBox10.Location = new System.Drawing.Point(534, 108);
+            this.TextBox10.Location = new System.Drawing.Point(534, 111);
             this.TextBox10.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.TextBox10.Name = "TextBox10";
             this.TextBox10.Numeric = BudgetExecution.Numeric.Default;
@@ -1143,7 +1127,6 @@ namespace BudgetExecution
             this.TextBox10.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.TextBox10.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.TextBox10.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.TextBox10.ToolTip = null;
             this.TextBox10.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.TextBox10.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBox10.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
@@ -1174,7 +1157,7 @@ namespace BudgetExecution
             this.Label6.ShadowDirection = 315;
             this.Label6.ShadowLocation = new System.Drawing.Point(0, 0);
             this.Label6.ShadowOpacity = 100;
-            this.Label6.Size = new System.Drawing.Size(173, 29);
+            this.Label6.Size = new System.Drawing.Size(173, 30);
             this.Label6.TabIndex = 10;
             this.Label6.Text = "Label 6";
             this.Label6.TextAlignment = System.Drawing.StringAlignment.Near;
@@ -1186,7 +1169,6 @@ namespace BudgetExecution
             this.Label6.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.Label6.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.Label6.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.Label6.ToolTip = null;
             // 
             // TextBox8
             // 
@@ -1226,7 +1208,7 @@ namespace BudgetExecution
             this.TextBox8.ImageSize = new System.Drawing.Size(16, 16);
             this.TextBox8.ImageVisible = false;
             this.TextBox8.ImageWidth = 35;
-            this.TextBox8.Location = new System.Drawing.Point(888, 38);
+            this.TextBox8.Location = new System.Drawing.Point(888, 39);
             this.TextBox8.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.TextBox8.Name = "TextBox8";
             this.TextBox8.Numeric = BudgetExecution.Numeric.Default;
@@ -1244,7 +1226,6 @@ namespace BudgetExecution
             this.TextBox8.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.TextBox8.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.TextBox8.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.TextBox8.ToolTip = null;
             this.TextBox8.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.TextBox8.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBox8.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
@@ -1261,7 +1242,7 @@ namespace BudgetExecution
             this.Label7.Field = BudgetExecution.Field.NS;
             this.Label7.Font = new System.Drawing.Font("Roboto", 8F);
             this.Label7.ForeColor = System.Drawing.Color.LightGray;
-            this.Label7.Location = new System.Drawing.Point(3, 73);
+            this.Label7.Location = new System.Drawing.Point(3, 75);
             this.Label7.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Label7.Name = "Label7";
             this.Label7.Numeric = BudgetExecution.Numeric.Default;
@@ -1275,7 +1256,7 @@ namespace BudgetExecution
             this.Label7.ShadowDirection = 315;
             this.Label7.ShadowLocation = new System.Drawing.Point(0, 0);
             this.Label7.ShadowOpacity = 100;
-            this.Label7.Size = new System.Drawing.Size(171, 29);
+            this.Label7.Size = new System.Drawing.Size(171, 30);
             this.Label7.TabIndex = 11;
             this.Label7.Text = "Label 7";
             this.Label7.TextAlignment = System.Drawing.StringAlignment.Near;
@@ -1287,7 +1268,6 @@ namespace BudgetExecution
             this.Label7.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.Label7.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.Label7.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.Label7.ToolTip = null;
             // 
             // Label8
             // 
@@ -1298,7 +1278,7 @@ namespace BudgetExecution
             this.Label8.Field = BudgetExecution.Field.NS;
             this.Label8.Font = new System.Drawing.Font("Roboto", 8F);
             this.Label8.ForeColor = System.Drawing.Color.LightGray;
-            this.Label8.Location = new System.Drawing.Point(180, 73);
+            this.Label8.Location = new System.Drawing.Point(180, 75);
             this.Label8.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Label8.Name = "Label8";
             this.Label8.Numeric = BudgetExecution.Numeric.Default;
@@ -1312,7 +1292,7 @@ namespace BudgetExecution
             this.Label8.ShadowDirection = 315;
             this.Label8.ShadowLocation = new System.Drawing.Point(0, 0);
             this.Label8.ShadowOpacity = 100;
-            this.Label8.Size = new System.Drawing.Size(171, 29);
+            this.Label8.Size = new System.Drawing.Size(171, 30);
             this.Label8.TabIndex = 12;
             this.Label8.Text = "Label 8";
             this.Label8.TextAlignment = System.Drawing.StringAlignment.Near;
@@ -1324,7 +1304,6 @@ namespace BudgetExecution
             this.Label8.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.Label8.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.Label8.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.Label8.ToolTip = null;
             // 
             // Label9
             // 
@@ -1335,7 +1314,7 @@ namespace BudgetExecution
             this.Label9.Field = BudgetExecution.Field.NS;
             this.Label9.Font = new System.Drawing.Font("Roboto", 8F);
             this.Label9.ForeColor = System.Drawing.Color.LightGray;
-            this.Label9.Location = new System.Drawing.Point(357, 73);
+            this.Label9.Location = new System.Drawing.Point(357, 75);
             this.Label9.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Label9.Name = "Label9";
             this.Label9.Numeric = BudgetExecution.Numeric.Default;
@@ -1349,7 +1328,7 @@ namespace BudgetExecution
             this.Label9.ShadowDirection = 315;
             this.Label9.ShadowLocation = new System.Drawing.Point(0, 0);
             this.Label9.ShadowOpacity = 100;
-            this.Label9.Size = new System.Drawing.Size(171, 29);
+            this.Label9.Size = new System.Drawing.Size(171, 30);
             this.Label9.TabIndex = 13;
             this.Label9.Text = "Label 9";
             this.Label9.TextAlignment = System.Drawing.StringAlignment.Near;
@@ -1361,7 +1340,6 @@ namespace BudgetExecution
             this.Label9.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.Label9.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.Label9.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.Label9.ToolTip = null;
             // 
             // Label10
             // 
@@ -1372,7 +1350,7 @@ namespace BudgetExecution
             this.Label10.Field = BudgetExecution.Field.NS;
             this.Label10.Font = new System.Drawing.Font("Roboto", 8F);
             this.Label10.ForeColor = System.Drawing.Color.LightGray;
-            this.Label10.Location = new System.Drawing.Point(534, 73);
+            this.Label10.Location = new System.Drawing.Point(534, 75);
             this.Label10.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Label10.Name = "Label10";
             this.Label10.Numeric = BudgetExecution.Numeric.Default;
@@ -1386,7 +1364,7 @@ namespace BudgetExecution
             this.Label10.ShadowDirection = 315;
             this.Label10.ShadowLocation = new System.Drawing.Point(0, 0);
             this.Label10.ShadowOpacity = 100;
-            this.Label10.Size = new System.Drawing.Size(171, 29);
+            this.Label10.Size = new System.Drawing.Size(171, 30);
             this.Label10.TabIndex = 14;
             this.Label10.Text = "Label 10";
             this.Label10.TextAlignment = System.Drawing.StringAlignment.Near;
@@ -1398,7 +1376,6 @@ namespace BudgetExecution
             this.Label10.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.Label10.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.Label10.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.Label10.ToolTip = null;
             // 
             // ToolBar
             // 
@@ -1441,24 +1418,22 @@ namespace BudgetExecution
             this.SaveButton,
             this.Separator13,
             this.UploadButton,
-            this.Separator14,
-            this.ProgressBar});
-            this.ToolBar.Location = new System.Drawing.Point(0, 140);
+            this.Separator14});
+            this.ToolBar.Location = new System.Drawing.Point(0, 145);
             this.ToolBar.Margin = new System.Windows.Forms.Padding(3);
             this.ToolBar.Name = "ToolBar";
             this.ToolBar.Numeric = BudgetExecution.Numeric.Default;
             this.ToolBar.OfficeColorScheme = Syncfusion.Windows.Forms.Tools.ToolStripEx.ColorScheme.Black;
             this.ToolBar.ShowCaption = true;
             this.ToolBar.ShowLauncher = false;
-            this.ToolBar.Size = new System.Drawing.Size(1064, 52);
+            this.ToolBar.Size = new System.Drawing.Size(1064, 47);
             this.ToolBar.TabIndex = 0;
-            this.ToolBar.ToolTip = null;
             // 
             // Separator1
             // 
             this.Separator1.Margin = new System.Windows.Forms.Padding(1);
             this.Separator1.Name = "Separator1";
-            this.Separator1.Size = new System.Drawing.Size(6, 35);
+            this.Separator1.Size = new System.Drawing.Size(6, 30);
             // 
             // Label
             // 
@@ -1470,17 +1445,15 @@ namespace BudgetExecution
             this.Label.Margin = new System.Windows.Forms.Padding(3, 5, 10, 5);
             this.Label.Name = "Label";
             this.Label.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
-            this.Label.Padding = new System.Windows.Forms.Padding(1);
-            this.Label.Size = new System.Drawing.Size(112, 27);
+            this.Label.Size = new System.Drawing.Size(110, 22);
             this.Label.Tag = "Label";
             this.Label.Text = "Data Source:             ";
-            this.Label.ToolTip = null;
             // 
             // Separator2
             // 
             this.Separator2.Margin = new System.Windows.Forms.Padding(1);
             this.Separator2.Name = "Separator2";
-            this.Separator2.Size = new System.Drawing.Size(6, 35);
+            this.Separator2.Size = new System.Drawing.Size(6, 30);
             // 
             // FirstButton
             // 
@@ -1497,15 +1470,14 @@ namespace BudgetExecution
             this.FirstButton.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.FirstButton.Name = "FirstButton";
             this.FirstButton.Padding = new System.Windows.Forms.Padding(1);
-            this.FirstButton.Size = new System.Drawing.Size(23, 27);
+            this.FirstButton.Size = new System.Drawing.Size(23, 22);
             this.FirstButton.Text = "barButton1";
-            this.FirstButton.ToolTip = null;
             // 
             // Separator3
             // 
             this.Separator3.Margin = new System.Windows.Forms.Padding(1);
             this.Separator3.Name = "Separator3";
-            this.Separator3.Size = new System.Drawing.Size(6, 35);
+            this.Separator3.Size = new System.Drawing.Size(6, 30);
             // 
             // PreviousButton
             // 
@@ -1522,15 +1494,14 @@ namespace BudgetExecution
             this.PreviousButton.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.PreviousButton.Name = "PreviousButton";
             this.PreviousButton.Padding = new System.Windows.Forms.Padding(1);
-            this.PreviousButton.Size = new System.Drawing.Size(23, 27);
+            this.PreviousButton.Size = new System.Drawing.Size(23, 22);
             this.PreviousButton.Text = "barButton2";
-            this.PreviousButton.ToolTip = null;
             // 
             // Separator4
             // 
             this.Separator4.Margin = new System.Windows.Forms.Padding(1);
             this.Separator4.Name = "Separator4";
-            this.Separator4.Size = new System.Drawing.Size(6, 35);
+            this.Separator4.Size = new System.Drawing.Size(6, 30);
             // 
             // TextBox
             // 
@@ -1545,17 +1516,16 @@ namespace BudgetExecution
             this.TextBox.Name = "TextBox";
             this.TextBox.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
             this.TextBox.Padding = new System.Windows.Forms.Padding(1);
-            this.TextBox.Size = new System.Drawing.Size(152, 35);
+            this.TextBox.Size = new System.Drawing.Size(158, 30);
             this.TextBox.Tag = "";
             this.TextBox.Text = "Record";
             this.TextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TextBox.ToolTip = null;
             // 
             // Separator5
             // 
             this.Separator5.Margin = new System.Windows.Forms.Padding(1);
             this.Separator5.Name = "Separator5";
-            this.Separator5.Size = new System.Drawing.Size(6, 35);
+            this.Separator5.Size = new System.Drawing.Size(6, 30);
             // 
             // NextButton
             // 
@@ -1572,15 +1542,14 @@ namespace BudgetExecution
             this.NextButton.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.NextButton.Name = "NextButton";
             this.NextButton.Padding = new System.Windows.Forms.Padding(1);
-            this.NextButton.Size = new System.Drawing.Size(23, 27);
+            this.NextButton.Size = new System.Drawing.Size(23, 22);
             this.NextButton.Text = "barButton3";
-            this.NextButton.ToolTip = null;
             // 
             // Separator6
             // 
             this.Separator6.Margin = new System.Windows.Forms.Padding(1);
             this.Separator6.Name = "Separator6";
-            this.Separator6.Size = new System.Drawing.Size(6, 35);
+            this.Separator6.Size = new System.Drawing.Size(6, 30);
             // 
             // LastButton
             // 
@@ -1597,15 +1566,14 @@ namespace BudgetExecution
             this.LastButton.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.LastButton.Name = "LastButton";
             this.LastButton.Padding = new System.Windows.Forms.Padding(1);
-            this.LastButton.Size = new System.Drawing.Size(23, 27);
+            this.LastButton.Size = new System.Drawing.Size(23, 22);
             this.LastButton.Text = "barButton4";
-            this.LastButton.ToolTip = null;
             // 
             // Separator7
             // 
             this.Separator7.Margin = new System.Windows.Forms.Padding(1);
             this.Separator7.Name = "Separator7";
-            this.Separator7.Size = new System.Drawing.Size(6, 35);
+            this.Separator7.Size = new System.Drawing.Size(6, 30);
             // 
             // AddButton
             // 
@@ -1622,15 +1590,14 @@ namespace BudgetExecution
             this.AddButton.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.AddButton.Name = "AddButton";
             this.AddButton.Padding = new System.Windows.Forms.Padding(1);
-            this.AddButton.Size = new System.Drawing.Size(23, 27);
+            this.AddButton.Size = new System.Drawing.Size(23, 22);
             this.AddButton.Text = "barButton5";
-            this.AddButton.ToolTip = null;
             // 
             // Separator8
             // 
             this.Separator8.Margin = new System.Windows.Forms.Padding(1);
             this.Separator8.Name = "Separator8";
-            this.Separator8.Size = new System.Drawing.Size(6, 35);
+            this.Separator8.Size = new System.Drawing.Size(6, 30);
             // 
             // DeleteButton
             // 
@@ -1647,15 +1614,14 @@ namespace BudgetExecution
             this.DeleteButton.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Padding = new System.Windows.Forms.Padding(1);
-            this.DeleteButton.Size = new System.Drawing.Size(23, 27);
+            this.DeleteButton.Size = new System.Drawing.Size(23, 22);
             this.DeleteButton.Text = "barButton6";
-            this.DeleteButton.ToolTip = null;
             // 
             // Separator9
             // 
             this.Separator9.Margin = new System.Windows.Forms.Padding(1);
             this.Separator9.Name = "Separator9";
-            this.Separator9.Size = new System.Drawing.Size(6, 35);
+            this.Separator9.Size = new System.Drawing.Size(6, 30);
             // 
             // UndoButton
             // 
@@ -1672,15 +1638,14 @@ namespace BudgetExecution
             this.UndoButton.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.UndoButton.Name = "UndoButton";
             this.UndoButton.Padding = new System.Windows.Forms.Padding(1);
-            this.UndoButton.Size = new System.Drawing.Size(23, 27);
+            this.UndoButton.Size = new System.Drawing.Size(23, 22);
             this.UndoButton.Text = "barButton7";
-            this.UndoButton.ToolTip = null;
             // 
             // Separator10
             // 
             this.Separator10.Margin = new System.Windows.Forms.Padding(1);
             this.Separator10.Name = "Separator10";
-            this.Separator10.Size = new System.Drawing.Size(6, 35);
+            this.Separator10.Size = new System.Drawing.Size(6, 30);
             // 
             // RefreshButton
             // 
@@ -1697,14 +1662,13 @@ namespace BudgetExecution
             this.RefreshButton.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.RefreshButton.Name = "RefreshButton";
             this.RefreshButton.Padding = new System.Windows.Forms.Padding(1);
-            this.RefreshButton.Size = new System.Drawing.Size(23, 27);
+            this.RefreshButton.Size = new System.Drawing.Size(23, 22);
             this.RefreshButton.Text = "barButton8";
-            this.RefreshButton.ToolTip = null;
             // 
             // Separator11
             // 
             this.Separator11.Name = "Separator11";
-            this.Separator11.Size = new System.Drawing.Size(6, 37);
+            this.Separator11.Size = new System.Drawing.Size(6, 32);
             // 
             // CalculatorButton
             // 
@@ -1721,13 +1685,12 @@ namespace BudgetExecution
             this.CalculatorButton.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.CalculatorButton.Name = "CalculatorButton";
             this.CalculatorButton.Padding = new System.Windows.Forms.Padding(1);
-            this.CalculatorButton.Size = new System.Drawing.Size(23, 27);
-            this.CalculatorButton.ToolTip = null;
+            this.CalculatorButton.Size = new System.Drawing.Size(23, 22);
             // 
             // Separator12
             // 
             this.Separator12.Name = "Separator12";
-            this.Separator12.Size = new System.Drawing.Size(6, 37);
+            this.Separator12.Size = new System.Drawing.Size(6, 32);
             // 
             // SaveButton
             // 
@@ -1744,14 +1707,13 @@ namespace BudgetExecution
             this.SaveButton.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Padding = new System.Windows.Forms.Padding(1);
-            this.SaveButton.Size = new System.Drawing.Size(23, 27);
+            this.SaveButton.Size = new System.Drawing.Size(23, 22);
             this.SaveButton.Text = "barButton9";
-            this.SaveButton.ToolTip = null;
             // 
             // Separator13
             // 
             this.Separator13.Name = "Separator13";
-            this.Separator13.Size = new System.Drawing.Size(6, 37);
+            this.Separator13.Size = new System.Drawing.Size(6, 32);
             // 
             // UploadButton
             // 
@@ -1768,22 +1730,13 @@ namespace BudgetExecution
             this.UploadButton.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.UploadButton.Name = "UploadButton";
             this.UploadButton.Padding = new System.Windows.Forms.Padding(1);
-            this.UploadButton.Size = new System.Drawing.Size(23, 27);
+            this.UploadButton.Size = new System.Drawing.Size(23, 22);
             this.UploadButton.Text = "barButton10";
-            this.UploadButton.ToolTip = null;
             // 
             // Separator14
             // 
             this.Separator14.Name = "Separator14";
-            this.Separator14.Size = new System.Drawing.Size(6, 37);
-            // 
-            // ProgressBar
-            // 
-            this.ProgressBar.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.ProgressBar.Name = "ProgressBar";
-            this.ProgressBar.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
-            this.ProgressBar.Padding = new System.Windows.Forms.Padding(1);
-            this.ProgressBar.Size = new System.Drawing.Size(132, 31);
+            this.Separator14.Size = new System.Drawing.Size(6, 32);
             // 
             // RecordControl
             // 
@@ -1911,9 +1864,9 @@ namespace BudgetExecution
 
             public LabelPanel Label11;
 
-            public LayoutPanel BackPanel;
+            public new BudgetBinding BindingSource;
 
-        public ToolStripProgressBar ProgressBar;
+        public LayoutPanel BackPanel;
     }
     
 }

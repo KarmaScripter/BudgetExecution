@@ -121,8 +121,6 @@ namespace BudgetExecution
                 this.BackPanel.TextStyle.TextRenderingHint =
                     System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
-                this.BackPanel.ToolTip = null;
-
                 // 
                 // Tab
                 // 

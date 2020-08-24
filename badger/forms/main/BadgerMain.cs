@@ -9,10 +9,8 @@ namespace BudgetExecution
     // ********************************************************************************************************************************
 
     using System;
-    using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
-    using System.Threading;
     using Syncfusion.Windows.Forms;
 
     [ SuppressMessage( "ReSharper", "ConvertToConstant.Local" ) ]
@@ -25,7 +23,6 @@ namespace BudgetExecution
         public BadgerMain()
         {
             InitializeComponent();
-            ToolControl.ExcelButton.Click += OnExcelButtonClick;
             FormClosing += OnClose;
         }
 
@@ -66,7 +63,7 @@ namespace BudgetExecution
         private void OnExcelButtonClick( object sender, EventArgs e )
         {
             var path = Resource.Settings[ "Report" ];
-            using var excel = new ExcelDocument( path );
+            using var excel = new ExcelForm( path );
             excel?.ShowDialog();
         }
 

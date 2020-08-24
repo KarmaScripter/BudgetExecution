@@ -72,8 +72,6 @@ namespace BudgetExecution
                 this.ImageStreamer.TextAnimationDirection = Syncfusion.Windows.Forms.Tools.ImageStreamer
                     .TextStreamDirection.RightToLeft;
 
-                this.ImageStreamer.ToolTip = null;
-
                 // 
                 // BackPanel
                 // 
@@ -124,9 +122,6 @@ namespace BudgetExecution
 
                 this.BackPanel.TextStyle.TextRenderingHint =
                     System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-
-                this.BackPanel.ToolTip = null;
-
                 // 
                 // StreamerControl
                 // 

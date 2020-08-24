@@ -111,8 +111,6 @@ namespace BudgetExecution
                 this.BackPanel.TextStyle.TextRenderingHint =
                     System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
-                this.BackPanel.ToolTip = null;
-
                 // 
                 // Label
                 // 
@@ -171,8 +169,6 @@ namespace BudgetExecution
 
                 this.Label.TextStyle.TextRenderingHint =
                     System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-
-                this.Label.ToolTip = null;
 
                 // 
                 // selector1

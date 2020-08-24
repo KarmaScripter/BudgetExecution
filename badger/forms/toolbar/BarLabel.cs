@@ -9,16 +9,14 @@ namespace BudgetExecution
     // ******************************************************************************************************************************
 
     using System;
-    using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
-    using System.Threading;
     using System.Windows.Forms;
 
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "UnusedParameter.Global" ) ]
     [ SuppressMessage( "ReSharper", "ClassNeverInstantiated.Global" ) ]
-    public class BarLabel : BarLabelBase, IToolLabel
+    public class BarLabel : BarLabelBase, IBarLabel
     {
         // ***************************************************************************************************************************
         // ******************************************************  CONSTRUCTORS  *****************************************************
@@ -31,7 +29,8 @@ namespace BudgetExecution
         /// </summary>
         public BarLabel()
         {
-            Margin = new Padding( 10, 5, 10, 0 );
+            Margin = new Padding( 5, 5, 5, 5 );
+            Padding = new Padding( 0 );
             Size = new Size( 150, 23 );
             ForeColor = ColorConfig.ForeColorBlack;
             Font = FontConfig.FontSizeSmall;
@@ -129,13 +128,13 @@ namespace BudgetExecution
                     if( Verify.Input( HoverText ) )
                     {
                         var text = label?.HoverText;
-                        ToolTip = new ToolTip( this, text );
+                        var _ = new ToolTip( this, text );
                     }
                     else
                     {
                         if( Verify.Input( Tag?.ToString() ) )
                         {
-                            ToolTip = new ToolTip( label, Tag?.ToString()?.SplitPascal() );
+                            var _ = new ToolTip( label, Tag?.ToString()?.SplitPascal() );
                         }
                     }
                 }

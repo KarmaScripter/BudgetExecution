@@ -5,7 +5,6 @@
 namespace BudgetExecution
 {
     using System;
-    using System.Threading;
 
     public partial class Error
     {
@@ -18,20 +17,23 @@ namespace BudgetExecution
         {
             InitializeComponent();
             Exception = ext;
+            Text = "Error!";
+            Info.Text = Exception.Source;
         }
 
         public Error( string message )
         {
             InitializeComponent();
-            Text = message;
+            Info.Text = Exception.Source;
+            StackPanel.Text = message;
         }
 
         public Exception Exception { get; }
 
-        public new string Text { get; set; }
-
         public void SetText()
         {
+            var tracemessage = Exception.ToLogString( "" );
+            StackPanel.Text = tracemessage;
         }
     }
 }

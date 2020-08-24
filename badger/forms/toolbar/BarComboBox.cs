@@ -9,19 +9,17 @@ namespace BudgetExecution
     // ******************************************************************************************************************************
 
     using System;
-    using System;
     using System.Collections.Generic;
     using System.Data;
     using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
     using System.Linq;
-    using System.Threading;
     using System.Windows.Forms;
 
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "UnusedParameter.Global" ) ]
     [ SuppressMessage( "ReSharper", "ClassNeverInstantiated.Global" ) ]
-    public class BarComboBox : BarComboBase, IToolComboBox
+    public class BarComboBox : BarComboBase, IBarComboBox
     {
         // ***************************************************************************************************************************
         // ******************************************************  CONSTRUCTORS  *****************************************************
@@ -29,7 +27,8 @@ namespace BudgetExecution
 
         public BarComboBox()
         {
-            Margin = new Padding( 10, 5, 10, 0 );
+            Margin = new Padding( 5, 5, 5, 5 );
+            Padding = new Padding( 0 );
             Size = new Size( 150, 23 );
             DropDownStyle = ComboBoxStyle.DropDownList;
             MaxDropDownItems = 30;
@@ -40,11 +39,12 @@ namespace BudgetExecution
             Field = Field.NS;
             Tag = "Make Selection";
             ToolTipText = Tag.ToString();
-            HoverText = ToolTipText;
+            HoverText = Tag.ToString();
             Text = string.Empty;
             Visible = true;
             Enabled = true;
-            MouseHover += OnMouseOver;
+            MouseHover += OnMouseHover;
+            MouseLeave += OnMouseLeave;
         }
 
         /// <summary>
@@ -81,6 +81,18 @@ namespace BudgetExecution
         }
 
         // ***************************************************************************************************************************
+        // ****************************************************  PROPERTIES   ********************************************************
+        // ***************************************************************************************************************************
+
+        /// <summary>
+        /// Gets or sets the tool tip.
+        /// </summary>
+        /// <value>
+        /// The tool tip.
+        /// </value>
+        public ToolTip ToolTip { get; set; }
+
+        // ***************************************************************************************************************************
         // *******************************************************      METHODS        ***********************************************
         // ***************************************************************************************************************************
 
@@ -112,23 +124,47 @@ namespace BudgetExecution
         /// <see cref = "EventArgs"/>
         /// instance containing the event data.
         /// </param>
-        public void OnMouseOver( object sender, EventArgs e )
+        public void OnMouseHover( object sender, EventArgs e )
         {
-            var button = sender as ButtonPanel;
-
             try
             {
-                if( Verify.Input( HoverText ) )
+                var button = sender as BarComboBox;
+
+                if( button != null
+                    && !string.IsNullOrEmpty( HoverText ) )
                 {
-                    var text = button?.HoverText;
-                    ToolTip = new ToolTip( button, text );
+                    button.Tag = HoverText;
+                    var tip = new ToolTip( button );
+                    ToolTip = tip;
                 }
                 else
                 {
-                    if( Verify.Input( Tag?.ToString() ) )
+                    if( !string.IsNullOrEmpty( Tag?.ToString() ) )
                     {
-                        ToolTip = new ToolTip( button, Tag?.ToString().SplitPascal() );
+                        var tool = new ToolTip( button );
+                        ToolTip = tool;
                     }
+                }
+            }
+            catch( Exception ex )
+            {
+                Fail( ex );
+            }
+        }
+
+        /// <summary>
+        /// Called when [mouse leave].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
+        public void OnMouseLeave( object sender, EventArgs e )
+        {
+            try
+            {
+                if( ToolTip?.Active == true )
+                {
+                    ToolTip.RemoveAll();
+                    ToolTip = null;
                 }
             }
             catch( Exception ex )
