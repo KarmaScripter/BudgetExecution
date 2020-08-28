@@ -59,7 +59,8 @@
     <Reference Include="BaseConnectionLibrary, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\BaseConnectionLibrary.1.0.3\lib\net461\BaseConnectionLibrary.dll</HintPath>
     </Reference>
-    <Reference Include="BudgetEnumerations">
+    <Reference Include="BudgetEnumerations, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Enumerations\bin\Debug\BudgetEnumerations.dll</HintPath>
     </Reference>
     <Reference Include="BudgetExtensions, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
