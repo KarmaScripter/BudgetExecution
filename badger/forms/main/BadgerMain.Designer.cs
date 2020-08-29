@@ -144,7 +144,7 @@ namespace BudgetExecution
             this.Label.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.Label.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Label.Name = "Label";
-            this.Label.Numeric = BudgetExecution.Numeric.Default;
+            this.Label.Numeric = BudgetExecution.Numeric.NS;
             this.Label.Orientation = System.Windows.Forms.Orientation.Horizontal;
             this.Label.Outline = false;
             this.Label.OutlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
@@ -182,7 +182,7 @@ namespace BudgetExecution
             this.ToolBarControl.Location = new System.Drawing.Point(0, 553);
             this.ToolBarControl.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.ToolBarControl.Name = "ToolBarControl";
-            this.ToolBarControl.Numeric = BudgetExecution.Numeric.Default;
+            this.ToolBarControl.Numeric = BudgetExecution.Numeric.NS;
             this.ToolBarControl.Padding = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.ToolBarControl.Size = new System.Drawing.Size(1280, 52);
             this.ToolBarControl.TabIndex = 9;

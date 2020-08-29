@@ -129,7 +129,7 @@
             this.ToolBar.Location = new System.Drawing.Point(1, 1);
             this.ToolBar.Margin = new System.Windows.Forms.Padding(0);
             this.ToolBar.Name = "ToolBar";
-            this.ToolBar.Numeric = BudgetExecution.Numeric.Default;
+            this.ToolBar.Numeric = BudgetExecution.Numeric.NS;
             this.ToolBar.OfficeColorScheme = Syncfusion.Windows.Forms.Tools.ToolStripEx.ColorScheme.Black;
             this.ToolBar.Padding = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.ToolBar.ShowCaption = true;
