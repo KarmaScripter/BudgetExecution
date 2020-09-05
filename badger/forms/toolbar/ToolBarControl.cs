@@ -2,8 +2,6 @@
 // Copyright (c) Eppler. All rights reserved.
 // </copyright>
 
-using System.Diagnostics.CodeAnalysis;
-
 namespace BudgetExecution
 {
     // ********************************************************************************************************************************
@@ -13,13 +11,17 @@ namespace BudgetExecution
     using System;
     using System.Collections.Generic;
     using System.Windows.Forms;
+    using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
     /// 
     /// </summary>
     /// <seealso cref="BudgetExecution.ControlBase" />
     [ SuppressMessage( "ReSharper", "UsePatternMatching" ) ]
-    public partial class ToolBarControl : ControlBase
+    [ Serializable ]
+    [ SuppressMessage( "ReSharper", "UnusedParameter.Global" ) ]
+    [ SuppressMessage( "ReSharper", "PatternAlwaysOfType" ) ]
+    public partial class ToolBarControl : ControlBase, IToolBar
     {
         // ***************************************************************************************************************************
         // ****************************************************  CONSTRUCTORS ********************************************************
@@ -38,8 +40,6 @@ namespace BudgetExecution
             BorderStyle = BorderStyle.None;
             AutoScaleMode = AutoScaleMode.Dpi;
             DoubleBuffered = true;
-            ToolButton = ToolBar?.GetButtons();
-            Load += OnLoad;
         }
 
         // ***************************************************************************************************************************
@@ -52,29 +52,7 @@ namespace BudgetExecution
         /// <value>
         /// The tool button.
         /// </value>
-        public IDictionary<string, BarButton> ToolButton { get; set; } 
-
-        // ***************************************************************************************************************************
-        // ****************************************************     METHODS   ********************************************************
-        // ***************************************************************************************************************************
-
-        /// <summary>
-        /// Gets the buttons.
-        /// </summary>
-        /// <returns></returns>
-        public IDictionary<string, BarButton> GetButtons()
-        {
-            if( ToolBar?.Items?.Count > 0 )
-            {
-                var buttons = ToolBar.GetButtons();
-
-                return buttons?.Count > 0
-                    ? buttons
-                    : default;
-            }
-
-            return default;
-        }
+        public IDictionary<string, BarButton> ToolButtons { get; set; } 
 
         // ***************************************************************************************************************************
         // ****************************************************   EVENTS/DELEGATES  **************************************************
@@ -89,16 +67,13 @@ namespace BudgetExecution
         {
             try
             {
-                if( ToolBar?.Items != null )
+                if( ToolBar?.Buttons != null )
                 {
-                    foreach( var item in ToolBar?.Items )
+                    foreach( var item in ToolBar.Buttons )
                     {
-                        if( item is BarButton button )
+                        if( item.Value is BarButton button )
                         {
-                            if( button != null )
-                            {
-                                ToolButton?.Add( button.Name, button );
-                            }
+                            ToolButtons.Add( button?.Name, button );
                         }
                     }
                 }
@@ -107,6 +82,67 @@ namespace BudgetExecution
             {
                 Fail( ex );
             }
+        }
+
+        /// <summary>
+        /// Gets the buttons.
+        /// </summary>
+        /// <returns></returns>
+        public IDictionary<string, BarButton> GetButtons()
+        {
+            return ToolBar.GetButtons();
+        }
+
+        /// <summary>
+        /// Creates the button.
+        /// </summary>
+        /// <param name = "imagename" >
+        /// The name.
+        /// </param>
+        /// <returns>
+        /// </returns>
+        public BarButton CreateButton( string imagename )
+        {
+            return ( (IToolBar)ToolBar ).CreateButton( imagename );
+        }
+
+        /// <summary>
+        /// Creates the label.
+        /// </summary>
+        /// <returns>
+        /// </returns>
+        public BarLabel CreateLabel()
+        {
+            return ( (IToolBar)ToolBar ).CreateLabel();
+        }
+
+        /// <summary>
+        /// Creates the ComboBox.
+        /// </summary>
+        /// <returns>
+        /// </returns>
+        public BarComboBox CreateComboBox()
+        {
+            return ( (IToolBar)ToolBar ).CreateComboBox();
+        }
+
+        /// <summary>
+        /// Creates the text box.
+        /// </summary>
+        /// <returns>
+        /// </returns>
+        public BarTextBox CreateTextBox()
+        {
+            return ( (IToolBar)ToolBar ).CreateTextBox();
+        }
+
+        /// <summary>
+        /// Gets the items.
+        /// </summary>
+        /// <returns></returns>
+        public ToolStripItemCollection GetItems()
+        {
+            return ( (IToolBar)ToolBar ).GetItems();
         }
     }
 }

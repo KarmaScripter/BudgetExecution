@@ -2,6 +2,9 @@
 // Copyright (c) Terry D. Eppler. All rights reserved.
 // </copyright>
 
+using System.Diagnostics.CodeAnalysis;
+using System.Drawing;
+
 namespace BudgetExecution
 {
     // ********************************************************************************************************************************
@@ -22,6 +25,7 @@ namespace BudgetExecution
     /// 
     /// </summary>
     /// <seealso cref="Syncfusion.Windows.Forms.MetroForm" />
+    [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     public partial class ExcelForm : MetroForm
     {
         // ***************************************************************************************************************************
@@ -34,6 +38,7 @@ namespace BudgetExecution
         public ExcelForm()
         {
             InitializeComponent();
+            Size = new Size( 1073, 900 );
         }
 
         /// <summary>
@@ -43,6 +48,7 @@ namespace BudgetExecution
         public ExcelForm( string filepath )
         {
             InitializeComponent();
+            Size = new Size( 1073, 900 );
             FilePath = Path.GetFullPath( filepath );
             FileName = Path.GetFileNameWithoutExtension( FilePath );
             Sheet.Open( filepath );

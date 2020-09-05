@@ -93,12 +93,12 @@ namespace BudgetExecution
             {
                 return Verify.Source( Source )
                     ? Source
-                    : Source.NS;
+                    : default;
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return Source.NS;
+                return default;
             }
         }
 
@@ -113,12 +113,12 @@ namespace BudgetExecution
             {
                 return Verify.Field( Field )
                     ? Field
-                    : Field.NS;
+                    : default;
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return Field.NS;
+                return default;
             }
         }
 

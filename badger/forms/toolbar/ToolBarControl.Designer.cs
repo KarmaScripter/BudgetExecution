@@ -32,6 +32,7 @@
             this.ToolBar = new BudgetExecution.ToolPanel();
             this.Separator1 = new BudgetExecution.ToolSeparator();
             this.Label = new BudgetExecution.BarLabel();
+            this.BudgetBinding = new BudgetExecution.BudgetBinding();
             this.Separator2 = new BudgetExecution.ToolSeparator();
             this.FirstButton = new BudgetExecution.BarButton();
             this.Separator3 = new BudgetExecution.ToolSeparator();
@@ -49,26 +50,22 @@
             this.Separator9 = new BudgetExecution.ToolSeparator();
             this.UndoButton = new BudgetExecution.BarButton();
             this.Separator10 = new BudgetExecution.ToolSeparator();
-            this.RefreshButton = new BudgetExecution.BarButton();
-            this.Separator11 = new BudgetExecution.ToolSeparator();
             this.SaveButton = new BudgetExecution.BarButton();
+            this.Separator11 = new BudgetExecution.ToolSeparator();
+            this.RefreshButton = new BudgetExecution.BarButton();
             this.Separator12 = new BudgetExecution.ToolSeparator();
+            this.UpdateButton = new BudgetExecution.BarButton();
+            this.Separator17 = new BudgetExecution.ToolSeparator();
             this.CalculatorButton = new BudgetExecution.BarButton();
             this.Separator13 = new BudgetExecution.ToolSeparator();
-            this.ComboBox = new BudgetExecution.BarComboBox();
-            this.Separator14 = new BudgetExecution.ToolSeparator();
             this.ExcelButton = new BudgetExecution.BarButton();
+            this.Separator14 = new BudgetExecution.ToolSeparator();
+            this.BrowseButton = new BudgetExecution.BarButton();
             this.Separator15 = new BudgetExecution.ToolSeparator();
-            this.ExitButton = new BudgetExecution.BarButton();
-            this.Separator16 = new BudgetExecution.ToolSeparator();
-            this.ChartButton = new BudgetExecution.BarButton();
-            this.Separator17 = new BudgetExecution.ToolSeparator();
-            this.UpdateButton = new BudgetExecution.BarButton();
-            this.Separator18 = new BudgetExecution.ToolSeparator();
-            this.HomeButton = new BudgetExecution.BarButton();
-            this.Separator19 = new BudgetExecution.ToolSeparator();
             this.ProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.Separator16 = new BudgetExecution.ToolSeparator();
             this.ToolBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BudgetBinding)).BeginInit();
             this.SuspendLayout();
             // 
             // ToolBar
@@ -83,7 +80,7 @@
             this.ToolBar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.ToolBar.Field = BudgetExecution.Field.NS;
             this.ToolBar.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ToolBar.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.ToolBar.ForeColor = System.Drawing.Color.Black;
             this.ToolBar.GripMargin = new System.Windows.Forms.Padding(0);
             this.ToolBar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.ToolBar.Image = null;
@@ -107,25 +104,20 @@
             this.Separator9,
             this.UndoButton,
             this.Separator10,
-            this.RefreshButton,
-            this.Separator11,
             this.SaveButton,
+            this.Separator11,
+            this.RefreshButton,
             this.Separator12,
+            this.UpdateButton,
+            this.Separator17,
             this.CalculatorButton,
             this.Separator13,
-            this.ComboBox,
-            this.Separator14,
             this.ExcelButton,
+            this.Separator14,
+            this.BrowseButton,
             this.Separator15,
-            this.ExitButton,
-            this.Separator16,
-            this.ChartButton,
-            this.Separator17,
-            this.UpdateButton,
-            this.Separator18,
-            this.HomeButton,
-            this.Separator19,
-            this.ProgressBar});
+            this.ProgressBar,
+            this.Separator16});
             this.ToolBar.Location = new System.Drawing.Point(1, 1);
             this.ToolBar.Margin = new System.Windows.Forms.Padding(0);
             this.ToolBar.Name = "ToolBar";
@@ -133,9 +125,9 @@
             this.ToolBar.OfficeColorScheme = Syncfusion.Windows.Forms.Tools.ToolStripEx.ColorScheme.Black;
             this.ToolBar.Padding = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.ToolBar.ShowCaption = true;
-            this.ToolBar.Size = new System.Drawing.Size(1297, 51);
+            this.ToolBar.ShowLauncher = false;
+            this.ToolBar.Size = new System.Drawing.Size(1025, 51);
             this.ToolBar.TabIndex = 0;
-            this.ToolBar.Text = "Tool Bar";
             // 
             // Separator1
             // 
@@ -146,7 +138,7 @@
             // 
             // Label
             // 
-            this.Label.BindingSource = null;
+            this.Label.BindingSource = this.BudgetBinding;
             this.Label.Field = BudgetExecution.Field.NS;
             this.Label.Font = new System.Drawing.Font("Roboto", 8F);
             this.Label.ForeColor = System.Drawing.Color.Black;
@@ -157,6 +149,11 @@
             this.Label.Tag = "Data Source";
             this.Label.Text = "Data:";
             this.Label.ToolTip = null;
+            // 
+            // BudgetBinding
+            // 
+            this.BudgetBinding.DataFilter = null;
+            this.BudgetBinding.Numeric = BudgetExecution.Numeric.NS;
             // 
             // Separator2
             // 
@@ -169,7 +166,7 @@
             // 
             this.FirstButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
             this.FirstButton.Bar = BudgetExecution.Tool.FirstButton;
-            this.FirstButton.BindingSource = null;
+            this.FirstButton.BindingSource = this.BudgetBinding;
             this.FirstButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.FirstButton.Field = BudgetExecution.Field.NS;
             this.FirstButton.Font = new System.Drawing.Font("Roboto", 8F);
@@ -183,6 +180,7 @@
             this.FirstButton.Size = new System.Drawing.Size(23, 23);
             this.FirstButton.Tag = "First Record";
             this.FirstButton.Text = "FirstButton";
+            this.FirstButton.ToolTip = null;
             // 
             // Separator3
             // 
@@ -195,7 +193,7 @@
             // 
             this.PreviousButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
             this.PreviousButton.Bar = BudgetExecution.Tool.PreviousButton;
-            this.PreviousButton.BindingSource = null;
+            this.PreviousButton.BindingSource = this.BudgetBinding;
             this.PreviousButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.PreviousButton.Field = BudgetExecution.Field.NS;
             this.PreviousButton.Font = new System.Drawing.Font("Roboto", 8F);
@@ -209,6 +207,7 @@
             this.PreviousButton.Size = new System.Drawing.Size(23, 23);
             this.PreviousButton.Tag = "Previous Record";
             this.PreviousButton.Text = "PreviousButton";
+            this.PreviousButton.ToolTip = null;
             this.PreviousButton.ToolTipText = "Previous Record";
             // 
             // Separator4
@@ -221,7 +220,7 @@
             // TextBox
             // 
             this.TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
-            this.TextBox.BindingSource = null;
+            this.TextBox.BindingSource = this.BudgetBinding;
             this.TextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TextBox.Field = BudgetExecution.Field.NS;
             this.TextBox.Font = new System.Drawing.Font("Roboto", 8F);
@@ -231,6 +230,7 @@
             this.TextBox.Name = "TextBox";
             this.TextBox.Size = new System.Drawing.Size(154, 23);
             this.TextBox.Tag = "";
+            this.TextBox.ToolTip = null;
             // 
             // Separator5
             // 
@@ -243,7 +243,7 @@
             // 
             this.NextButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
             this.NextButton.Bar = BudgetExecution.Tool.NextButton;
-            this.NextButton.BindingSource = null;
+            this.NextButton.BindingSource = this.BudgetBinding;
             this.NextButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.NextButton.Field = BudgetExecution.Field.NS;
             this.NextButton.Font = new System.Drawing.Font("Roboto", 8F);
@@ -257,6 +257,7 @@
             this.NextButton.Size = new System.Drawing.Size(23, 23);
             this.NextButton.Tag = "Next Record";
             this.NextButton.Text = "NextButton";
+            this.NextButton.ToolTip = null;
             this.NextButton.ToolTipText = "Next Record";
             // 
             // Separator6
@@ -270,7 +271,7 @@
             // 
             this.LastButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
             this.LastButton.Bar = BudgetExecution.Tool.LastButton;
-            this.LastButton.BindingSource = null;
+            this.LastButton.BindingSource = this.BudgetBinding;
             this.LastButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.LastButton.Field = BudgetExecution.Field.NS;
             this.LastButton.Font = new System.Drawing.Font("Roboto", 8F);
@@ -284,6 +285,7 @@
             this.LastButton.Size = new System.Drawing.Size(23, 23);
             this.LastButton.Tag = "Last Record";
             this.LastButton.Text = "LastButton";
+            this.LastButton.ToolTip = null;
             this.LastButton.ToolTipText = "Last Record";
             // 
             // Separator7
@@ -298,7 +300,7 @@
             this.AddButton.AutoToolTip = false;
             this.AddButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
             this.AddButton.Bar = BudgetExecution.Tool.AddButton;
-            this.AddButton.BindingSource = null;
+            this.AddButton.BindingSource = this.BudgetBinding;
             this.AddButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.AddButton.Field = BudgetExecution.Field.NS;
             this.AddButton.Font = new System.Drawing.Font("Roboto", 8F);
@@ -312,6 +314,7 @@
             this.AddButton.Size = new System.Drawing.Size(23, 23);
             this.AddButton.Tag = "Add Record";
             this.AddButton.Text = "AddButton";
+            this.AddButton.ToolTip = null;
             this.AddButton.ToolTipText = "Add Record";
             // 
             // Separator8
@@ -325,7 +328,7 @@
             // 
             this.DeleteButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
             this.DeleteButton.Bar = BudgetExecution.Tool.DeleteButton;
-            this.DeleteButton.BindingSource = null;
+            this.DeleteButton.BindingSource = this.BudgetBinding;
             this.DeleteButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.DeleteButton.Field = BudgetExecution.Field.NS;
             this.DeleteButton.Font = new System.Drawing.Font("Roboto", 8F);
@@ -339,6 +342,7 @@
             this.DeleteButton.Size = new System.Drawing.Size(23, 23);
             this.DeleteButton.Tag = "Delete";
             this.DeleteButton.Text = "barButton6";
+            this.DeleteButton.ToolTip = null;
             this.DeleteButton.ToolTipText = "DeleteButton";
             // 
             // Separator9
@@ -352,7 +356,7 @@
             // 
             this.UndoButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
             this.UndoButton.Bar = BudgetExecution.Tool.UndoButton;
-            this.UndoButton.BindingSource = null;
+            this.UndoButton.BindingSource = this.BudgetBinding;
             this.UndoButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.UndoButton.Field = BudgetExecution.Field.NS;
             this.UndoButton.Font = new System.Drawing.Font("Roboto", 8F);
@@ -366,6 +370,7 @@
             this.UndoButton.Size = new System.Drawing.Size(23, 23);
             this.UndoButton.Tag = "Undo Changes";
             this.UndoButton.Text = "UndoButton";
+            this.UndoButton.ToolTip = null;
             this.UndoButton.ToolTipText = "Undo Changes";
             // 
             // Separator10
@@ -375,38 +380,11 @@
             this.Separator10.Name = "Separator10";
             this.Separator10.Size = new System.Drawing.Size(6, 23);
             // 
-            // RefreshButton
-            // 
-            this.RefreshButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
-            this.RefreshButton.Bar = BudgetExecution.Tool.RefreshButton;
-            this.RefreshButton.BindingSource = null;
-            this.RefreshButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.RefreshButton.Field = BudgetExecution.Field.NS;
-            this.RefreshButton.Font = new System.Drawing.Font("Roboto", 8F);
-            this.RefreshButton.ForeColor = System.Drawing.Color.LightGray;
-            this.RefreshButton.HoverText = "Refresh Data";
-            this.RefreshButton.Image = ((System.Drawing.Image)(resources.GetObject("RefreshButton.Image")));
-            this.RefreshButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.RefreshButton.Margin = new System.Windows.Forms.Padding(5);
-            this.RefreshButton.Name = "RefreshButton";
-            this.RefreshButton.Padding = new System.Windows.Forms.Padding(1);
-            this.RefreshButton.Size = new System.Drawing.Size(23, 23);
-            this.RefreshButton.Tag = "Refresh Data";
-            this.RefreshButton.Text = "RefreshButton";
-            this.RefreshButton.ToolTipText = "Refresh Data";
-            // 
-            // Separator11
-            // 
-            this.Separator11.ForeColor = System.Drawing.Color.Black;
-            this.Separator11.Margin = new System.Windows.Forms.Padding(5);
-            this.Separator11.Name = "Separator11";
-            this.Separator11.Size = new System.Drawing.Size(6, 23);
-            // 
             // SaveButton
             // 
             this.SaveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
             this.SaveButton.Bar = BudgetExecution.Tool.SaveButton;
-            this.SaveButton.BindingSource = null;
+            this.SaveButton.BindingSource = this.BudgetBinding;
             this.SaveButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.SaveButton.Field = BudgetExecution.Field.NS;
             this.SaveButton.Font = new System.Drawing.Font("Roboto", 8F);
@@ -420,7 +398,36 @@
             this.SaveButton.Size = new System.Drawing.Size(23, 23);
             this.SaveButton.Tag = "Save Changes";
             this.SaveButton.Text = "SaveButton";
+            this.SaveButton.ToolTip = null;
             this.SaveButton.ToolTipText = "Save Changes";
+            // 
+            // Separator11
+            // 
+            this.Separator11.ForeColor = System.Drawing.Color.Black;
+            this.Separator11.Margin = new System.Windows.Forms.Padding(5);
+            this.Separator11.Name = "Separator11";
+            this.Separator11.Size = new System.Drawing.Size(6, 23);
+            // 
+            // RefreshButton
+            // 
+            this.RefreshButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
+            this.RefreshButton.Bar = BudgetExecution.Tool.RefreshButton;
+            this.RefreshButton.BindingSource = this.BudgetBinding;
+            this.RefreshButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.RefreshButton.Field = BudgetExecution.Field.NS;
+            this.RefreshButton.Font = new System.Drawing.Font("Roboto", 8F);
+            this.RefreshButton.ForeColor = System.Drawing.Color.LightGray;
+            this.RefreshButton.HoverText = "Refresh Data";
+            this.RefreshButton.Image = ((System.Drawing.Image)(resources.GetObject("RefreshButton.Image")));
+            this.RefreshButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.RefreshButton.Margin = new System.Windows.Forms.Padding(5);
+            this.RefreshButton.Name = "RefreshButton";
+            this.RefreshButton.Padding = new System.Windows.Forms.Padding(1);
+            this.RefreshButton.Size = new System.Drawing.Size(23, 23);
+            this.RefreshButton.Tag = "Refresh Data";
+            this.RefreshButton.Text = "RefreshButton";
+            this.RefreshButton.ToolTip = null;
+            this.RefreshButton.ToolTipText = "Refresh Data";
             // 
             // Separator12
             // 
@@ -429,11 +436,40 @@
             this.Separator12.Name = "Separator12";
             this.Separator12.Size = new System.Drawing.Size(6, 23);
             // 
+            // UpdateButton
+            // 
+            this.UpdateButton.AutoToolTip = false;
+            this.UpdateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
+            this.UpdateButton.Bar = BudgetExecution.Tool.UpdateButton;
+            this.UpdateButton.BindingSource = this.BudgetBinding;
+            this.UpdateButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.UpdateButton.Field = BudgetExecution.Field.NS;
+            this.UpdateButton.Font = new System.Drawing.Font("Roboto", 8F);
+            this.UpdateButton.ForeColor = System.Drawing.Color.LightGray;
+            this.UpdateButton.HoverText = "Update Data";
+            this.UpdateButton.Image = ((System.Drawing.Image)(resources.GetObject("UpdateButton.Image")));
+            this.UpdateButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.UpdateButton.Margin = new System.Windows.Forms.Padding(5);
+            this.UpdateButton.Name = "UpdateButton";
+            this.UpdateButton.Padding = new System.Windows.Forms.Padding(1);
+            this.UpdateButton.Size = new System.Drawing.Size(23, 23);
+            this.UpdateButton.Tag = "Update DataSource";
+            this.UpdateButton.Text = "UpdateButton";
+            this.UpdateButton.ToolTip = null;
+            this.UpdateButton.ToolTipText = "Update Data Source";
+            // 
+            // Separator17
+            // 
+            this.Separator17.ForeColor = System.Drawing.Color.Black;
+            this.Separator17.Margin = new System.Windows.Forms.Padding(5);
+            this.Separator17.Name = "Separator17";
+            this.Separator17.Size = new System.Drawing.Size(6, 23);
+            // 
             // CalculatorButton
             // 
             this.CalculatorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
             this.CalculatorButton.Bar = BudgetExecution.Tool.CalculatorButton;
-            this.CalculatorButton.BindingSource = null;
+            this.CalculatorButton.BindingSource = this.BudgetBinding;
             this.CalculatorButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.CalculatorButton.Field = BudgetExecution.Field.NS;
             this.CalculatorButton.Font = new System.Drawing.Font("Roboto", 8F);
@@ -447,6 +483,7 @@
             this.CalculatorButton.Size = new System.Drawing.Size(23, 23);
             this.CalculatorButton.Tag = "Calculator";
             this.CalculatorButton.Text = "CalculatorButton";
+            this.CalculatorButton.ToolTip = null;
             this.CalculatorButton.ToolTipText = "Calculator";
             // 
             // Separator13
@@ -456,24 +493,27 @@
             this.Separator13.Name = "Separator13";
             this.Separator13.Size = new System.Drawing.Size(6, 23);
             // 
-            // ComboBox
+            // ExcelButton
             // 
-            this.ComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
-            this.ComboBox.BindingSource = null;
-            this.ComboBox.DropDownHeight = 200;
-            this.ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBox.DropDownWidth = 200;
-            this.ComboBox.Field = BudgetExecution.Field.NS;
-            this.ComboBox.Font = new System.Drawing.Font("Roboto", 8F);
-            this.ComboBox.ForeColor = System.Drawing.Color.LightGray;
-            this.ComboBox.HoverText = "Make Selection";
-            this.ComboBox.IntegralHeight = false;
-            this.ComboBox.Margin = new System.Windows.Forms.Padding(5);
-            this.ComboBox.MaxDropDownItems = 30;
-            this.ComboBox.Name = "ComboBox";
-            this.ComboBox.Size = new System.Drawing.Size(150, 23);
-            this.ComboBox.Tag = "Make Selection";
-            this.ComboBox.ToolTipText = "Make Selection";
+            this.ExcelButton.AutoToolTip = false;
+            this.ExcelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
+            this.ExcelButton.Bar = BudgetExecution.Tool.ExcelButton;
+            this.ExcelButton.BindingSource = this.BudgetBinding;
+            this.ExcelButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ExcelButton.Field = BudgetExecution.Field.NS;
+            this.ExcelButton.Font = new System.Drawing.Font("Roboto", 8F);
+            this.ExcelButton.ForeColor = System.Drawing.Color.LightGray;
+            this.ExcelButton.HoverText = "Browse Excel File";
+            this.ExcelButton.Image = ((System.Drawing.Image)(resources.GetObject("ExcelButton.Image")));
+            this.ExcelButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ExcelButton.Margin = new System.Windows.Forms.Padding(5);
+            this.ExcelButton.Name = "ExcelButton";
+            this.ExcelButton.Padding = new System.Windows.Forms.Padding(1);
+            this.ExcelButton.Size = new System.Drawing.Size(23, 23);
+            this.ExcelButton.Tag = "Excel File";
+            this.ExcelButton.Text = "DataButton";
+            this.ExcelButton.ToolTip = null;
+            this.ExcelButton.ToolTipText = "Browse Excel File";
             // 
             // Separator14
             // 
@@ -482,26 +522,27 @@
             this.Separator14.Name = "Separator14";
             this.Separator14.Size = new System.Drawing.Size(6, 23);
             // 
-            // ExcelButton
+            // BrowseButton
             // 
-            this.ExcelButton.AutoToolTip = false;
-            this.ExcelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
-            this.ExcelButton.Bar = BudgetExecution.Tool.ExcelButton;
-            this.ExcelButton.BindingSource = null;
-            this.ExcelButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ExcelButton.Field = BudgetExecution.Field.NS;
-            this.ExcelButton.Font = new System.Drawing.Font("Roboto", 8F);
-            this.ExcelButton.ForeColor = System.Drawing.Color.LightGray;
-            this.ExcelButton.HoverText = "Excel File";
-            this.ExcelButton.Image = ((System.Drawing.Image)(resources.GetObject("ExcelButton.Image")));
-            this.ExcelButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ExcelButton.Margin = new System.Windows.Forms.Padding(5);
-            this.ExcelButton.Name = "ExcelButton";
-            this.ExcelButton.Padding = new System.Windows.Forms.Padding(1);
-            this.ExcelButton.Size = new System.Drawing.Size(23, 23);
-            this.ExcelButton.Tag = "Excel File";
-            this.ExcelButton.Text = "ExcelButton";
-            this.ExcelButton.ToolTipText = "Excel File";
+            this.BrowseButton.AutoToolTip = false;
+            this.BrowseButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
+            this.BrowseButton.Bar = BudgetExecution.Tool.BrowseButton;
+            this.BrowseButton.BindingSource = this.BudgetBinding;
+            this.BrowseButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.BrowseButton.Field = BudgetExecution.Field.NS;
+            this.BrowseButton.Font = new System.Drawing.Font("Roboto", 8F);
+            this.BrowseButton.ForeColor = System.Drawing.Color.LightGray;
+            this.BrowseButton.HoverText = "Browse File";
+            this.BrowseButton.Image = ((System.Drawing.Image)(resources.GetObject("BrowseButton.Image")));
+            this.BrowseButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BrowseButton.Margin = new System.Windows.Forms.Padding(5);
+            this.BrowseButton.Name = "BrowseButton";
+            this.BrowseButton.Padding = new System.Windows.Forms.Padding(1);
+            this.BrowseButton.Size = new System.Drawing.Size(23, 23);
+            this.BrowseButton.Tag = "Browse File";
+            this.BrowseButton.Text = "BrowseButton";
+            this.BrowseButton.ToolTip = null;
+            this.BrowseButton.ToolTipText = "Browse File";
             // 
             // Separator15
             // 
@@ -510,123 +551,18 @@
             this.Separator15.Name = "Separator15";
             this.Separator15.Size = new System.Drawing.Size(6, 23);
             // 
-            // ExitButton
-            // 
-            this.ExitButton.AutoToolTip = false;
-            this.ExitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
-            this.ExitButton.Bar = BudgetExecution.Tool.ExitButton;
-            this.ExitButton.BindingSource = null;
-            this.ExitButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ExitButton.Field = BudgetExecution.Field.NS;
-            this.ExitButton.Font = new System.Drawing.Font("Roboto", 8F);
-            this.ExitButton.ForeColor = System.Drawing.Color.LightGray;
-            this.ExitButton.HoverText = "Exit Applicaion";
-            this.ExitButton.Image = ((System.Drawing.Image)(resources.GetObject("ExitButton.Image")));
-            this.ExitButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ExitButton.Margin = new System.Windows.Forms.Padding(5);
-            this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Padding = new System.Windows.Forms.Padding(1);
-            this.ExitButton.Size = new System.Drawing.Size(23, 23);
-            this.ExitButton.Tag = "Exit Applicaion";
-            this.ExitButton.Text = "ExitButton";
-            this.ExitButton.ToolTipText = "Exit Applicaion";
-            // 
-            // Separator16
-            // 
-            this.Separator16.ForeColor = System.Drawing.Color.Black;
-            this.Separator16.Margin = new System.Windows.Forms.Padding(5);
-            this.Separator16.Name = "Separator16";
-            this.Separator16.Size = new System.Drawing.Size(6, 23);
-            // 
-            // ChartButton
-            // 
-            this.ChartButton.AutoToolTip = false;
-            this.ChartButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
-            this.ChartButton.Bar = BudgetExecution.Tool.BrowseButton;
-            this.ChartButton.BindingSource = null;
-            this.ChartButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ChartButton.Field = BudgetExecution.Field.NS;
-            this.ChartButton.Font = new System.Drawing.Font("Roboto", 8F);
-            this.ChartButton.ForeColor = System.Drawing.Color.LightGray;
-            this.ChartButton.HoverText = "Charts";
-            this.ChartButton.Image = ((System.Drawing.Image)(resources.GetObject("ChartButton.Image")));
-            this.ChartButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ChartButton.Margin = new System.Windows.Forms.Padding(5);
-            this.ChartButton.Name = "ChartButton";
-            this.ChartButton.Padding = new System.Windows.Forms.Padding(1);
-            this.ChartButton.Size = new System.Drawing.Size(23, 23);
-            this.ChartButton.Tag = "Charts";
-            this.ChartButton.Text = "ChartButton";
-            this.ChartButton.ToolTipText = "Charts";
-            // 
-            // Separator17
-            // 
-            this.Separator17.ForeColor = System.Drawing.Color.Black;
-            this.Separator17.Margin = new System.Windows.Forms.Padding(5);
-            this.Separator17.Name = "Separator17";
-            this.Separator17.Size = new System.Drawing.Size(6, 23);
-            // 
-            // UpdateButton
-            // 
-            this.UpdateButton.AutoToolTip = false;
-            this.UpdateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
-            this.UpdateButton.Bar = BudgetExecution.Tool.UpdateButton;
-            this.UpdateButton.BindingSource = null;
-            this.UpdateButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.UpdateButton.Field = BudgetExecution.Field.NS;
-            this.UpdateButton.Font = new System.Drawing.Font("Roboto", 8F);
-            this.UpdateButton.ForeColor = System.Drawing.Color.LightGray;
-            this.UpdateButton.HoverText = "Update DataSource";
-            this.UpdateButton.Image = ((System.Drawing.Image)(resources.GetObject("UpdateButton.Image")));
-            this.UpdateButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.UpdateButton.Margin = new System.Windows.Forms.Padding(5);
-            this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Padding = new System.Windows.Forms.Padding(1);
-            this.UpdateButton.Size = new System.Drawing.Size(23, 23);
-            this.UpdateButton.Tag = "Update DataSource";
-            this.UpdateButton.Text = "UpdateButton";
-            this.UpdateButton.ToolTipText = "Update DataSource";
-            // 
-            // Separator18
-            // 
-            this.Separator18.ForeColor = System.Drawing.Color.Black;
-            this.Separator18.Margin = new System.Windows.Forms.Padding(5);
-            this.Separator18.Name = "Separator18";
-            this.Separator18.Size = new System.Drawing.Size(6, 23);
-            // 
-            // HomeButton
-            // 
-            this.HomeButton.AutoToolTip = false;
-            this.HomeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
-            this.HomeButton.Bar = BudgetExecution.Tool.FirstButton;
-            this.HomeButton.BindingSource = null;
-            this.HomeButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.HomeButton.Field = BudgetExecution.Field.NS;
-            this.HomeButton.Font = new System.Drawing.Font("Roboto", 8F);
-            this.HomeButton.ForeColor = System.Drawing.Color.LightGray;
-            this.HomeButton.HoverText = "Home";
-            this.HomeButton.Image = ((System.Drawing.Image)(resources.GetObject("HomeButton.Image")));
-            this.HomeButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.HomeButton.Margin = new System.Windows.Forms.Padding(5);
-            this.HomeButton.Name = "HomeButton";
-            this.HomeButton.Padding = new System.Windows.Forms.Padding(1);
-            this.HomeButton.Size = new System.Drawing.Size(23, 23);
-            this.HomeButton.Tag = "Home";
-            this.HomeButton.Text = "HomeButton";
-            this.HomeButton.ToolTipText = "Home";
-            // 
-            // Separator19
-            // 
-            this.Separator19.ForeColor = System.Drawing.Color.Black;
-            this.Separator19.Margin = new System.Windows.Forms.Padding(5);
-            this.Separator19.Name = "Separator19";
-            this.Separator19.Size = new System.Drawing.Size(6, 23);
-            // 
             // ProgressBar
             // 
             this.ProgressBar.Margin = new System.Windows.Forms.Padding(5);
             this.ProgressBar.Name = "ProgressBar";
             this.ProgressBar.Size = new System.Drawing.Size(100, 23);
+            // 
+            // Separator16
+            // 
+            this.Separator16.ForeColor = System.Drawing.Color.Black;
+            this.Separator16.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.Separator16.Name = "Separator16";
+            this.Separator16.Size = new System.Drawing.Size(6, 33);
             // 
             // ToolBarControl
             // 
@@ -639,9 +575,10 @@
             this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.Name = "ToolBarControl";
             this.Padding = new System.Windows.Forms.Padding(1, 1, 1, 0);
-            this.Size = new System.Drawing.Size(1299, 52);
+            this.Size = new System.Drawing.Size(1027, 52);
             this.ToolBar.ResumeLayout(false);
             this.ToolBar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BudgetBinding)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -651,7 +588,6 @@
 
         public ToolPanel ToolBar;
         public BarButton AddButton;
-        public System.Windows.Forms.ToolStripProgressBar ProgressBar;
         public BarLabel Label;
         public BarButton FirstButton;
         public BarButton PreviousButton;
@@ -664,7 +600,7 @@
         public BarButton SaveButton;
         public BarButton CalculatorButton;
         public BarButton ExcelButton;
-        public BarButton ExitButton;
+        public BarButton BrowseButton;
         public ToolSeparator Separator1;
         public ToolSeparator Separator2;
         public ToolSeparator Separator3;
@@ -680,13 +616,10 @@
         public ToolSeparator Separator13;
         public ToolSeparator Separator14;
         public ToolSeparator Separator15;
-        public ToolSeparator Separator16;
         public ToolSeparator Separator17;
-        public BarButton ChartButton;
         public BarButton UpdateButton;
-        private ToolSeparator Separator18;
-        public BarButton HomeButton;
-        private ToolSeparator Separator19;
-        public BarComboBox ComboBox;
+        public BudgetBinding BudgetBinding;
+        public System.Windows.Forms.ToolStripProgressBar ProgressBar;
+        public ToolSeparator Separator16;
     }
 }
