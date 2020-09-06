@@ -71,17 +71,17 @@ namespace BudgetExecution
         /// <param name = "builder" >
         /// The manager.
         /// </param>
-        /// <param name = "commandtype" >
+        /// <param name = "command" >
         /// The commandtype.
         /// </param>
         /// <param name = "dict" >
         /// The dictionary.
         /// </param>
         public SqlStatement( IConnectionBuilder builder, IDictionary<string, object> dict,
-            SQL commandtype = SQL.SELECT )
+            SQL command = SQL.SELECT )
         {
             ConnectionBuilder = builder;
-            CommandType = GetCommandType( commandtype );
+            CommandType = GetCommandType( command );
             Args = dict;
             CommandText = GetCommandText();
         }

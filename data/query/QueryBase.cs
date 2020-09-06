@@ -203,15 +203,15 @@ namespace BudgetExecution
         /// </returns>
         private protected IConnectionBuilder SetConnectionBuilder( Source source, Provider provider )
         {
-            if( Enum.IsDefined( typeof( Source ), source )
-                && Enum.IsDefined( typeof( Provider ), provider ) )
+            if( Verify.Source( source )
+                && Verify.Provider( provider ) )
             {
                 try
                 {
-                    var connectionmanager = new ConnectionBuilder( source, provider );
+                    var connectionbuilder = new ConnectionBuilder( source, provider );
 
-                    return Verify.Input( connectionmanager?.GetConnectionString() )
-                        ? connectionmanager
+                    return Verify.Input( connectionbuilder?.GetConnectionString() )
+                        ? connectionbuilder
                         : default;
                 }
                 catch( Exception ex )
@@ -344,8 +344,8 @@ namespace BudgetExecution
                     return SqlStatement?.GetCommandType() switch
                     {
                         SQL.SELECT => commandfactory?.GetSelectCommand(),
-                        SQL.INSERT => commandfactory?.GetSelectCommand(),
-                        SQL.UPDATE => commandfactory?.GetSelectCommand(),
+                        SQL.INSERT => commandfactory?.GetInsertCommand(),
+                        SQL.UPDATE => commandfactory?.GetUpdateCommand(),
                         SQL.DELETE => commandfactory?.GetDeleteCommand(),
                         _ => default
                     };

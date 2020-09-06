@@ -313,6 +313,10 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="badger\forms\control\IDataControl.cs" />
+    <Compile Include="badger\forms\conversion\mdb\ConversionForm.cs" />
+    <Compile Include="badger\forms\conversion\mdb\ConversionForm.Designer.cs">
+      <DependentUpon>ConversionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="badger\forms\dialog\browser\FileBrowser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -645,18 +649,20 @@
     <Compile Include="data\connection\IConnectionFactory.cs" />
     <Compile Include="data\connection\IProvider.cs" />
     <Compile Include="data\connection\ISource.cs" />
-    <Compile Include="data\conversion\ColumnSchema.cs" />
-    <Compile Include="data\conversion\DatabaseSchema.cs" />
-    <Compile Include="data\conversion\FailedViewDefinitionHandler.cs" />
-    <Compile Include="data\conversion\ForeignKeySchema.cs" />
-    <Compile Include="data\conversion\IndexSchema.cs" />
-    <Compile Include="data\conversion\SqlConversionHandler.cs" />
-    <Compile Include="data\conversion\SqlServerConverter.cs" />
-    <Compile Include="data\conversion\SqlTableSelectionHandler.cs" />
-    <Compile Include="data\conversion\TableSchema.cs" />
-    <Compile Include="data\conversion\TriggerBuilder.cs" />
-    <Compile Include="data\conversion\TriggerSchema.cs" />
-    <Compile Include="data\conversion\ViewSchema.cs" />
+    <Compile Include="data\conversion\mdb\AccessConnect.cs" />
+    <Compile Include="data\conversion\mdb\AccessConversion.cs" />
+    <Compile Include="data\conversion\sdf\ColumnSchema.cs" />
+    <Compile Include="data\conversion\sdf\DatabaseSchema.cs" />
+    <Compile Include="data\conversion\sdf\FailedViewDefinitionHandler.cs" />
+    <Compile Include="data\conversion\sdf\ForeignKeySchema.cs" />
+    <Compile Include="data\conversion\sdf\IndexSchema.cs" />
+    <Compile Include="data\conversion\sdf\SqlConversionHandler.cs" />
+    <Compile Include="data\conversion\sdf\SqlServerConverter.cs" />
+    <Compile Include="data\conversion\sdf\SqlTableSelectionHandler.cs" />
+    <Compile Include="data\conversion\sdf\TableSchema.cs" />
+    <Compile Include="data\conversion\sdf\TriggerBuilder.cs" />
+    <Compile Include="data\conversion\sdf\TriggerSchema.cs" />
+    <Compile Include="data\conversion\sdf\ViewSchema.cs" />
     <Compile Include="data\map\Amount.cs" />
     <Compile Include="data\map\AmountBase.cs" />
     <Compile Include="data\map\Arg.cs" />
@@ -894,6 +900,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="badger\forms\control\ControlBase.resx">
       <DependentUpon>ControlBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="badger\forms\conversion\mdb\ConversionForm.resx">
+      <DependentUpon>ConversionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="badger\forms\dialog\browser\FileBrowser.resx">
       <DependentUpon>FileBrowser.cs</DependentUpon>
