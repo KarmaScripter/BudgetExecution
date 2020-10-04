@@ -306,8 +306,14 @@ namespace BudgetExecution
                             foreach( var kvp in data )
                             {
                                 Points.Add( kvp.Key, kvp.Value );
-                                var keys = data.Keys.Select( k => k.ToString() ).ToArray();
-                                var vals = data.Values.Select( v => v ).ToArray();
+
+                                var keys = data.Keys
+                                    ?.Select( k => k.ToString() )
+                                    ?.ToArray();
+
+                                var vals = data.Values
+                                    ?.Select( v => v )
+                                    ?.ToArray();
 
                                 if( stat != STAT.Percentage )
                                 {
