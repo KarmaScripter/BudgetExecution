@@ -1,6 +1,6 @@
-﻿// <copyright file = "SqlServerConverter.cs" company = "Terry D. Eppler">
-// Copyright (c) Terry D. Eppler. All rights reserved.
-// </copyright>
+﻿// // <copyright file = "SqlServerConverter.cs" company = "Terry D. Eppler">
+// // Copyright (c) Terry D. Eppler. All rights reserved.
+// // </copyright>
 
 namespace BudgetExecution
 {
@@ -96,8 +96,18 @@ namespace BudgetExecution
         /// <returns></returns>
         private string WriteTriggerSchema( TriggerSchema ts )
         {
-            return @"CREATE TRIGGER [" + ts.Name + "] " + ts.Type + " " + ts.Event + " ON [" + ts.Table + "] "
-                + "BEGIN " + ts.Body + " END;";
+            return @"CREATE TRIGGER ["
+                + ts.Name
+                + "] "
+                + ts.Type
+                + " "
+                + ts.Event
+                + " ON ["
+                + ts.Table
+                + "] "
+                + "BEGIN "
+                + ts.Body
+                + " END;";
         }
 
         /// <summary>
@@ -136,8 +146,8 @@ namespace BudgetExecution
                 {
                     IsActive = true;
 
-                    ConvertToSQLite( sqlserverconnstring, path, password, handler, selectionhandler,
-                        viewfailurehandler, createtriggers, createviews );
+                    ConvertToSQLite( sqlserverconnstring, path, password, handler,
+                        selectionhandler, viewfailurehandler, createtriggers, createviews );
 
                     IsActive = false;
                     handler( true, true, 100, "Finished converting database" );
@@ -180,11 +190,12 @@ namespace BudgetExecution
             var ds = ReadSqlServerSchema( sqlconnstring, handler, selectionhandler );
 
             // Create the SQLite database and apply the schema
-            CreateSQLiteDatabase( path, ds, password, handler, viewfailurehandler,
-                createviews );
+            CreateSQLiteDatabase( path, ds, password, handler,
+                viewfailurehandler, createviews );
 
             // Copy all rows from SQL Server tables to the newly created SQLite database
-            CopyDataRows( sqlconnstring, path, ds.Tables, password, handler );
+            CopyDataRows( sqlconnstring, path, ds.Tables, password,
+                handler );
 
             // Add triggers based on foreign key constraints
             if( createtriggers )
@@ -240,8 +251,8 @@ namespace BudgetExecution
 
                             for( var j = 0; j < schema[ i ].Columns.Count; j++ )
                             {
-                                var pname = "@" + GetNormalizedName( schema[ i ].Columns[ j ].ColumnName,
-                                    pnames );
+                                var pname = "@"
+                                    + GetNormalizedName( schema[ i ].Columns[ j ].ColumnName, pnames );
 
                                 insert.Parameters[ pname ].Value =
                                     CastValueForColumn( reader[ j ], schema[ i ].Columns[ j ] );
@@ -258,7 +269,10 @@ namespace BudgetExecution
                                 tx.Commit();
 
                                 handler( false, true, (int)( 100.0 * i / schema.Count ),
-                                    "Added " + counter + " rows to table " + schema[ i ].TableName
+                                    "Added "
+                                    + counter
+                                    + " rows to table "
+                                    + schema[ i ].TableName
                                     + " so far" );
 
                                 tx = sqconn.BeginTransaction();
@@ -443,7 +457,8 @@ namespace BudgetExecution
                     Log.Error( "argument exception - illegal database type" );
 
                     throw new ArgumentException( "Illegal database type ["
-                        + Enum.GetName( typeof( DbType ), dt ) + "]" );
+                        + Enum.GetName( typeof( DbType ), dt )
+                        + "]" );
                 }
             }// switch
 
@@ -968,8 +983,10 @@ namespace BudgetExecution
             if( col.IsIdentity )
             {
                 if( ts.PrimaryKey.Count == 1
-                    && ( col.ColumnType == "tinyint" || col.ColumnType == "int"
-                        || col.ColumnType == "smallint" || col.ColumnType == "bigint"
+                    && ( col.ColumnType == "tinyint"
+                        || col.ColumnType == "int"
+                        || col.ColumnType == "smallint"
+                        || col.ColumnType == "bigint"
                         || col.ColumnType == "integer" ) )
                 {
                     sb.Append( "integer PRIMARY KEY AUTOINCREMENT" );
@@ -1016,7 +1033,8 @@ namespace BudgetExecution
             if( Verify.Input( defval )
                 && defval.ToUpper().Contains( "GETDATE" ) )
             {
-                Log.Debug( "converted SQL Server GETDATE() to CURRENTTIMESTAMP for column [" + col.ColumnName
+                Log.Debug( "converted SQL Server GETDATE() to CURRENTTIMESTAMP for column ["
+                    + col.ColumnName
                     + "]" );
 
                 sb.Append( " DEFAULT (CURRENTTIMESTAMP)" );
@@ -1640,7 +1658,10 @@ namespace BudgetExecution
 
                 if( !m.Success )
                 {
-                    throw new ApplicationException( "Illegal key name [" + p + "] in index [" + indexname
+                    throw new ApplicationException( "Illegal key name ["
+                        + p
+                        + "] in index ["
+                        + indexname
                         + "]" );
                 }
 

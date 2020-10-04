@@ -1,6 +1,6 @@
-﻿// <copyright file = "ExcelReport.cs" company = "Terry D. Eppler">
-// Copyright (c) Terry D. Eppler. All rights reserved.
-// </copyright>
+﻿// // <copyright file = "ExcelReport.cs" company = "Terry D. Eppler">
+// // Copyright (c) Terry D. Eppler. All rights reserved.
+// // </copyright>
 
 namespace BudgetExecution
 {
@@ -247,8 +247,9 @@ namespace BudgetExecution
         {
             try
             {
-                return type == typeof( string ) || type.IsArray || type.IsGenericType
-                    && type.GetGenericTypeDefinition() == typeof( Nullable<> );
+                return type == typeof( string )
+                    || type.IsArray
+                    || type.IsGenericType && type.GetGenericTypeDefinition() == typeof( Nullable<> );
             }
             catch( Exception ex )
             {

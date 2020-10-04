@@ -154,7 +154,10 @@ namespace BudgetExecution
             // 
             Footer.AutoSize = true;
             Footer.BackColor = Color.FromArgb( 10, 10, 11 );
-            Footer.Font = new Font( "Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 204 );
+
+            Footer.Font = new Font( "Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point,
+                204 );
+
             Footer.ForeColor = Color.DimGray;
             Footer.Location = new Point( 76, 78 );
             Footer.Name = "Footer";
@@ -180,7 +183,10 @@ namespace BudgetExecution
             Title.AutoEllipsis = true;
             Title.AutoSize = true;
             Title.BackColor = Color.FromArgb( 10, 10, 11 );
-            Title.Font = new Font( "Segoe UI Semibold", 12.75F, FontStyle.Bold, GraphicsUnit.Point, 204 );
+
+            Title.Font = new Font( "Segoe UI Semibold", 12.75F, FontStyle.Bold, GraphicsUnit.Point,
+                204 );
+
             Title.ForeColor = Color.LightGray;
             Title.Location = new Point( 75, 9 );
             Title.Name = "Title";
@@ -195,7 +201,10 @@ namespace BudgetExecution
             Body.Anchor = AnchorStyles.None;
             Body.AutoEllipsis = true;
             Body.BackColor = Color.FromArgb( 10, 10, 11 );
-            Body.Font = new Font( "Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204 );
+
+            Body.Font = new Font( "Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point,
+                204 );
+
             Body.ForeColor = Color.DarkGray;
             Body.Location = new Point( 76, 34 );
             Body.Name = "Body";
@@ -244,7 +253,10 @@ namespace BudgetExecution
             Label.AutoSize = true;
             Label.BackColor = Color.FromArgb( 10, 10, 11 );
             Label.Cursor = Cursors.Hand;
-            Label.Font = new Font( "Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 204 );
+
+            Label.Font = new Font( "Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point,
+                204 );
+
             Label.ForeColor = Color.DimGray;
             Label.Location = new Point( 340, 5 );
             Label.Name = "Label";
@@ -325,7 +337,13 @@ namespace BudgetExecution
         /// <summary>
         /// Gets a value indicating whether the window will be activated when it is shown.
         /// </summary>
-        protected override bool ShowWithoutActivation => true;
+        protected override bool ShowWithoutActivation
+        {
+            get
+            {
+                return true;
+            }
+        }
 
         /// <summary>
         /// Gets the create parameters.
