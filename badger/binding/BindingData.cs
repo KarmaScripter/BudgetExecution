@@ -2,6 +2,8 @@
 // Copyright (c) Terry D. Eppler. All rights reserved.
 // </copyright>
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace BudgetExecution
 {
     // ********************************************************************************************************************************
@@ -16,6 +18,7 @@ namespace BudgetExecution
     using System.Threading;
     using System.Windows.Forms;
 
+    [ SuppressMessage( "ReSharper", "AccessToStaticMemberViaDerivedType" ) ]
     public class BindingData : BindingBase
     {
         // **********************************************************************************************************************
@@ -58,12 +61,12 @@ namespace BudgetExecution
         {
             try
             {
-                if( bindingsource is BindingSource binder
-                    && binder?.DataSource != null )
+                if( bindingsource is BindingSource source
+                    && source?.DataSource != null )
                 {
                     try
                     {
-                        DataSource = binder.DataSource;
+                        DataSource = source.DataSource;
                     }
                     catch( Exception ex )
                     {
@@ -85,7 +88,8 @@ namespace BudgetExecution
         /// <param name="bindinglist">The bindingsource.</param>
         /// <param name="dict">The dictionary.</param>
         public void SetDataSource<T, T2>( T bindinglist, T2 dict )
-            where T : IBindingList where T2 : IDictionary<string, object>
+            where T : IBindingList 
+            where T2 : IDictionary<string, object>
         {
             try
             {

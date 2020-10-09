@@ -127,7 +127,7 @@ namespace BudgetExecution
         /// </summary>
         /// <param name="fillstyle">The fillstyle.</param>
         /// <returns></returns>
-        public static ExcelFillStyle GetExcelFillStyle( ExcelFillStyle fillstyle )
+        public static ExcelFillStyle GetExcelFillStyle( ExcelFillStyle fillstyle = ExcelFillStyle.None )
         {
             try
             {
@@ -147,7 +147,8 @@ namespace BudgetExecution
         /// </summary>
         /// <param name="gradient">The gradient.</param>
         /// <returns></returns>
-        public static ExcelFillGradientType GetExcelFillGradientType( ExcelFillGradientType gradient )
+        public static ExcelFillGradientType GetExcelFillGradientType( ExcelFillGradientType gradient = 
+            ExcelFillGradientType.None )
         {
             try
             {
@@ -167,7 +168,8 @@ namespace BudgetExecution
         /// </summary>
         /// <param name="filltype">The filltype.</param>
         /// <returns></returns>
-        public static ExcelFillType GetSpreadsheetFillType( ExcelFillType filltype )
+        public static ExcelFillType GetSpreadsheetFillType( ExcelFillType filltype =
+            ExcelFillType.UnknownGradient )
         {
             try
             {
@@ -187,7 +189,8 @@ namespace BudgetExecution
         /// </summary>
         /// <param name="gradient">The gradient.</param>
         /// <returns></returns>
-        public static ExcelGradientStyle GetSpreadsheetGradientStyle( ExcelGradientStyle gradient )
+        public static ExcelGradientStyle GetSpreadsheetGradientStyle( ExcelGradientStyle gradient =
+            ExcelGradientStyle.Horizontal )
         {
             try
             {

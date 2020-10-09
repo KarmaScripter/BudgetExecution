@@ -66,10 +66,11 @@
     </Reference>
     <Reference Include="BudgetExtensions, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Extensions\bin\Debug\BudgetExtensions.dll</HintPath>
+      <HintPath>..\BudgetExtensions\bin\Debug\BudgetExtensions.dll</HintPath>
     </Reference>
-    <Reference Include="BudgetStatic">
-      <HintPath>..\Static\bin\Debug\BudgetStatic.dll</HintPath>
+    <Reference Include="BudgetStatic, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\BudgetStatic\bin\Debug\BudgetStatic.dll</HintPath>
     </Reference>
     <Reference Include="CharmNotification, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

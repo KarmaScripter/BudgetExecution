@@ -19,6 +19,7 @@ namespace BudgetExecution
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "UnusedType.Global" ) ]
     [ SuppressMessage( "ReSharper", "AutoPropertyCanBeMadeGetOnly.Global" ) ]
+    [ SuppressMessage( "ReSharper", "AccessToStaticMemberViaDerivedType" ) ]
     public class BudgetBinding : BindingData, IBindingSource
     {
         // **************************************************************************************************************************

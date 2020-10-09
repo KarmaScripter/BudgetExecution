@@ -173,7 +173,7 @@ namespace BudgetExecution
             {
                 var data = DataTable?.AsEnumerable();
 
-                return Verify.Input( data )
+                return data?.Any() == true
                     ? data
                     : default;
             }

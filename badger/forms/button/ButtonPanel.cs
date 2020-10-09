@@ -290,16 +290,21 @@ namespace BudgetExecution
 
             try
             {
-                if( Verify.Input( HoverText ) )
+                if( Verify.Input( button?.HoverText ) )
                 {
-                    var text = button?.HoverText;
-                    var _ = new ToolTip( button, text );
+                    var _ = new ToolTip( button, button?.HoverText );
                 }
                 else
                 {
                     if( Verify.Input( Tag?.ToString() ) )
                     {
-                        var _ = new ToolTip( button, Tag?.ToString()?.SplitPascal() );
+                        var text = Tag?.ToString()
+                            ?.SplitPascal();
+
+                        if( !string.IsNullOrEmpty( text ) )
+                        {
+                            var _ = new ToolTip( button, text );
+                        }
                     }
                 }
             }
