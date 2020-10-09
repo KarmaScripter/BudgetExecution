@@ -122,7 +122,8 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        public static AnchorStyles GetAnchorStyle( AnchorStyles anchor = AnchorStyles.Left & AnchorStyles.Top & AnchorStyles.Right )
+        public static AnchorStyles GetAnchorStyle( AnchorStyles anchor =
+            AnchorStyles.Left & AnchorStyles.Top & AnchorStyles.Right )
         {
             try
             {
