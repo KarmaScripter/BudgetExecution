@@ -29,12 +29,16 @@ namespace BudgetExecution
         /// <param name = "stat" > The value. </param>
         void SetPointConfiguration( STAT stat = STAT.Total );
 
-        /// <summary> Sets the points. </summary>
+        IEnumerable<ChartPoint> GetDataPoints();
+
+        /// <summary>
+        /// Sets the points.
+        /// </summary>
         /// <param name = "data" > The data. </param>
         /// <param name = "type" > The type. </param>
         /// <param name = "stat" > The value. </param>
-        void SetPoints( IDictionary<string, double> data, ChartType type = ChartType.Column,
-            STAT stat = STAT.Total );
+        void SetPoints( IDictionary<string, double> data, ChartType type =
+            ChartType.Column, STAT stat = STAT.Total );
 
         /// <summary> Gets the data. </summary>
         /// <returns> </returns>

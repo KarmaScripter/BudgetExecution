@@ -122,11 +122,11 @@ namespace BudgetExecution
         {
             SourceModel = new SourceModel( table, seriesconfig );
             Configuration = SourceModel.GetSeriesConfiguration();
-            ChartData = new SeriesModel( table, seriesconfig );
+            SeriesModel = new SeriesModel( table, seriesconfig );
             DataMetric = SourceModel.GetMetric();
             TitleInfo = new TitleInfo( DataMetric.GetData()?.CopyToDataTable()?.TableName );
-            DataSeries = new DataSeries( ChartData );
-            Series.Add( DataSeries );
+            DataSeries = new DataSeries( SeriesModel );
+            Series.Add( DataSeries as DataSeries );
             Titles.Add( TitleInfo.GetChartMainTitle() );
         }
 
@@ -140,11 +140,11 @@ namespace BudgetExecution
         {
             SourceModel = new SourceModel( data, seriesconfig );
             Configuration = SourceModel.GetSeriesConfiguration();
-            ChartData = new SeriesModel( data, seriesconfig );
+            SeriesModel = new SeriesModel( data, seriesconfig );
             DataMetric = SourceModel.GetMetric();
             TitleInfo = new TitleInfo( DataMetric.GetData()?.CopyToDataTable()?.TableName );
-            DataSeries = new DataSeries( ChartData );
-            Series.Add( DataSeries );
+            DataSeries = new DataSeries( SeriesModel );
+            Series.Add( DataSeries as DataSeries );
             Titles.Add( TitleInfo.GetChartMainTitle() );
         }
 
@@ -159,11 +159,11 @@ namespace BudgetExecution
         {
             SourceModel = new SourceModel( sourcebinding );
             Configuration = SourceModel.GetSeriesConfiguration();
-            ChartData = new SeriesModel( sourcebinding );
+            SeriesModel = new SeriesModel( sourcebinding );
             DataMetric = SourceModel.GetMetric();
             TitleInfo = new TitleInfo( DataMetric.GetData()?.CopyToDataTable()?.TableName );
-            DataSeries = new DataSeries( ChartData );
-            Series.Add( DataSeries );
+            DataSeries = new DataSeries( SeriesModel );
+            Series.Add( DataSeries as DataSeries );
             Titles.Add( TitleInfo.GetChartMainTitle() );
         }
 
@@ -178,11 +178,11 @@ namespace BudgetExecution
         {
             SourceModel = model;
             Configuration = SourceModel.GetSeriesConfiguration();
-            ChartData = new SeriesModel( SourceModel.GetSourceBinding() );
+            SeriesModel = new SeriesModel( SourceModel.GetSourceBinding() );
             TitleInfo = new TitleInfo( Configuration.Name );
             DataMetric = SourceModel.GetMetric();
-            DataSeries = new DataSeries( ChartData );
-            Series.Add( DataSeries );
+            DataSeries = new DataSeries( SeriesModel );
+            Series.Add( DataSeries as DataSeries );
             Titles.Add( TitleInfo.GetChartMainTitle() );
         }
 
@@ -200,9 +200,9 @@ namespace BudgetExecution
             Configuration = SourceModel.GetSeriesConfiguration();
             TitleInfo = title;
             DataMetric = SourceModel.GetMetric();
-            ChartData = new SeriesModel( SourceModel.GetSourceBinding() );
-            DataSeries = new DataSeries( ChartData );
-            Series.Add( DataSeries );
+            SeriesModel = new SeriesModel( SourceModel.GetSourceBinding() );
+            DataSeries = new DataSeries( SeriesModel );
+            Series.Add( DataSeries as DataSeries );
             Titles.Add( TitleInfo.GetChartMainTitle() );
         }
 
@@ -216,13 +216,13 @@ namespace BudgetExecution
         public ChartPanel( ISeriesModel chartdata, ITitleInfo title )
             : this()
         {
-            ChartData = chartdata;
-            Configuration = ChartData.GetSeriesConfiguration();
-            SourceModel = ChartData.GetSourceModel();
+            SeriesModel = chartdata;
+            Configuration = SeriesModel.GetSeriesConfiguration();
+            SourceModel = SeriesModel.GetSourceModel();
             TitleInfo = title;
-            DataMetric = ChartData.GetSeriesMetric();
-            DataSeries = new DataSeries( ChartData );
-            Series.Add( DataSeries );
+            DataMetric = SeriesModel.GetSeriesMetric();
+            DataSeries = new DataSeries( SeriesModel );
+            Series.Add( DataSeries as DataSeries );
             Titles.Add( TitleInfo.GetChartMainTitle() );
         }
 

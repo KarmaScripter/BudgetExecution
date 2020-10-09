@@ -82,7 +82,7 @@ namespace BudgetExecution
         /// <value>
         /// The data.
         /// </value>
-        private protected ISeriesModel ChartData { get; set; }
+        private protected ISeriesModel SeriesModel { get; set; }
 
         /// <summary>
         /// Gets the data series.
@@ -90,7 +90,7 @@ namespace BudgetExecution
         /// <value>
         /// The data series.
         /// </value>
-        private protected DataSeries DataSeries { get; set; }
+        private protected IDataSeries DataSeries { get; set; }
 
         /// <summary>
         /// Gets the default title.
@@ -209,8 +209,8 @@ namespace BudgetExecution
         {
             try
             {
-                return ChartData?.GetSeriesValues()?.Any() == true
-                    ? ChartData
+                return SeriesModel?.GetSeriesValues()?.Any() == true
+                    ? SeriesModel
                     : default;
             }
             catch( Exception ex )
@@ -228,7 +228,7 @@ namespace BudgetExecution
         {
             try
             {
-                return DataSeries?.Points?.Count > 0
+                return DataSeries?.GetDataPoints()?.Any() == true
                     ? DataSeries
                     : default;
             }

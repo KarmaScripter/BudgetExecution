@@ -303,6 +303,31 @@ namespace BudgetExecution
             }
         }
 
+        public IEnumerable<ChartPoint> GetDataPoints()
+        {
+            try
+            {
+                var points = new List<ChartPoint>();
+
+                foreach( ChartPoint point in Points )
+                {
+                    if( point != null )
+                    {
+                        points.Add( point );
+                    }
+                }
+
+                return points?.Any() == true
+                    ? points
+                    : default;
+            }
+            catch( Exception ex )
+            {
+                Fail( ex );
+                return default;
+            }
+        }
+
         /// <summary>
         /// Get Error Dialog.
         /// </summary>
