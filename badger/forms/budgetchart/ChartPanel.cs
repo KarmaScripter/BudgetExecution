@@ -71,8 +71,8 @@ namespace BudgetExecution
             SeriesHighlightIndex = -1;
             ShadowWidth = 5;
 
-            ShadowColor = new BrushInfo( GradientStyle.PathRectangle, ColorConfig.BackColorBlack,
-                Color.Silver );
+            ShadowColor = new BrushInfo( GradientStyle.PathRectangle,
+                ColorConfig.BackColorBlack, Color.Silver );
 
             Depth = 250;
             ElementsSpacing = 10;
@@ -326,12 +326,15 @@ namespace BudgetExecution
                     Titles.Clear();
                 }
 
-                using var title = new ChartTitle();
-                title.Visible = true;
-                title.Font = font;
-                title.BackColor = ColorConfig.BackColorBlack;
-                title.ForeColor = color;
-                title.Text = text;
+                using var title = new ChartTitle
+                {
+                    Visible = true,
+                    Font = font,
+                    BackColor = ColorConfig.BackColorBlack,
+                    ForeColor = color,
+                    Text = text
+                };
+
                 Titles?.Add( title );
             }
             catch( Exception ex )
