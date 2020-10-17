@@ -89,7 +89,7 @@ namespace BudgetExecution
         // **************************************************************************************************************************
 
         /// <summary>
-        /// Initializes a new instance of the <see cref = "ColorConfig"/> class.
+        /// Initializes a new instance of the <see cref="ColorConfig" /> class.
         /// </summary>
         public ColorConfig()
         {
@@ -102,11 +102,8 @@ namespace BudgetExecution
         /// <summary>
         /// Gets the color.
         /// </summary>
-        /// <param name = "color" >
-        /// The color.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <param name="color">The color.</param>
+        /// <returns></returns>
         public static Color GetColor( Color color )
         {
             try
@@ -212,12 +209,8 @@ namespace BudgetExecution
         /// <summary>
         /// Called when [color changed].
         /// </summary>
-        /// <param name = "sender" >
-        /// The sender.
-        /// </param>
-        /// <param name = "e" >
-        /// The <see cref = "EventArgs"/> instance containing the event data.
-        /// </param>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         public static void OnColorChanged( object sender, EventArgs e )
         {
             if( sender != null

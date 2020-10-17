@@ -18,6 +18,11 @@ namespace BudgetExecution
     using Syncfusion.Drawing;
     using Syncfusion.Windows.Forms.Chart;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="BudgetExecution.ChartBase" />
+    /// <seealso cref="BudgetExecution.IBudgetChart" />
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     public class ChartPanel : ChartBase, IBudgetChart
@@ -28,7 +33,7 @@ namespace BudgetExecution
 
         // Sets Starting Properties
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChartPanel"/> class.
+        /// Initializes a new instance of the <see cref="ChartPanel" /> class.
         /// </summary>
         public ChartPanel()
         {
@@ -153,13 +158,13 @@ namespace BudgetExecution
         /// <see cref="ChartPanel" />
         /// class.
         /// </summary>
-        /// <param name="sourcebinding">The sourcebinding.</param>
-        public ChartPanel( IChartBinding sourcebinding )
+        /// <param name="chartbinding">The sourcebinding.</param>
+        public ChartPanel( IChartBinding chartbinding )
             : this()
         {
-            SourceModel = new SourceModel( sourcebinding );
+            SourceModel = new SourceModel( chartbinding );
             Configuration = SourceModel.GetSeriesConfiguration();
-            SeriesModel = new SeriesModel( sourcebinding );
+            SeriesModel = new SeriesModel( chartbinding );
             DataMetric = SourceModel.GetMetric();
             TitleInfo = new TitleInfo( DataMetric.GetData()?.CopyToDataTable()?.TableName );
             DataSeries = new DataSeries( SeriesModel );
@@ -211,12 +216,12 @@ namespace BudgetExecution
         /// <see cref="ChartPanel" />
         /// class.
         /// </summary>
-        /// <param name="chartdata">The chartdata.</param>
+        /// <param name="seriesmodel">The chartdata.</param>
         /// <param name="title">The title.</param>
-        public ChartPanel( ISeriesModel chartdata, ITitleInfo title )
+        public ChartPanel( ISeriesModel seriesmodel, ITitleInfo title )
             : this()
         {
-            SeriesModel = chartdata;
+            SeriesModel = seriesmodel;
             Configuration = SeriesModel.GetSeriesConfiguration();
             SourceModel = SeriesModel.GetSourceModel();
             TitleInfo = title;
@@ -242,7 +247,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    Size = new Size( width, height );
+                    Size = SizeConfig.GetSize( width, height );
                 }
                 catch( Exception ex )
                 {
@@ -263,7 +268,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    Location = new Point( x, y );
+                    Location = ControlConfig.GetLocation( x, y );
                 }
                 catch( Exception ex )
                 {
@@ -282,7 +287,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    Parent = parent;
+                    Parent = ControlConfig.GetParent( parent );
                 }
                 catch( Exception ex )
                 {
@@ -299,15 +304,20 @@ namespace BudgetExecution
         /// <param name="color">The color.</param>
         public void SetPrimaryAxisTitle( string text, Font font, Color color )
         {
-            try
+            if( !string.IsNullOrEmpty( text ) 
+                && font != null 
+                && color != Color.Empty )
             {
-                PrimaryXAxis.Title = text;
-                PrimaryXAxis.TitleColor = color;
-                PrimaryXAxis.TitleFont = font;
-            }
-            catch( Exception ex )
-            {
-                Fail( ex );
+                try
+                {
+                    PrimaryXAxis.Title = text;
+                    PrimaryXAxis.TitleColor = color;
+                    PrimaryXAxis.TitleFont = font;
+                }
+                catch( Exception ex )
+                {
+                    Fail( ex );
+                }
             }
         }
 
@@ -315,31 +325,36 @@ namespace BudgetExecution
         /// Sets the main title.
         /// </summary>
         /// <param name="text">The t.</param>
-        /// <param name="font"></param>
-        /// <param name="color"></param>
-        public void SetMainTitle( string text, Font font, Color color )
+        /// <param name="font">The font.</param>
+        /// <param name="forecolor">The forecolor.</param>
+        public void SetMainTitle( string text, Font font, Color forecolor )
         {
-            try
+            if( !string.IsNullOrEmpty( text ) 
+                && font != null 
+                && forecolor != Color.Empty )
             {
-                if( Titles?.Count > 0 )
+                try
                 {
-                    Titles.Clear();
+                    if( Titles?.Count > 0 )
+                    {
+                        Titles.Clear();
+                    }
+
+                    using var title = new ChartTitle
+                    {
+                        Visible = true,
+                        Font = font,
+                        BackColor = ColorConfig.BackColorBlack,
+                        ForeColor = forecolor,
+                        Text = text
+                    };
+
+                    Titles?.Add( title );
                 }
-
-                using var title = new ChartTitle
+                catch( Exception ex )
                 {
-                    Visible = true,
-                    Font = font,
-                    BackColor = ColorConfig.BackColorBlack,
-                    ForeColor = color,
-                    Text = text
-                };
-
-                Titles?.Add( title );
-            }
-            catch( Exception ex )
-            {
-                Fail( ex );
+                    Fail( ex );
+                }
             }
         }
 
@@ -351,7 +366,7 @@ namespace BudgetExecution
         {
             try
             {
-                return Style.DisplayText
+                return Style?.DisplayText != false
                     ? Style
                     : default;
             }

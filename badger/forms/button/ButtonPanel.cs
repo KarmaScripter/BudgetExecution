@@ -18,6 +18,8 @@ namespace BudgetExecution
     /// <summary>
     /// 
     /// </summary>
+    /// <seealso cref="BudgetExecution.ButtonBase" />
+    /// <seealso cref="BudgetExecution.IButton" />
     /// <seealso cref="ButtonBase" />
     /// <seealso cref="IButton" />
     /// <seealso cref="VisualPlus.Toolkit.Controls.Interactivity.VisualButton" />

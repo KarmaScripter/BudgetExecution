@@ -120,25 +120,30 @@ namespace BudgetExecution
         /// <param name="backcolor">The backcolor.</param>
         public void SetLegend( Font font, Size size, Color backcolor )
         {
-            try
+            if( font != null 
+                && size != Size.Empty 
+                && backcolor != Color.Empty )
             {
-                ShowLegend = true;
-                Legend.Font = font;
-                Legend.ItemsSize = size;
-                Legend.VisibleCheckBox = true;
-                Legend.BackInterior = new BrushInfo( backcolor );
-                Legend.ItemsAlignment = AlignConfig.GetStringAlignment( StringAlignment.Center );
-                Legend.ItemsTextAligment = VerticalAlignment.Center;
-                Legend.Orientation = ChartOrientation.Vertical;
-                Legend.FloatingAutoSize = true;
-                Legend.ShowSymbol = true;
-                Legend.ShowItemsShadow = true;
-                Legend.ShowBorder = false;
-                Legend.Visible = true;
-            }
-            catch( Exception ex )
-            {
-                Fail( ex );
+                try
+                {
+                    ShowLegend = true;
+                    Legend.Font = font;
+                    Legend.ItemsSize = size;
+                    Legend.VisibleCheckBox = true;
+                    Legend.BackInterior = new BrushInfo( backcolor );
+                    Legend.ItemsAlignment = AlignConfig.GetStringAlignment( StringAlignment.Center );
+                    Legend.ItemsTextAligment = VerticalAlignment.Center;
+                    Legend.Orientation = ChartOrientation.Vertical;
+                    Legend.FloatingAutoSize = true;
+                    Legend.ShowSymbol = true;
+                    Legend.ShowItemsShadow = true;
+                    Legend.ShowBorder = false;
+                    Legend.Visible = true;
+                }
+                catch( Exception ex )
+                {
+                    Fail( ex );
+                }
             }
         }
 

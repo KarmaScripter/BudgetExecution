@@ -1064,11 +1064,8 @@
     <Content Include="badger\icons\division\png\EJ.png" />
     <Content Include="badger\icons\division\png\LCARD.png" />
     <Content Include="badger\icons\division\png\LSASD.png" />
-    <Content Include="badger\icons\division\png\MDR.png" />
     <Content Include="badger\icons\division\png\MSD.png" />
-    <Content Include="badger\icons\division\png\ORA.png" />
     <Content Include="badger\icons\division\png\ORC.png" />
-    <Content Include="badger\icons\division\png\R6.png" />
     <Content Include="badger\icons\division\png\SEMD.png" />
     <Content Include="badger\icons\division\png\WCF.png" />
     <Content Include="badger\icons\division\png\WD.png" />
@@ -1752,6 +1749,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="badger\icons\epa\ico\" />
+    <Folder Include="badger\icons\execution\" />
     <Folder Include="db\oledb\" />
     <Folder Include="db\sqlce\ALTER\ADD\" />
     <Folder Include="db\sqlce\ALTER\RENAME\" />
@@ -1781,6 +1779,7 @@
     <Folder Include="db\sqlserver\SELECT\" />
     <Folder Include="db\sqlserver\TRANSACTION\" />
     <Folder Include="db\sqlserver\UPDATE\" />
+    <Folder Include="ninja\template\report\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">

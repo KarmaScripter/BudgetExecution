@@ -15,12 +15,19 @@ namespace BudgetExecution
     using System.Linq;
     using System.Windows.Forms;
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class ChartData
     {
         // ***************************************************************************************************************************
         // ****************************************************  CONSTRUCTORS ********************************************************
         // ***************************************************************************************************************************
 
+        /// <summary>
+        /// Initializes a new instance of the
+        /// <see cref="ChartData"/> class.
+        /// </summary>
         public ChartData()
         {
         }
@@ -84,7 +91,10 @@ namespace BudgetExecution
         /// <summary>
         /// Sets the binding source.
         /// </summary>
-        /// <param name="bindingsource">The bindingsource.</param>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="bindingsource">
+        /// The bindingsource.
+        /// </param>
         public void SetDataSource<T>( T bindingsource ) where T : IBindingList
         {
             try
@@ -111,10 +121,16 @@ namespace BudgetExecution
         /// <summary>
         /// Sets the binding source.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <typeparam name="T2">The type of the 2.</typeparam>
-        /// <param name="bindinglist">The bindingsource.</param>
-        /// <param name="dict">The dictionary.</param>
+        /// <typeparam name="T">
+        /// </typeparam>
+        /// <typeparam name="T2">
+        /// The type of the 2.
+        /// </typeparam>
+        /// <param name="bindinglist">
+        /// The bindingsource.
+        /// </param>
+        /// <param name="dict">The dictionary.
+        /// </param>
         public void SetDataSource<T, T2>( T bindinglist, T2 dict )
             where T : IBindingList where T2 : IDictionary<string, object>
         {
@@ -159,8 +175,10 @@ namespace BudgetExecution
         /// <summary>
         /// Sets the binding source.
         /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="data">The data.</param>
-        public void SetDataSource<T>( IEnumerable<T> data ) where T : IEnumerable<DataRow>
+        public void SetDataSource<T>( IEnumerable<T> data ) 
+            where T : IEnumerable<DataRow>
         {
             if( Verify.Sequence( data ) )
             {
@@ -184,7 +202,8 @@ namespace BudgetExecution
         public void SetDataSource<T1>( IEnumerable<T1> data, IDictionary<string, object> dict )
             where T1 : IEnumerable<DataRow>
         {
-            if( Verify.Sequence( data ) )
+            if( Verify.Sequence( data ) 
+                && Verify.Map( dict ) )
             {
                 try
                 {
@@ -219,10 +238,12 @@ namespace BudgetExecution
         /// <param name="field">The field.</param>
         /// <param name="filter">The dictionary.</param>
         public void SetDataSource<T1, T2, T3>( IEnumerable<T1> data, T2 field, T3 filter )
-            where T1 : IEnumerable<DataRow> where T2 : struct
+            where T1 : IEnumerable<DataRow> 
+            where T2 : struct
         {
             if( Verify.Sequence( data )
-                && Verify.Field( field ) )
+                && Verify.Field( field ) 
+                && Verify.Input( filter ) )
             {
                 try
                 {
@@ -254,7 +275,7 @@ namespace BudgetExecution
         public void SetDataSource<T1>( IEnumerable<T1> data, object field = null )
             where T1 : IEnumerable<DataRow>
         {
-            if( Verify.Input( data ) )
+            if( Verify.Sequence( data ) )
             {
                 try
                 {
@@ -278,9 +299,10 @@ namespace BudgetExecution
         /// <summary>
         /// Sets the bindings.
         /// </summary>
+        /// <typeparam name="T1">The type of the 1.</typeparam>
+        /// <typeparam name="T2">The type of the 2.</typeparam>
         /// <param name="data">The data.</param>
-        /// <param>The numeric.</param>
-        /// <param name = "dict" > </param>
+        /// <param name="dict">The dictionary.</param>
         public void SetDataSource<T1, T2>( IEnumerable<T1> data, T2 dict )
             where T1 : IEnumerable<DataRow> where T2 : IDictionary<string, object>
         {
@@ -313,11 +335,14 @@ namespace BudgetExecution
         /// <summary>
         /// Sets the binding source.
         /// </summary>
+        /// <typeparam name="T1">The type of the 1.</typeparam>
+        /// <typeparam name="T2">The type of the 2.</typeparam>
         /// <param name="data">The data.</param>
         /// <param name="field">The field.</param>
         /// <param name="filter">The filter.</param>
         public void SetDataSource<T1, T2>( IEnumerable<T1> data, T2 field, object filter = null )
-            where T1 : IEnumerable<DataRow> where T2 : struct
+            where T1 : IEnumerable<DataRow> 
+            where T2 : struct
         {
             if( Verify.Sequence( data )
                 && Verify.Field( field ) )

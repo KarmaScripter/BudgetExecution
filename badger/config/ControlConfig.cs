@@ -52,7 +52,8 @@ namespace BudgetExecution
         // ***************************************************************************************************************************
 
         /// <summary>
-        /// Initializes a new instance of the <see cref = "ControlConfig"/> class.
+        /// Initializes a new instance of the
+        /// <see cref="ControlConfig" /> class.
         /// </summary>
         public ControlConfig()
         {
@@ -65,11 +66,8 @@ namespace BudgetExecution
         /// <summary>
         /// Sets the tag.
         /// </summary>
-        /// <param name = "tag" >
-        /// The tag.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <param name="tag">The tag.</param>
+        /// <returns></returns>
         public static object GetTag( object tag )
         {
             if( tag != null )
@@ -93,9 +91,8 @@ namespace BudgetExecution
         /// <summary>
         /// Sets the text.
         /// </summary>
-        /// <param name = "text" >
-        /// The text.
-        /// </param>
+        /// <param name="text">The text.</param>
+        /// <returns></returns>
         public static string GetText( string text )
         {
             if( Verify.Input( text ) )
@@ -117,11 +114,8 @@ namespace BudgetExecution
         /// <summary>
         /// Sets the anchor.
         /// </summary>
-        /// <param name = "anchor" >
-        /// The anchor.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <param name="anchor">The anchor.</param>
+        /// <returns></returns>
         public static AnchorStyles GetAnchorStyle( AnchorStyles anchor =
             AnchorStyles.Left & AnchorStyles.Top & AnchorStyles.Right )
         {
@@ -141,11 +135,8 @@ namespace BudgetExecution
         /// <summary>
         /// Sets the dock style.
         /// </summary>
-        /// <param name = "doc" >
-        /// The document.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <param name="doc">The document.</param>
+        /// <returns></returns>
         public static DockStyle GetDockStyle( DockStyle doc = DockStyle.None )
         {
             if( Enum.IsDefined( typeof( DockStyle ), doc ) )
@@ -169,11 +160,8 @@ namespace BudgetExecution
         /// <summary>
         /// Sets the parent.
         /// </summary>
-        /// <param name = "control" >
-        /// The control.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <param name="control">The control.</param>
+        /// <returns></returns>
         public static Control GetParent( Control control )
         {
             if( control != null )
@@ -200,14 +188,9 @@ namespace BudgetExecution
         /// <summary>
         /// Sets the location.
         /// </summary>
-        /// <param name = "x" >
-        /// The x.
-        /// </param>
-        /// <param name = "y" >
-        /// The y.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <param name="x">The x.</param>
+        /// <param name="y">The y.</param>
+        /// <returns></returns>
         public static Point GetLocation( int x = 1, int y = 1 )
         {
             if( x > -1
@@ -229,11 +212,8 @@ namespace BudgetExecution
         /// <summary>
         /// Sets the location.
         /// </summary>
-        /// <param name = "point" >
-        /// The point.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <param name="point">The point.</param>
+        /// <returns></returns>
         public static Point GetLocation( Point point )
         {
             if( point.X > -1
@@ -256,11 +236,8 @@ namespace BudgetExecution
         /// <summary>
         /// Gets the size.
         /// </summary>
-        /// <param name = "size" >
-        /// The size.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <param name="size">The size.</param>
+        /// <returns></returns>
         public static Size GetSize( Size size )
         {
             if( size.Width > 0
@@ -285,14 +262,9 @@ namespace BudgetExecution
         /// <summary>
         /// Gets the size.
         /// </summary>
-        /// <param name = "width" >
-        /// The width.
-        /// </param>
-        /// <param name = "height" >
-        /// The height.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <param name="width">The width.</param>
+        /// <param name="height">The height.</param>
+        /// <returns></returns>
         public static Size GetSize( int width, int height )
         {
             if( width > 0
@@ -317,11 +289,9 @@ namespace BudgetExecution
         /// <summary>
         /// Sets the tool tip.
         /// </summary>
-        /// <param name = "control" >
-        /// </param>
-        /// <param name = "text" >
-        /// The text.
-        /// </param>
+        /// <param name="control">The control.</param>
+        /// <param name="text">The text.</param>
+        /// <returns></returns>
         public static ToolTip GetToolTip( Control control, string text )
         {
             if( control != null
