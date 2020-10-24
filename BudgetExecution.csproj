@@ -209,402 +209,402 @@
     </Compile>
     <Compile Include="badger\binding\IBindingSource.cs" />
     <Compile Include="badger\binding\IDataSource.cs" />
-    <Compile Include="badger\forms\budgetchart\bindingmodel\ChartBinding.cs">
+    <Compile Include="badger\budgetchart\bindingmodel\ChartBinding.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\budgetchart\bindingmodel\SeriesConfig.cs" />
-    <Compile Include="badger\forms\budgetchart\bindingmodel\SeriesModel.cs" />
-    <Compile Include="badger\forms\budgetchart\BudgetChartControl.cs">
+    <Compile Include="badger\budgetchart\bindingmodel\SeriesConfig.cs" />
+    <Compile Include="badger\budgetchart\bindingmodel\SeriesModel.cs" />
+    <Compile Include="badger\budgetchart\BudgetChartControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="badger\forms\budgetchart\BudgetChartControl.Designer.cs">
+    <Compile Include="badger\budgetchart\BudgetChartControl.Designer.cs">
       <DependentUpon>BudgetChartControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\budgetchart\CallOut.cs" />
-    <Compile Include="badger\forms\budgetchart\ChartBase.cs">
+    <Compile Include="badger\budgetchart\CallOut.cs" />
+    <Compile Include="badger\budgetchart\ChartBase.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\budgetchart\ChartData.cs" />
-    <Compile Include="badger\forms\budgetchart\ChartPanel.cs">
+    <Compile Include="badger\budgetchart\ChartData.cs" />
+    <Compile Include="badger\budgetchart\ChartPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\budgetchart\ibindingmodel\IChartBinding.cs" />
-    <Compile Include="badger\forms\budgetchart\ibindingmodel\IChartSeriesModel.cs" />
-    <Compile Include="badger\forms\budgetchart\ibindingmodel\ISeriesConfig.cs" />
-    <Compile Include="badger\forms\budgetchart\ibindingmodel\ISourceModel.cs" />
-    <Compile Include="badger\forms\budgetchart\IBudgetChart.cs" />
-    <Compile Include="badger\forms\budgetchart\iseriesmodel\ISeriesModel.cs" />
-    <Compile Include="badger\forms\budgetchart\iseriesmodel\ITitleInfo.cs" />
-    <Compile Include="badger\forms\budgetchart\LegendItem.cs" />
-    <Compile Include="badger\forms\budgetchart\seriesmodel\DataSeries.cs" />
-    <Compile Include="badger\forms\budgetchart\seriesmodel\IDataSeries.cs" />
-    <Compile Include="badger\forms\budgetchart\seriesmodel\SourceModel.cs" />
-    <Compile Include="badger\forms\budgetchart\seriesmodel\TitleInfo.cs" />
-    <Compile Include="badger\forms\button\ButtonBase.cs" />
-    <Compile Include="badger\forms\button\ButtonPanel.cs" />
-    <Compile Include="badger\forms\button\IButton.cs" />
-    <Compile Include="badger\forms\calculator\CalculationControl.cs">
+    <Compile Include="badger\budgetchart\ibindingmodel\IChartBinding.cs" />
+    <Compile Include="badger\budgetchart\ibindingmodel\IChartSeriesModel.cs" />
+    <Compile Include="badger\budgetchart\ibindingmodel\ISeriesConfig.cs" />
+    <Compile Include="badger\budgetchart\ibindingmodel\ISourceModel.cs" />
+    <Compile Include="badger\budgetchart\IBudgetChart.cs" />
+    <Compile Include="badger\budgetchart\iseriesmodel\ISeriesModel.cs" />
+    <Compile Include="badger\budgetchart\iseriesmodel\ITitleInfo.cs" />
+    <Compile Include="badger\budgetchart\LegendItem.cs" />
+    <Compile Include="badger\budgetchart\seriesmodel\DataSeries.cs" />
+    <Compile Include="badger\budgetchart\seriesmodel\IDataSeries.cs" />
+    <Compile Include="badger\budgetchart\seriesmodel\SourceModel.cs" />
+    <Compile Include="badger\budgetchart\seriesmodel\TitleInfo.cs" />
+    <Compile Include="badger\button\ButtonBase.cs" />
+    <Compile Include="badger\button\ButtonPanel.cs" />
+    <Compile Include="badger\button\IButton.cs" />
+    <Compile Include="badger\calculator\CalculationControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="badger\forms\calculator\CalculationControl.Designer.cs">
+    <Compile Include="badger\calculator\CalculationControl.Designer.cs">
       <DependentUpon>CalculationControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\calculator\CalculationPanel.cs">
+    <Compile Include="badger\calculator\CalculationPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\calculator\CalculatorData.cs">
+    <Compile Include="badger\calculator\CalculatorData.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\calculator\CalculatorForm.cs">
+    <Compile Include="badger\calculator\CalculatorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="badger\forms\calculator\CalculatorForm.Designer.cs">
+    <Compile Include="badger\calculator\CalculatorForm.Designer.cs">
       <DependentUpon>CalculatorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\calculator\ICalculator.cs" />
-    <Compile Include="badger\forms\calendar\CalendarControl.cs">
+    <Compile Include="badger\calculator\ICalculator.cs" />
+    <Compile Include="badger\calendar\CalendarControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="badger\forms\calendar\CalendarControl.Designer.cs">
+    <Compile Include="badger\calendar\CalendarControl.Designer.cs">
       <DependentUpon>CalendarControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\calendar\CalendarData.cs">
+    <Compile Include="badger\calendar\CalendarData.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="badger\forms\calendar\CalendarForm.cs">
+    <Compile Include="badger\calendar\CalendarForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="badger\forms\calendar\CalendarForm.Designer.cs">
+    <Compile Include="badger\calendar\CalendarForm.Designer.cs">
       <DependentUpon>CalendarForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\calendar\CalendarPanel.cs">
+    <Compile Include="badger\calendar\CalendarPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="badger\forms\chartdatagrid\ChartDataControl.cs">
+    <Compile Include="badger\chartdatagrid\ChartDataControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="badger\forms\chartdatagrid\ChartDataControl.Designer.cs">
+    <Compile Include="badger\chartdatagrid\ChartDataControl.Designer.cs">
       <DependentUpon>ChartDataControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\chartdatagrid\ChartDataForm.cs">
+    <Compile Include="badger\chartdatagrid\ChartDataForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="badger\forms\chartdatagrid\ChartDataForm.Designer.cs">
+    <Compile Include="badger\chartdatagrid\ChartDataForm.Designer.cs">
       <DependentUpon>ChartDataForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\clock\ClockControl.cs">
+    <Compile Include="badger\clock\ClockControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="badger\forms\clock\ClockControl.Designer.cs">
+    <Compile Include="badger\clock\ClockControl.Designer.cs">
       <DependentUpon>ClockControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\clock\ClockPanel.cs">
+    <Compile Include="badger\clock\ClockPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\clock\IClock.cs" />
-    <Compile Include="badger\forms\closebox\ClosePanel.cs">
+    <Compile Include="badger\clock\IClock.cs" />
+    <Compile Include="badger\closebox\ClosePanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\combobox\ComboBoxData.cs">
+    <Compile Include="badger\combobox\ComboBoxData.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\combobox\ComboBoxPanel.cs">
+    <Compile Include="badger\combobox\ComboBoxPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\combobox\IComboBox.cs" />
-    <Compile Include="badger\forms\control\ControlBase.cs">
+    <Compile Include="badger\combobox\IComboBox.cs" />
+    <Compile Include="badger\control\ControlBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="badger\forms\control\ControlBase.Designer.cs">
+    <Compile Include="badger\control\ControlBase.Designer.cs">
       <DependentUpon>ControlBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\control\ControlData.cs">
+    <Compile Include="badger\control\ControlData.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="badger\forms\control\IDataControl.cs" />
-    <Compile Include="badger\forms\conversion\mdb\ConversionForm.cs">
+    <Compile Include="badger\control\IDataControl.cs" />
+    <Compile Include="badger\conversion\mdb\ConversionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="badger\forms\conversion\mdb\ConversionForm.Designer.cs">
+    <Compile Include="badger\conversion\mdb\ConversionForm.Designer.cs">
       <DependentUpon>ConversionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\dialog\browser\FileBrowser.cs">
+    <Compile Include="badger\dialog\browser\FileBrowser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="badger\forms\dialog\browser\FileBrowser.Designer.cs">
+    <Compile Include="badger\dialog\browser\FileBrowser.Designer.cs">
       <DependentUpon>FileBrowser.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\dialog\column\ColumnConfiguration.cs">
+    <Compile Include="badger\dialog\column\ColumnConfiguration.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="badger\forms\dialog\column\ColumnConfiguration.Designer.cs">
+    <Compile Include="badger\dialog\column\ColumnConfiguration.Designer.cs">
       <DependentUpon>ColumnConfiguration.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\dialog\error\Error.cs">
+    <Compile Include="badger\dialog\error\Error.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="badger\forms\dialog\error\Error.Designer.cs">
+    <Compile Include="badger\dialog\error\Error.Designer.cs">
       <DependentUpon>Error.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\dialog\excel\ExcelBrowser.cs">
+    <Compile Include="badger\dialog\excel\ExcelBrowser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="badger\forms\dialog\excel\ExcelBrowser.Designer.cs">
+    <Compile Include="badger\dialog\excel\ExcelBrowser.Designer.cs">
       <DependentUpon>ExcelBrowser.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\dialog\message\Message.cs">
+    <Compile Include="badger\dialog\message\Message.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="badger\forms\dialog\message\Message.Designer.cs">
+    <Compile Include="badger\dialog\message\Message.Designer.cs">
       <DependentUpon>Message.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\dropmenu\DropMenuPanel.cs">
+    <Compile Include="badger\dropmenu\DropMenuPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\dropmenu\IDropMenu.cs" />
-    <Compile Include="badger\forms\editor\EditControl.cs">
+    <Compile Include="badger\dropmenu\IDropMenu.cs" />
+    <Compile Include="badger\editor\EditControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="badger\forms\editor\EditControl.Designer.cs">
+    <Compile Include="badger\editor\EditControl.Designer.cs">
       <DependentUpon>EditControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\editor\EditForm.cs">
+    <Compile Include="badger\editor\EditForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="badger\forms\editor\EditForm.Designer.cs">
+    <Compile Include="badger\editor\EditForm.Designer.cs">
       <DependentUpon>EditForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\editor\RecordControl.cs">
+    <Compile Include="badger\editor\RecordControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="badger\forms\editor\RecordControl.Designer.cs">
+    <Compile Include="badger\editor\RecordControl.Designer.cs">
       <DependentUpon>RecordControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\editor\RecordForm.cs">
+    <Compile Include="badger\editor\RecordForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="badger\forms\editor\RecordForm.Designer.cs">
+    <Compile Include="badger\editor\RecordForm.Designer.cs">
       <DependentUpon>RecordForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\excel\ExcelData.cs">
+    <Compile Include="badger\excel\ExcelData.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="badger\forms\excel\ExcelForm.cs">
+    <Compile Include="badger\excel\ExcelForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="badger\forms\excel\ExcelForm.Designer.cs">
+    <Compile Include="badger\excel\ExcelForm.Designer.cs">
       <DependentUpon>ExcelForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\excel\sheet\ISpreadsheet.cs" />
-    <Compile Include="badger\forms\excel\sheet\RibbonPanel.cs">
+    <Compile Include="badger\excel\sheet\ISpreadsheet.cs" />
+    <Compile Include="badger\excel\sheet\RibbonPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\excel\sheet\SheetPanel.cs">
+    <Compile Include="badger\excel\sheet\SheetPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\flowpanel\FlowPanel.cs">
+    <Compile Include="badger\flowpanel\FlowPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\flowpanel\IFlowPanel.cs" />
-    <Compile Include="badger\forms\gridcontrol\budgetgrid\BudgetGridControl.cs">
+    <Compile Include="badger\flowpanel\IFlowPanel.cs" />
+    <Compile Include="badger\gridcontrol\budgetgrid\BudgetGridControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="badger\forms\gridcontrol\budgetgrid\BudgetGridControl.Designer.cs">
+    <Compile Include="badger\gridcontrol\budgetgrid\BudgetGridControl.Designer.cs">
       <DependentUpon>BudgetGridControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\gridcontrol\budgetgrid\BudgetGridData.cs">
+    <Compile Include="badger\gridcontrol\budgetgrid\BudgetGridData.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\gridcontrol\budgetgrid\BudgetGridPanel.cs">
+    <Compile Include="badger\gridcontrol\budgetgrid\BudgetGridPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\gridcontrol\budgetgrid\IBudgetGrid.cs" />
-    <Compile Include="badger\forms\gridcontrol\datagrid\DataGridControl.cs">
+    <Compile Include="badger\gridcontrol\budgetgrid\IBudgetGrid.cs" />
+    <Compile Include="badger\gridcontrol\datagrid\DataGridControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="badger\forms\gridcontrol\datagrid\DataGridControl.Designer.cs">
+    <Compile Include="badger\gridcontrol\datagrid\DataGridControl.Designer.cs">
       <DependentUpon>DataGridControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\gridcontrol\datagrid\DataGridPanel.cs">
+    <Compile Include="badger\gridcontrol\datagrid\DataGridPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\gridcontrol\datagrid\DataGridPanel.Designer.cs">
+    <Compile Include="badger\gridcontrol\datagrid\DataGridPanel.Designer.cs">
       <DependentUpon>DataGridPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\gridcontrol\datagrid\GridData.cs">
+    <Compile Include="badger\gridcontrol\datagrid\GridData.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\gridcontrol\datagrid\IDataGrid.cs" />
-    <Compile Include="badger\forms\groupbox\GroupBoxData.cs" />
-    <Compile Include="badger\forms\groupbox\GroupBoxPanel.cs" />
-    <Compile Include="badger\forms\groupbox\IGroupBox.cs" />
-    <Compile Include="badger\forms\hover\HoverBase.cs">
+    <Compile Include="badger\gridcontrol\datagrid\IDataGrid.cs" />
+    <Compile Include="badger\groupbox\GroupBoxData.cs" />
+    <Compile Include="badger\groupbox\GroupBoxPanel.cs" />
+    <Compile Include="badger\groupbox\IGroupBox.cs" />
+    <Compile Include="badger\hover\HoverBase.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\hover\HoverData.cs">
+    <Compile Include="badger\hover\HoverData.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\hover\IHover.cs" />
-    <Compile Include="badger\forms\hover\Info.cs" />
-    <Compile Include="badger\forms\label\ILabel.cs" />
-    <Compile Include="badger\forms\label\LabelData.cs" />
-    <Compile Include="badger\forms\label\LabelPanel.cs" />
-    <Compile Include="badger\forms\layout\ILayout.cs" />
-    <Compile Include="badger\forms\layout\LayoutPanel.cs" />
-    <Compile Include="badger\forms\listbox\IListBox.cs" />
-    <Compile Include="badger\forms\listbox\ListBoxControl.cs">
+    <Compile Include="badger\hover\IHover.cs" />
+    <Compile Include="badger\hover\Info.cs" />
+    <Compile Include="badger\label\ILabel.cs" />
+    <Compile Include="badger\label\LabelData.cs" />
+    <Compile Include="badger\label\LabelPanel.cs" />
+    <Compile Include="badger\layout\ILayout.cs" />
+    <Compile Include="badger\layout\LayoutPanel.cs" />
+    <Compile Include="badger\listbox\IListBox.cs" />
+    <Compile Include="badger\listbox\ListBoxControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="badger\forms\listbox\ListBoxControl.Designer.cs">
+    <Compile Include="badger\listbox\ListBoxControl.Designer.cs">
       <DependentUpon>ListBoxControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\listbox\ListBoxData.cs">
+    <Compile Include="badger\listbox\ListBoxData.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\listbox\ListPanel.cs">
+    <Compile Include="badger\listbox\ListPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\loader\Loader.cs">
+    <Compile Include="badger\loader\Loader.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="badger\forms\loader\Loader.Designer.cs">
+    <Compile Include="badger\loader\Loader.Designer.cs">
       <DependentUpon>Loader.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\main\BadgerMain.cs">
+    <Compile Include="badger\main\BadgerMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="badger\forms\main\BadgerMain.Designer.cs">
+    <Compile Include="badger\main\BadgerMain.Designer.cs">
       <DependentUpon>BadgerMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\metric\DataMetric.cs" />
-    <Compile Include="badger\forms\metric\imetric\IDataMetric.cs" />
-    <Compile Include="badger\forms\metric\imetric\IMetric.cs" />
-    <Compile Include="badger\forms\metric\MetricBase.cs" />
-    <Compile Include="badger\forms\notification\Notification.cs">
+    <Compile Include="badger\metric\DataMetric.cs" />
+    <Compile Include="badger\metric\imetric\IDataMetric.cs" />
+    <Compile Include="badger\metric\imetric\IMetric.cs" />
+    <Compile Include="badger\metric\MetricBase.cs" />
+    <Compile Include="badger\notification\Notification.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="badger\forms\notification\SplashConfig.cs">
+    <Compile Include="badger\notification\SplashConfig.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\pdf\PdfForm.cs">
+    <Compile Include="badger\pdf\PdfForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="badger\forms\pdf\PdfForm.Designer.cs">
+    <Compile Include="badger\pdf\PdfForm.Designer.cs">
       <DependentUpon>PdfForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\pdf\PdfPanel.cs">
+    <Compile Include="badger\pdf\PdfPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\picturebox\IPictureBox.cs" />
-    <Compile Include="badger\forms\picturebox\PicturePanel.cs">
+    <Compile Include="badger\picturebox\IPictureBox.cs" />
+    <Compile Include="badger\picturebox\PicturePanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\richtextbox\IRichTextBox.cs" />
-    <Compile Include="badger\forms\richtextbox\RichTextData.cs" />
-    <Compile Include="badger\forms\richtextbox\RichTextPanel.cs" />
-    <Compile Include="badger\forms\selector\SelectionControl.cs">
+    <Compile Include="badger\richtextbox\IRichTextBox.cs" />
+    <Compile Include="badger\richtextbox\RichTextData.cs" />
+    <Compile Include="badger\richtextbox\RichTextPanel.cs" />
+    <Compile Include="badger\selector\SelectionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="badger\forms\selector\SelectionControl.Designer.cs">
+    <Compile Include="badger\selector\SelectionControl.Designer.cs">
       <DependentUpon>SelectionControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\selector\SelectionPanel.cs">
+    <Compile Include="badger\selector\SelectionPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\splitter\ISplitter.cs" />
-    <Compile Include="badger\forms\splitter\SplitBase.cs">
+    <Compile Include="badger\splitter\ISplitter.cs" />
+    <Compile Include="badger\splitter\SplitBase.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\splitter\SplitPanel.cs">
+    <Compile Include="badger\splitter\SplitPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\streamer\IStreamer.cs" />
-    <Compile Include="badger\forms\streamer\Streamer.cs">
+    <Compile Include="badger\streamer\IStreamer.cs" />
+    <Compile Include="badger\streamer\Streamer.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\streamer\StreamerBase.cs">
+    <Compile Include="badger\streamer\StreamerBase.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\streamer\StreamerControl.cs">
+    <Compile Include="badger\streamer\StreamerControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="badger\forms\streamer\StreamerControl.Designer.cs">
+    <Compile Include="badger\streamer\StreamerControl.Designer.cs">
       <DependentUpon>StreamerControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\tabcontrol\ITabControl.cs" />
-    <Compile Include="badger\forms\tabcontrol\ITabPage.cs" />
-    <Compile Include="badger\forms\tabcontrol\TabControl.cs">
+    <Compile Include="badger\tabcontrol\ITabControl.cs" />
+    <Compile Include="badger\tabcontrol\ITabPage.cs" />
+    <Compile Include="badger\tabcontrol\TabControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="badger\forms\tabcontrol\TabControl.Designer.cs">
+    <Compile Include="badger\tabcontrol\TabControl.Designer.cs">
       <DependentUpon>TabControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\tabcontrol\TabPage.cs">
+    <Compile Include="badger\tabcontrol\TabPage.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\tabcontrol\TabPanel.cs">
+    <Compile Include="badger\tabcontrol\TabPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\textbox\ITextBox.cs" />
-    <Compile Include="badger\forms\textbox\TextBoxData.cs" />
-    <Compile Include="badger\forms\textbox\TextBoxPanel.cs" />
-    <Compile Include="badger\forms\tilelayout\TileLayoutControl.cs">
+    <Compile Include="badger\textbox\ITextBox.cs" />
+    <Compile Include="badger\textbox\TextBoxData.cs" />
+    <Compile Include="badger\textbox\TextBoxPanel.cs" />
+    <Compile Include="badger\tilelayout\TileLayoutControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="badger\forms\tilelayout\TileLayoutControl.Designer.cs">
+    <Compile Include="badger\tilelayout\TileLayoutControl.Designer.cs">
       <DependentUpon>TileLayoutControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\tilelayout\TilePanel.cs">
+    <Compile Include="badger\tilelayout\TilePanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\toolbar\BarButton.cs">
+    <Compile Include="badger\toolbar\BarButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\toolbar\BarButtonBase.cs">
+    <Compile Include="badger\toolbar\BarButtonBase.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\toolbar\BarComboBase.cs">
+    <Compile Include="badger\toolbar\BarComboBase.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\toolbar\BarComboBox.cs">
+    <Compile Include="badger\toolbar\BarComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\toolbar\BarLabel.cs">
+    <Compile Include="badger\toolbar\BarLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\toolbar\BarLabelBase.cs">
+    <Compile Include="badger\toolbar\BarLabelBase.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\toolbar\BarProgress.cs">
+    <Compile Include="badger\toolbar\BarProgress.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\toolbar\BarTextBox.cs">
+    <Compile Include="badger\toolbar\BarTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\toolbar\IBarButton.cs" />
-    <Compile Include="badger\forms\toolbar\IBarComboBox.cs" />
-    <Compile Include="badger\forms\toolbar\IBarLabel.cs" />
-    <Compile Include="badger\forms\toolbar\IBarTextBox.cs" />
-    <Compile Include="badger\forms\toolbar\IToolBar.cs" />
-    <Compile Include="badger\forms\toolbar\ToolBarControl.cs">
+    <Compile Include="badger\toolbar\IBarButton.cs" />
+    <Compile Include="badger\toolbar\IBarComboBox.cs" />
+    <Compile Include="badger\toolbar\IBarLabel.cs" />
+    <Compile Include="badger\toolbar\IBarTextBox.cs" />
+    <Compile Include="badger\toolbar\IToolBar.cs" />
+    <Compile Include="badger\toolbar\ToolBarControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="badger\forms\toolbar\ToolBarControl.Designer.cs">
+    <Compile Include="badger\toolbar\ToolBarControl.Designer.cs">
       <DependentUpon>ToolBarControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="badger\forms\toolbar\ToolPanel.cs">
+    <Compile Include="badger\toolbar\ToolPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\toolbar\ToolPanelBase.cs">
+    <Compile Include="badger\toolbar\ToolPanelBase.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\toolbar\ToolPanelData.cs">
+    <Compile Include="badger\toolbar\ToolPanelData.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\toolbar\ToolSeparator.cs">
+    <Compile Include="badger\toolbar\ToolSeparator.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\tooltip\ToolTip.cs">
+    <Compile Include="badger\tooltip\ToolTip.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="badger\image\BudgetImage.cs" />
@@ -615,23 +615,23 @@
     <Compile Include="badger\image\ImageList.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\tile\ButtonTilePanel.cs">
+    <Compile Include="badger\tile\ButtonTilePanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\tile\IButtonTile.cs" />
-    <Compile Include="badger\forms\tile\IPulsingTile.cs" />
-    <Compile Include="badger\forms\tile\IRotatingTile.cs" />
-    <Compile Include="badger\forms\tile\ITile.cs" />
-    <Compile Include="badger\forms\tile\PulsingTilePanel.cs">
+    <Compile Include="badger\tile\IButtonTile.cs" />
+    <Compile Include="badger\tile\IPulsingTile.cs" />
+    <Compile Include="badger\tile\IRotatingTile.cs" />
+    <Compile Include="badger\tile\ITile.cs" />
+    <Compile Include="badger\tile\PulsingTilePanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\tile\RotatingTilePanel.cs">
+    <Compile Include="badger\tile\RotatingTilePanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\tile\TileBase.cs">
+    <Compile Include="badger\tile\TileBase.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\forms\tile\TileConfig.cs">
+    <Compile Include="badger\tile\TileConfig.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="data\adapter\AdapterBuilder.cs">
@@ -885,97 +885,97 @@
     <Compile Include="ninja\writer\FileWriter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="badger\forms\budgetchart\BudgetChartControl.resx">
+    <EmbeddedResource Include="badger\budgetchart\BudgetChartControl.resx">
       <DependentUpon>BudgetChartControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\calculator\CalculationControl.resx">
+    <EmbeddedResource Include="badger\calculator\CalculationControl.resx">
       <DependentUpon>CalculationControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\calculator\CalculatorForm.resx">
+    <EmbeddedResource Include="badger\calculator\CalculatorForm.resx">
       <DependentUpon>CalculatorForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\calendar\CalendarControl.resx">
+    <EmbeddedResource Include="badger\calendar\CalendarControl.resx">
       <DependentUpon>CalendarControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\calendar\CalendarForm.resx">
+    <EmbeddedResource Include="badger\calendar\CalendarForm.resx">
       <DependentUpon>CalendarForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\chartdatagrid\ChartDataControl.resx">
+    <EmbeddedResource Include="badger\chartdatagrid\ChartDataControl.resx">
       <DependentUpon>ChartDataControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\chartdatagrid\ChartDataForm.resx">
+    <EmbeddedResource Include="badger\chartdatagrid\ChartDataForm.resx">
       <DependentUpon>ChartDataForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\clock\ClockControl.resx">
+    <EmbeddedResource Include="badger\clock\ClockControl.resx">
       <DependentUpon>ClockControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\control\ControlBase.resx">
+    <EmbeddedResource Include="badger\control\ControlBase.resx">
       <DependentUpon>ControlBase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\conversion\mdb\ConversionForm.resx">
+    <EmbeddedResource Include="badger\conversion\mdb\ConversionForm.resx">
       <DependentUpon>ConversionForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\dialog\browser\FileBrowser.resx">
+    <EmbeddedResource Include="badger\dialog\browser\FileBrowser.resx">
       <DependentUpon>FileBrowser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\dialog\column\ColumnConfiguration.resx">
+    <EmbeddedResource Include="badger\dialog\column\ColumnConfiguration.resx">
       <DependentUpon>ColumnConfiguration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\dialog\error\Error.resx">
+    <EmbeddedResource Include="badger\dialog\error\Error.resx">
       <DependentUpon>Error.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\dialog\excel\ExcelBrowser.resx">
+    <EmbeddedResource Include="badger\dialog\excel\ExcelBrowser.resx">
       <DependentUpon>ExcelBrowser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\dialog\message\Message.resx">
+    <EmbeddedResource Include="badger\dialog\message\Message.resx">
       <DependentUpon>Message.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\editor\EditControl.resx">
+    <EmbeddedResource Include="badger\editor\EditControl.resx">
       <DependentUpon>EditControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\editor\EditForm.resx">
+    <EmbeddedResource Include="badger\editor\EditForm.resx">
       <DependentUpon>EditForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\editor\RecordControl.resx">
+    <EmbeddedResource Include="badger\editor\RecordControl.resx">
       <DependentUpon>RecordControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\editor\RecordForm.resx">
+    <EmbeddedResource Include="badger\editor\RecordForm.resx">
       <DependentUpon>RecordForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\excel\ExcelForm.resx">
+    <EmbeddedResource Include="badger\excel\ExcelForm.resx">
       <DependentUpon>ExcelForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\gridcontrol\budgetgrid\BudgetGridControl.resx">
+    <EmbeddedResource Include="badger\gridcontrol\budgetgrid\BudgetGridControl.resx">
       <DependentUpon>BudgetGridControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\gridcontrol\datagrid\DataGridControl.resx">
+    <EmbeddedResource Include="badger\gridcontrol\datagrid\DataGridControl.resx">
       <DependentUpon>DataGridControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\listbox\ListBoxControl.resx">
+    <EmbeddedResource Include="badger\listbox\ListBoxControl.resx">
       <DependentUpon>ListBoxControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\loader\Loader.resx">
+    <EmbeddedResource Include="badger\loader\Loader.resx">
       <DependentUpon>Loader.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\main\BadgerMain.resx">
+    <EmbeddedResource Include="badger\main\BadgerMain.resx">
       <DependentUpon>BadgerMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\pdf\PdfForm.resx">
+    <EmbeddedResource Include="badger\pdf\PdfForm.resx">
       <DependentUpon>PdfForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\selector\SelectionControl.resx">
+    <EmbeddedResource Include="badger\selector\SelectionControl.resx">
       <DependentUpon>SelectionControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\streamer\StreamerControl.resx">
+    <EmbeddedResource Include="badger\streamer\StreamerControl.resx">
       <DependentUpon>StreamerControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\tabcontrol\TabControl.resx">
+    <EmbeddedResource Include="badger\tabcontrol\TabControl.resx">
       <DependentUpon>TabControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\tilelayout\TileLayoutControl.resx">
+    <EmbeddedResource Include="badger\tilelayout\TileLayoutControl.resx">
       <DependentUpon>TileLayoutControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="badger\forms\toolbar\ToolBarControl.resx">
+    <EmbeddedResource Include="badger\toolbar\ToolBarControl.resx">
       <DependentUpon>ToolBarControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
