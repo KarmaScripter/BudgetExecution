@@ -1,6 +1,6 @@
-﻿// // <copyright file = "IClock.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+﻿// <copyright file = "IClock.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 using System.Drawing;
 using Syncfusion.Windows.Forms.Tools;

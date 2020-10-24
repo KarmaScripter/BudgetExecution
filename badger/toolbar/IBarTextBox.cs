@@ -1,6 +1,6 @@
-﻿// // <copyright file = "IBarTextBox.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+﻿// <copyright file = "IBarTextBox.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 using System.Windows.Forms;
 
