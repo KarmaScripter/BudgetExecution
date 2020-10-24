@@ -19,6 +19,8 @@ namespace BudgetExecution
     /// <summary>
     /// 
     /// </summary>
+    /// <seealso cref="BudgetExecution.FileBase" />
+    /// <seealso cref="BudgetExecution.IFile" />
     /// <seealso cref="FileBase" />
     [ SuppressMessage( "ReSharper", "UseObjectOrCollectionInitializer" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
@@ -30,14 +32,14 @@ namespace BudgetExecution
         // ***************************************************************************************************************************
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DataFile"/> class.
+        /// Initializes a new instance of the <see cref="DataFile" /> class.
         /// </summary>
         public DataFile()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DataFile"/> class.
+        /// Initializes a new instance of the <see cref="DataFile" /> class.
         /// </summary>
         /// <param name="input">The input.</param>
         public DataFile( string input )
@@ -54,10 +56,10 @@ namespace BudgetExecution
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DataFile"/> class.
+        /// Initializes a new instance of the <see cref="DataFile" /> class.
         /// </summary>
         /// <param name="path">The path.</param>
-        public DataFile( IPath path )
+        public DataFile( IDataPath path )
         {
             Path = path;
             FileInfo = new FileInfo( Path.GetFullPath() );
@@ -74,6 +76,11 @@ namespace BudgetExecution
         // ****************************************************    MEMBERS    ********************************************************
         // ***************************************************************************************************************************
 
+        /// <summary>
+        /// Creates the specified filepath.
+        /// </summary>
+        /// <param name="filepath">The filepath.</param>
+        /// <returns></returns>
         public static FileInfo Create( string filepath )
         {
             try
@@ -196,10 +203,12 @@ namespace BudgetExecution
             return default;
         }
 
-        /// <summary>Returns a string that
+        /// <summary>
+        /// Returns a string that
         /// represents the current object.
         /// </summary>
-        /// <returns>A string that represents
+        /// <returns>
+        /// A string that represents
         /// the current object.
         /// </returns>
         public override string ToString()
@@ -240,7 +249,7 @@ namespace BudgetExecution
         /// Gets the data path.
         /// </summary>
         /// <returns></returns>
-        public IPath GetDataPath()
+        public IDataPath GetDataPath()
         {
             try
             {

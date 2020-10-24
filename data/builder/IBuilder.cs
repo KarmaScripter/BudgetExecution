@@ -77,15 +77,15 @@ namespace BudgetExecution
         /// <summary>
         /// Gets the query.
         /// </summary>
-        /// <param name = "connectionbuilder" >
-        /// The connectionbuilder.
+        /// <param name = "connectbuilder" >
+        /// The connection builder.
         /// </param>
         /// <param name = "sqlstatement" >
-        /// The sqlstatement.
+        /// The sql statement.
         /// </param>
         /// <returns>
         /// </returns>
-        IQuery GetQuery( IConnectionBuilder connectionbuilder, ISqlStatement sqlstatement );
+        IQuery GetQuery( IConnectionBuilder connectbuilder, ISqlStatement sqlstatement );
 
         /// <summary>
         /// Gets the data.

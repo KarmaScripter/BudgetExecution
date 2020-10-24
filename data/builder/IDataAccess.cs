@@ -30,10 +30,10 @@ namespace BudgetExecution
         /// <summary>
         /// Gets the query.
         /// </summary>
-        /// <param name="connectionbuilder">The connectionbuilder.</param>
-        /// <param name="sqlstatement">The sqlstatement.</param>
+        /// <param name="connectbuilder">The connect builder.</param>
+        /// <param name="sqlstatement">The sql statement.</param>
         /// <returns></returns>
-        IQuery GetQuery( IConnectionBuilder connectionbuilder, ISqlStatement sqlstatement );
+        IQuery GetQuery( IConnectionBuilder connectbuilder, ISqlStatement sqlstatement );
 
         /// <summary>
         /// Gets the record.
@@ -76,7 +76,9 @@ namespace BudgetExecution
         /// Gets the primary indexes.
         /// </summary>
         /// <param name="data">The data.</param>
-        /// <returns></returns>
+        /// <returns>
+        ///   <br />
+        /// </returns>
         IEnumerable<int> GetPrimaryIndexes( IEnumerable<DataRow> data );
 
         /// <summary>

@@ -872,7 +872,7 @@
     <Compile Include="ninja\outlay\workcode\WorkCode.cs" />
     <Compile Include="ninja\outlay\workcode\WorkCodeBase.cs" />
     <Compile Include="ninja\path\DataPath.cs" />
-    <Compile Include="ninja\path\IPath.cs" />
+    <Compile Include="ninja\path\IDataPath.cs" />
     <Compile Include="ninja\reader\ExcelReader.cs" />
     <Compile Include="ninja\reader\FileReader.cs" />
     <Compile Include="ninja\transfer\DataOp.cs" />

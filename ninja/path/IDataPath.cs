@@ -1,13 +1,17 @@
-﻿// <copyright file = "IPath.cs" company = "Terry D. Eppler">
+﻿// <copyright file = "IDataPath.cs" company = "Terry D. Eppler">
 // Copyright (c) Terry D. Eppler. All rights reserved.
 // </copyright>
 
 namespace BudgetExecution
 {
+    // ********************************************************************************************************************************
+    // *********************************************************  ASSEMBLIES   ********************************************************
+    // ********************************************************************************************************************************
+
     using System;
     using System.Threading;
 
-    public interface IPath
+    public interface IDataPath
     {
         /// <summary>
         /// Gets the name.
@@ -47,6 +51,11 @@ namespace BudgetExecution
         /// </returns>
         string ToString();
 
+        /// <summary>
+        /// Changes the extension.
+        /// </summary>
+        /// <param name="ext">The ext.</param>
+        /// <returns></returns>
         string ChangeExtension( string ext );
     }
 }
