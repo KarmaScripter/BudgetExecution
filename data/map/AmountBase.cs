@@ -63,7 +63,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        private protected string SetName( string colname )
+        private protected override string SetName( string colname )
         {
             if( Verify.Input( colname )
                 && Enum.GetNames( typeof( Numeric ) )?.Contains( colname ) == true )
@@ -189,7 +189,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        private protected Numeric GetNumeric( string name )
+        private protected Numeric SetNumeric( string name )
         {
             if( Verify.Input( name )
                 && Enum.GetNames( typeof( Numeric ) )?.Contains( name ) == true )
@@ -223,7 +223,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        private protected Numeric GetNumeric( DataRow data, string name )
+        private protected Numeric SetNumeric( DataRow data, string name )
         {
             if( data != null
                 && Verify.Input( name ) )
@@ -258,7 +258,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        private protected Numeric GetNumeric( Numeric numeric )
+        private protected Numeric SetNumeric( Numeric numeric )
         {
             try
             {
@@ -284,7 +284,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        private protected Numeric GetNumeric( DataRow data, Numeric numeric )
+        private protected Numeric SetNumeric( DataRow data, Numeric numeric )
         {
             if( data != null
                 && Verify.Numeric( numeric ) )
@@ -342,7 +342,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        private protected string GetValue( DataRow data, string value )
+        private protected string SetValue( DataRow data, string value )
         {
             if( data != null
                 && Verify.Input( value )
@@ -377,7 +377,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        private protected string GetValue( DataRow data, Numeric numeric )
+        private protected string SetValue( DataRow data, Numeric numeric )
         {
             if( data != null
                 && Verify.Numeric( numeric ) )
@@ -409,7 +409,9 @@ namespace BudgetExecution
         {
             try
             {
-                return Funding;
+                return Funding > 0.0 
+                    ? Funding 
+                    : 0.0;
             }
             catch( Exception ex )
             {

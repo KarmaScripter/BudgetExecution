@@ -54,7 +54,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        public override string GetName( string name )
+        private protected override string SetName( string name )
         {
             try
             {
@@ -77,7 +77,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        private protected string GetName( DataRow datarow )
+        private protected string SetName( DataRow datarow )
         {
             if( datarow != null )
             {
@@ -108,7 +108,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        private protected string GetName( PrimaryKey field )
+        private protected string SetName( PrimaryKey field )
         {
             if( Verify.Field( field ) )
             {
@@ -139,7 +139,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        private protected string GetName( DataRow datarow, PrimaryKey index )
+        private protected string SetName( DataRow datarow, PrimaryKey index )
         {
             if( Verify.Input( datarow?.ItemArray )
                 && Verify.Field( index ) )
@@ -170,7 +170,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        private protected PrimaryKey GetPrimaryKey( string keyname )
+        private protected PrimaryKey SetPrimaryKey( string keyname )
         {
             try
             {
@@ -195,7 +195,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        private protected PrimaryKey GetPrimaryKey( DataRow datarow )
+        private protected PrimaryKey SetPrimaryKey( DataRow datarow )
         {
             if( Verify.Input( datarow[ 0 ]?.ToString() ) )
             {
@@ -235,7 +235,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        private protected PrimaryKey GetPrimaryKey( PrimaryKey keyname )
+        private protected PrimaryKey SetPrimaryKey( PrimaryKey keyname )
         {
             try
             {
@@ -261,7 +261,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        private protected PrimaryKey GetPrimaryKey( DataRow data, PrimaryKey keyname )
+        private protected PrimaryKey SetPrimaryKey( DataRow data, PrimaryKey keyname )
         {
             if( Verify.Input( data?.ItemArray )
                 && Verify.Field( keyname ) )
@@ -292,7 +292,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        private protected int GetIndex( int value )
+        private protected int SetIndex( int value )
         {
             try
             {
@@ -318,7 +318,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        private protected int GetIndex( DataRow data, PrimaryKey key )
+        private protected int SetIndex( DataRow data, PrimaryKey key )
         {
             if( Verify.Input( data?.ItemArray )
                 && Verify.PrimaryKey( key ) )

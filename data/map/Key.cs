@@ -48,9 +48,9 @@ namespace BudgetExecution
         /// </param>
         public Key( KeyValuePair<string, object> kvp )
         {
-            Name = GetName( kvp.Key );
-            PrimaryKey = GetPrimaryKey( Name );
-            Index = GetIndex( int.Parse( kvp.Value.ToString() ) );
+            Name = SetName( kvp.Key );
+            PrimaryKey = SetPrimaryKey( Name );
+            Index = SetIndex( int.Parse( kvp.Value.ToString() ) );
             Data = Index.ToString();
         }
 
@@ -65,9 +65,9 @@ namespace BudgetExecution
         /// </param>
         public Key( string name, int value = 0 )
         {
-            PrimaryKey = GetPrimaryKey( name );
-            Name = GetName( name );
-            Index = GetIndex( value );
+            PrimaryKey = SetPrimaryKey( name );
+            Name = SetName( name );
+            Index = SetIndex( value );
             Data = Index.ToString();
         }
 
@@ -82,9 +82,9 @@ namespace BudgetExecution
         /// </param>
         public Key( DataRow data, PrimaryKey field )
         {
-            PrimaryKey = GetPrimaryKey( data, field );
-            Name = GetName( data, field );
-            Index = GetIndex( data, field );
+            PrimaryKey = SetPrimaryKey( data, field );
+            Name = SetName( data, field );
+            Index = SetIndex( data, field );
             Data = Index.ToString();
         }
 
@@ -99,9 +99,9 @@ namespace BudgetExecution
         /// </param>
         public Key( PrimaryKey field, string value = "0" )
         {
-            PrimaryKey = GetPrimaryKey( field );
-            Name = GetName( field );
-            Index = GetIndex( int.Parse( value ) );
+            PrimaryKey = SetPrimaryKey( field );
+            Name = SetName( field );
+            Index = SetIndex( int.Parse( value ) );
             Data = Index.ToString();
         }
 
@@ -113,9 +113,9 @@ namespace BudgetExecution
         /// </param>
         public Key( DataRow data )
         {
-            PrimaryKey = GetPrimaryKey( data );
-            Name = GetName( data );
-            Index = GetIndex( data, PrimaryKey );
+            PrimaryKey = SetPrimaryKey( data );
+            Name = SetName( data );
+            Index = SetIndex( data, PrimaryKey );
             Data = Index.ToString();
         }
 

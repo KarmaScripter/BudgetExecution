@@ -57,7 +57,7 @@ namespace BudgetExecution
         /// </summary>
         /// <returns>
         /// </returns>
-        public virtual string GetName( string name )
+        private protected virtual string SetName( string name )
         {
             try
             {
@@ -77,7 +77,7 @@ namespace BudgetExecution
         /// </summary>
         /// <returns>
         /// </returns>
-        public virtual object GetData( object data )
+        private protected virtual object SetData( object data )
         {
             try
             {
@@ -97,7 +97,7 @@ namespace BudgetExecution
         /// </summary>
         /// <param name="data">The data.</param>
         /// <returns></returns>
-        public virtual string GetValue( object data )
+        private protected virtual string SetValue( object data )
         {
             try
             {
@@ -134,7 +134,8 @@ namespace BudgetExecution
             {
                 try
                 {
-                    return unit.GetName()?.Equals( Name ) == true && unit.GetValue()?.Equals( Value ) == true;
+                    return unit.GetName()?.Equals( Name ) == true 
+                        && unit.GetValue()?.Equals( Value ) == true;
                 }
                 catch( Exception ex )
                 {

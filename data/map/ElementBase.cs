@@ -41,7 +41,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        public override string GetName( string colname )
+        private protected override string SetName( string colname )
         {
             if( Verify.Input( colname )
                 && Enum.GetNames( typeof( Field ) )?.Contains( colname ) == true )
@@ -73,7 +73,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        private protected string GetName( DataRow data, string colname )
+        private protected string SetName( DataRow data, string colname )
         {
             if( data != null
                 && Verify.Input( colname )

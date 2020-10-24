@@ -34,7 +34,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        private protected string SetName( string name )
+        private protected override string SetName( string name )
         {
             if( Verify.Input( name )
                 && Enum.GetNames( typeof( Date ) )?.Contains( name ) == true )
