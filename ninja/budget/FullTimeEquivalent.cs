@@ -2,13 +2,13 @@
 // Copyright (c) Terry D. Eppler. All rights reserved.
 // </copyright>
 
-using System;
-
 namespace BudgetExecution
 {
     // ******************************************************************************************************************************
     // ******************************************************   ASSEMBLIES   ********************************************************
     // ******************************************************************************************************************************
+
+    using System;
     using System.Data;
     using System.Threading;
 
@@ -53,7 +53,7 @@ namespace BudgetExecution
         /// Initializes a new instance of the <see cref = "FullTimeEquivalent"/> class.
         /// </summary>
         /// <param name = "builder" >
-        /// The databuilder.
+        /// The data builder.
         /// </param>
         public FullTimeEquivalent( IBuilder builder )
             : base( builder )
@@ -66,7 +66,7 @@ namespace BudgetExecution
         /// Initializes a new instance of the <see cref = "FullTimeEquivalent"/> class.
         /// </summary>
         /// <param name = "datarow" >
-        /// The datarow.
+        /// The data row.
         /// </param>
         public FullTimeEquivalent( DataRow datarow )
             : base( datarow )

@@ -25,14 +25,14 @@ namespace BudgetExecution
         // **************************************************************************************************************************
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FileWatcher"/> class.
+        /// Initializes a new instance of the <see cref="FileWatcher" /> class.
         /// </summary>
         public FileWatcher()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FileWatcher"/> class.
+        /// Initializes a new instance of the <see cref="FileWatcher" /> class.
         /// </summary>
         /// <param name="filepath">The filepath.</param>
         public FileWatcher( string filepath )
@@ -53,6 +53,12 @@ namespace BudgetExecution
         /// </value>
         private string Name { get; }
 
+        /// <summary>
+        /// Gets the data path.
+        /// </summary>
+        /// <value>
+        /// The data path.
+        /// </value>
         private IDataPath DataPath { get; }
 
         // **************************************************************************************************************************
@@ -97,7 +103,7 @@ namespace BudgetExecution
         /// Called when [changed].
         /// </summary>
         /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         public void OnChanged( object sender, EventArgs e )
         {
             try

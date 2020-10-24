@@ -74,7 +74,10 @@ namespace BudgetExecution
         {
             try
             {
-                var script = GetScriptFiles()?.Where( s => s.Equals( FileName ) )?.Select( s => s )?.Single();
+                var script = GetScriptFiles()
+                    ?.Where( s => s.Equals( FileName ) )
+                    ?.Select( s => s )
+                    ?.Single();
 
                 if( Verify.Input( script )
                     && File.Exists( script ) )

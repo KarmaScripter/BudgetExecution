@@ -38,7 +38,7 @@ namespace BudgetExecution
         /// The manager.
         /// </param>
         /// <param name = "commandtype" >
-        /// The commandtype.
+        /// The command type.
         /// </param>
         public SqlStatement( IConnectionBuilder builder, SQL commandtype = SQL.SELECT )
         {
@@ -72,7 +72,7 @@ namespace BudgetExecution
         /// The manager.
         /// </param>
         /// <param name = "command" >
-        /// The commandtype.
+        /// The command type.
         /// </param>
         /// <param name = "dict" >
         /// The dictionary.

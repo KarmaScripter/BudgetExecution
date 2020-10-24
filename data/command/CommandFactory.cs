@@ -27,12 +27,19 @@ namespace BudgetExecution
         // *********************************************      FIELDS    **************************************************************
         // ***************************************************************************************************************************
 
+        /// <summary>
+        /// The command builder
+        /// </summary>
         private readonly ICommandBuilder CommandBuilder;
 
         // ***************************************************************************************************************************
         // *********************************************   CONSTRUCTORS **************************************************************
         // ***************************************************************************************************************************
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CommandFactory"/> class.
+        /// </summary>
+        /// <param name="commandbuilder">The command builder.</param>
         public CommandFactory( ICommandBuilder commandbuilder )
         {
             CommandBuilder = commandbuilder;
@@ -58,9 +65,9 @@ namespace BudgetExecution
 
         /// <inheritdoc/>
         /// <summary>
-        /// Gets the create table command.
+        /// Gets the create tablename command.
         /// </summary>
-        /// <param name = "table" >
+        /// <param name = "tablename" >
         /// The tablename.
         /// </param>
         /// <param name = "columns" >
@@ -68,16 +75,16 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        public DbCommand GetCreateTableCommand( string table, IEnumerable<DataColumn> columns )
+        public DbCommand GetCreateTableCommand( string tablename, IEnumerable<DataColumn> columns )
         {
-            if( Verify.Input( table )
+            if( Verify.Input( tablename )
                 && Verify.Sequence( columns ) )
             {
                 try
                 {
                     var connectionbuilder = GetConnectionBuilder();
                     var provider = connectionbuilder.GetProvider();
-                    var sql = $"CREATE TABLE {table}";
+                    var sql = $"CREATE TABLE {tablename}";
 
                     if( Verify.Provider( provider )
                         && Verify.Input( sql ) )
@@ -129,9 +136,9 @@ namespace BudgetExecution
 
         /// <inheritdoc/>
         /// <summary>
-        /// Gets the create view command.
+        /// Gets the create viewname command.
         /// </summary>
-        /// <param name = "view" >
+        /// <param name = "viewname" >
         /// The tablename.
         /// </param>
         /// <param name = "columns" >
@@ -139,11 +146,11 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        public DbCommand GetCreateViewCommand( string view, IEnumerable<DataColumn> columns )
+        public DbCommand GetCreateViewCommand( string viewname, IEnumerable<DataColumn> columns )
         {
             var connectionbuilder = ConnectionFactory?.GetConnectionBuilder();
 
-            if( Verify.Input( view )
+            if( Verify.Input( viewname )
                 && columns?.Any() == true
                 && connectionbuilder != null
                 && connectionbuilder.GetProvider() != Provider.SqlCe )
@@ -151,7 +158,7 @@ namespace BudgetExecution
                 try
                 {
                     var provider = connectionbuilder.GetProvider();
-                    var sql = $"CREATE VIEW {view};";
+                    var sql = $"CREATE VIEW {viewname};";
 
                     switch( provider )
                     {
@@ -192,23 +199,23 @@ namespace BudgetExecution
 
         /// <inheritdoc/>
         /// <summary>
-        /// Gets the drop table command.
+        /// Gets the drop tablename command.
         /// </summary>
-        /// <param name = "datatable" >
-        /// The datatable.
+        /// <param name = "table" >
+        /// The table.
         /// </param>
         /// <returns>
         /// </returns>
-        public DbCommand GetDropTableCommand( DataTable datatable )
+        public DbCommand GetDropTableCommand( DataTable table )
         {
             var connectionbuilder = ConnectionFactory?.GetConnectionBuilder();
 
-            if( datatable != null
+            if( table != null
                 && connectionbuilder != null )
             {
                 try
                 {
-                    var sql = $"DROP {datatable.TableName};";
+                    var sql = $"DROP {table.TableName};";
                     var provider = connectionbuilder.GetProvider();
 
                     if( Verify.Input( sql )
@@ -263,26 +270,26 @@ namespace BudgetExecution
         /// <summary>
         /// Gets the alter command.
         /// </summary>
-        /// <param name = "datatable" >
-        /// The datatable.
+        /// <param name = "table" >
+        /// The table.
         /// </param>
         /// <param name = "column" >
         /// The column.
         /// </param>
         /// <returns>
         /// </returns>
-        public DbCommand GetAlterCommand( DataTable datatable, DataColumn column )
+        public DbCommand GetAlterCommand( DataTable table, DataColumn column )
         {
             var connectionbuilder = ConnectionFactory?.GetConnectionBuilder();
 
-            if( datatable != null
+            if( table != null
                 && column != null
                 && connectionbuilder != null )
             {
                 try
                 {
                     var provider = connectionbuilder?.GetProvider();
-                    var sql = $"ALTER TABLE {datatable.TableName} ADD COLUMN {column.ColumnName};";
+                    var sql = $"ALTER TABLE {table.TableName} ADD COLUMN {column.ColumnName};";
 
                     if( Verify.Input( sql )
                         && Enum.IsDefined( typeof( Provider ), provider ) )
@@ -336,24 +343,24 @@ namespace BudgetExecution
         /// <summary>
         /// Gets the alter command.
         /// </summary>
-        /// <param name = "datatable" >
-        /// The datatable.
+        /// <param name = "table" >
+        /// The table.
         /// </param>
         /// <param name = "name" >
         /// The name.
         /// </param>
         /// <returns>
         /// </returns>
-        public DbCommand GetAlterCommand( DataTable datatable, string name )
+        public DbCommand GetAlterCommand( DataTable table, string name )
         {
-            if( datatable != null
+            if( table != null
                 && Verify.Input( name )
                 && CommandBuilder != null )
             {
                 try
                 {
                     var provider = CommandBuilder?.GetProvider();
-                    var sql = $"ALTER TABLE {datatable.TableName} RENAME {name};";
+                    var sql = $"ALTER TABLE {table.TableName} RENAME {name};";
 
                     if( Enum.IsDefined( typeof( Provider ), provider )
                         && Verify.Input( sql ) )

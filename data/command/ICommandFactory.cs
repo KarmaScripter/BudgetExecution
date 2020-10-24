@@ -21,70 +21,70 @@ namespace BudgetExecution
 
         /// <inheritdoc/>
         /// <summary>
-        /// Gets the create table command.
+        /// Gets the create tablename command.
+        /// </summary>
+        /// <param name = "tablename" >
+        /// The tablename.
+        /// </param>
+        /// <param name = "columns" >
+        /// The columns.
+        /// </param>
+        /// <returns>
+        /// </returns>
+        DbCommand GetCreateTableCommand( string tablename, IEnumerable<DataColumn> columns );
+
+        /// <inheritdoc/>
+        /// <summary>
+        /// Gets the create viewname command.
+        /// </summary>
+        /// <param name = "viewname" >
+        /// The tablename.
+        /// </param>
+        /// <param name = "columns" >
+        /// The columns.
+        /// </param>
+        /// <returns>
+        /// </returns>
+        DbCommand GetCreateViewCommand( string viewname, IEnumerable<DataColumn> columns );
+
+        /// <inheritdoc/>
+        /// <summary>
+        /// Gets the drop tablename command.
         /// </summary>
         /// <param name = "table" >
-        /// The tablename.
-        /// </param>
-        /// <param name = "columns" >
-        /// The columns.
+        /// The table.
         /// </param>
         /// <returns>
         /// </returns>
-        DbCommand GetCreateTableCommand( string table, IEnumerable<DataColumn> columns );
-
-        /// <inheritdoc/>
-        /// <summary>
-        /// Gets the create view command.
-        /// </summary>
-        /// <param name = "view" >
-        /// The tablename.
-        /// </param>
-        /// <param name = "columns" >
-        /// The columns.
-        /// </param>
-        /// <returns>
-        /// </returns>
-        DbCommand GetCreateViewCommand( string view, IEnumerable<DataColumn> columns );
-
-        /// <inheritdoc/>
-        /// <summary>
-        /// Gets the drop table command.
-        /// </summary>
-        /// <param name = "datatable" >
-        /// The datatable.
-        /// </param>
-        /// <returns>
-        /// </returns>
-        DbCommand GetDropTableCommand( DataTable datatable );
+        DbCommand GetDropTableCommand( DataTable table );
 
         /// <inheritdoc/>
         /// <summary>
         /// Gets the alter command.
         /// </summary>
-        /// <param name = "datatable" >
-        /// The datatable.
+        /// <param name = "table" >
+        /// The table.
         /// </param>
         /// <param name = "column" >
         /// The column.
         /// </param>
         /// <returns>
         /// </returns>
-        DbCommand GetAlterCommand( DataTable datatable, DataColumn column );
+        DbCommand GetAlterCommand( DataTable table, DataColumn column );
 
         /// <inheritdoc/>
         /// <summary>
         /// Gets the alter command.
         /// </summary>
-        /// <param name = "datatable" >
-        /// The datatable.
+        /// <param name = "table" >
+        /// The table.
         /// </param>
         /// <param name = "name" >
         /// The name.
         /// </param>
         /// <returns>
         /// </returns>
-        DbCommand GetAlterCommand( DataTable datatable, string name );
+        DbCommand GetAlterCommand( DataTable table, string name );
 
         /// <summary>
         /// Gets the select command.
