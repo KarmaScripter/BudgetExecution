@@ -1262,7 +1262,6 @@
     <Content Include="badger\icons\navigation\png\BackUndo.png" />
     <Content Include="badger\icons\navigation\png\BottomLeft.png" />
     <Content Include="badger\icons\navigation\png\BottomRight.png" />
-    <Content Include="badger\icons\navigation\png\CircledCheckBox.png" />
     <Content Include="badger\icons\navigation\png\CircleDown.png" />
     <Content Include="badger\icons\navigation\png\CircleForward.png" />
     <Content Include="badger\icons\navigation\png\CircleNext.png" />
