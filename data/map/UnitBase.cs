@@ -96,7 +96,7 @@ namespace BudgetExecution
         {
             try
             {
-                Data = Verify.Input( data?.ToString() )
+                Data = Verify.Ref( data )
                     ? data
                     : default;
             }

@@ -354,16 +354,17 @@ namespace BudgetExecution
         /// </returns>
         private protected void SetValue( DataRow data, Numeric numeric )
         {
-            if( data != null
+            if( Verify.Row( data )
                 && Verify.Numeric( numeric ) )
             {
                 try
                 {
-                    var columns = data.Table.GetColumnNames();
+                    var columns = data.Table
+                        ?.GetColumnNames();
 
-                    Value = columns.Contains( numeric.ToString() )
+                    Value = columns?.Contains( numeric.ToString() ) == true
                         ? data[ $"{numeric}" ].ToString()
-                        : default;
+                        : Numeric.NS.ToString();
                 }
                 catch( Exception ex )
                 {
@@ -388,7 +389,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return 0;
+                return 0.0;
             }
         }
 

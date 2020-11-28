@@ -27,7 +27,7 @@ namespace BudgetExecution
         /// <value>
         /// The field.
         /// </value>
-        private protected Field Field { get; set; }
+        private protected Field Field { get; private set; }
 
         // **************************************************************************************************************************
         // ********************************************      METHODS    *************************************************************
