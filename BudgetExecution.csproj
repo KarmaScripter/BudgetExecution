@@ -607,14 +607,6 @@
     <Compile Include="badger\tooltip\ToolTip.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="badger\image\BudgetImage.cs" />
-    <Compile Include="badger\image\IBudgetImage.cs" />
-    <Compile Include="badger\image\ImageBuilder.cs" />
-    <Compile Include="badger\image\ImageConfig.cs" />
-    <Compile Include="badger\image\ImageFactory.cs" />
-    <Compile Include="badger\image\ImageList.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="badger\tile\ButtonTilePanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -634,6 +626,7 @@
     <Compile Include="badger\tile\TileConfig.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="badger\image\BudgetImage.cs" />
     <Compile Include="data\adapter\AdapterBuilder.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -721,6 +714,13 @@
     <Compile Include="badger\format\ColorForrmat.cs" />
     <Compile Include="badger\format\FontFormat.cs" />
     <Compile Include="badger\format\SizeFomat.cs" />
+    <Compile Include="badger\image\IBudgetImage.cs" />
+    <Compile Include="badger\image\ImageBuilder.cs" />
+    <Compile Include="badger\image\ImageConfig.cs" />
+    <Compile Include="badger\image\ImageFactory.cs" />
+    <Compile Include="badger\image\ImageList.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ninja\budget\FullTimeEquivalent.cs" />
     <Compile Include="ninja\budget\IFullTimeEquivalent.cs" />
     <Compile Include="ninja\budget\IProgramResultsCode.cs" />
@@ -734,41 +734,41 @@
     <Compile Include="ninja\budget\PrcBase.cs" />
     <Compile Include="ninja\budget\PrcConfig.cs" />
     <Compile Include="ninja\budget\RegionalAuthority.cs" />
-    <Compile Include="ninja\element\Account.cs" />
-    <Compile Include="ninja\element\AccountBase.cs" />
-    <Compile Include="ninja\element\Activity.cs" />
-    <Compile Include="ninja\element\AllowanceHolder.cs" />
-    <Compile Include="ninja\element\BudgetLevel.cs" />
-    <Compile Include="ninja\element\BudgetObjectClass.cs" />
-    <Compile Include="ninja\element\FinanceObjectClass.cs" />
-    <Compile Include="ninja\element\Fund.cs" />
-    <Compile Include="ninja\element\Goal.cs" />
-    <Compile Include="ninja\element\InformationTechnology.cs" />
-    <Compile Include="ninja\element\IAccount.cs" />
-    <Compile Include="ninja\element\IActivity.cs" />
-    <Compile Include="ninja\element\IAllowanceHolder.cs" />
-    <Compile Include="ninja\element\IBudgetLevel.cs" />
-    <Compile Include="ninja\element\IBudgetObjectClass.cs" />
-    <Compile Include="ninja\element\IFinanceObjectClass.cs" />
-    <Compile Include="ninja\element\IFund.cs" />
-    <Compile Include="ninja\element\IGoal.cs" />
-    <Compile Include="ninja\element\IInformationTechnology.cs" />
-    <Compile Include="ninja\element\INationalProgram.cs" />
-    <Compile Include="ninja\element\IObjective.cs" />
-    <Compile Include="ninja\element\IOrganization.cs" />
-    <Compile Include="ninja\element\IProgramArea.cs" />
-    <Compile Include="ninja\element\IProgramElement.cs" />
-    <Compile Include="ninja\element\IProgramProject.cs" />
-    <Compile Include="ninja\element\IResourcePlanningOffice.cs" />
-    <Compile Include="ninja\element\IResponsibilityCenter.cs" />
-    <Compile Include="ninja\element\NationalProgram.cs" />
-    <Compile Include="ninja\element\Objective.cs" />
-    <Compile Include="ninja\element\Organization.cs" />
-    <Compile Include="ninja\element\ProgramArea.cs" />
-    <Compile Include="ninja\element\ProgramBase.cs" />
-    <Compile Include="ninja\element\ProgramProject.cs" />
-    <Compile Include="ninja\element\ResourcePlanningOffice.cs" />
-    <Compile Include="ninja\element\ResponsibilityCenter.cs" />
+    <Compile Include="ninja\account\Account.cs" />
+    <Compile Include="ninja\account\AccountBase.cs" />
+    <Compile Include="ninja\account\Activity.cs" />
+    <Compile Include="ninja\account\AllowanceHolder.cs" />
+    <Compile Include="ninja\account\BudgetLevel.cs" />
+    <Compile Include="ninja\account\BudgetObjectClass.cs" />
+    <Compile Include="ninja\account\FinanceObjectClass.cs" />
+    <Compile Include="ninja\account\Fund.cs" />
+    <Compile Include="ninja\account\Goal.cs" />
+    <Compile Include="ninja\account\InformationTechnology.cs" />
+    <Compile Include="ninja\account\IAccount.cs" />
+    <Compile Include="ninja\account\IActivity.cs" />
+    <Compile Include="ninja\account\IAllowanceHolder.cs" />
+    <Compile Include="ninja\account\IBudgetLevel.cs" />
+    <Compile Include="ninja\account\IBudgetObjectClass.cs" />
+    <Compile Include="ninja\account\IFinanceObjectClass.cs" />
+    <Compile Include="ninja\account\IFund.cs" />
+    <Compile Include="ninja\account\IGoal.cs" />
+    <Compile Include="ninja\account\IInformationTechnology.cs" />
+    <Compile Include="ninja\account\INationalProgram.cs" />
+    <Compile Include="ninja\account\IObjective.cs" />
+    <Compile Include="ninja\account\IOrganization.cs" />
+    <Compile Include="ninja\account\IProgramArea.cs" />
+    <Compile Include="ninja\account\IProgramElement.cs" />
+    <Compile Include="ninja\account\IProgramProject.cs" />
+    <Compile Include="ninja\account\IResourcePlanningOffice.cs" />
+    <Compile Include="ninja\account\IResponsibilityCenter.cs" />
+    <Compile Include="ninja\account\NationalProgram.cs" />
+    <Compile Include="ninja\account\Objective.cs" />
+    <Compile Include="ninja\account\Organization.cs" />
+    <Compile Include="ninja\account\ProgramArea.cs" />
+    <Compile Include="ninja\account\ProgramBase.cs" />
+    <Compile Include="ninja\account\ProgramProject.cs" />
+    <Compile Include="ninja\account\ResourcePlanningOffice.cs" />
+    <Compile Include="ninja\account\ResponsibilityCenter.cs" />
     <Compile Include="ninja\budget\Awards.cs" />
     <Compile Include="ninja\budget\ISupplemental.cs" />
     <Compile Include="ninja\budget\Overtime.cs" />
@@ -785,6 +785,7 @@
     <Compile Include="ninja\excel\ExcelSettings.cs" />
     <Compile Include="ninja\excel\Grid.cs" />
     <Compile Include="ninja\excel\Heading.cs" />
+    <Compile Include="ninja\excel\IExcelBudget.cs" />
     <Compile Include="ninja\excel\IGrid.cs" />
     <Compile Include="ninja\excel\Section.cs" />
     <Compile Include="ninja\excel\IExcelOp.cs" />
@@ -797,7 +798,7 @@
     <Compile Include="ninja\excel\ReportFormat.cs" />
     <Compile Include="ninja\file\DataFile.cs" />
     <Compile Include="ninja\file\FileBase.cs" />
-    <Compile Include="ninja\file\IFile.cs" />
+    <Compile Include="ninja\file\IDataFile.cs" />
     <Compile Include="ninja\fiscalyear\BudgetFiscalYear.cs" />
     <Compile Include="ninja\fiscalyear\CalendarYear.cs" />
     <Compile Include="ninja\fiscalyear\FiscalYear.cs" />

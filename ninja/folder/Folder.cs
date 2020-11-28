@@ -37,10 +37,10 @@ namespace BudgetExecution
         /// <summary>
         /// Initializes a new instance of the <see cref="Folder"/> class.
         /// </summary>
-        /// <param name="file">The file.</param>
-        public Folder( IFile file )
+        /// <param name="datafile">The file.</param>
+        public Folder( IDataFile datafile )
         {
-            DataFile = file;
+            DataFile = datafile;
             DirectoryInfo = GetBaseDirectory();
             FolderName = DirectoryInfo.Name;
             FolderPath = DirectoryInfo.FullName;
@@ -169,7 +169,7 @@ namespace BudgetExecution
         /// Gets the data.
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<IFile> GetDataFiles()
+        public IEnumerable<IDataFile> GetDataFiles()
         {
             try
             {

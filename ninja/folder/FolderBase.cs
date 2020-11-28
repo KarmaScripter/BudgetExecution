@@ -33,7 +33,7 @@ namespace BudgetExecution
         /// <value>
         /// The data file.
         /// </value>
-        private protected IFile DataFile;
+        private protected IDataFile DataFile;
 
         /// <summary>
         /// The base stream

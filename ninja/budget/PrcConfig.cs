@@ -34,7 +34,7 @@ namespace BudgetExecution
         /// Initializes a new instance of the <see cref = "PrcConfig"/> class.
         /// </summary>
         /// <param name = "datarow" >
-        /// The datarow.
+        /// The data row.
         /// </param>
         public PrcConfig( DataRow datarow )
         {

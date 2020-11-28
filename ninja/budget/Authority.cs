@@ -359,7 +359,7 @@ namespace BudgetExecution
         /// </summary>
         /// <returns>
         /// </returns>
-        public Availability GetAvailability()
+        public FundAvailability GetAvailability()
         {
             try
             {
@@ -370,25 +370,25 @@ namespace BudgetExecution
                     try
                     {
                         var availability =
-                            (Availability)Enum.Parse( typeof( Availability ), bfy?.GetValue() );
+                            (FundAvailability)Enum.Parse( typeof( FundAvailability ), bfy?.GetValue() );
 
-                        return Verify.Availability( availability )
+                        return Enum.IsDefined( typeof( FundAvailability ), availability )
                             ? availability
-                            : default;
+                            : FundAvailability.NS;
                     }
                     catch( Exception ex )
                     {
                         Fail( ex );
-                        return default;
+                        return FundAvailability.NS;
                     }
                 }
 
-                return default;
+                return FundAvailability.NS;
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return FundAvailability.NS;
             }
         }
 

@@ -20,12 +20,12 @@ namespace BudgetExecution
     /// 
     /// </summary>
     /// <seealso cref="BudgetExecution.FileBase" />
-    /// <seealso cref="BudgetExecution.IFile" />
+    /// <seealso cref="IDataFile" />
     /// <seealso cref="FileBase" />
     [ SuppressMessage( "ReSharper", "UseObjectOrCollectionInitializer" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "AssignNullToNotNullAttribute" ) ]
-    public class DataFile : FileBase, IFile
+    public class DataFile : FileBase, IDataFile
     {
         // ***************************************************************************************************************************
         // ****************************************************  CONSTRUCTORS ********************************************************
@@ -329,7 +329,7 @@ namespace BudgetExecution
         /// Browses this instance.
         /// </summary>
         /// <returns></returns>
-        public static IFile Browse()
+        public static IDataFile Browse()
         {
             try
             {

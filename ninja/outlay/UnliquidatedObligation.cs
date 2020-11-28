@@ -25,7 +25,7 @@ namespace BudgetExecution
         /// <inheritdoc/>
         public UnliquidatedObligation()
         {
-            Type = ExpenseType.ULO;
+            Type = OutlayType.ULO;
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace BudgetExecution
         /// <value>
         /// The source.
         /// </value>
-        protected override Source Source { get; set; } = Source.UnliquidatedObligations;
+        protected override Source Source { get; set; } = Source.ULO;
 
         /// <summary>
         /// Gets the unliquidated obligation identifier.

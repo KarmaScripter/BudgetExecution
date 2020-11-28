@@ -42,7 +42,7 @@ namespace BudgetExecution
         /// Gets the date.
         /// </summary>
         /// <returns></returns>
-        Date GetDate();
+        EventDate GetDate();
 
         /// <summary>
         /// Converts to string.

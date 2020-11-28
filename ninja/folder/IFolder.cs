@@ -40,7 +40,7 @@ namespace BudgetExecution
         /// Gets the data.
         /// </summary>
         /// <returns></returns>
-        IEnumerable<IFile> GetDataFiles();
+        IEnumerable<IDataFile> GetDataFiles();
 
         /// <summary>
         /// Moves the specified folder's path.

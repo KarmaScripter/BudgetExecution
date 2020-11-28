@@ -133,36 +133,6 @@ namespace BudgetExecution
         // **************************************************************************************************************************
 
         /// <summary>
-        /// Sets the field.
-        /// </summary>
-        /// <param name = "data" >
-        /// The data.
-        /// </param>
-        /// <param name = "field" >
-        /// The field.
-        /// </param>
-        /// <returns>
-        /// </returns>
-        public string GetField( DataRow data, Field field )
-        {
-            if( data != null
-                && Verify.Field( field ) )
-            {
-                try
-                {
-                    return data.GetField( field );
-                }
-                catch( Exception ex )
-                {
-                    Fail( ex );
-                    return default;
-                }
-            }
-
-            return default;
-        }
-
-        /// <summary>
         /// Gets the PRC identifier.
         /// </summary>
         /// <returns>

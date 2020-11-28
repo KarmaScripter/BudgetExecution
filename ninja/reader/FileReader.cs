@@ -30,7 +30,7 @@ namespace BudgetExecution
         /// <summary>
         /// The file
         /// </summary>
-        private readonly IFile DataFile;
+        private readonly IDataFile DataFile;
 
         // ***************************************************************************************************************************
         // ****************************************************  CONSTRUCTORS ********************************************************
@@ -46,10 +46,10 @@ namespace BudgetExecution
         /// <summary>
         /// Initializes a new instance of the <see cref="FileReader"/> class.
         /// </summary>
-        /// <param name="file">The file.</param>
-        public FileReader( IFile file )
+        /// <param name="datafile">The file.</param>
+        public FileReader( IDataFile datafile )
         {
-            DataFile = file;
+            DataFile = datafile;
             FileInfo = DataFile.GetFileInfo();
         }
 

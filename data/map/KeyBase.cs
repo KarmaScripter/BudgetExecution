@@ -197,16 +197,16 @@ namespace BudgetExecution
         /// </returns>
         private protected PrimaryKey SetPrimaryKey( DataRow datarow )
         {
-            if( Verify.Input( datarow[ 0 ]?.ToString() ) )
+            if( Verify.Input( datarow?[ 0 ]?.ToString() ) )
             {
                 try
                 {
                     var columns = Enum.GetNames( typeof( PrimaryKey ) );
 
-                    if( columns?.Contains( datarow[ 0 ]?.ToString() ) == true )
+                    if( columns?.Contains( datarow?[ 0 ]?.ToString() ) == true )
                     {
-                        var field = (PrimaryKey)Enum.Parse( typeof( PrimaryKey ), datarow[ 0 ].ToString() );
-                        var names = datarow.Table?.GetColumnNames();
+                        var field = (PrimaryKey)Enum.Parse( typeof( PrimaryKey ), datarow?[ 0 ].ToString()! );
+                        var names = datarow?.Table?.GetColumnNames();
 
                         return names?.Contains( field.ToString() ) == true
                             ? field

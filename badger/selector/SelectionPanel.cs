@@ -223,20 +223,13 @@ namespace BudgetExecution
 
                         switch( Source )
                         {
+                            case Source.PRC:
                             case Source.ARD:
                             case Source.ECAD:
                             case Source.EJ:
                             case Source.LCARD:
                             case Source.LSASD:
-                            case Source.MDR:
-                            case Source.MSD:
-                            case Source.ORA:
-                            case Source.ORC:
-                            case Source.WCF:
-                            case Source.WD:
-                            case Source.WSA:
-                            case Source.XA:
-                            case Source.SEMD:
+                            case Source.MSR:
                             {
                                 using var form = new Message()
                                 {
@@ -246,47 +239,6 @@ namespace BudgetExecution
                                 form.ShowDialog();
                                 return;
                             }
-
-                            case Source.EPM:
-                            case Source.Contracts:
-                            case Source.Expenses:
-                            case Source.FTE:
-                            case Source.Grants:
-                            case Source.LUST:
-                            case Source.Payroll:
-                            case Source.SF6A:
-                            case Source.LustSupplemental:
-                            case Source.OilSpill:
-                            case Source.STAG:
-                            case Source.SiteTravel:
-                            case Source.Travel:
-                            case Source.Supplemental:
-                            case Source.Awards:
-                            case Source.Overtime:
-                            case Source.TimeOff:
-                            case Source.RegionAuthority:
-                            case Source.DivisionAuthority:
-                            case Source.TravelObligations:
-                            case Source.PayrollHours:
-                            case Source.Reimbursables:
-                            case Source.Utilization:
-                            case Source.SpecialAccounts:
-                            case Source.PRC:
-                            {
-                                using var summary = new Message();
-                                summary.ShowDialog();
-                                return;
-                            }
-
-                            case Source.Allocations:
-                            case Source.Accounts:
-                            case Source.ControlNumbers:
-                            case Source.WorkforceData:
-                            case Source.BudgetObjectClass:
-                            case Source.Activity:
-                            case Source.InformationTechnology:
-                            case Source.FinanceObjectClass:
-                                break;
                         }
                     }
                 }
