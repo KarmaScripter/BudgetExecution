@@ -43,8 +43,8 @@ namespace BudgetExecution
         /// </param>
         public Element( KeyValuePair<string, object> kvp )
         {
-            Name = SetName( kvp.Key );
-            Field = SetField( Name );
+            SetName( kvp.Key );
+            SetField( Name );
             SetValue( kvp.Value?.ToString() );
         }
 
@@ -59,8 +59,8 @@ namespace BudgetExecution
         /// </param>
         public Element( string name, string value = "" )
         {
-            Field = SetField( name );
-            Name = SetName( name );
+            SetField( name );
+            SetName( name );
             SetValue( value );
         }
 
@@ -75,8 +75,8 @@ namespace BudgetExecution
         /// </param>
         public Element( DataRow data, Field field )
         {
-            Field = SetField( data, field );
-            Name = SetName( data, field );
+            SetField( data, field );
+            SetName( data, field );
             Data = SetValue( data, field );
         }
 
@@ -91,8 +91,8 @@ namespace BudgetExecution
         /// </param>
         public Element( Field field, string value = "" )
         {
-            Field = SetField( field );
-            Name = SetName( Field );
+            SetField( field );
+            SetName( Field );
             SetValue( value );
         }
 
@@ -107,8 +107,8 @@ namespace BudgetExecution
         /// </param>
         public Element( DataRow data, string value )
         {
-            Field = SetField( data, value );
-            Name = SetName( data, value );
+            SetField( data, value );
+            SetName( data, value );
             Data = SetValue( data, value );
         }
 
@@ -123,8 +123,8 @@ namespace BudgetExecution
         /// </param>
         public Element( DataRow data, DataColumn column )
         {
-            Field = SetField( column.ColumnName );
-            Name = SetName( column.ColumnName );
+            SetField( column.ColumnName );
+            SetName( column.ColumnName );
             Data = SetValue( data, data[ column ].ToString() );
         }
 

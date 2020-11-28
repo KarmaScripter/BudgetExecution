@@ -49,9 +49,9 @@ namespace BudgetExecution
         /// <param name="kvp">The KVP.</param>
         public Time( KeyValuePair<string, object> kvp )
         {
-            Name = SetName( kvp.Key );
-            Date = SetDate( kvp.Key );
-            Day = SetDay( kvp.Value?.ToString() );
+            SetName( kvp.Key );
+            SetBudgetDate( kvp.Key );
+            SetDay( kvp.Value?.ToString() );
             Data = Day.ToString();
         }
 
@@ -62,9 +62,9 @@ namespace BudgetExecution
         /// <param name="value">The value.</param>
         public Time( string name, string value = "" )
         {
-            Name = SetName( name );
-            Date = SetDate( name );
-            Day = SetDay( value );
+            SetName( name );
+            SetBudgetDate( name );
+            SetDay( value );
             Data = Day.ToString();
         }
 
@@ -75,9 +75,9 @@ namespace BudgetExecution
         /// <param name="value">The value.</param>
         public Time( EventDate date, string value = "" )
         {
-            Name = SetName( date );
-            Date = SetDate( date.ToString() );
-            Day = SetDay( value );
+            SetName( date );
+            SetBudgetDate( date.ToString() );
+            SetDay( value );
             Data = Day.ToString();
         }
 
@@ -88,9 +88,9 @@ namespace BudgetExecution
         /// <param name="date">The date.</param>
         public Time( DataRow datarow, EventDate date )
         {
-            Date = SetDate( datarow, date );
-            Name = SetName( datarow, date );
-            Day = SetDay( datarow, date );
+            SetBudgetDate( datarow, date );
+            SetName( datarow, date );
+            SetDay( datarow, date );
             Data = Day.ToString();
         }
 
@@ -101,9 +101,9 @@ namespace BudgetExecution
         /// <param name="value">The value.</param>
         public Time( DataRow datarow, string value )
         {
-            Date = SetDate( datarow, value );
-            Name = SetName( datarow, value );
-            Day = SetDay( datarow, value );
+            SetBudgetDate( datarow, value );
+            SetName( datarow, value );
+            SetDay( datarow, value );
             Data = Day.ToString();
         }
 
@@ -114,31 +114,11 @@ namespace BudgetExecution
         /// <param name="column">The column.</param>
         public Time( DataRow datarow, DataColumn column )
         {
-            Date = SetDate( datarow, column.ColumnName );
-            Name = SetName( datarow, column.ColumnName );
-            Day = SetDay( datarow, datarow[ column ]?.ToString() );
+            SetBudgetDate( datarow, column.ColumnName );
+            SetName( datarow, column.ColumnName );
+            SetDay( datarow, datarow[ column ]?.ToString() );
             Data = Day.ToString();
         }
-
-        // **************************************************************************************************************************
-        // ********************************************      PROPERTIES    **********************************************************
-        // **************************************************************************************************************************
-
-        /// <summary>
-        /// Gets the date.
-        /// </summary>
-        /// <value>
-        /// The date.
-        /// </value>
-        private protected EventDate Date { get; set; }
-
-        /// <summary>
-        /// Gets the value.
-        /// </summary>
-        /// <value>
-        /// The value.
-        /// </value>
-        private protected DateTime Day { get; set; }
 
         // **************************************************************************************************************************
         // ********************************************      METHODS    *************************************************************
@@ -167,7 +147,7 @@ namespace BudgetExecution
         /// Gets the date.
         /// </summary>
         /// <returns></returns>
-        public EventDate GetDate()
+        public EventDate GetBudgetDate()
         {
             try
             {

@@ -38,9 +38,9 @@ namespace BudgetExecution
         /// <param name="kvp">The KVP.</param>
         public Unit( KeyValuePair<string, object> kvp )
         {
-            Name = SetName( kvp.Key );
-            Data = SetData( kvp.Value );
-            Value = SetValue( Data );
+            SetName( kvp.Key );
+            SetData( kvp.Value );
+            SetValue( Data );
         }
 
         // ***************************************************************************************************************************

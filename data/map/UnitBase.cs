@@ -30,7 +30,7 @@ namespace BudgetExecution
         /// <value>
         /// The name.
         /// </value>
-        protected string Name { get; set; }
+        private protected string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the value.
@@ -38,7 +38,7 @@ namespace BudgetExecution
         /// <value>
         /// The value.
         /// </value>
-        protected object Data { get; set; }
+        private protected object Data { get; set; }
 
         /// <summary>
         /// Gets or sets the value.
@@ -46,7 +46,23 @@ namespace BudgetExecution
         /// <value>
         /// The value.
         /// </value>
-        protected string Value { get; set; }
+        private protected string Value { get; set; }
+
+        /// <summary>
+        /// Gets or sets the date.
+        /// </summary>
+        /// <value>
+        /// The date.
+        /// </value>
+        private protected EventDate Date { get; set; }
+
+        /// <summary>
+        /// Gets or sets the day.
+        /// </summary>
+        /// <value>
+        /// The day.
+        /// </value>
+        private protected DateTime Day { get; set; }
 
         // **************************************************************************************************************************
         // ********************************************      METHODS    *************************************************************
@@ -57,18 +73,17 @@ namespace BudgetExecution
         /// </summary>
         /// <returns>
         /// </returns>
-        private protected virtual string SetName( string name )
+        private protected virtual void SetName( string name )
         {
             try
             {
-                return Verify.Input( name )
+                Name = Verify.Input( name )
                     ? name
                     : string.Empty;
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return string.Empty;
             }
         }
 
@@ -77,18 +92,35 @@ namespace BudgetExecution
         /// </summary>
         /// <returns>
         /// </returns>
-        private protected virtual object SetData( object data )
+        private protected virtual void SetData( object data )
         {
             try
             {
-                return Verify.Input( data?.ToString() )
+                Data = Verify.Input( data?.ToString() )
                     ? data
                     : default;
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+            }
+        }
+
+        /// <summary>
+        /// Sets the budget date.
+        /// </summary>
+        /// <param name="date">The date.</param>
+        private protected virtual void SetBudgetDate( EventDate date )
+        {
+            try
+            {
+                Date = Enum.IsDefined( typeof( EventDate ), date )
+                    ? date
+                    : EventDate.NS;
+            }
+            catch( Exception ex )
+            {
+                Fail( ex );
             }
         }
 
@@ -97,18 +129,17 @@ namespace BudgetExecution
         /// </summary>
         /// <param name="data">The data.</param>
         /// <returns></returns>
-        private protected virtual string SetValue( object data )
+        private protected virtual void SetValue( object data )
         {
             try
             {
-                return Verify.Input( data?.ToString() )
+                Value = Verify.Input( data?.ToString() )
                     ? data?.ToString()
                     : string.Empty;
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return string.Empty;
             }
         }
 

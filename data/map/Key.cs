@@ -48,9 +48,9 @@ namespace BudgetExecution
         /// </param>
         public Key( KeyValuePair<string, object> kvp )
         {
-            Name = SetName( kvp.Key );
-            PrimaryKey = SetPrimaryKey( Name );
-            Index = SetIndex( int.Parse( kvp.Value.ToString() ) );
+            SetName( kvp.Key );
+            SetPrimaryKey( Name );
+            SetIndex( int.Parse( kvp.Value.ToString() ) );
             Data = Index.ToString();
         }
 
@@ -65,9 +65,9 @@ namespace BudgetExecution
         /// </param>
         public Key( string name, int value = 0 )
         {
-            PrimaryKey = SetPrimaryKey( name );
-            Name = SetName( name );
-            Index = SetIndex( value );
+            SetPrimaryKey( name );
+            SetName( name );
+            SetIndex( value );
             Data = Index.ToString();
         }
 
@@ -82,9 +82,9 @@ namespace BudgetExecution
         /// </param>
         public Key( DataRow data, PrimaryKey field )
         {
-            PrimaryKey = SetPrimaryKey( data, field );
-            Name = SetName( data, field );
-            Index = SetIndex( data, field );
+            SetPrimaryKey( data, field );
+            SetName( data, field );
+            SetIndex( data, field );
             Data = Index.ToString();
         }
 
@@ -99,9 +99,9 @@ namespace BudgetExecution
         /// </param>
         public Key( PrimaryKey field, string value = "0" )
         {
-            PrimaryKey = SetPrimaryKey( field );
-            Name = SetName( field );
-            Index = SetIndex( int.Parse( value ) );
+            SetPrimaryKey( field );
+            SetName( field );
+            SetIndex( int.Parse( value ) );
             Data = Index.ToString();
         }
 
@@ -113,9 +113,9 @@ namespace BudgetExecution
         /// </param>
         public Key( DataRow data )
         {
-            PrimaryKey = SetPrimaryKey( data );
-            Name = SetName( data );
-            Index = SetIndex( data, PrimaryKey );
+            SetPrimaryKey( data );
+            SetName( data );
+            SetIndex( data, PrimaryKey );
             Data = Index.ToString();
         }
 
