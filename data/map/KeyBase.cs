@@ -54,7 +54,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        private protected override void SetName( string name )
+        public override void SetName( string name )
         {
             try
             {
@@ -85,9 +85,10 @@ namespace BudgetExecution
                     var colname = datarow[ 0 ].ToString();
                     var names = datarow?.Table?.GetColumnNames();
 
-                    Name = Verify.Input( colname ) && names?.Contains( colname ) == true
-                        ? colname
-                        : PrimaryKey.NS.ToString();
+                    Name = Verify.Input( colname ) 
+                        && names?.Contains( colname ) == true
+                            ? colname
+                            : PrimaryKey.NS.ToString();
                 }
                 catch( Exception ex )
                 {
@@ -166,7 +167,7 @@ namespace BudgetExecution
             {
                 var key = (PrimaryKey)Enum.Parse( typeof( PrimaryKey ), keyname );
 
-                PrimaryKey = !Enum.IsDefined( typeof( PrimaryKey ), key )
+                PrimaryKey = Enum.IsDefined( typeof( PrimaryKey ), key )
                     ? key
                     : PrimaryKey.NS;
             }
@@ -186,20 +187,24 @@ namespace BudgetExecution
         /// </returns>
         private protected void SetPrimaryKey( DataRow datarow )
         {
-            if( Verify.Input( datarow?[ 0 ]?.ToString() ) )
+            if( Verify.Row( datarow ) )
             {
                 try
                 {
                     var columns = Enum.GetNames( typeof( PrimaryKey ) );
 
-                    if( columns?.Contains( datarow?[ 0 ]?.ToString() ) == true )
+                    if( columns?.Contains( datarow[ 0 ]?.ToString() ) == true )
                     {
-                        var field = (PrimaryKey)Enum.Parse( typeof( PrimaryKey ), datarow?[ 0 ].ToString()! );
-                        var names = datarow?.Table?.GetColumnNames();
+                        var field = (PrimaryKey)Enum.Parse( typeof( PrimaryKey ), datarow[ 0 ].ToString() );
+                        var names = datarow.Table?.GetColumnNames();
 
                         PrimaryKey = names?.Contains( field.ToString() ) == true
                             ? field
                             : PrimaryKey.NS;
+                    }
+                    else
+                    {
+                        PrimaryKey = PrimaryKey.NS;
                     }
                 }
                 catch( Exception ex )

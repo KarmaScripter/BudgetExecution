@@ -62,6 +62,7 @@ namespace BudgetExecution
             SetField( name );
             SetName( name );
             SetValue( value );
+            SetData( name );
         }
 
         /// <summary>
@@ -77,7 +78,8 @@ namespace BudgetExecution
         {
             SetField( data, field );
             SetName( data, field );
-            Data = SetValue( data, field );
+            SetValue( data, field );
+            SetData( data, field );
         }
 
         /// <summary>
@@ -94,6 +96,7 @@ namespace BudgetExecution
             SetField( field );
             SetName( Field );
             SetValue( value );
+            SetData( value );
         }
 
         /// <summary>
@@ -109,7 +112,8 @@ namespace BudgetExecution
         {
             SetField( data, value );
             SetName( data, value );
-            Data = SetValue( data, value );
+            SetValue( data, value );
+            SetData( data, value );
         }
 
         /// <summary>
@@ -125,7 +129,8 @@ namespace BudgetExecution
         {
             SetField( column.ColumnName );
             SetName( column.ColumnName );
-            Data = SetValue( data, data[ column ].ToString() );
+            SetValue( data, data[ column ].ToString() );
+            SetData( data, column );
         }
 
         // ***************************************************************************************************************************
@@ -188,9 +193,7 @@ namespace BudgetExecution
         /// <summary>
         /// Determines whether the specified element is equal.
         /// </summary>
-        /// <param name = "unit" >
-        /// The element.
-        /// </param>
+        /// <param name = "element" > </param>
         /// <returns>
         /// <c>
         /// true
@@ -201,14 +204,14 @@ namespace BudgetExecution
         /// </c>
         /// .
         /// </returns>
-        public override bool IsEqual( IUnit unit )
+        public bool IsMatch( IElement element )
         {
-            if( unit != null )
+            if( Verify.Ref( element ) )
             {
                 try
                 {
-                    if( unit.GetValue().Equals( Value )
-                        && unit.GetName().Equals( Name ) )
+                    if( element.GetValue()?.Equals( Value ) == true
+                        && element.GetName()?.Equals( Name ) == true )
                     {
                         return true;
                     }
@@ -242,11 +245,11 @@ namespace BudgetExecution
         /// </c>
         /// .
         /// </returns>
-        public static bool IsEqual( IElement primary, IElement secondary )
+        public static bool IsMatch( IElement primary, IElement secondary )
         {
-            if( primary != null
+            if( Verify.Element( primary )
                 && primary != Default
-                && primary != null
+                && Verify.Element( secondary )
                 && secondary != Default )
             {
                 try

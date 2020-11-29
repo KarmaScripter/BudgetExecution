@@ -48,22 +48,6 @@ namespace BudgetExecution
         /// </value>
         private protected string Value { get; set; }
 
-        /// <summary>
-        /// Gets or sets the date.
-        /// </summary>
-        /// <value>
-        /// The date.
-        /// </value>
-        private protected EventDate Date { get; set; }
-
-        /// <summary>
-        /// Gets or sets the day.
-        /// </summary>
-        /// <value>
-        /// The day.
-        /// </value>
-        private protected DateTime Day { get; set; }
-
         // **************************************************************************************************************************
         // ********************************************      METHODS    *************************************************************
         // **************************************************************************************************************************
@@ -73,7 +57,7 @@ namespace BudgetExecution
         /// </summary>
         /// <returns>
         /// </returns>
-        private protected virtual void SetName( string name )
+        public virtual void SetName( string name )
         {
             try
             {
@@ -92,31 +76,13 @@ namespace BudgetExecution
         /// </summary>
         /// <returns>
         /// </returns>
-        private protected virtual void SetData( object data )
+        public virtual void SetData( object data )
         {
             try
             {
-                Data = Verify.Ref( data )
+                Data = Verify.Input( data?.ToString() )
                     ? data
                     : default;
-            }
-            catch( Exception ex )
-            {
-                Fail( ex );
-            }
-        }
-
-        /// <summary>
-        /// Sets the budget date.
-        /// </summary>
-        /// <param name="date">The date.</param>
-        private protected virtual void SetBudgetDate( EventDate date )
-        {
-            try
-            {
-                Date = Enum.IsDefined( typeof( EventDate ), date )
-                    ? date
-                    : EventDate.NS;
             }
             catch( Exception ex )
             {
@@ -129,7 +95,7 @@ namespace BudgetExecution
         /// </summary>
         /// <param name="data">The data.</param>
         /// <returns></returns>
-        private protected virtual void SetValue( object data )
+        public virtual void SetValue( object data )
         {
             try
             {
@@ -159,7 +125,7 @@ namespace BudgetExecution
         /// </c>
         /// .
         /// </returns>
-        public virtual bool IsEqual( IUnit unit )
+        public virtual bool IsMatch( IUnit unit )
         {
             if( Verify.Ref( unit ) )
             {

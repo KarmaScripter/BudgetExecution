@@ -2,18 +2,18 @@
 // Copyright (c) Terry D. Eppler. All rights reserved.
 // </copyright>
 
+using System;
+
 namespace BudgetExecution
 {
     // ******************************************************************************************************************************
     // ******************************************************   ASSEMBLIES   ********************************************************
     // ******************************************************************************************************************************
-
-    using System;
     using System.Data;
     using System.Threading;
 
     /// <summary>
-    /// Full-time equivalent (FullTimeEquivalent) or whole time equivalent (WTE) is a
+    /// Full-time equivalent (FTE) or whole time equivalent (WTE) is a
     /// unit that indicates the workload of an employed person (or student) in a way
     /// that makes workloads or class loads comparable across various contexts.
     /// FullTimeEquivalent is often used to measure a worker's or student's involvement
@@ -53,7 +53,7 @@ namespace BudgetExecution
         /// Initializes a new instance of the <see cref = "FullTimeEquivalent"/> class.
         /// </summary>
         /// <param name = "builder" >
-        /// The data builder.
+        /// The databuilder.
         /// </param>
         public FullTimeEquivalent( IBuilder builder )
             : base( builder )
@@ -66,7 +66,7 @@ namespace BudgetExecution
         /// Initializes a new instance of the <see cref = "FullTimeEquivalent"/> class.
         /// </summary>
         /// <param name = "datarow" >
-        /// The data row.
+        /// The datarow.
         /// </param>
         public FullTimeEquivalent( DataRow datarow )
             : base( datarow )

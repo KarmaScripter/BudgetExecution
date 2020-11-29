@@ -103,7 +103,7 @@ namespace BudgetExecution
         /// Initializes a new instance of the <see cref = "ProgramResultsCode"/> class.
         /// </summary>
         /// <param name = "datarow" >
-        /// The data row.
+        /// The datarow.
         /// </param>
         public ProgramResultsCode( DataRow datarow )
             : base( datarow )
@@ -160,7 +160,7 @@ namespace BudgetExecution
         /// <value>
         /// The source.
         /// </value>
-        protected override Source Source { get; set; } = Source.Allocations;
+        protected override Source Source { get; set; } = Source.PRC;
 
         /// <summary>
         /// Gets the amount.
@@ -288,10 +288,8 @@ namespace BudgetExecution
         {
             try
             {
-                var account = GetAccount();
-
-                return Verify.Input( account?.ToString() )
-                    ? account?.GetProgramArea()
+                return Verify.Input( GetAccount().ToString() )
+                    ? GetAccount().GetProgramArea()
                     : default;
             }
             catch( Exception ex )

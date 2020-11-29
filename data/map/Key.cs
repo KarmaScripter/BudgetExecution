@@ -114,7 +114,7 @@ namespace BudgetExecution
         public Key( DataRow data )
         {
             SetPrimaryKey( data );
-            SetName( data );
+            SetName( data, PrimaryKey );
             SetIndex( data, PrimaryKey );
             Data = Index.ToString();
         }
@@ -200,7 +200,7 @@ namespace BudgetExecution
         /// </c>
         /// .
         /// </returns>
-        public bool IsEqual( IKey key )
+        public bool IsMatch( IKey key )
         {
             if( key != null )
             {
@@ -237,7 +237,7 @@ namespace BudgetExecution
         /// </c>
         /// .
         /// </returns>
-        public static bool IsEqual( IKey primary, IKey secondary )
+        public static bool IsMatch( IKey primary, IKey secondary )
         {
             if( primary != null
                 && primary.GetIndex() > -1

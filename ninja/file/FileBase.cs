@@ -29,7 +29,7 @@ namespace BudgetExecution
         /// <summary>
         /// The path
         /// </summary>
-        private protected IDataPath Path;
+        private protected IPath Path;
 
         /// <summary>
         /// Gets or sets the name of the file.

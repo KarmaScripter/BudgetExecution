@@ -201,27 +201,20 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        private protected IConnectionBuilder SetConnectionBuilder( Source source, Provider provider )
+        private protected void SetConnectionBuilder( Source source, Provider provider )
         {
-            if( Verify.Source( source )
-                && Verify.Provider( provider ) )
+            if( Enum.IsDefined( typeof( Source ), source )
+                && Enum.IsDefined( typeof( Provider ), provider ) )
             {
                 try
                 {
-                    var connectionbuilder = new ConnectionBuilder( source, provider );
-
-                    return Verify.Input( connectionbuilder?.GetConnectionString() )
-                        ? connectionbuilder
-                        : default;
+                    ConnectionBuilder = new ConnectionBuilder( source, provider );
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
                 }
             }
-
-            return default;
         }
 
         /// <summary>
@@ -232,23 +225,20 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        private protected static IConnectionBuilder SetConnectionBuilder( string fullpath )
+        private protected void SetConnectionBuilder( string fullpath )
         {
             if( Verify.Input( fullpath )
                 && File.Exists( fullpath ) )
             {
                 try
                 {
-                    return new ConnectionBuilder( fullpath );
+                    ConnectionBuilder = new ConnectionBuilder( fullpath );
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
                 }
             }
-
-            return default;
         }
 
         /// <inheritdoc/>
@@ -344,8 +334,8 @@ namespace BudgetExecution
                     return SqlStatement?.GetCommandType() switch
                     {
                         SQL.SELECT => commandfactory?.GetSelectCommand(),
-                        SQL.INSERT => commandfactory?.GetInsertCommand(),
-                        SQL.UPDATE => commandfactory?.GetUpdateCommand(),
+                        SQL.INSERT => commandfactory?.GetSelectCommand(),
+                        SQL.UPDATE => commandfactory?.GetSelectCommand(),
                         SQL.DELETE => commandfactory?.GetDeleteCommand(),
                         _ => default
                     };

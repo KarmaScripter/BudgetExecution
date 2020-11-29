@@ -30,7 +30,7 @@ namespace BudgetExecution
         /// <summary>
         /// The file
         /// </summary>
-        private readonly IDataFile DataFile;
+        private readonly IFile DataFile;
 
         // ***************************************************************************************************************************
         // ****************************************************  CONSTRUCTORS ********************************************************
@@ -47,7 +47,7 @@ namespace BudgetExecution
         /// Initializes a new instance of the <see cref="FileWriter"/> class.
         /// </summary>
         /// <param name="datafile">The file.</param>
-        public FileWriter( IDataFile datafile )
+        public FileWriter( IFile datafile )
         {
             DataFile = datafile;
             FileStream = DataFile.GetBaseStream();

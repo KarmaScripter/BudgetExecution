@@ -25,7 +25,7 @@ namespace BudgetExecution
     /// <seealso cref = "BudgetConfig"/>
     [ SuppressMessage( "ReSharper", "SuggestBaseTypeForParameter" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
-    public class ExcelBudget : BudgetConfig, IExcelBudget
+    public class ExcelBudget : BudgetConfig
     {
         // ***************************************************************************************************************************
         // ****************************************************    FIELDS     ********************************************************
@@ -169,7 +169,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        public IControlNumber GetControlNumber( IFund fund, IBudgetFiscalYear fy )
+        private IControlNumber GetControlNumber( IFund fund, IBudgetFiscalYear fy )
         {
             if( fund != null
                 && fy != null )
@@ -300,16 +300,16 @@ namespace BudgetExecution
         /// </param>
         public void SetBudgetHeaderFormat( Grid grid )
         {
-            if( grid?.GetRange() != null )
+            if( grid != null )
             {
                 try
                 {
-                    using var range = grid.GetRange();
-                    range.Style.Font.Color.SetColor( Color.Black );
-                    range.Style.Font.SetFromFont( DataFont );
-                    range.Style.Fill.PatternType = ExcelFillStyle.Solid;
-                    range.Style.Fill.BackgroundColor.SetColor( PrimaryBackColor );
-                    range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
+                    using var rng = grid.GetRange();
+                    rng.Style.Font.Color.SetColor( Color.Black );
+                    rng.Style.Font.SetFromFont( DataFont );
+                    rng.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                    rng.Style.Fill.BackgroundColor.SetColor( PrimaryBackColor );
+                    rng.Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
                 }
                 catch( Exception ex )
                 {
@@ -358,7 +358,7 @@ namespace BudgetExecution
         /// <param name = "org" >
         /// The org.
         /// </param>
-        public void SetDataConfiguration( Grid grid, IFund fund, IOrganization org )
+        private void SetDataConfiguration( Grid grid, IFund fund, IOrganization org )
         {
             if( grid != null
                 && fund != null )
@@ -711,10 +711,11 @@ namespace BudgetExecution
         /// <param name = "kvp" >
         /// The KVP.
         /// </param>
-        public void PopulateAccountRows( Grid grid, ILookup<string, DataRow> code, IGrouping<string, DataRow> kvp )
+        public void PopulateAccountRows( Grid grid, ILookup<string, DataRow> code,
+            IGrouping<string, DataRow> kvp )
         {
-            if( grid?.GetWorksheet() != null
-                && grid?.GetRange() != null
+            if( grid.GetWorksheet() != null
+                && grid.GetRange() != null
                 && code != null
                 && kvp != null )
             {
@@ -737,8 +738,9 @@ namespace BudgetExecution
                             foreach( var p in code[ kvp.Key ] )
                             {
                                 worksheet.Cells[ row, col ].Value = p.Field<string>( $"{Field.AccountCode}" )
-                                    + " "
-                                    + p.Field<string>( $"{Field.OrgCode}" ).Replace( "0600", "-" );
+                                    + " " 
+                                    + p.Field<string>( $"{Field.OrgCode}" )
+                                        ?.Replace( "0600", "-" );
 
                                 worksheet.Cells[ row, col + 1 ].Value = site;
                                 worksheet.Cells[ row, col + 2 ].Value = travel;

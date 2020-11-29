@@ -21,6 +21,7 @@ namespace BudgetExecution
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeMadeStatic.Global" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBeProtected.Global" ) ]
     public class Query : QueryBase, IQuery
     {
         // ***************************************************************************************************************************
@@ -48,11 +49,11 @@ namespace BudgetExecution
         /// </param>
         public Query( Source source, Provider provider = Provider.SQLite, SQL commandtype = SQL.SELECT )
         {
-            ConnectionBuilder = SetConnectionBuilder( source, provider );
+            SetConnectionBuilder( source, provider );
             ConnectionFactory = new ConnectionFactory( ConnectionBuilder );
             SqlStatement = new SqlStatement( ConnectionBuilder, commandtype );
             CommandBuilder = new CommandBuilder( ConnectionBuilder, SqlStatement );
-            Adapter = new AdapterFactory( ConnectionBuilder, SqlStatement ).GetAdapter();
+            Adapter = new AdapterFactory( ConnectionBuilder, SqlStatement )?.GetAdapter();
             IsDisposed = false;
             Args = new Dictionary<string, object>();
         }
@@ -61,25 +62,25 @@ namespace BudgetExecution
         /// Initializes a new instance of the <see cref = "Query"/> class.
         /// </summary>
         /// <param name = "source" >
-        /// The source.
+        /// The source data.
         /// </param>
         /// <param name = "provider" >
-        /// The provider.
+        /// The provider used.
         /// </param>
         /// <param name = "dict" >
-        /// The dictionary.
+        /// The dictionary of parameters.
         /// </param>
         /// <param name = "commandtype" >
-        /// The commandtype.
+        /// The type of sql command.
         /// </param>
         public Query( Source source, Provider provider, IDictionary<string, object> dict,
             SQL commandtype )
         {
-            ConnectionBuilder = SetConnectionBuilder( source, provider );
+            SetConnectionBuilder( source, provider );
             ConnectionFactory = new ConnectionFactory( ConnectionBuilder );
             SqlStatement = new SqlStatement( ConnectionBuilder, dict, commandtype );
             CommandBuilder = new CommandBuilder( ConnectionBuilder, SqlStatement );
-            Adapter = new AdapterFactory( ConnectionBuilder, SqlStatement ).GetAdapter();
+            Adapter = new AdapterFactory( ConnectionBuilder, SqlStatement )?.GetAdapter();
             IsDisposed = false;
             Args = new Dictionary<string, object>();
         }
@@ -99,7 +100,7 @@ namespace BudgetExecution
             ConnectionFactory = new ConnectionFactory( ConnectionBuilder );
             SqlStatement = sqlstatement;
             CommandBuilder = new CommandBuilder( ConnectionBuilder, SqlStatement );
-            Adapter = new AdapterFactory( ConnectionBuilder, SqlStatement ).GetAdapter();
+            Adapter = new AdapterFactory( ConnectionBuilder, SqlStatement )?.GetAdapter();
             IsDisposed = false;
             Args = SqlStatement.GetArgs();
         }
@@ -118,13 +119,13 @@ namespace BudgetExecution
         /// </param>
         public Query( Source source, Provider provider, IDictionary<string, object> dict )
         {
-            ConnectionBuilder = SetConnectionBuilder( source, provider );
+            SetConnectionBuilder( source, provider );
             ConnectionFactory = new ConnectionFactory( ConnectionBuilder );
             SqlStatement = new SqlStatement( ConnectionBuilder, dict, SQL.SELECT );
             CommandBuilder = new CommandBuilder( ConnectionBuilder, SqlStatement );
-            Adapter = new AdapterFactory( ConnectionBuilder, SqlStatement ).GetAdapter();
+            Adapter = new AdapterFactory( ConnectionBuilder, SqlStatement )?.GetAdapter();
             IsDisposed = false;
-            Args = SqlStatement.GetArgs();
+            Args = SqlStatement?.GetArgs();
         }
 
         /// <summary>
@@ -138,11 +139,11 @@ namespace BudgetExecution
         /// </param>
         public Query( string fullpath, SQL commandtype = SQL.SELECT )
         {
-            ConnectionBuilder = SetConnectionBuilder( fullpath );
+            SetConnectionBuilder( fullpath );
             ConnectionFactory = new ConnectionFactory( ConnectionBuilder );
             SqlStatement = new SqlStatement( ConnectionBuilder, commandtype );
             CommandBuilder = new CommandBuilder( ConnectionBuilder, SqlStatement );
-            Adapter = new AdapterFactory( ConnectionBuilder, SqlStatement ).GetAdapter();
+            Adapter = new AdapterFactory( ConnectionBuilder, SqlStatement )?.GetAdapter();
             IsDisposed = false;
         }
 
@@ -160,13 +161,13 @@ namespace BudgetExecution
         /// </param>
         public Query( string fullpath, SQL commandtype, IDictionary<string, object> dict )
         {
-            ConnectionBuilder = SetConnectionBuilder( fullpath );
+            SetConnectionBuilder( fullpath );
             ConnectionFactory = new ConnectionFactory( ConnectionBuilder );
             SqlStatement = new SqlStatement( ConnectionBuilder, dict, commandtype );
             CommandBuilder = new CommandBuilder( ConnectionBuilder, SqlStatement );
-            Adapter = new AdapterFactory( ConnectionBuilder, SqlStatement ).GetAdapter();
+            Adapter = new AdapterFactory( ConnectionBuilder, SqlStatement )?.GetAdapter();
             IsDisposed = false;
-            Args = SqlStatement.GetArgs();
+            Args = SqlStatement?.GetArgs();
         }
 
         // ***************************************************************************************************************************
@@ -185,7 +186,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        public DbDataReader GetDataReader( DbCommand command,
+        public DbDataReader GetDataReader( DbCommand command, 
             CommandBehavior behavior = CommandBehavior.CloseConnection )
         {
             if( Command?.Connection != null

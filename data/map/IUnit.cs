@@ -4,12 +4,12 @@
 
 namespace BudgetExecution
 {
+    using System;
+    using System.Threading;
+
     // ******************************************************************************************************************************
     // ******************************************************   ASSEMBLIES   ********************************************************
     // ******************************************************************************************************************************
-
-    using System;
-    using System.Threading;
 
     public interface IUnit
     {
@@ -42,7 +42,7 @@ namespace BudgetExecution
         /// <returns>
         ///   <c>true</c> if the specified unit is equal; otherwise, <c>false</c>.
         /// </returns>
-        bool IsEqual( IUnit unit );
+        bool IsMatch( IUnit unit );
 
         /// <summary>
         /// Converts to string.

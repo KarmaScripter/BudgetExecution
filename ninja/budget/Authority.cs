@@ -372,23 +372,23 @@ namespace BudgetExecution
                         var availability =
                             (FundAvailability)Enum.Parse( typeof( FundAvailability ), bfy?.GetValue() );
 
-                        return Enum.IsDefined( typeof( FundAvailability ), availability )
+                        return Verify.Availability( availability )
                             ? availability
-                            : FundAvailability.NS;
+                            : default;
                     }
                     catch( Exception ex )
                     {
                         Fail( ex );
-                        return FundAvailability.NS;
+                        return default;
                     }
                 }
 
-                return FundAvailability.NS;
+                return default;
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return FundAvailability.NS;
+                return default;
             }
         }
 

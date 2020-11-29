@@ -1,6 +1,6 @@
-﻿// <copyright file = "SqlServerConverter.cs" company = "Terry D. Eppler">
-// Copyright (c) Terry D. Eppler. All rights reserved.
-// </copyright>
+﻿// // <copyright file = "SqlServerConverter.cs" company = "Terry D. Eppler">
+// // Copyright (c) Terry D. Eppler. All rights reserved.
+// // </copyright>
 
 namespace BudgetExecution
 {
@@ -22,8 +22,8 @@ namespace BudgetExecution
     using log4net;
 
     /// <summary>
-    /// This class is resposible to take a single SQL Server database and convert it to an SQLite
-    /// database file.
+    /// This class is responsible to take a single SQL Server database and convert it to
+    /// an SQLite database file.
     /// </summary>
     /// <remarks>
     /// The class knows how to convert table and index structures only.
@@ -303,8 +303,8 @@ namespace BudgetExecution
         /// <param name="val">The value.</param>
         /// <param name="columnschema">The columnschema.</param>
         /// <returns></returns>
-        /// <exception cref="ArgumentException">Illegal database type [" + Enum.GetName(typeof(DbType), dt)
-        /// + "]</exception>
+        /// <exception cref="ArgumentException">Illegal database type [" +
+        /// Enum.GetName(typeof(DbType), dt) + "]</exception>
         private object CastValueForColumn( object val, ColumnSchema columnschema )
         {
             if( val is DBNull )
@@ -594,7 +594,8 @@ namespace BudgetExecution
         /// </summary>
         /// <param name="cs">The cs.</param>
         /// <returns></returns>
-        /// <exception cref="ApplicationException">Illegal DB type found (" + cs.ColumnType + ")</exception>
+        /// <exception cref="ApplicationException">Illegal DB type found (" +
+        /// cs.ColumnType + ")</exception>
         private DbType GetDbTypeOfColumn( ColumnSchema cs )
         {
             switch( cs.ColumnType )
@@ -1494,7 +1495,8 @@ namespace BudgetExecution
         /// Validates the type of the data.
         /// </summary>
         /// <param name="datatype">The datatype.</param>
-        /// <exception cref="ApplicationException">Validation failed for data type [" + datatype + "]</exception>
+        /// <exception cref="ApplicationException">Validation failed for data type [" +
+        /// datatype + "]</exception>
         private void ValidateDataType( string datatype )
         {
             if( datatype == "int"
@@ -1625,8 +1627,8 @@ namespace BudgetExecution
         /// <param name="desc">The desc.</param>
         /// <param name="keys">The keys.</param>
         /// <returns></returns>
-        /// <exception cref="ApplicationException">Illegal key name [" + p + "] in index [" + indexname +
-        /// "]</exception>
+        /// <exception cref="ApplicationException">Illegal key name [" + p + "] in
+        /// index [" + indexname + "]</exception>
         private IndexSchema BuildIndexSchema( string indexname, string desc, string keys )
         {
             var res = new IndexSchema

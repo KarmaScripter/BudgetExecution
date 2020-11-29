@@ -44,12 +44,12 @@ namespace BudgetExecution
         /// <summary>
         /// Initializes a new instance of the <see cref = "BudgetFactory"/> class.
         /// </summary>
-        /// <param name = "excel" >
-        /// The excel budget.
+        /// <param name = "excelbudget" >
+        /// The excelbudget.
         /// </param>
-        public BudgetFactory( ExcelBudget excel )
+        public BudgetFactory( ExcelBudget excelbudget )
         {
-            Budget = excel;
+            Budget = excelbudget;
             Worksheet = Budget.GetWorkSheet();
             Allocation = Budget.GetAllocation();
             Authority = Allocation.GetAuthority();
@@ -86,44 +86,42 @@ namespace BudgetExecution
         /// </returns>
         public ExcelWorksheet GetEpmWorksheet()
         {
-            var funds = Allocation?.GetFunds();
-            var bfy = Allocation?.GetBudgetFiscalYear();
-            var awards = Allocation?.GetAwards();
+            var funds = Allocation.GetFunds();
+            var awards = Allocation.GetAwards();
 
-            if( funds?.Any( p => p.GetCode().GetValue().StartsWith( $"{FundCode.B}" ) ) == true )
+            if( funds.Any( p => p.GetCode().GetValue().StartsWith( $"{FundCode.B}" ) ) )
             {
                 try
                 {
                     var grid = new Grid( Worksheet, ( 10, 2 ) );
                     var hdr = grid.From.Row - 1;
                     var fund = new Fund( $"{FundCode.B}" );
-                    Budget?.SetWorksheetProperties( grid.GetWorksheet() );
-                    Budget?.SetBudgetHeaderFormat( grid, fund, bfy );
+                    Budget.SetWorksheetProperties( grid.GetWorksheet() );
+                    Budget.SetBudgetHeaderFormat( grid, fund, Allocation.GetBudgetFiscalYear() );
 
-                    var prc = Allocation.GetData()
+                    var prcdata = Allocation.GetData()
                         .Where( f => f.Field<string>( $"{Field.FundCode}" ).StartsWith( $"{FundCode.B}" ) )
                         .Where( f => f.Field<string>( $"{Field.BocCode}" ) != $"{BOC.FTE}" )
                         .ToLookup( f => f.Field<string>( $"{Field.AccountCode}" ), f => f );
 
                     var start = grid.From.Row;
 
-                    foreach( var kvp in prc )
+                    foreach( var kvp in prcdata )
                     {
-                        Budget?.SetAllocationTableFormat( grid, fund );
-                        Budget?.PopulateAccountRows( grid, prc, kvp );
+                        Budget.SetAllocationTableFormat( grid, fund );
+                        Budget.PopulateAccountRows( grid, prcdata, kvp );
                         start++;
                     }
 
                     var endrow = start;
 
-                    var query = awards
-                        ?.Where( a => a.GetFundCode().Equals( $"{FundCode.B}" ) )
-                        ?.Select( a => a );
+                    var query = awards.Where( a => a.GetFundCode().Equals( $"{FundCode.B}" ) )
+                        .Select( a => a );
 
-                    if( query?.Any() == true )
+                    if( query.Any() )
                     {
-                        Budget?.SetAwardsHeaderFormat( grid );
-                        Budget?.SetAwardRowsFormat( grid, fund );
+                        Budget.SetAwardsHeaderFormat( grid );
+                        Budget.SetAwardRowsFormat( grid, fund );
                     }
 
                     return Worksheet;
@@ -135,7 +133,7 @@ namespace BudgetExecution
                 }
             }
 
-            if( !funds?.Any( p => p.GetCode().Equals( $"{FundCode.B}" ) ) == true )
+            if( !funds.Any( p => p.GetCode().Equals( $"{FundCode.B}" ) ) )
             {
                 Budget.HideWorksheet();
             }
@@ -153,7 +151,7 @@ namespace BudgetExecution
             var prc = Allocation.GetData();
             var funds = Allocation.GetFunds();
 
-            if( funds?.Any( p => p.GetCode().GetValue().StartsWith( $"{FundCode.E}" ) ) == true )
+            if( funds.Any( p => p.GetCode().GetValue().StartsWith( $"{FundCode.E}" ) ) )
             {
                 try
                 {
@@ -169,7 +167,7 @@ namespace BudgetExecution
                 }
             }
 
-            if( !funds?.Any( p => p.GetCode().GetValue().StartsWith( $"{FundCode.E}" ) ) == true )
+            if( !funds.Any( p => p.GetCode().GetValue().StartsWith( $"{FundCode.E}" ) ) )
             {
                 Budget.HideWorksheet();
             }
@@ -188,7 +186,7 @@ namespace BudgetExecution
             var awards = Allocation.GetAwards();
             var funds = Allocation.GetFunds();
 
-            if( funds?.Any( p => p.GetCode().Equals( $"{FundCode.F}" ) ) == true )
+            if( funds.Any( p => p.GetCode().Equals( $"{FundCode.F}" ) ) )
             {
                 try
                 {
@@ -212,7 +210,7 @@ namespace BudgetExecution
                 }
             }
 
-            if( !funds?.Any( p => p.Equals( $"{FundCode.F}" ) ) == true )
+            if( !funds.Any( p => p.Equals( $"{FundCode.F}" ) ) )
             {
                 Budget.HideWorksheet();
             }
@@ -231,7 +229,7 @@ namespace BudgetExecution
             var awards = Allocation.GetAwards();
             var funds = Allocation.GetFunds();
 
-            if( funds?.Any( p => p.GetCode().Equals( $"{FundCode.H}" ) ) == true )
+            if( funds.Any( p => p.GetCode().Equals( $"{FundCode.H}" ) ) )
             {
                 try
                 {
@@ -257,7 +255,7 @@ namespace BudgetExecution
                 }
             }
 
-            if( !funds?.Any( p => p.GetCode().Equals( $"{FundCode.H}" ) ) == true )
+            if( !funds.Any( p => p.GetCode().Equals( $"{FundCode.H}" ) ) )
             {
                 Budget.HideWorksheet();
             }

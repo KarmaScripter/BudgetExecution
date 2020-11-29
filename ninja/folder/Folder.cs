@@ -37,10 +37,10 @@ namespace BudgetExecution
         /// <summary>
         /// Initializes a new instance of the <see cref="Folder"/> class.
         /// </summary>
-        /// <param name="datafile">The file.</param>
-        public Folder( IDataFile datafile )
+        /// <param name="file">The file.</param>
+        public Folder( IFile file )
         {
-            DataFile = datafile;
+            DataFile = file;
             DirectoryInfo = GetBaseDirectory();
             FolderName = DirectoryInfo.Name;
             FolderPath = DirectoryInfo.FullName;
@@ -94,17 +94,17 @@ namespace BudgetExecution
         }
 
         /// <summary>
-        /// Deletes the specified folder.
+        /// Deletes the specified foldername.
         /// </summary>
-        /// <param name="folder">The folder.</param>
-        public static void Delete( string folder )
+        /// <param name="foldername">The foldername.</param>
+        public static void Delete( string foldername )
         {
             try
             {
-                if( Verify.Input( folder )
-                    && Directory.Exists( folder ) )
+                if( Verify.Input( foldername )
+                    && Directory.Exists( foldername ) )
                 {
-                    Directory.Delete( folder, true );
+                    Directory.Delete( foldername, true );
                 }
             }
             catch( Exception ex )
@@ -116,25 +116,25 @@ namespace BudgetExecution
         /// <summary>
         /// Creates the sub folder.
         /// </summary>
-        /// <param name="folder">The folder.</param>
+        /// <param name="foldername">The foldername.</param>
         /// <returns></returns>
-        public DirectoryInfo CreateSubDirectory( string folder )
+        public DirectoryInfo CreateSubDirectory( string foldername )
         {
-            if( string.IsNullOrEmpty( folder ) )
+            if( string.IsNullOrEmpty( foldername ) )
             {
                 return default;
             }
 
-            if( Verify.Input( folder )
-                && Directory.Exists( folder ) )
+            if( Verify.Input( foldername )
+                && Directory.Exists( foldername ) )
             {
-                Directory.Delete( folder );
+                Directory.Delete( foldername );
             }
 
             try
             {
-                return Verify.Input( folder ) && !Directory.Exists( folder )
-                    ? DirectoryInfo?.CreateSubdirectory( folder )
+                return Verify.Input( foldername ) && !Directory.Exists( foldername )
+                    ? DirectoryInfo?.CreateSubdirectory( foldername )
                     : default;
             }
             catch( Exception ex )
@@ -148,7 +148,7 @@ namespace BudgetExecution
         /// Gets the path data.
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<IDataPath> GetDataPaths()
+        public IEnumerable<IPath> GetDataPaths()
         {
             try
             {
@@ -169,7 +169,7 @@ namespace BudgetExecution
         /// Gets the data.
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<IDataFile> GetDataFiles()
+        public IEnumerable<IFile> GetDataFiles()
         {
             try
             {
@@ -190,21 +190,21 @@ namespace BudgetExecution
         /// <summary>
         /// Moves the specified folderpath.
         /// </summary>
-        /// <param name="path">The folderpath.</param>
-        public void Move( string path )
+        /// <param name="fullname">The folderpath.</param>
+        public void Move( string fullname )
         {
             try
             {
-                if( Verify.Input( path )
-                    && !Directory.Exists( path ) )
+                if( Verify.Input( fullname )
+                    && !Directory.Exists( fullname ) )
                 {
-                    DirectoryInfo?.MoveTo( path );
+                    DirectoryInfo?.MoveTo( fullname );
                 }
-                else if( Verify.Input( path )
-                    && Directory.Exists( path ) )
+                else if( Verify.Input( fullname )
+                    && Directory.Exists( fullname ) )
                 {
-                    Directory.CreateDirectory( path );
-                    DirectoryInfo?.MoveTo( path );
+                    Directory.CreateDirectory( fullname );
+                    DirectoryInfo?.MoveTo( fullname );
                 }
             }
             catch( Exception ex )
@@ -216,14 +216,14 @@ namespace BudgetExecution
         /// <summary>
         /// Zips the specified filepath.
         /// </summary>
-        /// <param name="filepath">The filepath.</param>
-        public void Zip( string filepath )
+        /// <param name="destinationpath">The filepath.</param>
+        public void Zip( string destinationpath )
         {
             try
             {
-                if( Verify.Input( filepath ) )
+                if( Verify.Input( destinationpath ) )
                 {
-                    ZipFile.CreateFromDirectory( FolderPath, filepath );
+                    ZipFile.CreateFromDirectory( FolderPath, destinationpath );
                 }
             }
             catch( Exception ex )

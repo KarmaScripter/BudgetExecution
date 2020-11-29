@@ -1,4 +1,4 @@
-﻿// <copyright file = "<class name>" company = "Terry D. Eppler">
+﻿// <copyright file = "DataPath.cs" company = "Terry D. Eppler">
 // Copyright (c) Terry D. Eppler. All rights reserved.
 // </copyright>
 
@@ -20,7 +20,7 @@ namespace BudgetExecution
     /// </summary>
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "AutoPropertyCanBeMadeGetOnly.Global" ) ]
-    public class DataPath : IDataPath
+    public class DataPath : IPath
     {
         // ***************************************************************************************************************************
         // ****************************************************    FIELDS     ********************************************************

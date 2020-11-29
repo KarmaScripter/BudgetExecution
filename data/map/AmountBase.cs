@@ -63,7 +63,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        private protected override void SetName( string colname )
+        public override void SetName( string colname )
         {
             if( Verify.Input( colname )
                 && Enum.GetNames( typeof( Numeric ) )?.Contains( colname ) == true )
@@ -94,7 +94,7 @@ namespace BudgetExecution
         /// </returns>
         private protected void SetName( DataRow datarow, string colname )
         {
-            if( datarow != null
+            if( Verify.Row( datarow )
                 && Verify.Input( colname )
                 && Enum.GetNames( typeof( Numeric ) )?.Contains( colname ) == true )
             {
@@ -186,9 +186,9 @@ namespace BudgetExecution
                 {
                     var numeric = (Numeric)Enum.Parse( typeof( Numeric ), name );
 
-                    Numeric = !Enum.IsDefined( typeof( Numeric ), numeric )
+                    Numeric = Enum.IsDefined( typeof( Numeric ), numeric )
                         ? numeric
-                        : default;
+                        : Numeric.NS;
                 }
                 catch( Exception ex )
                 {
@@ -210,7 +210,7 @@ namespace BudgetExecution
         /// </returns>
         private protected void SetNumeric( DataRow data, string name )
         {
-            if( data != null
+            if( Verify.Row( data )
                 && Verify.Input( name ) )
             {
                 try
@@ -222,7 +222,7 @@ namespace BudgetExecution
                     {
                         Numeric = names?.Contains( $"{numeric}" ) == true
                             ? numeric
-                            : default;
+                            : Numeric.NS;
                     }
                 }
                 catch( Exception ex )
@@ -246,7 +246,7 @@ namespace BudgetExecution
             {
                 Numeric = Verify.Numeric( numeric )
                     ? numeric
-                    : default;
+                    : Numeric.NS;
             }
             catch( Exception ex )
             {
@@ -276,7 +276,7 @@ namespace BudgetExecution
 
                     Numeric = columns.Contains( numeric.ToString() )
                         ? numeric
-                        : default;
+                        : Numeric.NS;
                 }
                 catch( Exception ex )
                 {
@@ -300,7 +300,7 @@ namespace BudgetExecution
                 if( Verify.Input( value )
                     && Enum.GetNames( typeof( Numeric ) ).Contains( value ) )
                 {
-                    Data = value;
+                    Value = value;
                 }
             }
             catch( Exception ex )
@@ -332,7 +332,7 @@ namespace BudgetExecution
 
                     Value = columns.Contains( value )
                         ? data[ value ].ToString()
-                        : default;
+                        : string.Empty;
                 }
                 catch( Exception ex )
                 {
@@ -354,17 +354,16 @@ namespace BudgetExecution
         /// </returns>
         private protected void SetValue( DataRow data, Numeric numeric )
         {
-            if( Verify.Row( data )
+            if( data != null
                 && Verify.Numeric( numeric ) )
             {
                 try
                 {
-                    var columns = data.Table
-                        ?.GetColumnNames();
+                    var columns = data.Table.GetColumnNames();
 
-                    Value = columns?.Contains( numeric.ToString() ) == true
+                    Value = columns.Contains( numeric.ToString() )
                         ? data[ $"{numeric}" ].ToString()
-                        : Numeric.NS.ToString();
+                        : string.Empty;
                 }
                 catch( Exception ex )
                 {
@@ -382,9 +381,7 @@ namespace BudgetExecution
         {
             try
             {
-                return Funding > 0.0 
-                    ? Funding 
-                    : 0.0;
+                return Funding;
             }
             catch( Exception ex )
             {
@@ -406,12 +403,12 @@ namespace BudgetExecution
 
                 return amount != default
                     ? new Amount( amount )
-                    : default;
+                    : Amount.Default;
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return Amount.Default;
             }
         }
 

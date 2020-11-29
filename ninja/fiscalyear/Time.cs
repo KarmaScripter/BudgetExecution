@@ -30,7 +30,7 @@ namespace BudgetExecution
         /// <summary>
         /// The default
         /// </summary>
-        public static readonly Time Default = new Time( EventDate.NS, EventDate.NS.ToString() );
+        public static readonly Time Default = new Time( EventDate.NS );
 
         // **************************************************************************************************************************
         // ********************************************   CONSTRUCTORS     **********************************************************
@@ -50,7 +50,7 @@ namespace BudgetExecution
         public Time( KeyValuePair<string, object> kvp )
         {
             SetName( kvp.Key );
-            SetBudgetDate( kvp.Key );
+            SetDate( kvp.Key );
             SetDay( kvp.Value?.ToString() );
             Data = Day.ToString();
         }
@@ -63,7 +63,7 @@ namespace BudgetExecution
         public Time( string name, string value = "" )
         {
             SetName( name );
-            SetBudgetDate( name );
+            SetDate( name );
             SetDay( value );
             Data = Day.ToString();
         }
@@ -76,7 +76,7 @@ namespace BudgetExecution
         public Time( EventDate date, string value = "" )
         {
             SetName( date );
-            SetBudgetDate( date.ToString() );
+            SetDate( date.ToString() );
             SetDay( value );
             Data = Day.ToString();
         }
@@ -88,7 +88,7 @@ namespace BudgetExecution
         /// <param name="date">The date.</param>
         public Time( DataRow datarow, EventDate date )
         {
-            SetBudgetDate( datarow, date );
+            SetDate( datarow, date );
             SetName( datarow, date );
             SetDay( datarow, date );
             Data = Day.ToString();
@@ -101,7 +101,7 @@ namespace BudgetExecution
         /// <param name="value">The value.</param>
         public Time( DataRow datarow, string value )
         {
-            SetBudgetDate( datarow, value );
+            SetDate( datarow, value );
             SetName( datarow, value );
             SetDay( datarow, value );
             Data = Day.ToString();
@@ -114,7 +114,7 @@ namespace BudgetExecution
         /// <param name="column">The column.</param>
         public Time( DataRow datarow, DataColumn column )
         {
-            SetBudgetDate( datarow, column.ColumnName );
+            SetDate( datarow, column.ColumnName );
             SetName( datarow, column.ColumnName );
             SetDay( datarow, datarow[ column ]?.ToString() );
             Data = Day.ToString();
@@ -144,15 +144,53 @@ namespace BudgetExecution
         }
 
         /// <summary>
-        /// Gets the date.
+        /// Gets the name.
         /// </summary>
         /// <returns></returns>
-        public EventDate GetBudgetDate()
+        public string GetName()
         {
             try
             {
-                return Enum.IsDefined( typeof( EventDate ), Date )
-                    ? Date
+                return Enum.IsDefined( typeof( EventDate ), EventDate )
+                    ? EventDate.ToString()
+                    : EventDate.NS.ToString();
+            }
+            catch( Exception ex )
+            {
+                Fail( ex );
+                return EventDate.NS.ToString();
+            }
+        }
+
+        /// <summary>
+        /// Gets the value.
+        /// </summary>
+        /// <returns></returns>
+        public string GetValue()
+        {
+            try
+            {
+                return Enum.IsDefined( typeof( EventDate ), EventDate )
+                    ? $"{Name} = {Day}"
+                    : string.Empty;
+            }
+            catch( Exception ex )
+            {
+                Fail( ex );
+                return string.Empty;
+            }
+        }
+
+        /// <summary>
+        /// Gets the date.
+        /// </summary>
+        /// <returns></returns>
+        public EventDate GetEventDate()
+        {
+            try
+            {
+                return Enum.IsDefined( typeof( EventDate ), EventDate )
+                    ? EventDate
                     : EventDate.NS;
             }
             catch( Exception ex )

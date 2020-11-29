@@ -11,6 +11,7 @@ namespace BudgetExecution
     using System;
     using System.Collections.Specialized;
     using System.Configuration;
+    using System.Data.Entity.Core.Metadata.Edm;
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Linq;
@@ -28,13 +29,14 @@ namespace BudgetExecution
         // ***************************************************************************************************************************
 
         /// <summary>
-        /// The connector
+        /// The connector contains the available connection strings
+        /// defined within the App.Config file
         /// </summary>
-        private protected readonly ConnectionStringSettingsCollection Connector =
-            ConfigurationManager.ConnectionStrings;
+        private protected readonly ConnectionStringSettingsCollection Connector = ConfigurationManager.ConnectionStrings;
 
         /// <summary>
-        /// The provider path
+        /// The name value collection containing the file paths
+        /// to the applications data providers.
         /// </summary>
         private protected readonly NameValueCollection ProviderPath = ConfigurationManager.AppSettings;
 
@@ -43,7 +45,7 @@ namespace BudgetExecution
         // **************************************************************************************************************************
 
         /// <summary>
-        /// Gets the source.
+        /// Represents the source table in the database
         /// </summary>
         /// <value>
         /// The source.
@@ -51,7 +53,7 @@ namespace BudgetExecution
         private protected Source Source { get; set; }
 
         /// <summary>
-        /// Gets the provider.
+        /// Represents the data provider.
         /// </summary>
         /// <value>
         /// The provider.
@@ -59,7 +61,7 @@ namespace BudgetExecution
         private protected Provider Provider { get; set; }
 
         /// <summary>
-        /// Gets the file extension.
+        /// Represents the file extension.
         /// </summary>
         /// <value>
         /// The file extension.
@@ -67,7 +69,7 @@ namespace BudgetExecution
         private protected EXT FileExtension { get; set; }
 
         /// <summary>
-        /// Gets the file path.
+        /// Represents the path to the data file.
         /// </summary>
         /// <value>
         /// The file path.
@@ -75,7 +77,7 @@ namespace BudgetExecution
         private protected string FilePath { get; set; }
 
         /// <summary>
-        /// Gets the name of the file.
+        /// Represents the name of the selected file.
         /// </summary>
         /// <value>
         /// The name of the file.
@@ -83,7 +85,7 @@ namespace BudgetExecution
         private protected string FileName { get; set; }
 
         /// <summary>
-        /// Gets the name of the table.
+        /// The name of the data table.
         /// </summary>
         /// <value>
         /// The name of the table.
@@ -107,18 +109,17 @@ namespace BudgetExecution
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns></returns>
-        private protected Source GetSource( Source source )
+        private protected void SetSource( Source source )
         {
             try
             {
-                return Verify.Source( source )
+                Source = Verify.Source( source )
                     ? source
                     : Source.NS;
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return Source.NS;
             }
         }
 
@@ -127,7 +128,7 @@ namespace BudgetExecution
         /// </summary>
         /// <param name="filename">The filename.</param>
         /// <returns></returns>
-        private protected Source GetSource( string filename )
+        private protected void SetSource( string filename )
         {
             if( Verify.Input( filename )
                 && File.Exists( filename )
@@ -135,12 +136,11 @@ namespace BudgetExecution
             {
                 try
                 {
-                    return (Source)Enum.Parse( typeof( Source ), filename );
+                    Source = (Source)Enum.Parse( typeof( Source ), filename );
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return Source.NS;
                 }
             }
 
@@ -150,16 +150,13 @@ namespace BudgetExecution
             {
                 try
                 {
-                    return Source.External;
+                    Source = Source.External;
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return Source.NS;
                 }
             }
-
-            return Source.NS;
         }
 
         /// <summary>
@@ -167,24 +164,18 @@ namespace BudgetExecution
         /// </summary>
         /// <param name="provider">The provider.</param>
         /// <returns></returns>
-        private protected Provider GetProvider( Provider provider )
+        private protected void SetProvider( Provider provider )
         {
-            if( Verify.Provider( provider ) )
+            try
             {
-                try
-                {
-                    return Resource.Providers?.Contains( provider.ToString() ) == true
-                        ? (Provider)Enum.Parse( typeof( Provider ), $"{provider}" )
-                        : Provider.NS;
-                }
-                catch( Exception ex )
-                {
-                    Fail( ex );
-                    return Provider.NS;
-                }
+                Provider = Verify.Provider( provider ) && Resource.Providers?.Contains( provider.ToString() ) == true
+                    ? (Provider)Enum.Parse( typeof( Provider ), $"{provider}" )
+                    : Provider.NS;
             }
-
-            return Provider.NS;
+            catch( Exception ex )
+            {
+                Fail( ex );
+            }
         }
 
         /// <summary>
@@ -192,13 +183,13 @@ namespace BudgetExecution
         /// </summary>
         /// <param name="extension">The extension.</param>
         /// <returns></returns>
-        private protected Provider GetProvider( EXT extension )
+        private protected void SetProvider( EXT extension )
         {
             if( Verify.EXT( extension ) )
             {
                 try
                 {
-                    return extension switch
+                    Provider = extension switch
                     {
                         EXT.MDB => Provider.OleDb,
                         EXT.XLS => Provider.OleDb,
@@ -214,11 +205,8 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return Provider.NS;
                 }
             }
-
-            return Provider.NS;
         }
 
         /// <summary>
@@ -226,13 +214,13 @@ namespace BudgetExecution
         /// </summary>
         /// <param name="provider">The provider.</param>
         /// <returns></returns>
-        private protected string GetFilePath( Provider provider )
+        private protected void SetFilePath( Provider provider )
         {
             if( Verify.Provider( provider ) )
             {
                 try
                 {
-                    return provider switch
+                    FilePath = provider switch
                     {
                         Provider.OleDb => ProviderPath[ "OleDb" ],
                         Provider.Access => ProviderPath[ "Access" ],
@@ -248,11 +236,8 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return string.Empty;
                 }
             }
-
-            return string.Empty;
         }
 
         /// <summary>
@@ -260,18 +245,17 @@ namespace BudgetExecution
         /// </summary>
         /// <param name="filepath">The filepath.</param>
         /// <returns></returns>
-        private protected string GetFilePath( string filepath )
+        private protected void SetFilePath( string filepath )
         {
             try
             {
-                return Verify.Input( filepath ) && File.Exists( filepath )
+                FilePath = Verify.Input( filepath ) && File.Exists( filepath )
                     ? Path.GetFullPath( filepath )
                     : default;
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return string.Empty;
             }
         }
 
@@ -280,27 +264,25 @@ namespace BudgetExecution
         /// </summary>
         /// <param name="filepath">The filepath.</param>
         /// <returns></returns>
-        private protected EXT GetFileExtension( string filepath )
+        private protected void SetFileExtension( string filepath )
         {
             if( Verify.Input( filepath ) )
             {
                 try
                 {
-                    var filext = Path.GetExtension( filepath )?.Trim( '.' )?.ToUpper();
-                    var ext = (EXT)Enum.Parse( typeof( EXT ), filext );
+                    var filext = Path.GetExtension( filepath )
+                        ?.Trim( '.' )
+                        ?.ToUpper();
 
-                    return Verify.EXT( ext )
-                        ? ext
+                    FileExtension = Enum.IsDefined( typeof( EXT ), filext )
+                        ? (EXT)Enum.Parse( typeof( EXT ), filext )
                         : EXT.NS;
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return EXT.NS;
                 }
             }
-
-            return EXT.NS;
         }
 
         /// <summary>
@@ -308,7 +290,7 @@ namespace BudgetExecution
         /// </summary>
         /// <param name="filepath">The filepath.</param>
         /// <returns></returns>
-        private protected string GetFileName( string filepath )
+        private protected void SetFileName( string filepath )
         {
             if( Verify.Input( filepath ) )
             {
@@ -316,18 +298,15 @@ namespace BudgetExecution
                 {
                     var filename = Path.GetFileNameWithoutExtension( filepath );
 
-                    return Verify.Input( filepath )
+                    FileName = Verify.Input( filepath )
                         ? filename
                         : string.Empty;
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return string.Empty;
                 }
             }
-
-            return string.Empty;
         }
 
         /// <summary>
@@ -335,7 +314,7 @@ namespace BudgetExecution
         /// </summary>
         /// <param name="filepath">The filepath.</param>
         /// <returns></returns>
-        private protected string GetProviderPath( string filepath )
+        private protected void SetProviderPath( string filepath )
         {
             if( Verify.Input( filepath )
                 && File.Exists( filepath )
@@ -345,7 +324,7 @@ namespace BudgetExecution
                 {
                     var ext = (EXT)Enum.Parse( typeof( EXT ), Path.GetExtension( filepath ) );
 
-                    return ext switch
+                    FilePath = ext switch
                     {
                         EXT.MDB => ConfigurationManager.AppSettings[ "OleDbFilePath" ],
                         EXT.ACCDB => ConfigurationManager.AppSettings[ "AccessFilePath" ],
@@ -366,11 +345,8 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return string.Empty;
                 }
             }
-
-            return string.Empty;
         }
 
         /// <summary>
@@ -378,7 +354,7 @@ namespace BudgetExecution
         /// </summary>
         /// <param name="provider">The provider.</param>
         /// <returns></returns>
-        private protected string GetConnectionString( Provider provider )
+        private protected void SetConnectionString( Provider provider )
         {
             if( Verify.Provider( provider ) )
             {
@@ -393,9 +369,11 @@ namespace BudgetExecution
                             var connection = ConfigurationManager.ConnectionStrings[ provider.ToString() ]
                                 ?.ConnectionString;
 
-                            return Verify.Input( connection )
+                            ConnectionString = Verify.Input( connection )
                                 ? connection?.Replace( "{FilePath}", FilePath )
                                 : string.Empty;
+
+                            break;
                         }
 
                         case Provider.SQLite:
@@ -406,20 +384,19 @@ namespace BudgetExecution
                             var connection = ConfigurationManager.ConnectionStrings[ provider.ToString() ]
                                 ?.ConnectionString;
 
-                            return Verify.Input( connection )
+                            ConnectionString = Verify.Input( connection )
                                 ? connection
                                 : string.Empty;
+
+                            break;
                         }
                     }
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
                 }
             }
-
-            return default;
         }
 
         /// <summary>

@@ -14,41 +14,31 @@ namespace BudgetExecution
     using System.Security.AccessControl;
     using System.Threading;
 
-    /// <summary>
-    /// 
-    /// </summary>
     public interface IFolder
     {
         // ***************************************************************************************************************************
         // ****************************************************    MEMBERS    ********************************************************
         // ***************************************************************************************************************************
 
-        /// <summary>
-        /// Creates the sub directory.
-        /// </summary>
-        /// <param name="folder">The folder.</param>
-        /// <returns></returns>
-        DirectoryInfo CreateSubDirectory( string folder );
+        DirectoryInfo CreateSubDirectory( string foldername );
 
         /// <summary>
         /// Gets the path data.
         /// </summary>
         /// <returns></returns>
-        IEnumerable<IDataPath> GetDataPaths();
+        IEnumerable<IPath> GetDataPaths();
 
         /// <summary>
         /// Gets the data.
         /// </summary>
         /// <returns></returns>
-        IEnumerable<IDataFile> GetDataFiles();
+        IEnumerable<IFile> GetDataFiles();
 
         /// <summary>
-        /// Moves the specified folder's path.
+        /// Moves the specified folderpath.
         /// </summary>
-        /// <param name="path">
-        /// The folder path.
-        /// </param>
-        void Move( string path );
+        /// <param name="folderpath">The folderpath.</param>
+        void Move( string folderpath );
 
         /// <summary>
         /// Sets the access control.
@@ -81,10 +71,10 @@ namespace BudgetExecution
         DateTime GetChangedDate();
 
         /// <summary>
-        /// Zips the specified filepath.
+        /// Zips the specified filepaht.
         /// </summary>
-        /// <param name="filepath">The filepath.</param>
-        void Zip( string filepath );
+        /// <param name="filepaht">The filepaht.</param>
+        void Zip( string filepaht );
 
         /// <summary>
         /// Uns the zip.

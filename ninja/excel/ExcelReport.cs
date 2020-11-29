@@ -249,7 +249,8 @@ namespace BudgetExecution
             {
                 return type == typeof( string )
                     || type.IsArray
-                    || type.IsGenericType && type.GetGenericTypeDefinition() == typeof( Nullable<> );
+                    || type.IsGenericType
+                    && type.GetGenericTypeDefinition() == typeof( Nullable<> );
             }
             catch( Exception ex )
             {

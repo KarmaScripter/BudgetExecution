@@ -20,37 +20,19 @@ namespace BudgetExecution
     /// <seealso cref = "UnitBase"/>
     /// <seealso cref = "IUnit"/>
     [ SuppressMessage( "ReSharper", "MemberCanBeMadeStatic.Global" ) ]
-    public abstract class TimeBase : Unit
+    public abstract class TimeBase : UnitBase
     {
+        // ***************************************************************************************************************************
+        // ****************************************************  PROPERTIES   ********************************************************
+        // ***************************************************************************************************************************
+
+        private protected DateTime Day { get; set; }
+
+        private protected EventDate EventDate { get; set; }
+
         // **************************************************************************************************************************
         // ********************************************      METHODS    *************************************************************
         // **************************************************************************************************************************
-
-        /// <summary>
-        /// Sets the name.
-        /// </summary>
-        /// <param name = "name" >
-        /// The name.
-        /// </param>
-        /// <returns>
-        /// </returns>
-        private protected override void SetName( string name )
-        {
-            if( Verify.Input( name )
-                && Enum.GetNames( typeof( EventDate ) )?.Contains( name ) == true )
-            {
-                try
-                {
-                    Name = Verify.Input( name )
-                        ? name
-                        : string.Empty;
-                }
-                catch( Exception ex )
-                {
-                    Fail( ex );
-                }
-            }
-        }
 
         /// <summary>
         /// Sets the name.
@@ -63,7 +45,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        private protected void SetName( DataRow datarow, string name )
+        private protected string SetName( DataRow datarow, string name )
         {
             if( datarow != null
                 && Verify.Input( name )
@@ -73,15 +55,18 @@ namespace BudgetExecution
                 {
                     var columns = datarow.Table?.GetColumnNames();
 
-                    Name = columns?.Contains( name ) == true
+                    return columns?.Contains( name ) == true
                         ? name
                         : EventDate.NS.ToString();
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
+                    return EventDate.NS.ToString();
                 }
             }
+
+            return EventDate.NS.ToString();
         }
 
         /// <summary>
@@ -145,7 +130,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        private protected void SetBudgetDate( string name )
+        private protected void SetDate( string name )
         {
             if( Verify.Input( name )
                 && Enum.GetNames( typeof( EventDate ) )?.Contains( name ) == true )
@@ -154,7 +139,7 @@ namespace BudgetExecution
                 {
                     var date = (EventDate)Enum.Parse( typeof( EventDate ), name );
 
-                    Date = Enum.IsDefined( typeof( EventDate ), date )
+                    EventDate = Enum.IsDefined( typeof( EventDate ), date )
                         ? date
                         : default;
                 }
@@ -176,7 +161,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        private protected void SetBudgetDate( DataRow datarow, string name )
+        private protected void SetDate( DataRow datarow, string name )
         {
             if( datarow != null
                 && Verify.Input( name ) )
@@ -189,7 +174,7 @@ namespace BudgetExecution
                     if( columns?.Any() == true
                         && columns?.Contains( $"{date}" ) == true )
                     {
-                        Date = Enum.GetNames( typeof( EventDate ) )?.Contains( $"{date}" ) == true
+                        EventDate = Enum.GetNames( typeof( EventDate ) )?.Contains( $"{date}" ) == true
                             ? date
                             : EventDate.NS;
                     }
@@ -212,7 +197,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        private protected void SetBudgetDate( DataRow datarow, EventDate date )
+        private protected void SetDate( DataRow datarow, EventDate date )
         {
             if( datarow != null
                 && Verify.Date( date ) )
@@ -223,7 +208,7 @@ namespace BudgetExecution
 
                     if( names?.Any() == true )
                     {
-                        Date = names?.Contains( date.ToString() ) == true
+                        EventDate = names?.Contains( date.ToString() ) == true
                             ? date
                             : EventDate.NS;
                     }
