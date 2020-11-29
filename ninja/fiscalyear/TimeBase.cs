@@ -26,8 +26,20 @@ namespace BudgetExecution
         // ****************************************************  PROPERTIES   ********************************************************
         // ***************************************************************************************************************************
 
+        /// <summary>
+        /// Gets or sets the day.
+        /// </summary>
+        /// <value>
+        /// The day.
+        /// </value>
         private protected DateTime Day { get; set; }
 
+        /// <summary>
+        /// Gets or sets the event date.
+        /// </summary>
+        /// <value>
+        /// The event date.
+        /// </value>
         private protected EventDate EventDate { get; set; }
 
         // **************************************************************************************************************************
