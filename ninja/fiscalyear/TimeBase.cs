@@ -45,7 +45,7 @@ namespace BudgetExecution
         /// </param>
         /// <returns>
         /// </returns>
-        private protected string SetName( DataRow datarow, string name )
+        private protected void SetName( DataRow datarow, string name )
         {
             if( datarow != null
                 && Verify.Input( name )
@@ -55,18 +55,15 @@ namespace BudgetExecution
                 {
                     var columns = datarow.Table?.GetColumnNames();
 
-                    return columns?.Contains( name ) == true
+                    Name = columns?.Contains( name ) == true
                         ? name
                         : EventDate.NS.ToString();
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return EventDate.NS.ToString();
                 }
             }
-
-            return EventDate.NS.ToString();
         }
 
         /// <summary>
