@@ -163,7 +163,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\Syncfusion.XlsIO.Base.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -1001,10 +1003,9 @@
     <None Include="App.config" />
     <None Include="badger\guidance\FundsControlManual.pdf" />
     <None Include="BudgetExecution.DotSettings" />
-    <None Include="db\sqlce\UPDATE\R6.db" />
-    <None Include="db\sqlite\R6.db" />
-    <None Include="db\sqlite\UPDATE\R6.db" />
     <None Include="db\sqlserver\R6.db" />
+    <None Include="db\sqlce\UPDATE\R6.db" />
+    <None Include="db\sqlite\UPDATE\R6.db" />
     <None Include="lib\MetroSet UI.dll.config" />
     <None Include="ninja\fiscalyear\Year" />
     <None Include="ninja\template\Control.xlsx" />
