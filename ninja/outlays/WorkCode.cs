@@ -184,12 +184,12 @@ namespace BudgetExecution
             {
                 return Verify.Element( BBFY )
                     ? new BudgetFiscalYear( BBFY?.GetValue() )
-                    : default;
+                    : default( BudgetFiscalYear );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IBudgetFiscalYear );
             }
         }
 
@@ -217,11 +217,11 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IFinanceObjectClass );
                 }
             }
 
-            return default;
+            return default( IFinanceObjectClass );
         }
 
         /// <summary>
@@ -235,12 +235,12 @@ namespace BudgetExecution
             {
                 return Verify.Element( FundCode )
                     ? new Fund( FundCode?.GetValue() )
-                    : default;
+                    : default( Fund );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IFund );
             }
         }
 
@@ -268,11 +268,11 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IOrganization );
                 }
             }
 
-            return default;
+            return default( IOrganization );
         }
 
         /// <summary>
@@ -356,17 +356,17 @@ namespace BudgetExecution
 
                         return query.Any()
                             ? query.ToArray()
-                            : default;
+                            : default( WorkCode[] );
                     }
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IEnumerable<IWorkCode> );
                 }
             }
 
-            return default;
+            return default( IEnumerable<IWorkCode> );
         }
 
         /// <summary>
@@ -404,12 +404,12 @@ namespace BudgetExecution
             {
                 return Verify.Map( Args )
                     ? Args
-                    : default;
+                    : default( IDictionary<string, object> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IDictionary<string, object> );
             }
         }
 

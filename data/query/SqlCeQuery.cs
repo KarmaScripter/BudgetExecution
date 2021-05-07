@@ -1,6 +1,6 @@
-﻿// <copyright file = "SqlCeQuery.cs" company = "Terry D. Eppler">
-// Copyright (c) Terry D. Eppler. All rights reserved.
-// </copyright>
+﻿// // <copyright file = "SqlCeQuery.cs" company = "Terry D. Eppler">
+// // Copyright (c) Terry D. Eppler. All rights reserved.
+// // </copyright>
 
 namespace BudgetExecution
 {
@@ -16,8 +16,7 @@ namespace BudgetExecution
     using System.Windows.Forms;
 
     /// <inheritdoc/>
-    /// <summary>
-    /// </summary>
+    /// <summary> </summary>
     /// <seealso cref = "T:BudgetExecution.Query"/>
     public class SqlCeQuery : Query
     {
@@ -35,21 +34,21 @@ namespace BudgetExecution
 
         /// <inheritdoc/>
         /// <summary>
-        /// Initializes a new instance of the <see cref = "T:BudgetExecution.SqlCeQuery"/>
+        /// Initializes a new instance of the
+        /// <see cref = "T:BudgetExecution.SqlCeQuery"/>
         /// class.
         /// </summary>
-        public SqlCeQuery()
+        public SqlCeQuery( )
         {
         }
 
         /// <inheritdoc/>
         /// <summary>
-        /// Initializes a new instance of the <see cref = "T:BudgetExecution.SqlCeQuery"/>
+        /// Initializes a new instance of the
+        /// <see cref = "T:BudgetExecution.SqlCeQuery"/>
         /// class.
         /// </summary>
-        /// <param name = "source" >
-        /// The source.
-        /// </param>
+        /// <param name = "source" > The source. </param>
         public SqlCeQuery( Source source )
             : base( source, Provider.SqlCe )
         {
@@ -57,29 +56,24 @@ namespace BudgetExecution
 
         /// <inheritdoc/>
         /// <summary>
-        /// Initializes a new instance of the <see cref = "T:BudgetExecution.SqlCeQuery"/>
+        /// Initializes a new instance of the
+        /// <see cref = "T:BudgetExecution.SqlCeQuery"/>
         /// class.
         /// </summary>
-        /// <param name = "source" >
-        /// The source.
-        /// </param>
-        /// <param name = "dict" >
-        /// The dictionary.
-        /// </param>
+        /// <param name = "source" > The source. </param>
+        /// <param name = "dict" > The dictionary. </param>
         public SqlCeQuery( Source source, IDictionary<string, object> dict )
             : base( source, Provider.SqlCe, dict, SQL.SELECT )
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref = "SqlCeQuery"/> class.
+        /// Initializes a new instance of the
+        /// <see cref = "SqlCeQuery"/>
+        /// class.
         /// </summary>
-        /// <param name = "connectionbuilder" >
-        /// The connectionbuilder.
-        /// </param>
-        /// <param name = "sqlstatement" >
-        /// The sqlstatement.
-        /// </param>
+        /// <param name = "connectionbuilder" > The connectionbuilder. </param>
+        /// <param name = "sqlstatement" > The sqlstatement. </param>
         public SqlCeQuery( IConnectionBuilder connectionbuilder, ISqlStatement sqlstatement )
             : base( connectionbuilder, sqlstatement )
         {
@@ -93,12 +87,9 @@ namespace BudgetExecution
         // ********************************************      METHODS    *********************************************************
         // **********************************************************************************************************************
 
-        /// <summary>
-        /// Gets the excel file path.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        private string GetExcelFilePath()
+        /// <summary> Gets the excel file path. </summary>
+        /// <returns> </returns>
+        private string GetExcelFilePath( )
         {
             try
             {
@@ -113,7 +104,7 @@ namespace BudgetExecution
                     RestoreDirectory = true
                 };
 
-                if( fdlg.ShowDialog() == DialogResult.OK )
+                if( fdlg.ShowDialog( ) == DialogResult.OK )
                 {
                     fname = fdlg.FileName;
                 }
@@ -123,21 +114,14 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( string );
             }
         }
 
-        /// <summary>
-        /// Creates the table from excel file.
-        /// </summary>
-        /// <param name = "filename" >
-        /// The filepath.
-        /// </param>
-        /// <param name = "sheetname" >
-        /// The sheetname.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary> Creates the table from excel file. </summary>
+        /// <param name = "filename" > The filepath. </param>
+        /// <param name = "sheetname" > The sheetname. </param>
+        /// <returns> </returns>
         public DataTable CreateTableFromExcelFile( string filename, ref string sheetname )
         {
             if( Verify.Input( filename )
@@ -145,47 +129,40 @@ namespace BudgetExecution
             {
                 try
                 {
-                    using var dataset = new DataSet();
-                    using var datatable = new DataTable();
+                    using var dataset = new DataSet( );
+                    using var datatable = new DataTable( );
                     dataset.DataSetName = filename;
                     datatable.TableName = sheetname;
                     dataset.Tables.Add( datatable );
-                    var cstring = GetExcelFilePath();
+                    var cstring = GetExcelFilePath( );
 
                     if( Verify.Input( cstring ) )
                     {
                         using var excelquery = new ExcelQuery( cstring );
-                        using var connection = excelquery.GetConnection() as OleDbConnection;
-                        connection?.Open();
-                        var adapter = excelquery.GetAdapter();
+                        using var connection = excelquery.GetConnection( ) as OleDbConnection;
+                        connection?.Open( );
+                        var adapter = excelquery.GetAdapter( );
                         adapter.Fill( dataset );
 
                         return datatable.Columns.Count > 0
                             ? datatable
-                            : default;
+                            : default( DataTable );
                     }
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( DataTable );
                 }
             }
 
-            return default;
+            return default( DataTable );
         }
 
-        /// <summary>
-        /// Creates the table from CSV file.
-        /// </summary>
-        /// <param name = "filepath" >
-        /// The filepath.
-        /// </param>
-        /// <param name = "sheetname" >
-        /// The sheetname.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary> Creates the table from CSV file. </summary>
+        /// <param name = "filepath" > The filepath. </param>
+        /// <param name = "sheetname" > The sheetname. </param>
+        /// <returns> </returns>
         public DataTable CreateTableFromCsvFile( string filepath, ref string sheetname )
         {
             if( Verify.Input( filepath )
@@ -193,53 +170,46 @@ namespace BudgetExecution
             {
                 try
                 {
-                    using var dataset = new DataSet();
-                    using var datatable = new DataTable();
-                    var filename = GetConnectionBuilder().GetFileName();
+                    using var dataset = new DataSet( );
+                    using var datatable = new DataTable( );
+                    var filename = GetConnectionBuilder( ).GetFileName( );
                     dataset.DataSetName = filename;
                     datatable.TableName = sheetname;
                     dataset.Tables.Add( datatable );
-                    var cstring = GetExcelFilePath();
+                    var cstring = GetExcelFilePath( );
 
                     if( Verify.Input( cstring ) )
                     {
                         using var csvquery = new CsvQuery( cstring );
-                        var adapter = csvquery.GetAdapter() as OleDbDataAdapter;
+                        var adapter = csvquery.GetAdapter( ) as OleDbDataAdapter;
                         adapter?.Fill( dataset, sheetname );
 
                         return datatable.Columns.Count > 0
                             ? datatable
-                            : default;
+                            : default( DataTable );
                     }
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( DataTable );
                 }
             }
 
-            return default;
+            return default( DataTable );
         }
 
-        /// <summary>
-        /// Checks if sheet name exists.
-        /// </summary>
-        /// <param name = "sheetname" >
-        /// The sheetname.
-        /// </param>
-        /// <param name = "schematable" >
-        /// The datatable.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary> Checks if sheet name exists. </summary>
+        /// <param name = "sheetname" > The sheetname. </param>
+        /// <param name = "schematable" > The datatable. </param>
+        /// <returns> </returns>
         private bool CheckIfSheetNameExists( string sheetname, DataTable schematable )
         {
             for( var i = 0; i < schematable.Rows.Count; i++ )
             {
                 var datarow = schematable.Rows[ i ];
 
-                if( sheetname == datarow[ "TABLENAME" ].ToString() )
+                if( sheetname == datarow[ "TABLENAME" ].ToString( ) )
                 {
                     return true;
                 }
@@ -248,14 +218,12 @@ namespace BudgetExecution
             return false;
         }
 
-        /// <summary>
-        /// The Dispose
-        /// </summary>
+        /// <summary> The Dispose </summary>
         protected override void Dispose( bool disposing )
         {
             if( disposing )
             {
-                Dispose();
+                Dispose( );
                 IsDisposed = true;
             }
         }

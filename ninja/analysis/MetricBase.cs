@@ -101,7 +101,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( Field );
             }
         }
 
@@ -119,7 +119,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( Numeric );
             }
         }
 
@@ -134,12 +134,12 @@ namespace BudgetExecution
             {
                 return Verify.Rows( Data )
                     ? Data
-                    : default;
+                    : default( IEnumerable<DataRow> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IEnumerable<DataRow> );
             }
         }
 
@@ -165,16 +165,16 @@ namespace BudgetExecution
 
                     return query?.Any() == true
                         ? query
-                        : default;
+                        : default( IEnumerable<DataRow> );
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IEnumerable<DataRow> );
                 }
             }
 
-            return default;
+            return default( IEnumerable<DataRow> );
         }
 
         /// <summary>
@@ -199,16 +199,16 @@ namespace BudgetExecution
 
                     return query.Length > 0
                         ? query
-                        : default;
+                        : default( string[] );
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IEnumerable<string> );
                 }
             }
 
-            return default;
+            return default( IEnumerable<string> );
         }
 
         /// <summary>
@@ -232,7 +232,7 @@ namespace BudgetExecution
 
                     return query.Any()
                         ? query.Count()
-                        : default;
+                        : default( int );
                 }
                 catch( Exception ex )
                 {
@@ -273,7 +273,7 @@ namespace BudgetExecution
                 }
             }
 
-            return default;
+            return default( double );
         }
 
         /// <summary>
@@ -317,17 +317,17 @@ namespace BudgetExecution
 
                         return dict.Any()
                             ? dict
-                            : default;
+                            : default( Dictionary<string, double> );
                     }
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IDictionary<string, double> );
                 }
             }
 
-            return default;
+            return default( IDictionary<string, double> );
         }
 
         /// <summary>
@@ -412,17 +412,17 @@ namespace BudgetExecution
 
                         return dict.Any()
                             ? dict
-                            : default;
+                            : default( Dictionary<string, double> );
                     }
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IDictionary<string, double> );
                 }
             }
 
-            return default;
+            return default( IDictionary<string, double> );
         }
 
         /// <summary>

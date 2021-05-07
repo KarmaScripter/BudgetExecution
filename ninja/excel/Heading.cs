@@ -135,12 +135,12 @@ namespace BudgetExecution
             {
                 return Caption?.Any() == true
                     ? Caption
-                    : default;
+                    : default( IDictionary<int, string> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IDictionary<int, string> );
             }
         }
     }

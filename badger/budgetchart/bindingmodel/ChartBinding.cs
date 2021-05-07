@@ -133,7 +133,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ISeriesConfig );
             }
         }
 
@@ -150,7 +150,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IDataMetric );
             }
         }
 

@@ -157,12 +157,12 @@ namespace BudgetExecution
             {
                 return SourceModel?.GetData()?.Any() == true
                     ? SourceModel
-                    : default;
+                    : default( ISourceModel );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ISourceModel );
             }
         }
 
@@ -178,12 +178,12 @@ namespace BudgetExecution
 
                 return type != null && Enum.IsDefined( typeof( ChartType ), type )
                     ? Configuration
-                    : default;
+                    : default( ISeriesConfig );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ISeriesConfig );
             }
         }
 
@@ -197,12 +197,12 @@ namespace BudgetExecution
             {
                 return DataMetric?.GetData()?.Any() == true
                     ? DataMetric
-                    : default;
+                    : default( IDataMetric );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IDataMetric );
             }
         }
 
@@ -216,12 +216,12 @@ namespace BudgetExecution
             {
                 return SeriesModel?.GetSeriesValues()?.Any() == true
                     ? SeriesModel
-                    : default;
+                    : default( ISeriesModel );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ISeriesModel );
             }
         }
 
@@ -235,12 +235,12 @@ namespace BudgetExecution
             {
                 return DataSeries?.GetDataPoints()?.Any() == true
                     ? DataSeries
-                    : default;
+                    : default( IDataSeries );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IDataSeries );
             }
         }
 
@@ -254,12 +254,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( TitleInfo?.GetAxisText() )
                     ? TitleInfo
-                    : default;
+                    : default( ITitleInfo );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ITitleInfo );
             }
         }
 

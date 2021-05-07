@@ -256,7 +256,7 @@ namespace BudgetExecution
 
                     return list?.Any() == true
                         ? list
-                        : default;
+                        : default( List<Control> );
                 }
                 catch( Exception ex )
                 {
@@ -264,7 +264,7 @@ namespace BudgetExecution
                 }
             }
 
-            return default;
+            return default( IEnumerable<Control> );
         }
 
         /// <summary>
@@ -315,12 +315,12 @@ namespace BudgetExecution
             {
                 return Children?.Any() == true
                     ? Children
-                    : default;
+                    : default( IEnumerable<Control> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IEnumerable<Control> );
             }
         }
 

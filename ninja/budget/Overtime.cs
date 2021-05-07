@@ -130,16 +130,16 @@ namespace BudgetExecution
 
                     return query?.Any() == true
                         ? query
-                        : default;
+                        : default( EnumerableRowCollection<DataRow> );
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IEnumerable<DataRow> );
                 }
             }
 
-            return default;
+            return default( IEnumerable<DataRow> );
         }
 
         /// <summary>
@@ -153,12 +153,12 @@ namespace BudgetExecution
             {
                 return Verify.Key( ID )
                     ? ID
-                    : default;
+                    : default( IKey );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IKey );
             }
         }
 
@@ -173,12 +173,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( Type?.GetValue() )
                     ? Type
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
     }

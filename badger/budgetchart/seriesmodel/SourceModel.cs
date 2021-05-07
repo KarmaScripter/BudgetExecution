@@ -160,12 +160,12 @@ namespace BudgetExecution
             {
                 return Verify.Rows( Data )
                     ? Data
-                    : default;
+                    : default( IEnumerable<DataRow> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IEnumerable<DataRow> );
             }
         }
 
@@ -179,12 +179,12 @@ namespace BudgetExecution
             {
                 return Verify.Ref( SourceBinding )
                     ? SourceBinding
-                    : default;
+                    : default( IChartBinding );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IChartBinding );
             }
         }
 
@@ -198,12 +198,12 @@ namespace BudgetExecution
             {
                 return SeriesData?.Any() == true
                     ? SeriesData
-                    : default;
+                    : default( IDictionary<string, IEnumerable<double>> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IDictionary<string, IEnumerable<double>> );
             }
         }
 
@@ -219,12 +219,12 @@ namespace BudgetExecution
 
                 return Verify.Rows( data )
                     ? Metric
-                    : default;
+                    : default( IDataMetric );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IDataMetric );
             }
         }
 
@@ -238,12 +238,12 @@ namespace BudgetExecution
             {
                 return Verify.Ref( Configuration )
                     ? Configuration
-                    : default;
+                    : default( ISeriesConfig );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ISeriesConfig );
             }
         }
 

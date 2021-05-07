@@ -79,7 +79,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAuthority );
             }
         }
 
@@ -108,16 +108,16 @@ namespace BudgetExecution
 
                     return query?.Any() == true
                         ? query
-                        : default;
+                        : default( IEnumerable<DataRow> );
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IEnumerable<DataRow> );
                 }
             }
 
-            return default;
+            return default( IEnumerable<DataRow> );
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( double );
                 }
             }
 

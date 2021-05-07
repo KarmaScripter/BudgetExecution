@@ -104,12 +104,12 @@ namespace BudgetExecution
             {
                 return Verify.ImageResource( resource )
                     ? Directory.GetFiles( Resource.Settings[ resource.ToString() ] )
-                    : default;
+                    : default( string[] );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IEnumerable<string> );
             }
         }
 
@@ -141,16 +141,16 @@ namespace BudgetExecution
 
                     return filenames?.Any() == true
                         ? filenames
-                        : default;
+                        : default( List<string> );
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IEnumerable<string> );
                 }
             }
 
-            return default;
+            return default( IEnumerable<string> );
         }
 
         /// <summary>
@@ -178,16 +178,16 @@ namespace BudgetExecution
 
                     return filedata?.Any() == true
                         ? filedata
-                        : default;
+                        : default( Dictionary<string, FileInfo> );
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IDictionary<string, FileInfo> );
                 }
             }
 
-            return default;
+            return default( IDictionary<string, FileInfo> );
         }
 
         /// <summary>
@@ -201,12 +201,12 @@ namespace BudgetExecution
             {
                 return Names?.Any() == true
                     ? Names
-                    : default;
+                    : default( IEnumerable<string> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IEnumerable<string> );
             }
         }
 
@@ -221,12 +221,12 @@ namespace BudgetExecution
             {
                 return Paths?.Any() == true
                     ? Paths
-                    : default;
+                    : default( IEnumerable<string> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IEnumerable<string> );
             }
         }
 
@@ -241,12 +241,12 @@ namespace BudgetExecution
             {
                 return FileStreams?.Any() == true
                     ? FileStreams
-                    : default;
+                    : default( IDictionary<string, FileInfo> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IDictionary<string, FileInfo> );
             }
         }
 
@@ -292,16 +292,16 @@ namespace BudgetExecution
 
                     return stream != null
                         ? new Icon( stream, Builder.GetSize() )
-                        : default;
+                        : default( Icon );
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( Icon );
                 }
             }
 
-            return default;
+            return default( Icon );
         }
     }
 }

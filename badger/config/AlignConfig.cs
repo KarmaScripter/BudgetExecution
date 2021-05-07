@@ -126,12 +126,12 @@ namespace BudgetExecution
             {
                 return Enum.IsDefined( typeof( StringAlignment ), alignment )
                     ? alignment
-                    : default;
+                    : default( StringAlignment );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( StringAlignment );
             }
         }
 
@@ -149,12 +149,12 @@ namespace BudgetExecution
             {
                 return Enum.IsDefined( typeof( HorizontalAlignment ), alignment )
                     ? alignment
-                    : default;
+                    : default( HorizontalAlignment );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( HorizontalAlignment );
             }
         }
 
@@ -169,12 +169,12 @@ namespace BudgetExecution
             {
                 return Enum.IsDefined( typeof( ExcelVerticalAlignment ), alignment )
                     ? alignment
-                    : default;
+                    : default( ExcelVerticalAlignment );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ExcelVerticalAlignment );
             }
         }
 
@@ -189,12 +189,12 @@ namespace BudgetExecution
             {
                 return Enum.IsDefined( typeof( ExcelHorizontalAlignment ), alignment )
                     ? alignment
-                    : default;
+                    : default( ExcelHorizontalAlignment );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ExcelHorizontalAlignment );
             }
         }
 

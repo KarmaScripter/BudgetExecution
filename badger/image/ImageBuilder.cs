@@ -167,13 +167,13 @@ namespace BudgetExecution
                     {
                         return File.Exists( path )
                             ? path
-                            : default;
+                            : default( string );
                     }
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( string );
                 }
             }
             else
@@ -181,7 +181,7 @@ namespace BudgetExecution
                 return GetImageFilePath( filepath );
             }
 
-            return default;
+            return default( string );
         }
 
         /// <summary>
@@ -197,16 +197,16 @@ namespace BudgetExecution
                 {
                     return File.Exists( filepath )
                         ? Path.GetFullPath( filepath )
-                        : default;
+                        : default( string );
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( string );
                 }
             }
 
-            return default;
+            return default( string );
         }
 
         /// <summary>
@@ -220,12 +220,12 @@ namespace BudgetExecution
             {
                 return Enum.IsDefined( typeof( ImageSource ), Source )
                     ? Source
-                    : default;
+                    : default( ImageSource );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ImageSource );
             }
         }
 
@@ -240,12 +240,12 @@ namespace BudgetExecution
             {
                 return Verify.ImageResource( Source ) && Verify.Input( Resource.Settings[ $"{Source}" ] )
                     ? Resource.Settings[ $"{Source}" ]
-                    : default;
+                    : default( string );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( string );
             }
         }
 
@@ -260,14 +260,14 @@ namespace BudgetExecution
             {
                 return Verify.Input( FullPath )
                     ? FullPath
-                    : default;
+                    : default( string );
             }
             catch( Exception ex )
             {
                 Fail( ex );
             }
 
-            return default;
+            return default( string );
         }
 
         /// <summary>
@@ -286,7 +286,7 @@ namespace BudgetExecution
                 Fail( ex );
             }
 
-            return default;
+            return default( Size );
         }
 
         /// <summary>
@@ -300,12 +300,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( Name )
                     ? Name
-                    : default;
+                    : default( string );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( string );
             }
         }
 
@@ -325,7 +325,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ImageFormat );
             }
         }
 

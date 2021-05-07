@@ -1,6 +1,6 @@
-﻿// <copyright file = "DataAccess.cs" company = "Terry D. Eppler">
-// Copyright (c) Terry D. Eppler. All rights reserved.
-// </copyright>
+﻿// // <copyright file = "DataAccess.cs" company = "Terry D. Eppler">
+// // Copyright (c) Terry D. Eppler. All rights reserved.
+// // </copyright>
 
 namespace BudgetExecution
 {
@@ -19,9 +19,7 @@ namespace BudgetExecution
     // *********************************************   CONSTRUCTORS **************************************************************
     // ***************************************************************************************************************************
 
-    /// <summary>
-    /// 
-    /// </summary>
+    /// <summary> </summary>
     /// <seealso cref = "IDataAccess"/>
     [ SuppressMessage( "ReSharper", "ImplicitlyCapturedClosure" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
@@ -34,12 +32,9 @@ namespace BudgetExecution
         // ************************************************  METHODS   ***************************************************************
         // ***************************************************************************************************************************
 
-        /// <summary>
-        /// Gets the query.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public IQuery GetQuery()
+        /// <summary> Gets the query. </summary>
+        /// <returns> </returns>
+        public IQuery GetQuery( )
         {
             try
             {
@@ -48,39 +43,32 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IQuery );
             }
         }
 
-        /// <summary>
-        /// Gets the data.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public IEnumerable<DataRow> GetData()
+        /// <summary> Gets the data. </summary>
+        /// <returns> </returns>
+        public IEnumerable<DataRow> GetData( )
         {
             try
             {
-                var data = GetDataTable()
-                    ?.AsEnumerable();
+                var data = GetDataTable( )?.AsEnumerable( );
 
                 return Verify.Rows( data )
                     ? data
-                    : default;
+                    : default( EnumerableRowCollection<DataRow> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IEnumerable<DataRow> );
             }
         }
 
-        /// <summary>
-        /// Gets the data table.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public DataTable GetDataTable()
+        /// <summary> Gets the data table. </summary>
+        /// <returns> </returns>
+        public DataTable GetDataTable( )
         {
             if( Verify.Source( Source ) )
             {
@@ -94,30 +82,27 @@ namespace BudgetExecution
                     var datatable = new DataTable( $"{Source}" );
                     datatable.TableName = $"{Source}";
                     R6.Tables.Add( datatable );
-                    var adapter = Query?.GetAdapter();
+                    var adapter = Query?.GetAdapter( );
                     adapter?.Fill( R6, datatable.TableName );
                     SetColumnCaptions( datatable );
 
                     return datatable?.Rows?.Count > 0
                         ? datatable
-                        : default;
+                        : default( DataTable );
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( DataTable );
                 }
             }
 
-            return default;
+            return default( DataTable );
         }
 
-        /// <summary>
-        /// Gets the data set.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public DataSet GetDataSet()
+        /// <summary> Gets the data set. </summary>
+        /// <returns> </returns>
+        public DataSet GetDataSet( )
         {
             if( Enum.IsDefined( typeof( Source ), Source ) )
             {
@@ -131,30 +116,26 @@ namespace BudgetExecution
                     var datatable = new DataTable( $"{Source}" );
                     datatable.TableName = $"{Source}";
                     R6.Tables.Add( datatable );
-                    var adapter = Query?.GetAdapter();
+                    var adapter = Query?.GetAdapter( );
                     adapter?.Fill( R6, datatable?.TableName );
                     SetColumnCaptions( datatable );
 
                     return datatable?.Rows?.Count > 0
                         ? R6
-                        : default;
+                        : default( DataSet );
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( DataSet );
                 }
             }
 
-            return default;
+            return default( DataSet );
         }
 
-        /// <summary>
-        /// Sets the column captions.
-        /// </summary>
-        /// <param name = "datatable" >
-        /// The datatable.
-        /// </param>
+        /// <summary> Sets the column captions. </summary>
+        /// <param name = "datatable" > The datatable. </param>
         public void SetColumnCaptions( DataTable datatable )
         {
             if( Verify.Table( datatable ) )
@@ -165,14 +146,14 @@ namespace BudgetExecution
                     {
                         if( column?.ColumnName?.Length < 5 )
                         {
-                            var caption = column.ColumnName.ToUpper();
+                            var caption = column.ColumnName.ToUpper( );
                             column.Caption = caption;
                             continue;
                         }
 
                         if( column?.ColumnName?.Length >= 5 )
                         {
-                            column.Caption = column.ColumnName.SplitPascal();
+                            column.Caption = column.ColumnName.SplitPascal( );
                         }
                     }
                 }
@@ -183,16 +164,13 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Gets the column schema.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public DataColumnCollection GetColumnSchema()
+        /// <summary> Gets the column schema. </summary>
+        /// <returns> </returns>
+        public DataColumnCollection GetColumnSchema( )
         {
             try
             {
-                var table = GetDataTable();
+                var table = GetDataTable( );
                 SetColumnCaptions( table );
 
                 R6 = new DataSet( $"{Source}" )
@@ -203,41 +181,36 @@ namespace BudgetExecution
                 var datatable = new DataTable( $"{Source}" );
                 datatable.TableName = $"{Source}";
                 R6.Tables.Add( datatable );
-                using var adapter = Query?.GetAdapter();
+                using var adapter = Query?.GetAdapter( );
                 adapter?.Fill( R6, datatable.TableName );
                 SetColumnCaptions( datatable );
 
                 return table.Columns.Count > 0
                     ? table.Columns
-                    : default;
+                    : default( DataColumnCollection );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( DataColumnCollection );
             }
         }
 
-        /// <summary>
-        /// Gets the primary keys.
-        /// </summary>
-        /// <param name = "data" >
-        /// The data.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary> Gets the primary keys. </summary>
+        /// <param name = "data" > The data. </param>
+        /// <returns> </returns>
         public IEnumerable<int> GetPrimaryIndexes( IEnumerable<DataRow> data )
         {
             if( Verify.Input( data )
-                && data?.HasPrimaryKey() == true )
+                && data?.HasPrimaryKey( ) == true )
             {
                 try
                 {
-                    var table = data?.CopyToDataTable();
-                    var list = table?.GetPrimaryKeyValues();
+                    var table = data?.CopyToDataTable( );
+                    var list = table?.GetPrimaryKeyValues( );
 
-                    return list?.Any() == true
-                        ? list.ToArray()
+                    return list?.Any( ) == true
+                        ? list.ToArray( )
                         : default( IEnumerable<int> );
                 }
                 catch( Exception ex )
@@ -250,24 +223,19 @@ namespace BudgetExecution
             return default( IEnumerable<int> );
         }
 
-        /// <summary>
-        /// Gets the column ordinals.
-        /// </summary>
-        /// <param name = "data" >
-        /// The data.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary> Gets the column ordinals. </summary>
+        /// <param name = "data" > The data. </param>
+        /// <returns> </returns>
         public IEnumerable<int> GetColumnOrdinals( IEnumerable<DataColumn> data )
         {
             if( Verify.Sequence( data ) )
             {
                 try
                 {
-                    var list = data.ToList();
-                    var values = new List<int>();
+                    var list = data.ToList( );
+                    var values = new List<int>( );
 
-                    if( list?.Any() == true )
+                    if( list?.Any( ) == true )
                     {
                         foreach( var column in list )
                         {
@@ -275,18 +243,18 @@ namespace BudgetExecution
                         }
                     }
 
-                    return values?.Any() == true
-                        ? values.ToArray()
-                        : default;
+                    return values?.Any( ) == true
+                        ? values.ToArray( )
+                        : default( int[ ] );
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IEnumerable<int> );
                 }
             }
 
-            return default;
+            return default( IEnumerable<int> );
         }
     }
 }

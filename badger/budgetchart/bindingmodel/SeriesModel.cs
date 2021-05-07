@@ -111,7 +111,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IDataMetric );
             }
         }
 
@@ -127,12 +127,12 @@ namespace BudgetExecution
 
                 return values?.Any() == true
                     ? values.ToArray()
-                    : default;
+                    : default( double[] );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IEnumerable<double> );
             }
         }
 
@@ -149,12 +149,12 @@ namespace BudgetExecution
 
                 return values?.Any() == true
                     ? values.ToArray()
-                    : default;
+                    : default( string[] );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IEnumerable<string> );
             }
         }
 
@@ -171,7 +171,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ISourceModel );
             }
         }
     }

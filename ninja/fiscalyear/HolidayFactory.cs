@@ -158,7 +158,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -176,7 +176,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -194,7 +194,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -212,7 +212,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -230,7 +230,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -248,7 +248,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -266,7 +266,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -284,7 +284,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -302,7 +302,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -320,7 +320,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -345,12 +345,12 @@ namespace BudgetExecution
 
                 return holiday.Any()
                     ? holiday
-                    : default;
+                    : default( Dictionary<string, DateTime> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IDictionary<string, DateTime> );
             }
         }
 
@@ -375,12 +375,12 @@ namespace BudgetExecution
 
                 return holiday.Any()
                     ? holiday
-                    : default;
+                    : default( Dictionary<string, DateTime> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IDictionary<string, DateTime> );
             }
         }
 
@@ -395,12 +395,12 @@ namespace BudgetExecution
             {
                 return Verify.Map( Args )
                     ? Args
-                    : default;
+                    : default( IDictionary<string, object> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IDictionary<string, object> );
             }
         }
 

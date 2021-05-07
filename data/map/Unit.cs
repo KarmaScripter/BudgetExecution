@@ -1,6 +1,6 @@
-﻿// <copyright file = "Unit.cs" company = "Terry D. Eppler">
-// Copyright (c) Terry D. Eppler. All rights reserved.
-// </copyright>
+﻿// // <copyright file = "Unit.cs" company = "Terry D. Eppler">
+// // Copyright (c) Terry D. Eppler. All rights reserved.
+// // </copyright>
 
 namespace BudgetExecution
 {
@@ -13,11 +13,9 @@ namespace BudgetExecution
     using System.Diagnostics.CodeAnalysis;
     using System.Threading;
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <seealso cref="BudgetExecution.UnitBase" />
-    /// <seealso cref="BudgetExecution.IUnit" />
+    /// <summary> </summary>
+    /// <seealso cref = "BudgetExecution.UnitBase"/>
+    /// <seealso cref = "BudgetExecution.IUnit"/>
     [ SuppressMessage( "ReSharper", "VirtualMemberNeverOverridden.Global" ) ]
     public class Unit : UnitBase, IUnit
     {
@@ -26,16 +24,20 @@ namespace BudgetExecution
         // ***************************************************************************************************************************
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Unit"/> class.
+        /// Initializes a new instance of the
+        /// <see cref = "Unit"/>
+        /// class.
         /// </summary>
-        public Unit()
+        public Unit( )
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Unit"/> class.
+        /// Initializes a new instance of the
+        /// <see cref = "Unit"/>
+        /// class.
         /// </summary>
-        /// <param name="kvp">The KVP.</param>
+        /// <param name = "kvp" > The KVP. </param>
         public Unit( KeyValuePair<string, object> kvp )
         {
             SetName( kvp.Key );
@@ -47,12 +49,9 @@ namespace BudgetExecution
         // ****************************************************     METHODS   ********************************************************
         // ***************************************************************************************************************************
 
-        /// <summary>
-        /// Gets the name.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public virtual string GetName()
+        /// <summary> Gets the name. </summary>
+        /// <returns> </returns>
+        public virtual string GetName( )
         {
             try
             {
@@ -67,11 +66,9 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Gets the value.
-        /// </summary>
-        /// <returns></returns>
-        public virtual string GetValue()
+        /// <summary> Gets the value. </summary>
+        /// <returns> </returns>
+        public virtual string GetValue( )
         {
             try
             {
@@ -86,32 +83,30 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Gets the data.
-        /// </summary>
-        /// <returns></returns>
-        public virtual object GetData()
+        /// <summary> Gets the data. </summary>
+        /// <returns> </returns>
+        public virtual object GetData( )
         {
             try
             {
                 return Verify.Ref( Data )
                     ? Data
-                    : default;
+                    : default( object );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( object );
             }
         }
 
-        /// <summary>
-        /// Converts to string.
-        /// </summary>
+        /// <summary> Converts to string. </summary>
         /// <returns>
-        /// A <see cref="string" /> that represents this instance.
+        /// A
+        /// <see cref = "string"/>
+        /// that represents this instance.
         /// </returns>
-        public override string ToString()
+        public override string ToString( )
         {
             try
             {

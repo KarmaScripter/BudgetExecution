@@ -344,12 +344,12 @@ namespace BudgetExecution
             {
                 return Verify.Amount( Expended )
                     ? Expended
-                    : default;
+                    : default( IAmount );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAmount );
             }
         }
 
@@ -364,12 +364,12 @@ namespace BudgetExecution
             {
                 return Verify.Amount( ULO )
                     ? ULO
-                    : default;
+                    : default( IAmount );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAmount );
             }
         }
 
@@ -384,12 +384,12 @@ namespace BudgetExecution
             {
                 return Verify.Map( Data )
                     ? Data
-                    : default;
+                    : default( IDictionary<string, object> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IDictionary<string, object> );
             }
         }
     }

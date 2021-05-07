@@ -89,12 +89,12 @@ namespace BudgetExecution
             {
                 return Verify.Map( Data )
                     ? new Builder( Source, Data )
-                    : default;
+                    : default( Builder );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IBuilder );
             }
         }
 
@@ -128,12 +128,12 @@ namespace BudgetExecution
             {
                 return Enum.IsDefined( typeof( AwardType ), Type )
                     ? new Element( Record, Field.Type )
-                    : default;
+                    : default( Element );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
     }

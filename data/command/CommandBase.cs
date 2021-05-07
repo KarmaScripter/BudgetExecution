@@ -1,6 +1,6 @@
-﻿// <copyright file = "CommandBase.cs" company = "Terry D. Eppler">
-// Copyright (c) Terry D. Eppler. All rights reserved.
-// </copyright>
+﻿// // <copyright file = "CommandBase.cs" company = "Terry D. Eppler">
+// // Copyright (c) Terry D. Eppler. All rights reserved.
+// // </copyright>
 
 namespace BudgetExecution
 {
@@ -24,79 +24,57 @@ namespace BudgetExecution
 
         private protected DbCommand Command { get; set; }
 
-        /// <summary>
-        /// Gets the source.
-        /// </summary>
-        /// <value>
-        /// The source.
-        /// </value>
+        /// <summary> Gets the source. </summary>
+        /// <value> The source. </value>
         private protected Source Source { get; set; }
 
-        /// <summary>
-        /// Gets the provider.
-        /// </summary>
-        /// <value>
-        /// The provider.
-        /// </value>
+        /// <summary> Gets the provider. </summary>
+        /// <value> The provider. </value>
         private protected Provider Provider { get; set; }
 
-        /// <summary>
-        /// Gets the connection manager.
-        /// </summary>
-        /// <value>
-        /// The connection manager.
-        /// </value>
+        /// <summary> Gets the connection manager. </summary>
+        /// <value> The connection manager. </value>
         private protected IConnectionBuilder ConnectionBuilder { get; set; }
 
-        /// <summary>
-        /// Gets the SQL statement.
-        /// </summary>
-        /// <value>
-        /// The SQL statement.
-        /// </value>
+        /// <summary> Gets the SQL statement. </summary>
+        /// <value> The SQL statement. </value>
         private protected ISqlStatement SqlStatement { get; set; }
 
         // ***************************************************************************************************************************
         // ****************************************************     METHODS   ********************************************************
         // ***************************************************************************************************************************
 
-        /// <summary>
-        /// Gets the source.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public Source GetSource()
+        /// <summary> Gets the source. </summary>
+        /// <returns> </returns>
+        public Source GetSource( )
         {
             try
             {
                 return Verify.Source( Source )
                     ? Source
-                    : default;
+                    : default( Source );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( Source );
             }
         }
 
-        /// <summary>
-        /// Gets the provider.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public Provider GetProvider()
+        /// <summary> Gets the provider. </summary>
+        /// <returns> </returns>
+        public Provider GetProvider( )
         {
             try
             {
                 return Verify.Provider( Provider )
                     ? Provider
-                    : default;
+                    : default( Provider );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( Provider );
             }
         }
 
@@ -104,7 +82,7 @@ namespace BudgetExecution
         {
             try
             {
-                ConnectionBuilder = Verify.Source( source ) && Verify.Provider( provider ) 
+                ConnectionBuilder = Verify.Source( source ) && Verify.Provider( provider )
                     ? new ConnectionBuilder( source, provider )
                     : default( ConnectionBuilder );
             }
@@ -114,170 +92,154 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Gets the connection manager.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public IConnectionBuilder GetConnectionBuilder()
+        /// <summary> Gets the connection manager. </summary>
+        /// <returns> </returns>
+        public IConnectionBuilder GetConnectionBuilder( )
         {
             try
             {
                 return Verify.Ref( ConnectionBuilder )
                     ? ConnectionBuilder
-                    : default;
+                    : default( IConnectionBuilder );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IConnectionBuilder );
             }
         }
 
-        /// <summary>
-        /// Gets the SQL statement.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public ISqlStatement GetSqlStatement()
+        /// <summary> Gets the SQL statement. </summary>
+        /// <returns> </returns>
+        public ISqlStatement GetSqlStatement( )
         {
             try
             {
                 return Verify.Ref( SqlStatement )
                     ? SqlStatement
-                    : default;
+                    : default( ISqlStatement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ISqlStatement );
             }
         }
 
-        /// <summary>
-        /// Gets the sq lite command.
-        /// </summary>
-        /// <param name = "sqlstatement" >
-        /// The sqlstatement.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary> Gets the sq lite command. </summary>
+        /// <param name = "sqlstatement" > The sqlstatement. </param>
+        /// <returns> </returns>
         public DbCommand GetSQLiteCommand( ISqlStatement sqlstatement )
         {
             if( Verify.Ref( sqlstatement ) )
             {
                 try
                 {
-                    var connection = new ConnectionFactory( ConnectionBuilder )?.GetConnection();
+                    var connection = new ConnectionFactory( ConnectionBuilder )?.GetConnection( );
 
-                    switch( sqlstatement?.GetCommandType() )
+                    switch( sqlstatement?.GetCommandType( ) )
                     {
                         case SQL.SELECT:
                         {
-                            var sql = sqlstatement?.GetSelectStatement();
+                            var sql = sqlstatement?.GetSelectStatement( );
 
                             return Verify.Input( sql )
                                 ? new SQLiteCommand( sql, connection as SQLiteConnection )
-                                : default;
+                                : default( SQLiteCommand );
                         }
 
                         case SQL.INSERT:
                         {
-                            var sql = sqlstatement?.GetInsertStatement();
+                            var sql = sqlstatement?.GetInsertStatement( );
 
                             return Verify.Input( sql )
                                 ? new SQLiteCommand( sql, connection as SQLiteConnection )
-                                : default;
+                                : default( SQLiteCommand );
                         }
 
                         case SQL.UPDATE:
                         {
-                            var sql = sqlstatement?.GetUpdateStatement();
+                            var sql = sqlstatement?.GetUpdateStatement( );
 
                             return Verify.Input( sql )
                                 ? new SQLiteCommand( sql, connection as SQLiteConnection )
-                                : default;
+                                : default( SQLiteCommand );
                         }
 
                         case SQL.DELETE:
                         {
-                            var sql = sqlstatement?.GetDeleteStatement();
+                            var sql = sqlstatement?.GetDeleteStatement( );
 
                             return Verify.Input( sql )
                                 ? new SQLiteCommand( sql, connection as SQLiteConnection )
-                                : default;
+                                : default( SQLiteCommand );
                         }
 
                         default:
                         {
-                            var sql = sqlstatement?.GetSelectStatement();
+                            var sql = sqlstatement?.GetSelectStatement( );
 
                             return Verify.Input( sql )
                                 ? new SQLiteCommand( sql, connection as SQLiteConnection )
-                                : default;
+                                : default( SQLiteCommand );
                         }
                     }
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( DbCommand );
                 }
             }
 
-            return default;
+            return default( DbCommand );
         }
 
-        /// <summary>
-        /// Gets the SQL ce command.
-        /// </summary>
-        /// <param name = "sqlstatement" >
-        /// The sqlstatement.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary> Gets the SQL ce command. </summary>
+        /// <param name = "sqlstatement" > The sqlstatement. </param>
+        /// <returns> </returns>
         public DbCommand GetSqlCeCommand( ISqlStatement sqlstatement )
         {
             if( Verify.Ref( sqlstatement ) )
             {
                 try
                 {
-                    var connection = new ConnectionFactory( ConnectionBuilder )?.GetConnection();
+                    var connection = new ConnectionFactory( ConnectionBuilder )?.GetConnection( );
 
                     if( Verify.Input( connection?.ConnectionString ) )
                     {
-                        switch( sqlstatement?.GetCommandType() )
+                        switch( sqlstatement?.GetCommandType( ) )
                         {
                             case SQL.SELECT:
                             {
-                                var sql = sqlstatement?.GetSelectStatement();
+                                var sql = sqlstatement?.GetSelectStatement( );
 
                                 return Verify.Input( sql )
                                     ? new SqlCeCommand( sql, connection as SqlCeConnection )
-                                    : default;
+                                    : default( SqlCeCommand );
                             }
 
                             case SQL.INSERT:
                             {
-                                var sql = sqlstatement?.GetInsertStatement();
+                                var sql = sqlstatement?.GetInsertStatement( );
 
                                 return Verify.Input( sql )
                                     ? new SqlCeCommand( sql, connection as SqlCeConnection )
-                                    : default;
+                                    : default( SqlCeCommand );
                             }
 
                             case SQL.UPDATE:
                             {
-                                var sql = sqlstatement?.GetUpdateStatement();
+                                var sql = sqlstatement?.GetUpdateStatement( );
 
                                 return Verify.Input( sql )
                                     ? new SqlCeCommand( sql, connection as SqlCeConnection )
-                                    : default;
+                                    : default( SqlCeCommand );
                             }
 
                             case SQL.DELETE:
                             {
-                                var sql = sqlstatement?.GetDeleteStatement();
+                                var sql = sqlstatement?.GetDeleteStatement( );
 
                                 return Verify.Input( sql )
                                     ? new SqlCeCommand( sql, connection as SqlCeConnection )
@@ -286,7 +248,7 @@ namespace BudgetExecution
 
                             default:
                             {
-                                var sql = sqlstatement?.GetSelectStatement();
+                                var sql = sqlstatement?.GetSelectStatement( );
 
                                 return Verify.Input( sql )
                                     ? new SqlCeCommand( sql, connection as SqlCeConnection )
@@ -298,34 +260,29 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( DbCommand );
                 }
             }
 
-            return default;
+            return default( DbCommand );
         }
 
-        /// <summary>
-        /// Gets the SQL command.
-        /// </summary>
-        /// <param name = "sqlstatement" >
-        /// The sqlstatement.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary> Gets the SQL command. </summary>
+        /// <param name = "sqlstatement" > The sqlstatement. </param>
+        /// <returns> </returns>
         public DbCommand GetSqlCommand( ISqlStatement sqlstatement )
         {
             if( Verify.Ref( sqlstatement ) )
             {
                 try
                 {
-                    var connection = new ConnectionFactory( ConnectionBuilder )?.GetConnection();
+                    var connection = new ConnectionFactory( ConnectionBuilder )?.GetConnection( );
 
-                    switch( sqlstatement?.GetCommandType() )
+                    switch( sqlstatement?.GetCommandType( ) )
                     {
                         case SQL.SELECT:
                         {
-                            var sql = sqlstatement?.GetSelectStatement();
+                            var sql = sqlstatement?.GetSelectStatement( );
 
                             return Verify.Input( sql )
                                 ? new SqlCommand( sql, connection as SqlConnection )
@@ -334,7 +291,7 @@ namespace BudgetExecution
 
                         case SQL.INSERT:
                         {
-                            var sql = sqlstatement?.GetInsertStatement();
+                            var sql = sqlstatement?.GetInsertStatement( );
 
                             return Verify.Input( sql )
                                 ? new SqlCommand( sql, connection as SqlConnection )
@@ -343,7 +300,7 @@ namespace BudgetExecution
 
                         case SQL.UPDATE:
                         {
-                            var sql = sqlstatement?.GetUpdateStatement();
+                            var sql = sqlstatement?.GetUpdateStatement( );
 
                             return Verify.Input( sql )
                                 ? new SqlCommand( sql, connection as SqlConnection )
@@ -352,7 +309,7 @@ namespace BudgetExecution
 
                         case SQL.DELETE:
                         {
-                            var sql = sqlstatement?.GetDeleteStatement();
+                            var sql = sqlstatement?.GetDeleteStatement( );
 
                             return Verify.Input( sql )
                                 ? new SqlCommand( sql, connection as SqlConnection )
@@ -361,7 +318,7 @@ namespace BudgetExecution
 
                         default:
                         {
-                            var sql = sqlstatement?.GetSelectStatement();
+                            var sql = sqlstatement?.GetSelectStatement( );
 
                             return Verify.Input( sql )
                                 ? new SqlCommand( sql, connection as SqlConnection )
@@ -372,34 +329,29 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( DbCommand );
                 }
             }
 
-            return default;
+            return default( DbCommand );
         }
 
-        /// <summary>
-        /// Gets the OLE database command.
-        /// </summary>
-        /// <param name = "sqlstatement" >
-        /// The sqlstatement.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary> Gets the OLE database command. </summary>
+        /// <param name = "sqlstatement" > The sqlstatement. </param>
+        /// <returns> </returns>
         public DbCommand GetOleDbCommand( ISqlStatement sqlstatement )
         {
             if( Verify.Ref( sqlstatement ) )
             {
                 try
                 {
-                    var connection = new ConnectionFactory( ConnectionBuilder )?.GetConnection();
+                    var connection = new ConnectionFactory( ConnectionBuilder )?.GetConnection( );
 
-                    switch( sqlstatement?.GetCommandType() )
+                    switch( sqlstatement?.GetCommandType( ) )
                     {
                         case SQL.SELECT:
                         {
-                            var sql = sqlstatement?.GetSelectStatement();
+                            var sql = sqlstatement?.GetSelectStatement( );
 
                             return Verify.Input( sql )
                                 ? new OleDbCommand( sql, connection as OleDbConnection )
@@ -408,7 +360,7 @@ namespace BudgetExecution
 
                         case SQL.INSERT:
                         {
-                            var sql = sqlstatement?.GetInsertStatement();
+                            var sql = sqlstatement?.GetInsertStatement( );
 
                             return Verify.Input( sql )
                                 ? new OleDbCommand( sql, connection as OleDbConnection )
@@ -417,7 +369,7 @@ namespace BudgetExecution
 
                         case SQL.UPDATE:
                         {
-                            var sql = sqlstatement.GetUpdateStatement();
+                            var sql = sqlstatement.GetUpdateStatement( );
 
                             return Verify.Input( sql )
                                 ? new OleDbCommand( sql, connection as OleDbConnection )
@@ -426,7 +378,7 @@ namespace BudgetExecution
 
                         case SQL.DELETE:
                         {
-                            var sql = sqlstatement?.GetDeleteStatement();
+                            var sql = sqlstatement?.GetDeleteStatement( );
 
                             return Verify.Input( sql )
                                 ? new OleDbCommand( sql, connection as OleDbConnection )
@@ -435,7 +387,7 @@ namespace BudgetExecution
 
                         default:
                         {
-                            var sql = sqlstatement?.GetSelectStatement();
+                            var sql = sqlstatement?.GetSelectStatement( );
 
                             return Verify.Input( sql )
                                 ? new OleDbCommand( sql, connection as OleDbConnection )
@@ -446,22 +398,20 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( DbCommand );
                 }
             }
 
-            return default;
+            return default( DbCommand );
         }
 
-        /// <summary>
-        /// Get Error Dialog.
-        /// </summary>
-        /// <param name="ex">The ex.</param>
+        /// <summary> Get Error Dialog. </summary>
+        /// <param name = "ex" > The ex. </param>
         private protected static void Fail( Exception ex )
         {
             using var error = new Error( ex );
-            error?.SetText();
-            error?.ShowDialog();
+            error?.SetText( );
+            error?.ShowDialog( );
         }
     }
 }

@@ -410,12 +410,12 @@ namespace BudgetExecution
             {
                 return Children?.Any() == true
                     ? Children
-                    : default;
+                    : default( IList<Control> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IEnumerable<Control> );
             }
         }
 

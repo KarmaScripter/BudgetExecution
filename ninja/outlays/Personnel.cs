@@ -214,11 +214,11 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IDictionary<string, object> );
                 }
             }
 
-            return default;
+            return default( IDictionary<string, object> );
         }
 
         /// <summary>
@@ -248,11 +248,11 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IDictionary<string, object> );
                 }
             }
 
-            return default;
+            return default( IDictionary<string, object> );
         }
 
         /// <summary>
@@ -278,7 +278,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IEmployee );
             }
         }
 
@@ -291,12 +291,12 @@ namespace BudgetExecution
         {
             try
             {
-                return ContactData ?? default;
+                return ContactData ?? default( IEmployee );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IEmployee );
             }
         }
 
@@ -323,7 +323,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ILeave );
             }
         }
 
@@ -336,12 +336,12 @@ namespace BudgetExecution
         {
             try
             {
-                return LeaveData ?? default;
+                return LeaveData ?? default( ILeave );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ILeave );
             }
         }
 
@@ -368,7 +368,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IHumanResourceData );
             }
         }
 
@@ -381,12 +381,12 @@ namespace BudgetExecution
         {
             try
             {
-                return HumanResourceData ?? default;
+                return HumanResourceData ?? default( IHumanResourceData );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IHumanResourceData );
             }
         }
 
@@ -399,12 +399,12 @@ namespace BudgetExecution
         {
             try
             {
-                return PayrollData ?? default;
+                return PayrollData ?? default( IPayrollBase );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IPayrollBase );
             }
         }
 
@@ -433,7 +433,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IPayrollBase );
             }
         }
 
@@ -462,7 +462,7 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IDictionary<string, object> );
                 }
             }
 
@@ -480,11 +480,11 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IDictionary<string, object> );
                 }
             }
 
-            return default;
+            return default( IDictionary<string, object> );
         }
     }
 }

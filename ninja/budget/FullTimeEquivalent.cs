@@ -115,12 +115,12 @@ namespace BudgetExecution
             {
                 return Verify.Key( ID )
                     ? ID
-                    : default;
+                    : default( IKey );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IKey );
             }
         }
 
@@ -135,12 +135,12 @@ namespace BudgetExecution
             {
                 return Amount.GetFunding() > -1.0
                     ? Amount
-                    : default;
+                    : default( IAmount );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAmount );
             }
         }
     }

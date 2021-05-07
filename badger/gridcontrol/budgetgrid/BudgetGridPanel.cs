@@ -350,11 +350,11 @@ namespace BudgetExecution
                     catch( Exception ex )
                     {
                         Fail( ex );
-                        return default;
+                        return default( string );
                     }
                 }
 
-                return default;
+                return default( string );
             }
         }
 
@@ -373,17 +373,17 @@ namespace BudgetExecution
                     if( index > -1 )
                     {
                         var datarow = dataview[ index ].Row;
-                        return datarow ?? default;
+                        return datarow ?? default( DataRow );
                     }
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( DataRow );
                 }
             }
 
-            return default;
+            return default( DataRow );
         }
 
         /// <summary> Sets the group panel. </summary>

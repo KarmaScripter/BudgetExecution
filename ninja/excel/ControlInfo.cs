@@ -170,12 +170,12 @@ namespace BudgetExecution
             {
                 return Verify.Map( Args )
                     ? Args
-                    : default;
+                    : default( IDictionary<string, object> );
             }
             catch( SystemException ex )
             {
                 Fail( ex );
-                return default;
+                return default( IDictionary<string, object> );
             }
         }
 

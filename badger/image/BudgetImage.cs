@@ -130,12 +130,12 @@ namespace BudgetExecution
             {
                 return Verify.Ref( Builder )
                     ? Builder
-                    : default;
+                    : default( ImageBuilder );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ImageBuilder );
             }
         }
 
@@ -150,12 +150,12 @@ namespace BudgetExecution
             {
                 return Verify.Ref( Factory )
                     ? Factory
-                    : default;
+                    : default( ImageFactory );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ImageFactory );
             }
         }
 
@@ -218,12 +218,12 @@ namespace BudgetExecution
             {
                 return Verify.Ref( Image )
                     ? Image
-                    : default;
+                    : default( Bitmap );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( Image );
             }
         }
 
@@ -243,7 +243,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( Color );
             }
         }
     }

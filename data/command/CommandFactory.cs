@@ -1,6 +1,6 @@
-﻿// <copyright file = "CommandFactory.cs" company = "Terry D. Eppler">
-// Copyright (c) Terry D. Eppler. All rights reserved.
-// </copyright>
+﻿// // <copyright file = "CommandFactory.cs" company = "Terry D. Eppler">
+// // Copyright (c) Terry D. Eppler. All rights reserved.
+// // </copyright>
 
 namespace BudgetExecution
 {
@@ -36,20 +36,16 @@ namespace BudgetExecution
         public CommandFactory( ICommandBuilder commandbuilder )
         {
             CommandBuilder = commandbuilder;
-            SqlStatement = CommandBuilder?.GetSqlStatement();
-            ConnectionFactory = new ConnectionFactory( SqlStatement?.GetConnectionBuilder() );
+            SqlStatement = CommandBuilder?.GetSqlStatement( );
+            ConnectionFactory = new ConnectionFactory( SqlStatement?.GetConnectionBuilder( ) );
         }
 
         // **********************************************************************************************************************
         // *************************************************   PROPERTIES   *****************************************************
         // **********************************************************************************************************************
 
-        /// <summary>
-        /// Gets the connection manager.
-        /// </summary>
-        /// <value>
-        /// The connection manager.
-        /// </value>
+        /// <summary> Gets the connection manager. </summary>
+        /// <value> The connection manager. </value>
         private IConnectionFactory ConnectionFactory { get; }
 
         // **********************************************************************************************************************
@@ -57,17 +53,10 @@ namespace BudgetExecution
         // **********************************************************************************************************************
 
         /// <inheritdoc/>
-        /// <summary>
-        /// Gets the create table command.
-        /// </summary>
-        /// <param name = "table" >
-        /// The tablename.
-        /// </param>
-        /// <param name = "columns" >
-        /// The columns.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary> Gets the create table command. </summary>
+        /// <param name = "table" > The tablename. </param>
+        /// <param name = "columns" > The columns. </param>
+        /// <returns> </returns>
         public DbCommand GetCreateTableCommand( string table, IEnumerable<DataColumn> columns )
         {
             if( Verify.Input( table )
@@ -75,8 +64,8 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var connectionbuilder = GetConnectionBuilder();
-                    var provider = connectionbuilder.GetProvider();
+                    var connectionbuilder = GetConnectionBuilder( );
+                    var provider = connectionbuilder.GetProvider( );
                     var sql = $"CREATE TABLE {table}";
 
                     if( Verify.Provider( provider )
@@ -88,21 +77,21 @@ namespace BudgetExecution
                             {
                                 return Verify.Input( sql )
                                     ? new SQLiteCommand( sql )
-                                    : default;
+                                    : default( SQLiteCommand );
                             }
 
                             case Provider.SqlCe:
                             {
                                 return Verify.Input( sql )
                                     ? new SqlCeCommand( sql )
-                                    : default;
+                                    : default( SqlCeCommand );
                             }
 
                             case Provider.SqlServer:
                             {
                                 return Verify.Input( sql )
                                     ? new SqlCommand( sql )
-                                    : default;
+                                    : default( SqlCommand );
                             }
 
                             case Provider.Excel:
@@ -112,7 +101,7 @@ namespace BudgetExecution
                             {
                                 return Verify.Input( sql )
                                     ? new OleDbCommand( sql )
-                                    : default;
+                                    : default( OleDbCommand );
                             }
                         }
                     }
@@ -120,37 +109,30 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( DbCommand );
                 }
             }
 
-            return default;
+            return default( DbCommand );
         }
 
         /// <inheritdoc/>
-        /// <summary>
-        /// Gets the create view command.
-        /// </summary>
-        /// <param name = "view" >
-        /// The tablename.
-        /// </param>
-        /// <param name = "columns" >
-        /// The columns.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary> Gets the create view command. </summary>
+        /// <param name = "view" > The tablename. </param>
+        /// <param name = "columns" > The columns. </param>
+        /// <returns> </returns>
         public DbCommand GetCreateViewCommand( string view, IEnumerable<DataColumn> columns )
         {
-            var connectionbuilder = ConnectionFactory?.GetConnectionBuilder();
+            var connectionbuilder = ConnectionFactory?.GetConnectionBuilder( );
 
             if( Verify.Input( view )
-                && columns?.Any() == true
+                && columns?.Any( ) == true
                 && connectionbuilder != null
-                && connectionbuilder.GetProvider() != Provider.SqlCe )
+                && connectionbuilder.GetProvider( ) != Provider.SqlCe )
             {
                 try
                 {
-                    var provider = connectionbuilder.GetProvider();
+                    var provider = connectionbuilder.GetProvider( );
                     var sql = $"CREATE VIEW {view};";
 
                     switch( provider )
@@ -159,14 +141,14 @@ namespace BudgetExecution
                         {
                             return Verify.Input( sql )
                                 ? new SQLiteCommand( sql )
-                                : default;
+                                : default( SQLiteCommand );
                         }
 
                         case Provider.SqlServer:
                         {
                             return Verify.Input( sql )
                                 ? new SqlCommand( sql )
-                                : default;
+                                : default( SqlCommand );
                         }
 
                         case Provider.Excel:
@@ -176,32 +158,27 @@ namespace BudgetExecution
                         {
                             return Verify.Input( sql )
                                 ? new OleDbCommand( sql )
-                                : default;
+                                : default( OleDbCommand );
                         }
                     }
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( DbCommand );
                 }
             }
 
-            return default;
+            return default( DbCommand );
         }
 
         /// <inheritdoc/>
-        /// <summary>
-        /// Gets the drop table command.
-        /// </summary>
-        /// <param name = "datatable" >
-        /// The datatable.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary> Gets the drop table command. </summary>
+        /// <param name = "datatable" > The datatable. </param>
+        /// <returns> </returns>
         public DbCommand GetDropTableCommand( DataTable datatable )
         {
-            var connectionbuilder = ConnectionFactory?.GetConnectionBuilder();
+            var connectionbuilder = ConnectionFactory?.GetConnectionBuilder( );
 
             if( datatable != null
                 && connectionbuilder != null )
@@ -209,7 +186,7 @@ namespace BudgetExecution
                 try
                 {
                     var sql = $"DROP {datatable.TableName};";
-                    var provider = connectionbuilder.GetProvider();
+                    var provider = connectionbuilder.GetProvider( );
 
                     if( Verify.Input( sql )
                         && Enum.IsDefined( typeof( Provider ), provider ) )
@@ -220,21 +197,21 @@ namespace BudgetExecution
                             {
                                 return Verify.Input( sql )
                                     ? new SQLiteCommand( sql )
-                                    : default;
+                                    : default( SQLiteCommand );
                             }
 
                             case Provider.SqlCe:
                             {
                                 return Verify.Input( sql )
                                     ? new SqlCeCommand( sql )
-                                    : default;
+                                    : default( SqlCeCommand );
                             }
 
                             case Provider.SqlServer:
                             {
                                 return Verify.Input( sql )
                                     ? new SqlCommand( sql )
-                                    : default;
+                                    : default( SqlCommand );
                             }
 
                             case Provider.Excel:
@@ -244,7 +221,7 @@ namespace BudgetExecution
                             {
                                 return Verify.Input( sql )
                                     ? new OleDbCommand( sql )
-                                    : default;
+                                    : default( OleDbCommand );
                             }
                         }
                     }
@@ -252,28 +229,21 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( DbCommand );
                 }
             }
 
-            return default;
+            return default( DbCommand );
         }
 
         /// <inheritdoc/>
-        /// <summary>
-        /// Gets the alter command.
-        /// </summary>
-        /// <param name = "datatable" >
-        /// The datatable.
-        /// </param>
-        /// <param name = "column" >
-        /// The column.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary> Gets the alter command. </summary>
+        /// <param name = "datatable" > The datatable. </param>
+        /// <param name = "column" > The column. </param>
+        /// <returns> </returns>
         public DbCommand GetAlterCommand( DataTable datatable, DataColumn column )
         {
-            var connectionbuilder = ConnectionFactory?.GetConnectionBuilder();
+            var connectionbuilder = ConnectionFactory?.GetConnectionBuilder( );
 
             if( datatable != null
                 && column != null
@@ -281,7 +251,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var provider = connectionbuilder?.GetProvider();
+                    var provider = connectionbuilder?.GetProvider( );
                     var sql = $"ALTER TABLE {datatable.TableName} ADD COLUMN {column.ColumnName};";
 
                     if( Verify.Input( sql )
@@ -293,21 +263,21 @@ namespace BudgetExecution
                             {
                                 return Verify.Input( sql )
                                     ? new SQLiteCommand( sql )
-                                    : default;
+                                    : default( SQLiteCommand );
                             }
 
                             case Provider.SqlCe:
                             {
                                 return Verify.Input( sql )
                                     ? new SqlCeCommand( sql )
-                                    : default;
+                                    : default( SqlCeCommand );
                             }
 
                             case Provider.SqlServer:
                             {
                                 return Verify.Input( sql )
                                     ? new SqlCommand( sql )
-                                    : default;
+                                    : default( SqlCommand );
                             }
 
                             case Provider.Excel:
@@ -317,7 +287,7 @@ namespace BudgetExecution
                             {
                                 return Verify.Input( sql )
                                     ? new OleDbCommand( sql )
-                                    : default;
+                                    : default( OleDbCommand );
                             }
                         }
                     }
@@ -325,25 +295,18 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( DbCommand );
                 }
             }
 
-            return default;
+            return default( DbCommand );
         }
 
         /// <inheritdoc/>
-        /// <summary>
-        /// Gets the alter command.
-        /// </summary>
-        /// <param name = "datatable" >
-        /// The datatable.
-        /// </param>
-        /// <param name = "name" >
-        /// The name.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary> Gets the alter command. </summary>
+        /// <param name = "datatable" > The datatable. </param>
+        /// <param name = "name" > The name. </param>
+        /// <returns> </returns>
         public DbCommand GetAlterCommand( DataTable datatable, string name )
         {
             if( datatable != null
@@ -352,7 +315,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var provider = CommandBuilder?.GetProvider();
+                    var provider = CommandBuilder?.GetProvider( );
                     var sql = $"ALTER TABLE {datatable.TableName} RENAME {name};";
 
                     if( Enum.IsDefined( typeof( Provider ), provider )
@@ -364,21 +327,21 @@ namespace BudgetExecution
                             {
                                 return Verify.Input( sql )
                                     ? new SQLiteCommand( sql )
-                                    : default;
+                                    : default( SQLiteCommand );
                             }
 
                             case Provider.SqlCe:
                             {
                                 return Verify.Input( sql )
                                     ? new SqlCeCommand( sql )
-                                    : default;
+                                    : default( SqlCeCommand );
                             }
 
                             case Provider.SqlServer:
                             {
                                 return Verify.Input( sql )
                                     ? new SqlCommand( sql )
-                                    : default;
+                                    : default( SqlCommand );
                             }
 
                             case Provider.Excel:
@@ -388,7 +351,7 @@ namespace BudgetExecution
                             {
                                 return Verify.Input( sql )
                                     ? new OleDbCommand( sql )
-                                    : default;
+                                    : default( OleDbCommand );
                             }
                         }
                     }
@@ -396,82 +359,70 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( DbCommand );
                 }
             }
 
-            return default;
+            return default( DbCommand );
         }
 
-        /// <summary>
-        /// Gets the select command.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public DbCommand GetSelectCommand()
+        /// <summary> Gets the select command. </summary>
+        /// <returns> </returns>
+        public DbCommand GetSelectCommand( )
         {
             try
             {
-                return CommandBuilder?.GetCommand();
+                return CommandBuilder?.GetCommand( );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( DbCommand );
             }
         }
 
-        /// <summary>
-        /// Gets the insert command.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public DbCommand GetInsertCommand()
+        /// <summary> Gets the insert command. </summary>
+        /// <returns> </returns>
+        public DbCommand GetInsertCommand( )
         {
             try
             {
-                return CommandBuilder?.GetCommand();
+                return CommandBuilder?.GetCommand( );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( DbCommand );
             }
         }
 
-        /// <summary>
-        /// Gets the update command.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public DbCommand GetUpdateCommand()
+        /// <summary> Gets the update command. </summary>
+        /// <returns> </returns>
+        public DbCommand GetUpdateCommand( )
         {
             try
             {
-                return CommandBuilder?.GetCommand();
+                return CommandBuilder?.GetCommand( );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( DbCommand );
             }
         }
 
-        /// <summary>
-        /// Gets the delete command.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public DbCommand GetDeleteCommand()
+        /// <summary> Gets the delete command. </summary>
+        /// <returns> </returns>
+        public DbCommand GetDeleteCommand( )
         {
             try
             {
-                return CommandBuilder?.GetCommand();
+                return CommandBuilder?.GetCommand( );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( DbCommand );
             }
         }
     }

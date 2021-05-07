@@ -1,6 +1,6 @@
-﻿// <copyright file = "TriggerBuilder.cs" company = "Terry D. Eppler">
-// Copyright (c) Terry D. Eppler. All rights reserved.
-// </copyright>
+﻿// // <copyright file = "TriggerBuilder.cs" company = "Terry D. Eppler">
+// // Copyright (c) Terry D. Eppler. All rights reserved.
+// // </copyright>
 
 namespace BudgetExecution
 {
@@ -14,7 +14,7 @@ namespace BudgetExecution
     {
         public static IList<TriggerSchema> GetForeignKeyTriggers( TableSchema dt )
         {
-            IList<TriggerSchema> result = new List<TriggerSchema>();
+            IList<TriggerSchema> result = new List<TriggerSchema>( );
 
             foreach( var fks in dt.ForeignKeys )
             {

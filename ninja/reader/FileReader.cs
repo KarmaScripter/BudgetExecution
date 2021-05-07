@@ -101,7 +101,7 @@ namespace BudgetExecution
             catch( IOException ex )
             {
                 Fail( ex );
-                return default;
+                return default( string );
             }
         }
 
@@ -121,15 +121,15 @@ namespace BudgetExecution
 
                     return stream?.Any() == true
                         ? stream
-                        : default;
+                        : default( string[] );
                 }
 
-                return default;
+                return default( string[] );
             }
             catch( IOException ex )
             {
                 Fail( ex );
-                return default;
+                return default( string[] );
             }
         }
 
@@ -149,15 +149,15 @@ namespace BudgetExecution
 
                     return stream?.Any() == true
                         ? stream
-                        : default;
+                        : default( byte[] );
                 }
 
-                return default;
+                return default( byte[] );
             }
             catch( IOException ex )
             {
                 Fail( ex );
-                return default;
+                return default( byte[] );
             }
         }
 

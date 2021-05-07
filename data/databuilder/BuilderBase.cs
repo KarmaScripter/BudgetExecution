@@ -1,6 +1,6 @@
-﻿// <copyright file = "BuilderBase.cs" company = "Terry D. Eppler">
-// Copyright (c) Terry D. Eppler. All rights reserved.
-// </copyright>
+﻿// // <copyright file = "BuilderBase.cs" company = "Terry D. Eppler">
+// // Copyright (c) Terry D. Eppler. All rights reserved.
+// // </copyright>
 
 namespace BudgetExecution
 {
@@ -20,17 +20,14 @@ namespace BudgetExecution
         // ************************************************  METHODS   ***************************************************************
         // ***************************************************************************************************************************
 
-        /// <summary>
-        /// Gets the column ordinals.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public IEnumerable<int> GetColumnOrdinals()
+        /// <summary> Gets the column ordinals. </summary>
+        /// <returns> </returns>
+        public IEnumerable<int> GetColumnOrdinals( )
         {
             try
             {
-                var columns = GetDataTable()?.Columns;
-                var values = new List<int>();
+                var columns = GetDataTable( )?.Columns;
+                var values = new List<int>( );
 
                 if( columns?.Count > 0 )
                 {
@@ -40,7 +37,7 @@ namespace BudgetExecution
                     }
                 }
 
-                return values?.Any() == true
+                return values?.Any( ) == true
                     ? values
                     : default( IEnumerable<int> );
             }
@@ -51,23 +48,19 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Gets the data elements.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public IEnumerable<Field> GetFields()
+        /// <summary> Gets the data elements. </summary>
+        /// <returns> </returns>
+        public IEnumerable<Field> GetFields( )
         {
             try
             {
-                var columns = Record?.ToDictionary()
-                    ?.Keys?.ToArray();
+                var columns = Record?.ToDictionary( )?.Keys?.ToArray( );
 
-                if( columns?.Any() == true )
+                if( columns?.Any( ) == true )
                 {
-                    var elements = columns?.Select( e => e.ToEnum<Field>() );
+                    var elements = columns?.Select( e => e.ToEnum<Field>( ) );
 
-                    return elements?.Any() == true
+                    return elements?.Any( ) == true
                         ? elements
                         : default( IEnumerable<Field> );
                 }
@@ -83,16 +76,13 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Gets the data elements.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public IEnumerable<IElement> GetElements()
+        /// <summary> Gets the data elements. </summary>
+        /// <returns> </returns>
+        public IEnumerable<IElement> GetElements( )
         {
             try
             {
-                var list = new List<IElement>();
+                var list = new List<IElement>( );
                 var columns = Record?.Table?.Columns;
                 var fields = Enum.GetNames( typeof( Field ) );
 
@@ -107,7 +97,7 @@ namespace BudgetExecution
                         }
                     }
 
-                    return list?.Any() == true
+                    return list?.Any( ) == true
                         ? list
                         : default( IEnumerable<IElement> );
                 }

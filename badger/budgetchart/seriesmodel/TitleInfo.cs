@@ -59,11 +59,11 @@ namespace BudgetExecution
         {
             Main = title.ContainsKey( "Main" )
                 ? title[ "Main" ]
-                : default;
+                : default( string );
 
             Axis = title.ContainsKey( "Axis" )
                 ? title[ "Main" ]
-                : default;
+                : default( string );
         }
 
         /// <summary>
@@ -107,11 +107,11 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( string );
                 }
             }
 
-            return default;
+            return default( string );
         }
 
         /// <summary> Sets the axis title. </summary>
@@ -127,11 +127,11 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( string );
                 }
             }
 
-            return default;
+            return default( string );
         }
 
         /// <summary> Sets the data. </summary>
@@ -156,11 +156,11 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IDictionary<string, string> );
                 }
             }
 
-            return default;
+            return default( IDictionary<string, string> );
         }
 
         /// <summary> Gets the main title. </summary>
@@ -182,11 +182,11 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( ChartTitle );
                 }
             }
 
-            return default;
+            return default( ChartTitle );
         }
 
         /// <summary> Gets the axis title. </summary>
@@ -208,11 +208,11 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( ChartTitle );
                 }
             }
 
-            return default;
+            return default( ChartTitle );
         }
 
         /// <summary> Gets the main title. </summary>
@@ -237,11 +237,11 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( ChartTitle );
                 }
             }
 
-            return default;
+            return default( ChartTitle );
         }
 
         /// <summary> Gets the axis title. </summary>
@@ -266,11 +266,11 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( ChartTitle );
                 }
             }
 
-            return default;
+            return default( ChartTitle );
         }
 
         /// <summary>

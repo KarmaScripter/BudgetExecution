@@ -162,11 +162,11 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IDictionary<string, object> );
                 }
             }
 
-            return default;
+            return default( IDictionary<string, object> );
         }
 
         /// <summary>
@@ -380,12 +380,12 @@ namespace BudgetExecution
             {
                 return Verify.Map( Args )
                     ? Args
-                    : default;
+                    : default( IDictionary<string, object> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IDictionary<string, object> );
             }
         }
 

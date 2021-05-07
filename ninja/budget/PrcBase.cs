@@ -155,11 +155,11 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( string );
                 }
             }
 
-            return default;
+            return default( string );
         }
 
         /// <summary>
@@ -173,12 +173,12 @@ namespace BudgetExecution
             {
                 return Verify.Key( ID )
                     ? ID
-                    : default;
+                    : default( IKey );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IKey );
             }
         }
 
@@ -193,12 +193,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( Level?.GetValue() )
                     ? Level
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -213,12 +213,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( BFY?.GetValue() )
                     ? BFY
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -233,12 +233,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( RpioCode?.GetValue() )
                     ? RpioCode
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 

@@ -355,12 +355,12 @@ namespace BudgetExecution
 
                 return holidays.Any()
                     ? holidays
-                    : default;
+                    : default( Dictionary<Field, DateTime> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IDictionary<Field, DateTime> );
             }
         }
 
@@ -377,12 +377,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( FirstYear?.GetValue() )
                     ? FirstYear?.GetValue()
-                    : default;
+                    : default( string );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( string );
             }
         }
 

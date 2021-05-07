@@ -344,12 +344,12 @@ namespace BudgetExecution
             {
                 return SeriesData?.Any() == true
                     ? SeriesData
-                    : default;
+                    : default( IDictionary<string, IEnumerable<double>> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IDictionary<string, IEnumerable<double>> );
             }
         }
 
@@ -375,12 +375,12 @@ namespace BudgetExecution
 
                 return points?.Any() == true
                     ? points
-                    : default;
+                    : default( List<ChartPoint> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IEnumerable<ChartPoint> );
             }
         }
 

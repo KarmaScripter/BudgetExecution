@@ -193,15 +193,15 @@ namespace BudgetExecution
 
                     return Enum.IsDefined( typeof( EXT ), ext )
                         ? ext
-                        : default;
+                        : default( EXT );
                 }
 
-                return default;
+                return default( EXT );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( EXT );
             }
         }
 

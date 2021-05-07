@@ -201,12 +201,12 @@ namespace BudgetExecution
             {
                 return Verify.Key( ID )
                     ? ID
-                    : default;
+                    : default( IKey );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IKey );
             }
         }
 
@@ -228,7 +228,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( string );
             }
         }
 
@@ -247,7 +247,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IActivity );
             }
         }
 
@@ -270,12 +270,12 @@ namespace BudgetExecution
                 var connectbuilder = new ConnectionBuilder( Source.ProgramProjects, Provider.SQLite );
                 var sqlstatement = new SqlStatement( connectbuilder, dict, SQL.SELECT );
                 using var query = new Query( connectbuilder, sqlstatement );
-                return new ProgramProject( query ) ?? default;
+                return new ProgramProject( query ) ?? default( ProgramProject );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IProgramProject );
             }
         }
 
@@ -290,12 +290,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( GetAccount().ToString() )
                     ? GetAccount().GetProgramArea()
-                    : default;
+                    : default( IProgramArea );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IProgramArea );
             }
         }
 
@@ -313,7 +313,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IProgramResultsCode );
             }
         }
 
@@ -363,12 +363,12 @@ namespace BudgetExecution
 
                 return elements?.Any() == true
                     ? elements
-                    : default;
+                    : default( List<IElement> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IEnumerable<IElement> );
             }
         }
 
@@ -383,12 +383,12 @@ namespace BudgetExecution
             {
                 return Verify.Map( Data )
                     ? Data
-                    : default;
+                    : default( IDictionary<string, object> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IDictionary<string, object> );
             }
         }
 
@@ -403,12 +403,12 @@ namespace BudgetExecution
             {
                 return Amount?.GetFunding() > -1
                     ? Amount
-                    : default;
+                    : default( IAmount );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAmount );
             }
         }
     }

@@ -152,12 +152,12 @@ namespace BudgetExecution
             {
                 return Verify.Element( Level )
                     ? new BudgetLevel( Level?.GetValue() )
-                    : default;
+                    : default( BudgetLevel );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IBudgetLevel );
             }
         }
 
@@ -172,12 +172,12 @@ namespace BudgetExecution
             {
                 return Verify.Element( BFY )
                     ? new BudgetFiscalYear( BFY?.GetValue() )
-                    : default;
+                    : default( BudgetFiscalYear );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IBudgetFiscalYear );
             }
         }
 
@@ -203,7 +203,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IResourcePlanningOffice );
             }
         }
 
@@ -229,7 +229,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAllowanceHolder );
             }
         }
 
@@ -244,12 +244,12 @@ namespace BudgetExecution
             {
                 return Verify.Element( FundCode )
                     ? new Fund( FundCode?.GetValue() )
-                    : default;
+                    : default( Fund );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IFund );
             }
         }
 
@@ -275,7 +275,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IOrganization );
             }
         }
 
@@ -301,7 +301,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAccount );
             }
         }
 
@@ -327,7 +327,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IBudgetObjectClass );
             }
         }
 
@@ -353,7 +353,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IResponsibilityCenter );
             }
         }
     }

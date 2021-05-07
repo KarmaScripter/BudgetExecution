@@ -212,12 +212,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( Title.GetValue() )
                     ? Title
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -232,12 +232,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( DocumentDate.GetValue() )
                     ? DocumentDate
-                    : default;
+                    : default( ITime );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ITime );
             }
         }
 
@@ -252,12 +252,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( RequestedBy.GetValue() )
                     ? RequestedBy
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -272,12 +272,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( CreatedBy?.GetValue() )
                     ? RequestedBy
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -292,12 +292,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( ModifiedBy?.GetValue() )
                     ? ModifiedBy
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -312,12 +312,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( ProcessedDate?.GetValue() )
                     ? ProcessedDate
-                    : default;
+                    : default( ITime );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ITime );
             }
         }
 
@@ -332,12 +332,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( RequestDate?.GetValue() )
                     ? RequestDate
-                    : default;
+                    : default( ITime );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ITime );
             }
         }
     }

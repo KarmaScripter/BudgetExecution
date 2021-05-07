@@ -27,156 +27,119 @@ namespace BudgetExecution
 
         private protected readonly EXT Extension = EXT.SQL;
 
-        /// <summary>
-        /// The provider path
-        /// </summary>
-        private protected readonly NameValueCollection ProviderPath = ConfigurationManager.AppSettings;
+        /// <summary> The provider path </summary>
+        private protected readonly NameValueCollection ProviderPath =
+            ConfigurationManager.AppSettings;
 
         // **********************************************************************************************************************
         // *************************************************   PROPERTIES   *****************************************************
         // **********************************************************************************************************************
 
-        /// <summary>
-        /// Gets the source.
-        /// </summary>
-        /// <value>
-        /// The source.
-        /// </value>
+        /// <summary> Gets the source. </summary>
+        /// <value> The source. </value>
         private protected Source Source { get; set; }
 
-        /// <summary>
-        /// Gets the provider.
-        /// </summary>
-        /// <value>
-        /// The provider.
-        /// </value>
+        /// <summary> Gets the provider. </summary>
+        /// <value> The provider. </value>
         private protected Provider Provider { get; set; }
 
-        /// <summary>
-        /// Gets the SQL statement.
-        /// </summary>
-        /// <value>
-        /// The SQL statement.
-        /// </value>
+        /// <summary> Gets the SQL statement. </summary>
+        /// <value> The SQL statement. </value>
         private protected ISqlStatement SqlStatement { get; set; }
 
-        /// <summary>
-        /// Gets the file path.
-        /// </summary>
-        /// <value>
-        /// The file path.
-        /// </value>
+        /// <summary> Gets the file path. </summary>
+        /// <value> The file path. </value>
         private protected string FilePath { get; set; }
 
-        /// <summary>
-        /// Gets the name of the file.
-        /// </summary>
-        /// <value>
-        /// The name of the file.
-        /// </value>
+        /// <summary> Gets the name of the file. </summary>
+        /// <value> The name of the file. </value>
         protected string FileName { get; set; }
 
         // ***************************************************************************************************************************
         // ************************************************  METHODS   ***************************************************************
         // ***************************************************************************************************************************
 
-        /// <summary>
-        /// Gets the source.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public Source GetSource()
+        /// <summary> Gets the source. </summary>
+        /// <returns> </returns>
+        public Source GetSource( )
         {
             try
             {
                 return Verify.Source( Source )
                     ? Source
-                    : default;
+                    : default( Source );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( Source );
             }
         }
 
-        /// <summary>
-        /// Gets the provider.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public Provider GetProvider()
+        /// <summary> Gets the provider. </summary>
+        /// <returns> </returns>
+        public Provider GetProvider( )
         {
             try
             {
                 return Verify.Provider( Provider )
                     ? Provider
-                    : default;
+                    : default( Provider );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( Provider );
             }
         }
 
         /// <inheritdoc/>
-        /// <summary>
-        /// Gets the type of the command.
-        /// </summary>
-        /// <returns>
-        /// SQL
-        /// </returns>
-        public SQL GetCommandType()
+        /// <summary> Gets the type of the command. </summary>
+        /// <returns> SQL </returns>
+        public SQL GetCommandType( )
         {
             try
             {
                 return CommandType != SQL.NS
                     ? CommandType
-                    : default;
+                    : default( SQL );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( SQL );
             }
         }
 
         /// <inheritdoc/>
-        /// <summary>
-        /// Gets the arguments.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public IDictionary<string, object> GetArgs()
+        /// <summary> Gets the arguments. </summary>
+        /// <returns> </returns>
+        public IDictionary<string, object> GetArgs( )
         {
-            if( Args.Any() )
+            if( Args.Any( ) )
             {
                 try
                 {
-                    return Args ?? new Dictionary<string, object>();
+                    return Args ?? new Dictionary<string, object>( );
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return new Dictionary<string, object>();
+                    return new Dictionary<string, object>( );
                 }
             }
 
-            return new Dictionary<string, object>();
+            return new Dictionary<string, object>( );
         }
 
         /// <inheritdoc/>
-        /// <summary>
-        /// Gets the connection manager.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public IConnectionBuilder GetConnectionBuilder()
+        /// <summary> Gets the connection manager. </summary>
+        /// <returns> </returns>
+        public IConnectionBuilder GetConnectionBuilder( )
         {
             try
             {
-                return Verify.Input( ConnectionBuilder?.GetConnectionString() )
+                return Verify.Input( ConnectionBuilder?.GetConnectionString( ) )
                     ? ConnectionBuilder
                     : default( ConnectionBuilder );
             }
@@ -187,11 +150,9 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Gets the command text.
-        /// </summary>
-        /// <returns></returns>
-        public string GetCommandText()
+        /// <summary> Gets the command text. </summary>
+        /// <returns> </returns>
+        public string GetCommandText( )
         {
             try
             {
@@ -202,15 +163,13 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( string );
             }
         }
 
-        /// <summary>
-        /// Gets the script files.
-        /// </summary>
-        /// <returns></returns>
-        public IEnumerable<string> GetScriptFiles()
+        /// <summary> Gets the script files. </summary>
+        /// <returns> </returns>
+        public IEnumerable<string> GetScriptFiles( )
         {
             if( Verify.Provider( Provider )
                 && Enum.IsDefined( typeof( SQL ), CommandType ) )
@@ -224,21 +183,21 @@ namespace BudgetExecution
                     {
                         var scriptfiles = Directory.GetFiles( directory );
 
-                        return scriptfiles?.Any() == true
+                        return scriptfiles?.Any( ) == true
                             ? scriptfiles
-                            : default;
+                            : default( string[ ] );
                     }
 
-                    return default;
+                    return default( IEnumerable<string> );
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IEnumerable<string> );
                 }
             }
 
-            return default;
+            return default( IEnumerable<string> );
         }
     }
 }

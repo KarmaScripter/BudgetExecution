@@ -178,12 +178,12 @@ namespace BudgetExecution
             {
                 return Verify.Key( ID )
                     ? ID
-                    : default;
+                    : default( IKey );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IKey );
             }
         }
 
@@ -198,12 +198,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( DocumentControlNumber.GetValue() )
                     ? DocumentControlNumber
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -218,12 +218,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( LastActionDate?.GetValue() )
                     ? LastActionDate
-                    : default;
+                    : default( ITime );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ITime );
             }
         }
 
@@ -238,12 +238,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( ClosedDate?.GetValue() )
                     ? ClosedDate
-                    : default;
+                    : default( ITime );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ITime );
             }
         }
 
@@ -258,12 +258,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( SecurityOrg?.GetValue() )
                     ? SecurityOrg
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -278,12 +278,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( Description?.GetValue() )
                     ? Description
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -298,12 +298,12 @@ namespace BudgetExecution
             {
                 return Ordered.GetFunding() > -1
                     ? Ordered
-                    : default;
+                    : default( IAmount );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAmount );
             }
         }
 
@@ -318,12 +318,12 @@ namespace BudgetExecution
             {
                 return Closed.GetFunding() > -1
                     ? Closed
-                    : default;
+                    : default( IAmount );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAmount );
             }
         }
 
@@ -338,12 +338,12 @@ namespace BudgetExecution
             {
                 return Expended.GetFunding() > -1
                     ? Expended
-                    : default;
+                    : default( IAmount );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAmount );
             }
         }
 
@@ -358,12 +358,12 @@ namespace BudgetExecution
             {
                 return Verify.Map( Data )
                     ? Data
-                    : default;
+                    : default( IDictionary<string, object> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IDictionary<string, object> );
             }
         }
     }

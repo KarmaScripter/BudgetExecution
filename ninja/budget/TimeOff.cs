@@ -112,16 +112,16 @@ namespace BudgetExecution
 
                     return Verify.Input( data )
                         ? data
-                        : default;
+                        : default( IEnumerable<DataRow> );
                 }
                 catch( SystemException ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IEnumerable<DataRow> );
                 }
             }
 
-            return default;
+            return default( IEnumerable<DataRow> );
         }
 
         /// <summary>
@@ -135,12 +135,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( Type?.GetValue() )
                     ? Type
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
     }

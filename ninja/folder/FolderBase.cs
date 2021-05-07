@@ -115,7 +115,7 @@ namespace BudgetExecution
             catch( IOException ex )
             {
                 Fail( ex );
-                return default;
+                return default( string );
             }
         }
 
@@ -134,7 +134,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( string );
             }
         }
 
@@ -150,12 +150,12 @@ namespace BudgetExecution
 
                 return Verify.Input( file?.FullName )
                     ? Directory.CreateDirectory( file?.FullName )
-                    : default;
+                    : default( DirectoryInfo );
             }
             catch( IOException ex )
             {
                 Fail( ex );
-                return default;
+                return default( DirectoryInfo );
             }
         }
 
@@ -172,7 +172,7 @@ namespace BudgetExecution
             catch( IOException ex )
             {
                 Fail( ex );
-                return default;
+                return default( DateTime );
             }
         }
 
@@ -189,7 +189,7 @@ namespace BudgetExecution
             catch( IOException ex )
             {
                 Fail( ex );
-                return default;
+                return default( DateTime );
             }
         }
 
@@ -203,12 +203,12 @@ namespace BudgetExecution
             {
                 return Files?.Any() == true
                     ? Files
-                    : default;
+                    : default( IEnumerable<string> );
             }
             catch( IOException ex )
             {
                 Fail( ex );
-                return default;
+                return default( IEnumerable<string> );
             }
         }
 
@@ -224,12 +224,12 @@ namespace BudgetExecution
 
                 return Verify.Input( data )
                     ? data
-                    : default;
+                    : default( IEnumerable<FileInfo> );
             }
             catch( IOException ex )
             {
                 Fail( ex );
-                return default;
+                return default( IEnumerable<FileInfo> );
             }
         }
 
@@ -245,12 +245,12 @@ namespace BudgetExecution
 
                 return folders?.Any() == true
                     ? folders
-                    : default;
+                    : default( string[] );
             }
             catch( IOException ex )
             {
                 Fail( ex );
-                return default;
+                return default( IEnumerable<string> );
             }
         }
 
@@ -266,12 +266,12 @@ namespace BudgetExecution
 
                 return folders?.Any() != true
                     ? folders
-                    : default;
+                    : default( DirectoryInfo[] );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IEnumerable<DirectoryInfo> );
             }
         }
 

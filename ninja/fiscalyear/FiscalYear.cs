@@ -138,12 +138,12 @@ namespace BudgetExecution
             {
                 return Verify.BFY( BFY )
                     ? BFY
-                    : default;
+                    : default( BFY );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( BFY );
             }
         }
 
@@ -163,7 +163,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -183,7 +183,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -203,7 +203,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -260,7 +260,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( bool );
             }
         }
 
@@ -288,16 +288,16 @@ namespace BudgetExecution
 
                     return bfy.Any()
                         ? bfy
-                        : default;
+                        : default( Dictionary<string, object> );
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IDictionary<string, object> );
                 }
             }
 
-            return default;
+            return default( IDictionary<string, object> );
         }
 
         /// <summary>
@@ -325,7 +325,7 @@ namespace BudgetExecution
 
                             return fiscalyear.Any()
                                 ? fiscalyear
-                                : default;
+                                : default( Dictionary<string, object> );
                         }
 
                         case BFY.CarryOver:
@@ -335,18 +335,18 @@ namespace BudgetExecution
 
                             return fiscalyear?.Any() == true
                                 ? fiscalyear
-                                : default;
+                                : default( Dictionary<string, object> );
                         }
                     }
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IDictionary<string, object> );
                 }
             }
 
-            return default;
+            return default( IDictionary<string, object> );
         }
 
         /// <summary>
@@ -360,12 +360,12 @@ namespace BudgetExecution
             {
                 return Verify.Map( Data )
                     ? Data
-                    : default;
+                    : default( IDictionary<string, object> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IDictionary<string, object> );
             }
         }
     }

@@ -107,12 +107,12 @@ namespace BudgetExecution
             {
                 return Verify.ImageResource( source )
                     ? source
-                    : default;
+                    : default( ImageSource );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ImageSource );
             }
         }
 
@@ -130,12 +130,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( name )
                     ? name
-                    : default;
+                    : default( string );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( string );
             }
         }
 
@@ -171,7 +171,7 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( string );
                 }
             }
             else
@@ -215,11 +215,11 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( ImageFormat );
                 }
             }
 
-            return default;
+            return default( ImageFormat );
         }
 
         /// <summary>

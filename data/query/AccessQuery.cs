@@ -1,6 +1,6 @@
-﻿// <copyright file = "AccessQuery.cs" company = "Terry D. Eppler">
-// Copyright (c) Terry D. Eppler. All rights reserved.
-// </copyright>
+﻿// // <copyright file = "AccessQuery.cs" company = "Terry D. Eppler">
+// // Copyright (c) Terry D. Eppler. All rights reserved.
+// // </copyright>
 
 namespace BudgetExecution
 {
@@ -24,46 +24,44 @@ namespace BudgetExecution
         // ***************************************************************************************************************************
 
         /// <summary>
-        /// Initializes a new instance of the <see cref = "AccessQuery"/> class.
+        /// Initializes a new instance of the
+        /// <see cref = "AccessQuery"/>
+        /// class.
         /// </summary>
-        public AccessQuery()
+        public AccessQuery( )
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref = "AccessQuery"/> class.
+        /// Initializes a new instance of the
+        /// <see cref = "AccessQuery"/>
+        /// class.
         /// </summary>
-        /// <param name = "source" >
-        /// The source.
-        /// </param>
+        /// <param name = "source" > The source. </param>
         public AccessQuery( Source source )
             : base( source, Provider.Access, SQL.SELECT )
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref = "AccessQuery"/> class.
+        /// Initializes a new instance of the
+        /// <see cref = "AccessQuery"/>
+        /// class.
         /// </summary>
-        /// <param name = "source" >
-        /// The source.
-        /// </param>
-        /// <param name = "dict" >
-        /// The dictionary.
-        /// </param>
+        /// <param name = "source" > The source. </param>
+        /// <param name = "dict" > The dictionary. </param>
         public AccessQuery( Source source, IDictionary<string, object> dict )
             : base( source, Provider.Access, dict, SQL.SELECT )
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref = "AccessQuery"/> class.
+        /// Initializes a new instance of the
+        /// <see cref = "AccessQuery"/>
+        /// class.
         /// </summary>
-        /// <param name = "connectionbuilder" >
-        /// The connectionbuilder.
-        /// </param>
-        /// <param name = "sqlstatement" >
-        /// The sqlstatement.
-        /// </param>
+        /// <param name = "connectionbuilder" > The connectionbuilder. </param>
+        /// <param name = "sqlstatement" > The sqlstatement. </param>
         public AccessQuery( IConnectionBuilder connectionbuilder, ISqlStatement sqlstatement )
             : base( connectionbuilder, sqlstatement )
         {
@@ -73,14 +71,12 @@ namespace BudgetExecution
         // ************************************************  METHODS   ***************************************************************
         // ***************************************************************************************************************************
 
-        /// <summary>
-        /// The Dispose
-        /// </summary>
+        /// <summary> The Dispose </summary>
         protected override void Dispose( bool disposing )
         {
             if( disposing )
             {
-                Dispose();
+                Dispose( );
             }
 
             IsDisposed = true;

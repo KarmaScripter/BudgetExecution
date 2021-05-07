@@ -146,7 +146,7 @@ namespace BudgetExecution
 
                     return Images.Any()
                         ? Images.ToList()
-                        : default;
+                        : default( List<Image> );
                 }
                 catch( Exception ex )
                 {
@@ -154,7 +154,7 @@ namespace BudgetExecution
                 }
             }
 
-            return default;
+            return default( List<Image> );
         }
 
         /// <summary>

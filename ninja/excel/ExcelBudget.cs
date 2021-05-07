@@ -192,11 +192,11 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IControlNumber );
                 }
             }
 
-            return default;
+            return default( IControlNumber );
         }
 
         /// <summary>
@@ -208,12 +208,12 @@ namespace BudgetExecution
         {
             try
             {
-                return Allocation ?? default;
+                return Allocation ?? default( IAllocation );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAllocation );
             }
         }
 
@@ -283,12 +283,12 @@ namespace BudgetExecution
         {
             try
             {
-                return Worksheet ?? default;
+                return Worksheet ?? default( ExcelWorksheet );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ExcelWorksheet );
             }
         }
 
@@ -693,10 +693,10 @@ namespace BudgetExecution
 
                 return sum > 0
                     ? (double)sum
-                    : default;
+                    : default( double );
             }
 
-            return default;
+            return default( double );
         }
 
         /// <summary>

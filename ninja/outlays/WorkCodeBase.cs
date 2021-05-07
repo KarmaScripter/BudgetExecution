@@ -181,14 +181,14 @@ namespace BudgetExecution
         {
             try
             {
-                return ApprovalDate != default
+                return ApprovalDate != default( DateTime )
                     ? ApprovalDate
-                    : default;
+                    : default( DateTime );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( DateTime );
             }
         }
 
@@ -208,11 +208,11 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IElement );
                 }
             }
 
-            return default;
+            return default( IElement );
         }
 
         /// <summary>
@@ -231,11 +231,11 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IElement );
                 }
             }
 
-            return default;
+            return default( IElement );
         }
 
         /// <summary>
@@ -271,12 +271,12 @@ namespace BudgetExecution
 
                 return Verify.Input( code.GetValue() )
                     ? code
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -291,12 +291,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( Name.GetValue() )
                     ? Name
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -311,12 +311,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( ShortName.GetValue() )
                     ? ShortName
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -331,12 +331,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( Status.GetValue() )
                     ? Status
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -351,12 +351,12 @@ namespace BudgetExecution
             {
                 return string.IsNullOrEmpty( Notifications.GetValue() )
                     ? Notifications
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -371,12 +371,12 @@ namespace BudgetExecution
             {
                 return string.IsNullOrEmpty( PayPeriod.GetValue() )
                     ? PayPeriod
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 

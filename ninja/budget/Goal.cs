@@ -165,12 +165,12 @@ namespace BudgetExecution
             {
                 return Verify.Map( Data )
                     ? Data
-                    : default;
+                    : default( IDictionary<string, object> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IDictionary<string, object> );
             }
         }
 
@@ -217,11 +217,11 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IDictionary<string, object> );
                 }
             }
 
-            return default;
+            return default( IDictionary<string, object> );
         }
 
         /// <summary>
@@ -247,11 +247,11 @@ namespace BudgetExecution
                 catch( SystemException ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IDictionary<string, object> );
                 }
             }
 
-            return default;
+            return default( IDictionary<string, object> );
         }
 
         /// <summary>
@@ -265,12 +265,12 @@ namespace BudgetExecution
             {
                 return Verify.Key( ID )
                     ? ID
-                    : default;
+                    : default( IKey );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IKey );
             }
         }
 
@@ -285,12 +285,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( Code?.GetValue() )
                     ? Code
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -305,12 +305,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( Name?.GetValue() )
                     ? Name
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -328,7 +328,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IGoal );
             }
         }
 

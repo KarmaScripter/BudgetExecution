@@ -262,16 +262,16 @@ namespace BudgetExecution
 
                     return Verify.Rows( builder?.GetData() )
                         ? builder
-                        : default;
+                        : default( Builder );
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IBuilder );
                 }
             }
 
-            return default;
+            return default( IBuilder );
         }
 
         /// <summary>
@@ -288,7 +288,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAllocation );
             }
         }
 
@@ -308,16 +308,16 @@ namespace BudgetExecution
 
                     return Verify.Rows( data )
                         ? data
-                        : default;
+                        : default( IEnumerable<DataRow> );
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IEnumerable<DataRow> );
                 }
             }
 
-            return default;
+            return default( IEnumerable<DataRow> );
         }
 
         /// <summary>
@@ -342,16 +342,16 @@ namespace BudgetExecution
 
                     return Verify.Rows( filtered )
                         ? filtered
-                        : default;
+                        : default( IEnumerable<DataRow> );
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IEnumerable<DataRow> );
                 }
             }
 
-            return default;
+            return default( IEnumerable<DataRow> );
         }
 
         /// <summary>
@@ -374,21 +374,21 @@ namespace BudgetExecution
 
                         return Verify.Availability( availability )
                             ? availability
-                            : default;
+                            : default( FundAvailability );
                     }
                     catch( Exception ex )
                     {
                         Fail( ex );
-                        return default;
+                        return default( FundAvailability );
                     }
                 }
 
-                return default;
+                return default( FundAvailability );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( FundAvailability );
             }
         }
 
@@ -419,11 +419,11 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IDataMetric );
                 }
             }
 
-            return default;
+            return default( IDataMetric );
         }
     }
 }

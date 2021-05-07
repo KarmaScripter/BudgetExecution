@@ -227,12 +227,12 @@ namespace BudgetExecution
             {
                 return Verify.DateTime( Date )
                     ? Date
-                    : default;
+                    : default( DateTime );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( DateTime );
             }
         }
 
@@ -267,12 +267,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( FromTo.GetValue() )
                     ? (FromTo)Enum.Parse( typeof( FromTo ), FromTo.GetValue() )
-                    : default;
+                    : default( FromTo );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( FromTo );
             }
         }
 

@@ -104,7 +104,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( int );
             }
         }
 
@@ -119,12 +119,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( Name )
                     ? Name
-                    : default;
+                    : default( string );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( string );
             }
         }
 
@@ -144,7 +144,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( Level );
             }
         }
 
@@ -170,7 +170,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( Level );
             }
         }
 
@@ -218,11 +218,11 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IDictionary<string, object> );
                 }
             }
 
-            return default;
+            return default( IDictionary<string, object> );
         }
 
         /// <summary>
@@ -239,7 +239,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( BudgetLevel );
             }
         }
 

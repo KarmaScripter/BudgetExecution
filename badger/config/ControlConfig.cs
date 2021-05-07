@@ -76,16 +76,16 @@ namespace BudgetExecution
                 {
                     return Verify.Input( tag.ToString() )
                         ? tag
-                        : default;
+                        : default( object );
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( object );
                 }
             }
 
-            return default;
+            return default( object );
         }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( AnchorStyles );
             }
         }
 
@@ -150,11 +150,11 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( DockStyle );
                 }
             }
 
-            return default;
+            return default( DockStyle );
         }
 
         /// <summary>
@@ -173,16 +173,16 @@ namespace BudgetExecution
 
                     return Parent.Controls.Contains( control )
                         ? Parent
-                        : default;
+                        : default( Control );
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( Control );
                 }
             }
 
-            return default;
+            return default( Control );
         }
 
         /// <summary>
@@ -206,7 +206,7 @@ namespace BudgetExecution
                 }
             }
 
-            return default;
+            return default( Point );
         }
 
         /// <summary>
@@ -226,11 +226,11 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( Point );
                 }
             }
 
-            return default;
+            return default( Point );
         }
 
         /// <summary>
@@ -304,11 +304,11 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( ToolTip );
                 }
             }
 
-            return default;
+            return default( ToolTip );
         }
 
         /// <summary>

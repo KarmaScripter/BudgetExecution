@@ -1,6 +1,6 @@
-﻿// <copyright file = "Amount.cs" company = "Terry D. Eppler">
-// Copyright (c) Terry D. Eppler. All rights reserved.
-// </copyright>
+﻿// // <copyright file = "Amount.cs" company = "Terry D. Eppler">
+// // Copyright (c) Terry D. Eppler. All rights reserved.
+// // </copyright>
 
 namespace BudgetExecution
 {
@@ -13,9 +13,7 @@ namespace BudgetExecution
     using System.Diagnostics.CodeAnalysis;
     using System.Threading;
 
-    /// <summary>
-    /// 
-    /// </summary>
+    /// <summary> </summary>
     /// <seealso cref = "IAmount"/>
     [ SuppressMessage( "ReSharper", "AutoPropertyCanBeMadeGetOnly.Local" ) ]
     [ SuppressMessage( "ReSharper", "UnusedParameter.Global" ) ]
@@ -26,9 +24,7 @@ namespace BudgetExecution
         // ****************************************************    FIELDS     ********************************************************
         // ***************************************************************************************************************************
 
-        /// <summary>
-        /// The default
-        /// </summary>
+        /// <summary> The default </summary>
         public static readonly IAmount Default = new Amount( Numeric.NS, 0.0 );
 
         // **************************************************************************************************************************
@@ -36,65 +32,61 @@ namespace BudgetExecution
         // **************************************************************************************************************************
 
         /// <summary>
-        /// Initializes a new instance of the <see cref = "Amount"/> class.
+        /// Initializes a new instance of the
+        /// <see cref = "Amount"/>
+        /// class.
         /// </summary>
-        public Amount()
+        public Amount( )
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref = "Amount"/> class.
+        /// Initializes a new instance of the
+        /// <see cref = "Amount"/>
+        /// class.
         /// </summary>
-        /// <param name = "numeric" >
-        /// The numeric.
-        /// </param>
-        /// <param name = "value" >
-        /// The value.
-        /// </param>
+        /// <param name = "numeric" > The numeric. </param>
+        /// <param name = "value" > The value. </param>
         public Amount( Numeric numeric = Numeric.Amount, double value = 0.0 )
         {
             Data = value;
             Funding = value;
             Numeric = numeric;
-            Name = Numeric.ToString();
+            Name = Numeric.ToString( );
             Initial = Funding;
             Delta = Initial - Funding;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref = "Amount"/> class.
+        /// Initializes a new instance of the
+        /// <see cref = "Amount"/>
+        /// class.
         /// </summary>
-        /// <param name = "value" >
-        /// The value.
-        /// </param>
-        /// <param name = "numeric" >
-        /// The numeric.
-        /// </param>
+        /// <param name = "value" > The value. </param>
+        /// <param name = "numeric" > The numeric. </param>
         public Amount( double value = 0, Numeric numeric = Numeric.Amount )
         {
             Data = value;
             Funding = value;
             Numeric = numeric;
-            Name = Numeric.ToString();
+            Name = Numeric.ToString( );
             Initial = Funding;
             Delta = Initial - Funding;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref = "Amount"/> class.
+        /// Initializes a new instance of the
+        /// <see cref = "Amount"/>
+        /// class.
         /// </summary>
-        /// <param name = "data" >
-        /// The data.
-        /// </param>
-        /// <param name = "numeric" >
-        /// The numeric.
-        /// </param>
+        /// <param name = "data" > The data. </param>
+        /// <param name = "numeric" > The numeric. </param>
         public Amount( DataRow data, Numeric numeric = Numeric.Amount )
         {
-            Funding = double.Parse( data[ $"{numeric}" ].ToString() );
-            Data = Funding.ToString();
+            Funding = double.Parse( data[ $"{numeric}" ].ToString( ) );
+            Data = Funding.ToString( );
             Numeric = numeric;
-            Name = Numeric.ToString();
+            Name = Numeric.ToString( );
             Initial = Funding;
             Delta = Initial - Funding;
         }
@@ -103,18 +95,15 @@ namespace BudgetExecution
         // ********************************************      METHODS    *************************************************************
         // **************************************************************************************************************************
 
-        /// <summary>
-        /// Gets the original.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public double GetOriginal()
+        /// <summary> Gets the original. </summary>
+        /// <returns> </returns>
+        public double GetOriginal( )
         {
             try
             {
                 return Initial > 0
                     ? Initial
-                    : Default.GetFunding();
+                    : Default.GetFunding( );
             }
             catch( Exception ex )
             {
@@ -123,32 +112,26 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Gets the change.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public double GetDelta()
+        /// <summary> Gets the change. </summary>
+        /// <returns> </returns>
+        public double GetDelta( )
         {
             try
             {
                 return Delta != 0
                     ? Delta
-                    : Default.GetFunding();
+                    : Default.GetFunding( );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return Default.GetFunding();
+                return Default.GetFunding( );
             }
         }
 
-        /// <summary>
-        /// Gets the numeric.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public Numeric GetNumeric()
+        /// <summary> Gets the numeric. </summary>
+        /// <returns> </returns>
+        public Numeric GetNumeric( )
         {
             try
             {
@@ -159,16 +142,12 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( Numeric );
             }
         }
 
-        /// <summary>
-        /// Increases the specified amount.
-        /// </summary>
-        /// <param name = "amount" >
-        /// The amount.
-        /// </param>
+        /// <summary> Increases the specified amount. </summary>
+        /// <param name = "amount" > The amount. </param>
         public void Increase( double amount )
         {
             try
@@ -187,12 +166,8 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Decreases the specified amount.
-        /// </summary>
-        /// <param name = "amount" >
-        /// The amount.
-        /// </param>
+        /// <summary> Decreases the specified amount. </summary>
+        /// <param name = "amount" > The amount. </param>
         public void Decrease( double amount )
         {
             try
@@ -215,18 +190,18 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Converts to string.
-        /// </summary>
+        /// <summary> Converts to string. </summary>
         /// <returns>
-        /// A <see cref = "string"/> that represents this instance.
+        /// A
+        /// <see cref = "string"/>
+        /// that represents this instance.
         /// </returns>
-        public override string ToString()
+        public override string ToString( )
         {
             try
             {
-                return Verify.Input( Data?.ToString() )
-                    ? Data?.ToString()
+                return Verify.Input( Data?.ToString( ) )
+                    ? Data?.ToString( )
                     : string.Empty;
             }
             catch( Exception ex )
@@ -236,31 +211,23 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Determines whether the specified element is equal.
-        /// </summary>
-        /// <param name = "amount" >
-        /// The element.
-        /// </param>
+        /// <summary> Determines whether the specified element is equal. </summary>
+        /// <param name = "amount" > The element. </param>
         /// <returns>
-        /// <c>
-        /// true
-        /// </c>
+        /// <c> true </c>
         /// if the specified element is equal; otherwise,
-        /// <c>
-        /// false
-        /// </c>
+        /// <c> false </c>
         /// .
         /// </returns>
         public bool IsEqual( IAmount amount )
         {
             if( amount != null
-                && amount.GetFunding() != Default.GetFunding() )
+                && amount.GetFunding( ) != Default.GetFunding( ) )
             {
                 try
                 {
-                    if( amount?.GetFunding() == Funding
-                        && amount?.GetName()?.Equals( Name ) == true )
+                    if( amount?.GetFunding( ) == Funding
+                        && amount?.GetName( )?.Equals( Name ) == true )
                     {
                         return true;
                     }
@@ -275,23 +242,13 @@ namespace BudgetExecution
             return false;
         }
 
-        /// <summary>
-        /// Determines whether the specified primary is equal.
-        /// </summary>
-        /// <param name = "first" >
-        /// The primary.
-        /// </param>
-        /// <param name = "second" >
-        /// The secondary.
-        /// </param>
+        /// <summary> Determines whether the specified primary is equal. </summary>
+        /// <param name = "first" > The primary. </param>
+        /// <param name = "second" > The secondary. </param>
         /// <returns>
-        /// <c>
-        /// true
-        /// </c>
+        /// <c> true </c>
         /// if the specified primary is equal; otherwise,
-        /// <c>
-        /// false
-        /// </c>
+        /// <c> false </c>
         /// .
         /// </returns>
         public static bool IsEqual( IAmount first, IAmount second )
@@ -303,8 +260,8 @@ namespace BudgetExecution
             {
                 try
                 {
-                    if( first?.GetFunding().Equals( second?.GetFunding() ) == true
-                        && first?.GetName()?.Equals( second?.GetName() ) == true )
+                    if( first?.GetFunding( ).Equals( second?.GetFunding( ) ) == true
+                        && first?.GetName( )?.Equals( second?.GetName( ) ) == true )
                     {
                         return true;
                     }
@@ -323,14 +280,12 @@ namespace BudgetExecution
         // ********************************************      EVENTS     *************************************************************
         // **************************************************************************************************************************
 
-        /// <summary>
-        /// Called when [changed].
-        /// </summary>
-        /// <param name = "sender" >
-        /// The sender.
-        /// </param>
+        /// <summary> Called when [changed]. </summary>
+        /// <param name = "sender" > The sender. </param>
         /// <param name = "e" >
-        /// The <see cref = "EventArgs"/> instance containing the event data.
+        /// The
+        /// <see cref = "EventArgs"/>
+        /// instance containing the event data.
         /// </param>
         public void OnChanged( object sender, EventArgs e )
         {

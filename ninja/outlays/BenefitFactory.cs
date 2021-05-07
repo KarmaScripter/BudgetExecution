@@ -83,12 +83,12 @@ namespace BudgetExecution
             {
                 return Verify.Ref( Vacation )
                     ? Vacation.GetProjectedPayPeriod()
-                    : default;
+                    : default( IAmount );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAmount );
             }
         }
 
@@ -104,12 +104,12 @@ namespace BudgetExecution
             {
                 return Verify.Ref( Vacation )
                     ? Vacation.GetProjectedAnnual()
-                    : default;
+                    : default( IAmount );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAmount );
             }
         }
 
@@ -125,12 +125,12 @@ namespace BudgetExecution
             {
                 return Verify.Ref( Vacation )
                     ? Vacation.GetAnnualHours()
-                    : default;
+                    : default( IAmount );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAmount );
             }
         }
 
@@ -230,12 +230,12 @@ namespace BudgetExecution
             {
                 return Verify.Map( Args )
                     ? Args
-                    : default;
+                    : default( IDictionary<string, object> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IDictionary<string, object> );
             }
         }
     }

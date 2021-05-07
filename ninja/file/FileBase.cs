@@ -187,7 +187,7 @@ namespace BudgetExecution
 
                 return Verify.Input( ext )
                     ? (EXT)Enum.Parse( typeof( EXT ), ext )
-                    : default;
+                    : default( EXT );
             }
             catch( IOException ex )
             {
@@ -285,12 +285,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( FileInfo?.Name ) && File.Exists( FileInfo?.FullName )
                     ? FileInfo
-                    : default;
+                    : default( FileInfo );
             }
             catch( IOException ex )
             {
                 Fail( ex );
-                return default;
+                return default( FileInfo );
             }
         }
 
@@ -326,7 +326,7 @@ namespace BudgetExecution
             catch( IOException ex )
             {
                 Fail( ex );
-                return default;
+                return default( FileSecurity );
             }
         }
 
@@ -343,7 +343,7 @@ namespace BudgetExecution
             catch( IOException ex )
             {
                 Fail( ex );
-                return default;
+                return default( FileAttributes );
             }
         }
 
@@ -360,7 +360,7 @@ namespace BudgetExecution
             catch( IOException ex )
             {
                 Fail( ex );
-                return default;
+                return default( DateTime );
             }
         }
 
@@ -377,7 +377,7 @@ namespace BudgetExecution
             catch( IOException ex )
             {
                 Fail( ex );
-                return default;
+                return default( DateTime );
             }
         }
 
@@ -393,12 +393,12 @@ namespace BudgetExecution
 
                 return Verify.Input( file ) && File.Exists( file )
                     ? new FileInfo( file )?.Create()
-                    : default;
+                    : default( FileStream );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( FileStream );
             }
         }
 

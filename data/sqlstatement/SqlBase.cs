@@ -20,47 +20,29 @@ namespace BudgetExecution
         // *************************************************   PROPERTIES   *****************************************************
         // **********************************************************************************************************************
 
-        /// <summary>
-        /// Gets the connection factory.
-        /// </summary>
-        /// <value>
-        /// The connection factory.
-        /// </value>
+        /// <summary> Gets the connection factory. </summary>
+        /// <value> The connection factory. </value>
         private protected IConnectionBuilder ConnectionBuilder { get; set; }
 
-        /// <summary>
-        /// Gets the type of the command.
-        /// </summary>
-        /// <value>
-        /// The type of the command.
-        /// </value>
+        /// <summary> Gets the type of the command. </summary>
+        /// <value> The type of the command. </value>
         private protected SQL CommandType { get; set; }
 
-        /// <summary>
-        /// Gets the arguments.
-        /// </summary>
-        /// <value>
-        /// The arguments.
-        /// </value>
+        /// <summary> Gets the arguments. </summary>
+        /// <value> The arguments. </value>
         private protected IDictionary<string, object> Args { get; set; }
 
-        /// <summary>
-        /// Gets or sets the command text.
-        /// </summary>
-        /// <value>
-        /// The command text.
-        /// </value>
+        /// <summary> Gets or sets the command text. </summary>
+        /// <value> The command text. </value>
         private protected string CommandText { get; set; }
 
         // **********************************************************************************************************************
         // *************************************************    METHODS     *****************************************************
         // **********************************************************************************************************************
 
-        /// <summary>
-        /// Sets the connection builder.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <param name="provider">The provider.</param>
+        /// <summary> Sets the connection builder. </summary>
+        /// <param name = "source" > The source. </param>
+        /// <param name = "provider" > The provider. </param>
         private protected void SetConnectionBuilder( Source source, Provider provider )
         {
             try
@@ -75,19 +57,17 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Sets the arguments.
-        /// </summary>
-        /// <param name="dict">The dictionary.</param>
+        /// <summary> Sets the arguments. </summary>
+        /// <param name = "dict" > The dictionary. </param>
         private protected void SetArgs( IDictionary<string, object> dict )
         {
-            if( dict?.Any() == true )
+            if( dict?.Any( ) == true )
             {
                 try
                 {
-                    Args = dict?.Any() == true
+                    Args = dict?.Any( ) == true
                         ? dict
-                        : new Dictionary<string, object>();
+                        : new Dictionary<string, object>( );
                 }
                 catch( Exception ex )
                 {
@@ -96,20 +76,15 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Sets the type of the command.
-        /// </summary>
-        /// <param name = "commandtype" >
-        /// The commandtype.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary> Sets the type of the command. </summary>
+        /// <param name = "commandtype" > The commandtype. </param>
+        /// <returns> </returns>
         private protected void SetCommandType( SQL commandtype )
         {
             try
             {
                 CommandType = Enum.IsDefined( typeof( SQL ), commandtype )
-                    && Enum.GetNames( typeof( SQL ) ).Contains( commandtype.ToString() )
+                    && Enum.GetNames( typeof( SQL ) ).Contains( commandtype.ToString( ) )
                         ? commandtype
                         : SQL.SELECT;
             }
@@ -119,15 +94,13 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Sets the select statement.
-        /// </summary>
-        private protected void SetSelectStatement()
+        /// <summary> Sets the select statement. </summary>
+        private protected void SetSelectStatement( )
         {
             try
             {
-                CommandText = Verify.Input( ConnectionBuilder?.GetConnectionString() )
-                    ? $"{SQL.SELECT} * FROM {ConnectionBuilder?.GetTableName()};"
+                CommandText = Verify.Input( ConnectionBuilder?.GetConnectionString( ) )
+                    ? $"{SQL.SELECT} * FROM {ConnectionBuilder?.GetTableName( )};"
                     : string.Empty;
             }
             catch( Exception ex )
@@ -136,10 +109,8 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Sets the select statement.
-        /// </summary>
-        /// <param name="dict">The dictionary.</param>
+        /// <summary> Sets the select statement. </summary>
+        /// <param name = "dict" > The dictionary. </param>
         private protected void SetSelectStatement( IDictionary<string, object> dict )
         {
             if( Verify.Map( dict ) )
@@ -153,8 +124,8 @@ namespace BudgetExecution
                         vals += $"{kvp.Key} = '{kvp.Value}' AND";
                     }
 
-                    var values = vals.TrimEnd( " AND".ToCharArray() );
-                    var table = ConnectionBuilder?.GetTableName();
+                    var values = vals.TrimEnd( " AND".ToCharArray( ) );
+                    var table = ConnectionBuilder?.GetTableName( );
                     CommandText = $"{SQL.SELECT} * FROM {table} WHERE {values};";
                 }
                 catch( Exception ex )
@@ -164,14 +135,12 @@ namespace BudgetExecution
             }
             else if( dict == null )
             {
-                CommandText = $"{SQL.SELECT} * FROM {ConnectionBuilder?.GetTableName()};";
+                CommandText = $"{SQL.SELECT} * FROM {ConnectionBuilder?.GetTableName( )};";
             }
         }
 
-        /// <summary>
-        /// Sets the update statement.
-        /// </summary>
-        /// <param name="dict">The dictionary.</param>
+        /// <summary> Sets the update statement. </summary>
+        /// <param name = "dict" > The dictionary. </param>
         private protected void SetUpdateStatement( IDictionary<string, object> dict )
         {
             if( Verify.Map( dict ) )
@@ -185,8 +154,8 @@ namespace BudgetExecution
                         update += $" {kvp.Key} = '{kvp.Value}' AND";
                     }
 
-                    var vals = update.TrimEnd( " AND".ToCharArray() );
-                    CommandText = $"{SQL.UPDATE} {ConnectionBuilder?.GetTableName()} SET {vals};";
+                    var vals = update.TrimEnd( " AND".ToCharArray( ) );
+                    CommandText = $"{SQL.UPDATE} {ConnectionBuilder?.GetTableName( )} SET {vals};";
                 }
                 catch( Exception ex )
                 {
@@ -195,17 +164,15 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Sets the insert statement.
-        /// </summary>
-        /// <param name="dict">The dictionary.</param>
+        /// <summary> Sets the insert statement. </summary>
+        /// <param name = "dict" > The dictionary. </param>
         private protected void SetInsertStatement( IDictionary<string, object> dict )
         {
             if( Verify.Map( dict ) )
             {
                 try
                 {
-                    var table = ConnectionBuilder?.GetTableName();
+                    var table = ConnectionBuilder?.GetTableName( );
                     var colname = string.Empty;
                     var vals = string.Empty;
 
@@ -216,7 +183,7 @@ namespace BudgetExecution
                     }
 
                     var values =
-                        $"({colname.TrimEnd( ", ".ToCharArray() )}) VALUES ({vals.TrimEnd( ", ".ToCharArray() )})";
+                        $"({colname.TrimEnd( ", ".ToCharArray( ) )}) VALUES ({vals.TrimEnd( ", ".ToCharArray( ) )})";
 
                     CommandText = $"{SQL.INSERT} INTO {table} {values};";
                 }
@@ -227,10 +194,8 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Sets the delete statement.
-        /// </summary>
-        /// <param name="dict">The dictionary.</param>
+        /// <summary> Sets the delete statement. </summary>
+        /// <param name = "dict" > The dictionary. </param>
         private protected void SetDeleteStatement( IDictionary<string, object> dict )
         {
             if( Verify.Map( dict ) )
@@ -244,8 +209,8 @@ namespace BudgetExecution
                         vals += $"{kvp.Key} = '{kvp.Value}' AND ";
                     }
 
-                    var values = vals.TrimEnd( " AND".ToCharArray() );
-                    var table = ConnectionBuilder?.GetTableName();
+                    var values = vals.TrimEnd( " AND".ToCharArray( ) );
+                    var table = ConnectionBuilder?.GetTableName( );
                     CommandText = $"{SQL.DELETE} FROM {table} WHERE {values};";
                 }
                 catch( Exception ex )
@@ -255,14 +220,12 @@ namespace BudgetExecution
             }
             else if( dict == null )
             {
-                CommandText = $"{SQL.DELETE} * FROM {ConnectionBuilder?.GetTableName()};";
+                CommandText = $"{SQL.DELETE} * FROM {ConnectionBuilder?.GetTableName( )};";
             }
         }
 
-        /// <summary>
-        /// Sets the command text.
-        /// </summary>
-        /// <param name="sql">The SQL.</param>
+        /// <summary> Sets the command text. </summary>
+        /// <param name = "sql" > The SQL. </param>
         private protected void SetCommandText( string sql )
         {
             try
@@ -277,17 +240,15 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Sets the command text.
-        /// </summary>
+        /// <summary> Sets the command text. </summary>
         /// <param name = "command" > </param>
-        /// <param name="dict">The dictionary.</param>
+        /// <param name = "dict" > The dictionary. </param>
         public void SetCommandText( IDictionary<string, object> dict, SQL command = SQL.SELECT )
         {
             if( dict == null
-                && Verify.Input( ConnectionBuilder?.GetConnectionString() ) )
+                && Verify.Input( ConnectionBuilder?.GetConnectionString( ) ) )
             {
-                SetSelectStatement();
+                SetSelectStatement( );
             }
             else if( Verify.Map( dict ) )
             {
@@ -327,24 +288,22 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Get Error Dialog.
-        /// </summary>
-        /// <param name="ex">The ex.</param>
+        /// <summary> Get Error Dialog. </summary>
+        /// <param name = "ex" > The ex. </param>
         private protected static void Fail( Exception ex )
         {
             using var error = new Error( ex );
-            error?.SetText();
-            error?.ShowDialog();
+            error?.SetText( );
+            error?.ShowDialog( );
         }
 
-        /// <summary>
-        /// Converts to string.
-        /// </summary>
+        /// <summary> Converts to string. </summary>
         /// <returns>
-        /// A <see cref="System.String" /> that represents this instance.
+        /// A
+        /// <see cref = "System.String"/>
+        /// that represents this instance.
         /// </returns>
-        public override string ToString()
+        public override string ToString( )
         {
             try
             {

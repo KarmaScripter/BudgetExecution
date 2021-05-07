@@ -276,16 +276,16 @@ namespace BudgetExecution
 
                     return children.Any()
                         ? children
-                        : default;
+                        : default( List<Control> );
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IEnumerable<Control> );
                 }
             }
 
-            return default;
+            return default( IEnumerable<Control> );
         }
 
         // ***************************************************************************************************************************

@@ -99,7 +99,7 @@ namespace BudgetExecution
         {
             try
             {
-                return default;
+                return default( (int Row, int Column) );
             }
             catch( Exception ex )
             {
@@ -116,7 +116,7 @@ namespace BudgetExecution
         {
             try
             {
-                return default;
+                return default( int );
             }
             catch( Exception ex )
             {
@@ -133,7 +133,7 @@ namespace BudgetExecution
         {
             try
             {
-                return default;
+                return default( int );
             }
             catch( Exception ex )
             {
@@ -150,7 +150,7 @@ namespace BudgetExecution
         {
             try
             {
-                return default;
+                return default( (int Depth, int Span) );
             }
             catch( Exception ex )
             {

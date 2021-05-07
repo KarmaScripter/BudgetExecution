@@ -258,12 +258,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( HrOrgCode?.GetValue() )
                     ? HrOrgCode
-                    : default;
+                    : default( IElement );
             }
             catch( SystemException ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -278,12 +278,12 @@ namespace BudgetExecution
             {
                 return AnnualBasePaid?.GetFunding() > -1.0
                     ? AnnualBasePaid
-                    : default;
+                    : default( IAmount );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAmount );
             }
         }
 
@@ -298,12 +298,12 @@ namespace BudgetExecution
             {
                 return AnnualBaseHours.GetFunding() > -1.0
                     ? AnnualBaseHours
-                    : default;
+                    : default( IAmount );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAmount );
             }
         }
 
@@ -318,12 +318,12 @@ namespace BudgetExecution
             {
                 return CumulativeBenefits.GetFunding() > -1.0
                     ? CumulativeBenefits
-                    : default;
+                    : default( IAmount );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAmount );
             }
         }
 
@@ -338,12 +338,12 @@ namespace BudgetExecution
             {
                 return AnnualOtherHours?.GetFunding() > -1.0
                     ? AnnualOtherHours
-                    : default;
+                    : default( IAmount );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAmount );
             }
         }
 
@@ -358,12 +358,12 @@ namespace BudgetExecution
             {
                 return AnnualOtherPaid?.GetFunding() > -1.0
                     ? AnnualOtherPaid
-                    : default;
+                    : default( IAmount );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAmount );
             }
         }
 
@@ -378,12 +378,12 @@ namespace BudgetExecution
             {
                 return AnnualOvertimeHours?.GetFunding() > -1.0
                     ? AnnualOvertimeHours
-                    : default;
+                    : default( IAmount );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAmount );
             }
         }
 
@@ -398,12 +398,12 @@ namespace BudgetExecution
             {
                 return AnnualOvertimePaid?.GetFunding() > -1.0
                     ? AnnualOvertimePaid
-                    : default;
+                    : default( IAmount );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAmount );
             }
         }
 
@@ -418,12 +418,12 @@ namespace BudgetExecution
             {
                 return AllocationPercentage?.GetFunding() > -0.001
                     ? AllocationPercentage
-                    : default;
+                    : default( IAmount );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAmount );
             }
         }
 
@@ -438,12 +438,12 @@ namespace BudgetExecution
             {
                 return Hours?.GetFunding() > -1.0
                     ? Hours
-                    : default;
+                    : default( IAmount );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAmount );
             }
         }
 
@@ -458,12 +458,12 @@ namespace BudgetExecution
             {
                 return Amount?.GetFunding() > -1
                     ? Amount
-                    : default;
+                    : default( IAmount );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAmount );
             }
         }
     }

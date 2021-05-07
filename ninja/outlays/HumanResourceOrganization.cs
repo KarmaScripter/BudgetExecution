@@ -237,16 +237,16 @@ namespace BudgetExecution
 
                     return query?.Any() == true
                         ? query
-                        : default;
+                        : default( IEnumerable<HumanResourceOrganization> );
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IEnumerable<IHumanResourceOrganization> );
                 }
             }
 
-            return default;
+            return default( IEnumerable<IHumanResourceOrganization> );
         }
 
         /// <summary>
@@ -281,12 +281,12 @@ namespace BudgetExecution
             {
                 return Args.Any()
                     ? Args
-                    : default;
+                    : default( IDictionary<string, object> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IDictionary<string, object> );
             }
         }
 
@@ -312,11 +312,11 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IDictionary<string, object> );
                 }
             }
 
-            return default;
+            return default( IDictionary<string, object> );
         }
 
         /// <summary>

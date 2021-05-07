@@ -1,6 +1,6 @@
-﻿// <copyright file = "ConnectionFactory.cs" company = "Terry D. Eppler">
-// Copyright (c) Terry D. Eppler. All rights reserved.
-// </copyright>
+﻿// // <copyright file = "ConnectionFactory.cs" company = "Terry D. Eppler">
+// // Copyright (c) Terry D. Eppler. All rights reserved.
+// // </copyright>
 
 namespace BudgetExecution
 {
@@ -19,8 +19,7 @@ namespace BudgetExecution
     using System.Threading;
 
     /// <inheritdoc/>
-    /// <summary>
-    /// </summary>
+    /// <summary> </summary>
     /// <seealso cref = "T:BudgetExecution.ISource"/>
     /// <seealso cref = "T:BudgetExecution.IProvider"/>
     /// <seealso/>
@@ -40,18 +39,20 @@ namespace BudgetExecution
         // ***************************************************************************************************************************
 
         /// <summary>
-        /// Initializes a new instance of the <see cref = "ConnectionFactory"/> class.
+        /// Initializes a new instance of the
+        /// <see cref = "ConnectionFactory"/>
+        /// class.
         /// </summary>
-        public ConnectionFactory()
+        public ConnectionFactory( )
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref = "ConnectionFactory"/> class.
+        /// Initializes a new instance of the
+        /// <see cref = "ConnectionFactory"/>
+        /// class.
         /// </summary>
-        /// <param name = "builder" >
-        /// The manager.
-        /// </param>
+        /// <param name = "builder" > The manager. </param>
         public ConnectionFactory( IConnectionBuilder builder )
         {
             ConnectionBuilder = GetConnectionBuilder( builder );
@@ -59,14 +60,12 @@ namespace BudgetExecution
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref = "ConnectionFactory"/> class.
+        /// Initializes a new instance of the
+        /// <see cref = "ConnectionFactory"/>
+        /// class.
         /// </summary>
-        /// <param name = "builder" >
-        /// The builder.
-        /// </param>
-        /// <param name = "sqlstatement" >
-        /// The sqlstatement.
-        /// </param>
+        /// <param name = "builder" > The builder. </param>
+        /// <param name = "sqlstatement" > The sqlstatement. </param>
         public ConnectionFactory( IConnectionBuilder builder, ISqlStatement sqlstatement )
         {
             ConnectionBuilder = GetConnectionBuilder( builder );
@@ -77,74 +76,59 @@ namespace BudgetExecution
         // ******************************************************   PROPERTIES   *****************************************************
         // ***************************************************************************************************************************
 
-        /// <summary>
-        /// Gets the connection.
-        /// </summary>
-        /// <value>
-        /// The connection.
-        /// </value>
+        /// <summary> Gets the connection. </summary>
+        /// <value> The connection. </value>
         private DbConnection Connection { get; }
 
         // ***************************************************************************************************************************
         // *******************************************************      METHODS        ***********************************************
         // ***************************************************************************************************************************
 
-        /// <summary>
-        /// Sets the connection manager.
-        /// </summary>
-        /// <param name = "builder" >
-        /// The manager.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary> Sets the connection manager. </summary>
+        /// <param name = "builder" > The manager. </param>
+        /// <returns> </returns>
         private IConnectionBuilder GetConnectionBuilder( IConnectionBuilder builder )
         {
             try
             {
                 return Verify.Ref( builder )
                     ? builder
-                    : default;
+                    : default( IConnectionBuilder );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IConnectionBuilder );
             }
         }
 
         /// <inheritdoc/>
-        /// <summary>
-        /// Gets the connection manager.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public IConnectionBuilder GetConnectionBuilder()
+        /// <summary> Gets the connection manager. </summary>
+        /// <returns> </returns>
+        public IConnectionBuilder GetConnectionBuilder( )
         {
             try
             {
                 return Verify.Ref( ConnectionBuilder )
                     ? ConnectionBuilder
-                    : default;
+                    : default( IConnectionBuilder );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IConnectionBuilder );
             }
         }
 
-        /// <summary>
-        /// Gets the connection.
-        /// </summary>
-        /// <returns>
-        /// </returns>
+        /// <summary> Gets the connection. </summary>
+        /// <returns> </returns>
         private DbConnection SetConnection( IConnectionBuilder builder )
         {
             if( Verify.Ref( builder ) )
             {
                 try
                 {
-                    var provider = builder.GetProvider();
+                    var provider = builder.GetProvider( );
 
                     if( Verify.Provider( provider ) )
                     {
@@ -153,8 +137,8 @@ namespace BudgetExecution
                             case Provider.SQLite:
                             {
                                 var connectionstring = ConfigurationManager
-                                    .ConnectionStrings[ $"{Provider.SQLite}" ]
-                                    ?.ConnectionString;
+                                                       .ConnectionStrings[ $"{Provider.SQLite}" ]
+                                                       ?.ConnectionString;
 
                                 return Verify.Input( connectionstring )
                                     ? new SQLiteConnection( connectionstring )
@@ -164,8 +148,8 @@ namespace BudgetExecution
                             case Provider.SqlCe:
                             {
                                 var connectionstring = ConfigurationManager
-                                    .ConnectionStrings[ $"{Provider.SqlCe}" ]
-                                    .ConnectionString;
+                                                       .ConnectionStrings[ $"{Provider.SqlCe}" ]
+                                                       .ConnectionString;
 
                                 return Verify.Input( connectionstring )
                                     ? new SqlCeConnection( connectionstring )
@@ -175,8 +159,8 @@ namespace BudgetExecution
                             case Provider.SqlServer:
                             {
                                 var connectionstring = ConfigurationManager
-                                    .ConnectionStrings[ $"{Provider.SqlServer}" ]
-                                    .ConnectionString;
+                                                       .ConnectionStrings[ $"{Provider.SqlServer}" ]
+                                                       .ConnectionString;
 
                                 return Verify.Input( connectionstring )
                                     ? new SqlConnection( connectionstring )
@@ -189,8 +173,8 @@ namespace BudgetExecution
                             case Provider.OleDb:
                             {
                                 var connectionstring = ConfigurationManager
-                                    .ConnectionStrings[ $"{Provider.OleDb}" ]
-                                    .ConnectionString;
+                                                       .ConnectionStrings[ $"{Provider.OleDb}" ]
+                                                       .ConnectionString;
 
                                 return Verify.Input( connectionstring )
                                     ? new OleDbConnection( connectionstring )
@@ -202,45 +186,42 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( DbConnection );
                 }
             }
 
-            return default;
+            return default( DbConnection );
         }
 
         /// <inheritdoc/>
-        /// <summary>
-        /// Gets the connection.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public DbConnection GetConnection()
+        /// <summary> Gets the connection. </summary>
+        /// <returns> </returns>
+        public DbConnection GetConnection( )
         {
             try
             {
                 return Verify.Ref( Connection )
                     ? Connection
-                    : default;
+                    : default( DbConnection );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( DbConnection );
             }
         }
 
-        /// <summary>
-        /// Converts to string.
-        /// </summary>
+        /// <summary> Converts to string. </summary>
         /// <returns>
-        /// A <see cref = "string"/> that represents this instance.
+        /// A
+        /// <see cref = "string"/>
+        /// that represents this instance.
         /// </returns>
-        public override string ToString()
+        public override string ToString( )
         {
             try
             {
-                var connectionstring = ConnectionBuilder?.GetConnectionString();
+                var connectionstring = ConnectionBuilder?.GetConnectionString( );
 
                 return Verify.Input( connectionstring )
                     ? connectionstring
@@ -253,16 +234,13 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Gets the provider.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public Provider GetProvider()
+        /// <summary> Gets the provider. </summary>
+        /// <returns> </returns>
+        public Provider GetProvider( )
         {
             try
             {
-                var provider = ConnectionBuilder.GetProvider();
+                var provider = ConnectionBuilder.GetProvider( );
 
                 return Verify.Provider( provider )
                     ? provider
@@ -275,16 +253,13 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Gets the source.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public Source GetSource()
+        /// <summary> Gets the source. </summary>
+        /// <returns> </returns>
+        public Source GetSource( )
         {
             try
             {
-                var source = ConnectionBuilder.GetSource();
+                var source = ConnectionBuilder.GetSource( );
 
                 return Verify.Source( source )
                     ? source
@@ -297,15 +272,13 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Get Error Dialog.
-        /// </summary>
-        /// <param name="ex">The ex.</param>
+        /// <summary> Get Error Dialog. </summary>
+        /// <param name = "ex" > The ex. </param>
         private protected static void Fail( Exception ex )
         {
             using var error = new Error( ex );
-            error?.SetText();
-            error?.ShowDialog();
+            error?.SetText( );
+            error?.ShowDialog( );
         }
     }
 }

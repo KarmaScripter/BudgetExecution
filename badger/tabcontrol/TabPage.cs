@@ -179,7 +179,7 @@ namespace BudgetExecution
                 }
             }
 
-            return default;
+            return default( Control );
         }
 
         /// <summary>

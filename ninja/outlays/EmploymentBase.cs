@@ -150,12 +150,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( EmployeeNumber.GetValue() )
                     ? EmployeeNumber
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -170,12 +170,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( FirstName.GetValue() )
                     ? FirstName
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -190,12 +190,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( LastName.GetValue() )
                     ? LastName
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -210,12 +210,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( HumanResourceOrganizationCode.GetValue() )
                     ? HumanResourceOrganizationCode
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -230,12 +230,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( HumanResourceOrganizationName.GetValue() )
                     ? HumanResourceOrganizationName
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -250,12 +250,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( HireDate?.GetValue() )
                     ? HireDate
-                    : default;
+                    : default( ITime );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ITime );
             }
         }
 
@@ -270,12 +270,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( ServiceDate?.GetValue() )
                     ? ServiceDate
-                    : default;
+                    : default( ITime );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ITime );
             }
         }
 
@@ -290,12 +290,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( GradeEntryDate?.GetValue() )
                     ? GradeEntryDate
-                    : default;
+                    : default( ITime );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ITime );
             }
         }
 
@@ -310,12 +310,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( StepEntryDate?.GetValue() )
                     ? StepEntryDate
-                    : default;
+                    : default( ITime );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ITime );
             }
         }
 
@@ -330,12 +330,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( WigiDueDate?.GetValue() )
                     ? WigiDueDate
-                    : default;
+                    : default( ITime );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ITime );
             }
         }
 
@@ -350,12 +350,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( AppointmentAuthority.GetValue() )
                     ? AppointmentAuthority
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -370,12 +370,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( AppointmentType.GetValue() )
                     ? AppointmentType
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -390,12 +390,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( BargainingUnit.GetValue() )
                     ? BargainingUnit
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -410,12 +410,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( RetirementPlan.GetValue() )
                     ? RetirementPlan
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 

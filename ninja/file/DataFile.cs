@@ -80,12 +80,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( filepath )
                     ? new FileInfo( filepath )
-                    : default;
+                    : default( FileInfo );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( FileInfo );
             }
         }
 
@@ -183,17 +183,17 @@ namespace BudgetExecution
 
                         return Verify.Input( data )
                             ? data
-                            : default;
+                            : default( List<FileInfo> );
                     }
                 }
                 catch( IOException ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IEnumerable<FileInfo> );
                 }
             }
 
-            return default;
+            return default( IEnumerable<FileInfo> );
         }
 
         /// <summary>Returns a string that
@@ -227,12 +227,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( FullName )
                     ? FullName
-                    : default;
+                    : default( string );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( string );
             }
         }
 
@@ -246,12 +246,12 @@ namespace BudgetExecution
             {
                 return File.Exists( Path?.GetFullPath() )
                     ? Path
-                    : default;
+                    : default( IPath );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IPath );
             }
         }
 
@@ -272,7 +272,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( string );
             }
         }
 
@@ -293,7 +293,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( string );
             }
         }
 
@@ -307,12 +307,12 @@ namespace BudgetExecution
             {
                 return CheckParent()
                     ? new Folder( this )
-                    : default;
+                    : default( Folder );
             }
             catch( IOException ex )
             {
                 Fail( ex );
-                return default;
+                return default( IFolder );
             }
         }
 
@@ -331,12 +331,12 @@ namespace BudgetExecution
 
                 return File.Exists( file?.GetFilePath() )
                     ? file
-                    : default;
+                    : default( DataFile );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IFile );
             }
         }
     }

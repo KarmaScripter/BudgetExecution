@@ -187,12 +187,12 @@ namespace BudgetExecution
             {
                 return Verify.Key( ID )
                     ? ID
-                    : default;
+                    : default( IKey );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IKey );
             }
         }
 
@@ -207,12 +207,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( EpaSiteId?.GetValue() )
                     ? EpaSiteId
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -227,12 +227,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( SiteName?.GetValue() )
                     ? SiteName
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -247,12 +247,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( SiteProjectName?.GetValue() )
                     ? SiteProjectName
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -267,12 +267,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( City?.GetValue() )
                     ? City
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -287,12 +287,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( District?.GetValue() )
                     ? District
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -307,12 +307,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( County?.GetValue() )
                     ? County
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -327,12 +327,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( StateCode?.GetName() )
                     ? StateCode
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -347,12 +347,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( StateName?.GetValue() )
                     ? StateName
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -367,12 +367,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( StreetAddressLine1?.GetName() )
                     ? StreetAddressLine1
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -387,12 +387,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( District?.GetValue() )
                     ? District
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -407,12 +407,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( LastActionDate?.GetValue() )
                     ? LastActionDate
-                    : default;
+                    : default( ITime );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ITime );
             }
         }
 
@@ -427,12 +427,12 @@ namespace BudgetExecution
             {
                 return Verify.Map( Data )
                     ? Data
-                    : default;
+                    : default( IDictionary<string, object> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IDictionary<string, object> );
             }
         }
     }

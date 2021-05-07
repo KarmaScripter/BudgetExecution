@@ -1,6 +1,6 @@
-﻿// <copyright file = "SqlServerQuery.cs" company = "Terry D. Eppler">
-// Copyright (c) Terry D. Eppler. All rights reserved.
-// </copyright>
+﻿// // <copyright file = "SqlServerQuery.cs" company = "Terry D. Eppler">
+// // Copyright (c) Terry D. Eppler. All rights reserved.
+// // </copyright>
 
 namespace BudgetExecution
 {
@@ -17,16 +17,14 @@ namespace BudgetExecution
         // ********************************************      FIELDS     ********************************************
         // *********************************************************************************************************
 
-        /// <summary>
-        /// Gets or sets the Provider
-        /// </summary>
+        /// <summary> Gets or sets the Provider </summary>
         private Provider Provider { get; } = Provider.SqlServer;
 
         // *********************************************************************************************************
         // ********************************************   CONSTRUCTORS     *****************************************
         // *********************************************************************************************************
 
-        public SqlServerQuery()
+        public SqlServerQuery( )
         {
         }
 
@@ -49,14 +47,12 @@ namespace BudgetExecution
         // ********************************************      METHODS    ********************************************
         // *********************************************************************************************************
 
-        /// <summary>
-        /// The Dispose
-        /// </summary>
+        /// <summary> The Dispose </summary>
         protected override void Dispose( bool disposing )
         {
             if( disposing )
             {
-                Dispose();
+                Dispose( );
             }
 
             IsDisposed = true;

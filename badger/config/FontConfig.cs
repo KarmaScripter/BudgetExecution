@@ -106,7 +106,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( int );
             }
         }
 
@@ -159,7 +159,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( Font );
             }
         }
 
@@ -177,12 +177,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( font?.FontFamily?.Name )
                     ? font
-                    : default;
+                    : default( Font );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( Font );
             }
         }
 

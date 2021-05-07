@@ -22,12 +22,10 @@ namespace BudgetExecution
     using log4net;
 
     /// <summary>
-    /// This class is responsible to take a single SQL Server database and convert it to
-    /// an SQLite database file.
+    /// This class is responsible to take a single SQL Server database and convert it
+    /// to an SQLite database file.
     /// </summary>
-    /// <remarks>
-    /// The class knows how to convert table and index structures only.
-    /// </remarks>
+    /// <remarks> The class knows how to convert table and index structures only. </remarks>
     [ SuppressMessage( "ReSharper", "FunctionComplexityOverflow" ) ]
     [ SuppressMessage( "ReSharper", "ConvertSwitchStatementToSwitchExpression" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeMadeStatic.Local" ) ]
@@ -37,24 +35,16 @@ namespace BudgetExecution
         // ****************************************************     FIELDS    ******************************************************
         // *************************************************************************************************************************
 
-        /// <summary>
-        /// The cancelled
-        /// </summary>
+        /// <summary> The cancelled </summary>
         private bool Cancelled;
 
-        /// <summary>
-        /// The keyrx
-        /// </summary>
+        /// <summary> The keyrx </summary>
         private readonly Regex Keyrx = new Regex( @"(([a-zA-ZäöüÄÖÜß0-9\.]|(\s+))+)(\(\-\))?" );
 
-        /// <summary>
-        /// The defaultvaluerx
-        /// </summary>
+        /// <summary> The defaultvaluerx </summary>
         private readonly Regex Defaultvaluerx = new Regex( @"\(N(\'.*\')\)" );
 
-        /// <summary>
-        /// The log
-        /// </summary>
+        /// <summary> The log </summary>
         private readonly ILog Log = LogManager.GetLogger( typeof( SqlServerConverter ) );
 
         // **************************************************************************************************************************
@@ -63,10 +53,10 @@ namespace BudgetExecution
 
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="SqlServerConverter" />
+        /// <see cref = "SqlServerConverter"/>
         /// class.
         /// </summary>
-        public SqlServerConverter()
+        public SqlServerConverter( )
         {
         }
 
@@ -74,9 +64,7 @@ namespace BudgetExecution
         // ******************************************************   PROPERTIES   ****************************************************
         // **************************************************************************************************************************
 
-        /// <summary>
-        /// Gets or sets a value indicating whether this instance is active.
-        /// </summary>
+        /// <summary> Gets or sets a value indicating whether this instance is active. </summary>
         /// <value>
         /// <c> true </c>
         /// if this instance is active; otherwise,
@@ -89,11 +77,9 @@ namespace BudgetExecution
         // ****************************************************  METHODS   **********************************************************
         // **************************************************************************************************************************
 
-        /// <summary>
-        /// Writes the trigger schema.
-        /// </summary>
-        /// <param name="ts">The ts.</param>
-        /// <returns></returns>
+        /// <summary> Writes the trigger schema. </summary>
+        /// <param name = "ts" > The ts. </param>
+        /// <returns> </returns>
         private string WriteTriggerSchema( TriggerSchema ts )
         {
             return @"CREATE TRIGGER ["
@@ -110,31 +96,32 @@ namespace BudgetExecution
                 + " END;";
         }
 
-        /// <summary>
-        /// Cancels the conversion.
-        /// </summary>
-        public void CancelConversion()
+        /// <summary> Cancels the conversion. </summary>
+        public void CancelConversion( )
         {
             Cancelled = true;
         }
 
-        /// <summary>
-        /// Converts the SQL server to sq lite database.
-        /// </summary>
-        /// <param name="sqlserverconnstring">The sqlserverconnstring.</param>
-        /// <param name="path">The path.</param>
-        /// <param name="password">The password.</param>
-        /// <param name="handler">The handler.</param>
-        /// <param name="selectionhandler">The selectionhandler.</param>
-        /// <param name="viewfailurehandler">The viewfailurehandler.</param>
-        /// <param name="createtriggers">if set to
+        /// <summary> Converts the SQL server to sq lite database. </summary>
+        /// <param name = "sqlserverconnstring" > The sqlserverconnstring. </param>
+        /// <param name = "path" > The path. </param>
+        /// <param name = "password" > The password. </param>
+        /// <param name = "handler" > The handler. </param>
+        /// <param name = "selectionhandler" > The selectionhandler. </param>
+        /// <param name = "viewfailurehandler" > The viewfailurehandler. </param>
+        /// <param name = "createtriggers" >
+        /// if set to
         /// <c> true </c>
-        /// [createtriggers].</param>
-        /// <param name="createviews">if set to
+        /// [createtriggers].
+        /// </param>
+        /// <param name = "createviews" >
+        /// if set to
         /// <c> true </c>
-        /// [createviews].</param>
+        /// [createviews].
+        /// </param>
         public void ConvertSqlServerToSQLiteDatabase( string sqlserverconnstring, string path,
-            string password, SqlConversionHandler handler, SqlTableSelectionHandler selectionhandler,
+            string password, SqlConversionHandler handler,
+            SqlTableSelectionHandler selectionhandler,
             FailedViewDefinitionHandler viewfailurehandler, bool createtriggers, bool createviews )
         {
             // Clear cancelled flag
@@ -161,21 +148,23 @@ namespace BudgetExecution
             } );
         }
 
-        /// <summary>
-        /// Converts to sq lite.
-        /// </summary>
-        /// <param name="sqlconnstring">The sqlconnstring.</param>
-        /// <param name="path">The path.</param>
-        /// <param name="password">The password.</param>
-        /// <param name="handler">The handler.</param>
-        /// <param name="selectionhandler">The selectionhandler.</param>
-        /// <param name="viewfailurehandler">The viewfailurehandler.</param>
-        /// <param name="createtriggers">if set to
+        /// <summary> Converts to sq lite. </summary>
+        /// <param name = "sqlconnstring" > The sqlconnstring. </param>
+        /// <param name = "path" > The path. </param>
+        /// <param name = "password" > The password. </param>
+        /// <param name = "handler" > The handler. </param>
+        /// <param name = "selectionhandler" > The selectionhandler. </param>
+        /// <param name = "viewfailurehandler" > The viewfailurehandler. </param>
+        /// <param name = "createtriggers" >
+        /// if set to
         /// <c> true </c>
-        /// [createtriggers].</param>
-        /// <param name="createviews">if set to
+        /// [createtriggers].
+        /// </param>
+        /// <param name = "createviews" >
+        /// if set to
         /// <c> true </c>
-        /// [createviews].</param>
+        /// [createviews].
+        /// </param>
         private void ConvertToSQLite( string sqlconnstring, string path, string password,
             SqlConversionHandler handler, SqlTableSelectionHandler selectionhandler,
             FailedViewDefinitionHandler viewfailurehandler, bool createtriggers, bool createviews )
@@ -204,34 +193,32 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Copies the data rows.
-        /// </summary>
-        /// <param name="sqlconnstring">The sqlconnstring.</param>
-        /// <param name="path">The path.</param>
-        /// <param name="schema">The schema.</param>
-        /// <param name="password">The password.</param>
-        /// <param name="handler">The handler.</param>
-        private void CopyDataRows( string sqlconnstring, string path, IReadOnlyList<TableSchema> schema,
-            string password, SqlConversionHandler handler )
+        /// <summary> Copies the data rows. </summary>
+        /// <param name = "sqlconnstring" > The sqlconnstring. </param>
+        /// <param name = "path" > The path. </param>
+        /// <param name = "schema" > The schema. </param>
+        /// <param name = "password" > The password. </param>
+        /// <param name = "handler" > The handler. </param>
+        private void CopyDataRows( string sqlconnstring, string path,
+            IReadOnlyList<TableSchema> schema, string password, SqlConversionHandler handler )
         {
-            CheckCancelled();
+            CheckCancelled( );
             handler( false, true, 0, "Preparing to insert tables..." );
             Log.Debug( "preparing to insert tables ..." );
 
             // Connect to the SQL Server database
             using var ssconn = new SqlConnection( sqlconnstring );
-            ssconn.Open();
+            ssconn.Open( );
 
             // Connect to the SQLite database next
             var sqliteconnstring = CreateSQLiteConnectionString( path, password );
             using var sqconn = new SQLiteConnection( sqliteconnstring );
-            sqconn.Open();
+            sqconn.Open( );
 
             // Go over all tables in the schema and copy their rows
             for( var i = 0; i < schema.Count; i++ )
             {
-                var tx = sqconn.BeginTransaction();
+                var tx = sqconn.BeginTransaction( );
 
                 try
                 {
@@ -239,20 +226,21 @@ namespace BudgetExecution
 
                     using( var query = new SqlCommand( tablequery, ssconn ) )
                     {
-                        using var reader = query.ExecuteReader();
+                        using var reader = query.ExecuteReader( );
                         using var insert = BuildSQLiteInsert( schema[ i ] );
                         var counter = 0;
 
-                        while( reader.Read() )
+                        while( reader.Read( ) )
                         {
                             insert.Connection = sqconn;
                             insert.Transaction = tx;
-                            var pnames = new List<string>();
+                            var pnames = new List<string>( );
 
                             for( var j = 0; j < schema[ i ].Columns.Count; j++ )
                             {
                                 var pname = "@"
-                                    + GetNormalizedName( schema[ i ].Columns[ j ].ColumnName, pnames );
+                                    + GetNormalizedName( schema[ i ].Columns[ j ].ColumnName,
+                                        pnames );
 
                                 insert.Parameters[ pname ].Value =
                                     CastValueForColumn( reader[ j ], schema[ i ].Columns[ j ] );
@@ -260,13 +248,13 @@ namespace BudgetExecution
                                 pnames.Add( pname );
                             }
 
-                            insert.ExecuteNonQuery();
+                            insert.ExecuteNonQuery( );
                             counter++;
 
                             if( counter % 1000 == 0 )
                             {
-                                CheckCancelled();
-                                tx.Commit();
+                                CheckCancelled( );
+                                tx.Commit( );
 
                                 handler( false, true, (int)( 100.0 * i / schema.Count ),
                                     "Added "
@@ -275,36 +263,38 @@ namespace BudgetExecution
                                     + schema[ i ].TableName
                                     + " so far" );
 
-                                tx = sqconn.BeginTransaction();
+                                tx = sqconn.BeginTransaction( );
                             }
                         }// while
                     }
 
-                    CheckCancelled();
-                    tx.Commit();
+                    CheckCancelled( );
+                    tx.Commit( );
 
                     handler( false, true, (int)( 100.0 * i / schema.Count ),
                         "Finished inserting rows for table " + schema[ i ].TableName );
 
-                    Log.Debug( "finished inserting all rows for table [" + schema[ i ].TableName + "]" );
+                    Log.Debug( "finished inserting all rows for table ["
+                        + schema[ i ].TableName
+                        + "]" );
                 }
                 catch( Exception ex )
                 {
                     Log.Error( "unexpected exception", ex );
-                    tx.Rollback();
+                    tx.Rollback( );
                     throw;
                 }// catch
             }
         }
 
-        /// <summary>
-        /// Casts the value for column.
-        /// </summary>
-        /// <param name="val">The value.</param>
-        /// <param name="columnschema">The columnschema.</param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentException">Illegal database type [" +
-        /// Enum.GetName(typeof(DbType), dt) + "]</exception>
+        /// <summary> Casts the value for column. </summary>
+        /// <param name = "val" > The value. </param>
+        /// <param name = "columnschema" > The columnschema. </param>
+        /// <returns> </returns>
+        /// <exception cref = "ArgumentException" >
+        /// Illegal database type [" +
+        /// Enum.GetName(typeof(DbType), dt) + "]
+        /// </exception>
         private object CastValueForColumn( object val, ColumnSchema columnschema )
         {
             if( val is DBNull )
@@ -427,7 +417,7 @@ namespace BudgetExecution
                 {
                     if( val is Guid guid )
                     {
-                        return guid.ToString();
+                        return guid.ToString( );
                     }
 
                     break;
@@ -440,7 +430,7 @@ namespace BudgetExecution
                         case string s:
                             return ParseStringAsGuid( s );
 
-                        case byte[] bytes:
+                        case byte[ ] bytes:
                             return ParseBlobAsGuid( bytes );
                     }
 
@@ -465,42 +455,38 @@ namespace BudgetExecution
             return val;
         }
 
-        /// <summary>
-        /// Parses the BLOB as unique identifier.
-        /// </summary>
-        /// <param name="blob">The BLOB.</param>
-        /// <returns></returns>
+        /// <summary> Parses the BLOB as unique identifier. </summary>
+        /// <param name = "blob" > The BLOB. </param>
+        /// <returns> </returns>
         private Guid ParseBlobAsGuid( IEnumerable<byte> blob )
         {
-            var data = blob.ToArray();
+            var data = blob.ToArray( );
 
-            if( blob.Count() > 16 )
+            if( blob.Count( ) > 16 )
             {
                 data = new byte[ 16 ];
 
                 for( var i = 0; i < 16; i++ )
                 {
-                    data[ i ] = blob.ToArray()[ i ];
+                    data[ i ] = blob.ToArray( )[ i ];
                 }
             }
-            else if( blob.Count() < 16 )
+            else if( blob.Count( ) < 16 )
             {
                 data = new byte[ 16 ];
 
-                for( var i = 0; i < blob.Count(); i++ )
+                for( var i = 0; i < blob.Count( ); i++ )
                 {
-                    data[ i ] = blob.ToArray()[ i ];
+                    data[ i ] = blob.ToArray( )[ i ];
                 }
             }
 
             return new Guid( data );
         }
 
-        /// <summary>
-        /// Parses the string as unique identifier.
-        /// </summary>
-        /// <param name="str">The string.</param>
-        /// <returns></returns>
+        /// <summary> Parses the string as unique identifier. </summary>
+        /// <param name = "str" > The string. </param>
+        /// <returns> </returns>
         private Guid ParseStringAsGuid( string str )
         {
             try
@@ -513,15 +499,13 @@ namespace BudgetExecution
             }// catch
         }
 
-        /// <summary>
-        /// Builds the sq lite insert.
-        /// </summary>
-        /// <param name="ts">The ts.</param>
-        /// <returns></returns>
+        /// <summary> Builds the sq lite insert. </summary>
+        /// <param name = "ts" > The ts. </param>
+        /// <returns> </returns>
         private SQLiteCommand BuildSQLiteInsert( TableSchema ts )
         {
-            var res = new SQLiteCommand();
-            var sb = new StringBuilder();
+            var res = new SQLiteCommand( );
+            var sb = new StringBuilder( );
             sb.Append( "INSERT INTO [" + ts.TableName + "] (" );
 
             for( var i = 0; i < ts.Columns.Count; i++ )
@@ -535,7 +519,7 @@ namespace BudgetExecution
             }// for
 
             sb.Append( ") VALUES (" );
-            var pnames = new List<string>();
+            var pnames = new List<string>( );
 
             for( var i = 0; i < ts.Columns.Count; i++ )
             {
@@ -556,20 +540,18 @@ namespace BudgetExecution
             }// for
 
             sb.Append( ")" );
-            res.CommandText = sb.ToString();
+            res.CommandText = sb.ToString( );
             res.CommandType = CommandType.Text;
             return res;
         }
 
-        /// <summary>
-        /// Gets the name of the normalized.
-        /// </summary>
-        /// <param name="str">The string.</param>
-        /// <param name="names">The names.</param>
-        /// <returns></returns>
+        /// <summary> Gets the name of the normalized. </summary>
+        /// <param name = "str" > The string. </param>
+        /// <param name = "names" > The names. </param>
+        /// <returns> </returns>
         private string GetNormalizedName( string str, ICollection<string> names )
         {
-            var sb = new StringBuilder();
+            var sb = new StringBuilder( );
 
             for( var i = 0; i < str.Length; i++ )
             {
@@ -584,18 +566,18 @@ namespace BudgetExecution
             }// for
 
             // Avoid returning duplicate name
-            return names.Contains( sb.ToString() )
+            return names.Contains( sb.ToString( ) )
                 ? GetNormalizedName( sb + "", names )
-                : sb.ToString();
+                : sb.ToString( );
         }
 
-        /// <summary>
-        /// Gets the database type of column.
-        /// </summary>
-        /// <param name="cs">The cs.</param>
-        /// <returns></returns>
-        /// <exception cref="ApplicationException">Illegal DB type found (" +
-        /// cs.ColumnType + ")</exception>
+        /// <summary> Gets the database type of column. </summary>
+        /// <param name = "cs" > The cs. </param>
+        /// <returns> </returns>
+        /// <exception cref = "ApplicationException" >
+        /// Illegal DB type found (" +
+        /// cs.ColumnType + ")
+        /// </exception>
         private DbType GetDbTypeOfColumn( ColumnSchema cs )
         {
             switch( cs.ColumnType )
@@ -659,18 +641,18 @@ namespace BudgetExecution
 
                 default:
                     Log.Error( "illegal db type found" );
-                    throw new ApplicationException( "Illegal DB type found (" + cs.ColumnType + ")" );
+
+                    throw new ApplicationException(
+                        "Illegal DB type found (" + cs.ColumnType + ")" );
             }
         }
 
-        /// <summary>
-        /// Builds the SQL server table query.
-        /// </summary>
-        /// <param name="ts">The ts.</param>
-        /// <returns></returns>
+        /// <summary> Builds the SQL server table query. </summary>
+        /// <param name = "ts" > The ts. </param>
+        /// <returns> </returns>
         private string BuildSqlServerTableQuery( TableSchema ts )
         {
-            var sb = new StringBuilder();
+            var sb = new StringBuilder( );
             sb.Append( "SELECT " );
 
             for( var i = 0; i < ts.Columns.Count; i++ )
@@ -684,22 +666,23 @@ namespace BudgetExecution
             }// for
 
             sb.Append( " FROM " + ts.TableSchemaName + "." + "[" + ts.TableName + "]" );
-            return sb.ToString();
+            return sb.ToString( );
         }
 
-        /// <summary>
-        /// Creates the sq lite database.
-        /// </summary>
-        /// <param name="path">The path.</param>
-        /// <param name="schema">The schema.</param>
-        /// <param name="password">The password.</param>
-        /// <param name="handler">The handler.</param>
-        /// <param name="viewfailurehandler">The viewfailurehandler.</param>
-        /// <param name="createviews">if set to
+        /// <summary> Creates the sq lite database. </summary>
+        /// <param name = "path" > The path. </param>
+        /// <param name = "schema" > The schema. </param>
+        /// <param name = "password" > The password. </param>
+        /// <param name = "handler" > The handler. </param>
+        /// <param name = "viewfailurehandler" > The viewfailurehandler. </param>
+        /// <param name = "createviews" >
+        /// if set to
         /// <c> true </c>
-        /// [createviews].</param>
+        /// [createviews].
+        /// </param>
         private void CreateSQLiteDatabase( string path, DatabaseSchema schema, string password,
-            SqlConversionHandler handler, FailedViewDefinitionHandler viewfailurehandler, bool createviews )
+            SqlConversionHandler handler, FailedViewDefinitionHandler viewfailurehandler,
+            bool createviews )
         {
             Log.Debug( "Creating SQLite database..." );
 
@@ -712,7 +695,7 @@ namespace BudgetExecution
 
             using( var conn = new SQLiteConnection( sqliteconnstring ) )
             {
-                conn.Open();
+                conn.Open( );
 
                 // Create all tables in the new database
                 var count = 0;
@@ -730,7 +713,7 @@ namespace BudgetExecution
                     }
 
                     count++;
-                    CheckCancelled();
+                    CheckCancelled( );
 
                     handler( false, true, (int)( count * 50.0 / schema.Tables.Count ),
                         "Added table " + dt.TableName + " to the SQLite database" );
@@ -756,7 +739,7 @@ namespace BudgetExecution
                         }// catch
 
                         count++;
-                        CheckCancelled();
+                        CheckCancelled( );
 
                         handler( false, true, 50 + (int)( count * 50.0 / schema.Views.Count ),
                             "Added view " + vs.ViewName + " to the SQLite database" );
@@ -769,12 +752,10 @@ namespace BudgetExecution
             Log.Debug( "finished adding all table/view schemas for SQLite database" );
         }
 
-        /// <summary>
-        /// Adds the sq lite view.
-        /// </summary>
-        /// <param name="conn">The connection.</param>
-        /// <param name="vs">The vs.</param>
-        /// <param name="handler">The handler.</param>
+        /// <summary> Adds the sq lite view. </summary>
+        /// <param name = "conn" > The connection. </param>
+        /// <param name = "vs" > The vs. </param>
+        /// <param name = "handler" > The handler. </param>
         private void AddSQLiteView( SQLiteConnection conn, ViewSchema vs,
             FailedViewDefinitionHandler handler )
         {
@@ -783,20 +764,20 @@ namespace BudgetExecution
             Log.Info( "\n\n" + stmt + "\n\n" );
 
             // Execute the query in order to actually create the view.
-            var tx = conn.BeginTransaction();
+            var tx = conn.BeginTransaction( );
 
             try
             {
                 using( var cmd = new SQLiteCommand( stmt, conn, tx ) )
                 {
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery( );
                 }
 
-                tx.Commit();
+                tx.Commit( );
             }
             catch( SQLiteException )
             {
-                tx.Rollback();
+                tx.Rollback( );
 
                 if( handler != null )
                 {
@@ -826,11 +807,9 @@ namespace BudgetExecution
             }// catch
         }
 
-        /// <summary>
-        /// Adds the sq lite table.
-        /// </summary>
-        /// <param name="conn">The connection.</param>
-        /// <param name="dt">The dt.</param>
+        /// <summary> Adds the sq lite table. </summary>
+        /// <param name = "conn" > The connection. </param>
+        /// <param name = "dt" > The dt. </param>
         private void AddSQLiteTable( SQLiteConnection conn, TableSchema dt )
         {
             // Prepare a CREATE TABLE DDL statement
@@ -839,17 +818,15 @@ namespace BudgetExecution
 
             // Execute the query in order to actually create the table.
             using var cmd = new SQLiteCommand( stmt, conn );
-            cmd.ExecuteNonQuery();
+            cmd.ExecuteNonQuery( );
         }
 
-        /// <summary>
-        /// Builds the create table query.
-        /// </summary>
-        /// <param name="schema">The ts.</param>
-        /// <returns></returns>
+        /// <summary> Builds the create table query. </summary>
+        /// <param name = "schema" > The ts. </param>
+        /// <returns> </returns>
         private string BuildCreateTableQuery( TableSchema schema )
         {
-            var builder = new StringBuilder();
+            var builder = new StringBuilder( );
             builder.Append( "CREATE TABLE [" + schema.TableName + "] (\n" );
             var key = false;
 
@@ -923,19 +900,17 @@ namespace BudgetExecution
                 }// for
             }    // if
 
-            var query = builder.ToString();
+            var query = builder.ToString( );
             return query;
         }
 
-        /// <summary>
-        /// Builds the index of the create.
-        /// </summary>
-        /// <param name="tablename">The tablename.</param>
-        /// <param name="schema">The schema.</param>
-        /// <returns></returns>
+        /// <summary> Builds the index of the create. </summary>
+        /// <param name = "tablename" > The tablename. </param>
+        /// <param name = "schema" > The schema. </param>
+        /// <returns> </returns>
         private string BuildCreateIndex( string tablename, IndexSchema schema )
         {
-            var sb = new StringBuilder();
+            var sb = new StringBuilder( );
             sb.Append( "CREATE " );
 
             if( schema.IsUnique )
@@ -963,21 +938,21 @@ namespace BudgetExecution
             }// for
 
             sb.Append( ")" );
-            return sb.ToString();
+            return sb.ToString( );
         }
 
-        /// <summary>
-        /// Builds the column statement.
-        /// </summary>
-        /// <param name="col">The col.</param>
-        /// <param name="ts">The ts.</param>
-        /// <param name="pkey">if set to
+        /// <summary> Builds the column statement. </summary>
+        /// <param name = "col" > The col. </param>
+        /// <param name = "ts" > The ts. </param>
+        /// <param name = "pkey" >
+        /// if set to
         /// <c> true </c>
-        /// [pkey].</param>
-        /// <returns></returns>
+        /// [pkey].
+        /// </param>
+        /// <returns> </returns>
         private string BuildColumnStatement( ColumnSchema col, TableSchema ts, ref bool pkey )
         {
-            var sb = new StringBuilder();
+            var sb = new StringBuilder( );
             sb.Append( "\t[" + col.ColumnName + "]\t" );
 
             // Special treatment for IDENTITY columns
@@ -1032,7 +1007,7 @@ namespace BudgetExecution
             Log.Debug( "DEFAULT VALUE BEFORE [" + col.DefaultValue + "] AFTER [" + defval + "]" );
 
             if( Verify.Input( defval )
-                && defval.ToUpper().Contains( "GETDATE" ) )
+                && defval.ToUpper( ).Contains( "GETDATE" ) )
             {
                 Log.Debug( "converted SQL Server GETDATE() to CURRENTTIMESTAMP for column ["
                     + col.ColumnName
@@ -1046,14 +1021,12 @@ namespace BudgetExecution
                 sb.Append( " DEFAULT " + defval );
             }
 
-            return sb.ToString();
+            return sb.ToString( );
         }
 
-        /// <summary>
-        /// Discards the national.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <returns></returns>
+        /// <summary> Discards the national. </summary>
+        /// <param name = "value" > The value. </param>
+        /// <returns> </returns>
         private string DiscardNational( string value )
         {
             var rx = new Regex( @"N\'([^\']*)\'" );
@@ -1064,10 +1037,8 @@ namespace BudgetExecution
                 : value;
         }
 
-        /// <summary>
-        /// Determines whether [is valid default value] [the specified value].
-        /// </summary>
-        /// <param name="value">The value.</param>
+        /// <summary> Determines whether [is valid default value] [the specified value]. </summary>
+        /// <param name = "value" > The value. </param>
         /// <returns>
         /// <c> true </c>
         /// if [is valid default value] [the specified value]; otherwise,
@@ -1079,10 +1050,8 @@ namespace BudgetExecution
             return IsSingleQuoted( value ) || double.TryParse( value, out _ );
         }
 
-        /// <summary>
-        /// Determines whether [is single quoted] [the specified value].
-        /// </summary>
-        /// <param name="value">The value.</param>
+        /// <summary> Determines whether [is single quoted] [the specified value]. </summary>
+        /// <param name = "value" > The value. </param>
         /// <returns>
         /// <c> true </c>
         /// if [is single quoted] [the specified value]; otherwise,
@@ -1091,15 +1060,13 @@ namespace BudgetExecution
         /// </returns>
         private bool IsSingleQuoted( string value )
         {
-            value = value.Trim();
+            value = value.Trim( );
             return value.StartsWith( "'" ) && value.EndsWith( "'" );
         }
 
-        /// <summary>
-        /// Strips the parens.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <returns></returns>
+        /// <summary> Strips the parens. </summary>
+        /// <param name = "value" > The value. </param>
+        /// <returns> </returns>
         private string StripParens( string value )
         {
             var rx = new Regex( @"\(([^\)]*)\)" );
@@ -1110,33 +1077,32 @@ namespace BudgetExecution
                 : StripParens( m.Groups[ 1 ].Value );
         }
 
-        /// <summary>
-        /// Reads the SQL server schema.
-        /// </summary>
-        /// <param name="connstring">The connstring.</param>
-        /// <param name="handler">The handler.</param>
-        /// <param name="selectionhandler">The selectionhandler.</param>
-        /// <returns></returns>
+        /// <summary> Reads the SQL server schema. </summary>
+        /// <param name = "connstring" > The connstring. </param>
+        /// <param name = "handler" > The handler. </param>
+        /// <param name = "selectionhandler" > The selectionhandler. </param>
+        /// <returns> </returns>
         private DatabaseSchema ReadSqlServerSchema( string connstring, SqlConversionHandler handler,
             SqlTableSelectionHandler selectionhandler )
         {
             // First step is to read the names of all tables in the database
-            var tables = new List<TableSchema>();
+            var tables = new List<TableSchema>( );
 
             using( var conn = new SqlConnection( connstring ) )
             {
-                conn.Open();
-                var tablenames = new List<string>();
-                var tblschema = new List<string>();
+                conn.Open( );
+                var tablenames = new List<string>( );
+                var tblschema = new List<string>( );
 
                 // This command will read the names of all tables in the database
                 using( var cmd =
-                    new SqlCommand( @"select * from INFORMATIONSCHEMA.TABLES  where TABLETYPE = 'BASE TABLE'",
+                    new SqlCommand(
+                        @"select * from INFORMATIONSCHEMA.TABLES  where TABLETYPE = 'BASE TABLE'",
                         conn ) )
                 {
-                    using var reader = cmd.ExecuteReader();
+                    using var reader = cmd.ExecuteReader( );
 
-                    while( reader.Read() )
+                    while( reader.Read( ) )
                     {
                         if( reader[ "TABLENAME" ] == DBNull.Value )
                         {
@@ -1164,8 +1130,11 @@ namespace BudgetExecution
                     CreateForeignKeySchema( conn, ts );
                     tables.Add( ts );
                     count++;
-                    CheckCancelled();
-                    handler( false, true, (int)( count * 50.0 / tablenames.Count ), "Parsed table " + tname );
+                    CheckCancelled( );
+
+                    handler( false, true, (int)( count * 50.0 / tablenames.Count ),
+                        "Parsed table " + tname );
+
                     Log.Debug( "parsed table schema for [" + tname + "]" );
                 }// foreach
             }    // using
@@ -1183,21 +1152,22 @@ namespace BudgetExecution
             var removedbo = new Regex( @"dbo\.", RegexOptions.Compiled | RegexOptions.IgnoreCase );
 
             // Continue and read all of the views in the database
-            var views = new List<ViewSchema>();
+            var views = new List<ViewSchema>( );
 
             using( var conn = new SqlConnection( connstring ) )
             {
-                conn.Open();
+                conn.Open( );
 
                 using var cmd =
-                    new SqlCommand( @"SELECT TABLENAME, VIEWDEFINITION  from INFORMATIONSCHEMA.VIEWS", conn );
+                    new SqlCommand(
+                        @"SELECT TABLENAME, VIEWDEFINITION  from INFORMATIONSCHEMA.VIEWS", conn );
 
-                using var reader = cmd.ExecuteReader();
+                using var reader = cmd.ExecuteReader( );
                 var count = 0;
 
-                while( reader.Read() )
+                while( reader.Read( ) )
                 {
-                    var vs = new ViewSchema();
+                    var vs = new ViewSchema( );
 
                     if( reader[ "TABLENAME" ] == DBNull.Value )
                     {
@@ -1216,7 +1186,7 @@ namespace BudgetExecution
                     vs.ViewSQL = removedbo.Replace( vs.ViewSQL, string.Empty );
                     views.Add( vs );
                     count++;
-                    CheckCancelled();
+                    CheckCancelled( );
 
                     handler( false, true, 50 + (int)( count * 50.0 / views.Count ),
                         "Parsed view " + vs.ViewName );
@@ -1234,11 +1204,9 @@ namespace BudgetExecution
             return ds;
         }
 
-        /// <summary>
-        /// Checks the cancelled.
-        /// </summary>
-        /// <exception cref="ApplicationException">User cancelled the conversion</exception>
-        private void CheckCancelled()
+        /// <summary> Checks the cancelled. </summary>
+        /// <exception cref = "ApplicationException" > User cancelled the conversion </exception>
+        private void CheckCancelled( )
         {
             if( Cancelled )
             {
@@ -1246,13 +1214,11 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Creates the table schema.
-        /// </summary>
-        /// <param name="conn">The connection.</param>
-        /// <param name="tablename">The tablename.</param>
-        /// <param name="tschma">The tschma.</param>
-        /// <returns></returns>
+        /// <summary> Creates the table schema. </summary>
+        /// <param name = "conn" > The connection. </param>
+        /// <param name = "tablename" > The tablename. </param>
+        /// <param name = "tschma" > The tschma. </param>
+        /// <returns> </returns>
         [ SuppressMessage( "ReSharper", "BadParensLineBreaks" ) ]
         private TableSchema CreateTableSchema( SqlConnection conn, string tablename, string tschma )
         {
@@ -1260,7 +1226,7 @@ namespace BudgetExecution
             {
                 TableName = tablename,
                 TableSchemaName = tschma,
-                Columns = new List<ColumnSchema>()
+                Columns = new List<ColumnSchema>( )
             };
 
             using( var cmd = new SqlCommand(
@@ -1268,9 +1234,9 @@ namespace BudgetExecution
                 + @"CHARACTERMAXIMUMLENGTH AS CSIZE FROM INFORMATIONSCHEMA.COLUMNS WHERE TABLENAME = '{tablename}' ORDER BY ORDINALPOSITION ASC",
                 conn ) )
             {
-                using var reader = cmd.ExecuteReader();
+                using var reader = cmd.ExecuteReader( );
 
-                while( reader.Read() )
+                while( reader.Read( ) )
                 {
                     var tmp = reader[ "COLUMNNAME" ];
 
@@ -1416,10 +1382,10 @@ namespace BudgetExecution
             // Find PRIMARY KEY information
             using( var cmd2 = new SqlCommand( $"EXEC sppkeys '{tablename}'", conn ) )
             {
-                using var reader = cmd2.ExecuteReader();
-                res.PrimaryKey = new List<string>();
+                using var reader = cmd2.ExecuteReader( );
+                res.PrimaryKey = new List<string>( );
 
-                while( reader.Read() )
+                while( reader.Read( ) )
                 {
                     var colname = (string)reader[ "COLUMNNAME" ];
                     res.PrimaryKey.Add( colname );
@@ -1427,19 +1393,20 @@ namespace BudgetExecution
             }
 
             // Find COLLATE information for all columns in the table
-            using( var cmd4 = new SqlCommand( @"EXEC sptablecollations '" + tschma + "." + tablename + "'",
-                conn ) )
+            using( var cmd4 =
+                new SqlCommand( @"EXEC sptablecollations '" + tschma + "." + tablename + "'",
+                    conn ) )
             {
-                using var reader = cmd4.ExecuteReader();
+                using var reader = cmd4.ExecuteReader( );
 
-                while( reader.Read() )
+                while( reader.Read( ) )
                 {
                     bool? iscasesensitive = null;
                     var colname = (string)reader[ "name" ];
 
                     if( reader[ "tdscollation" ] != DBNull.Value )
                     {
-                        var mask = (byte[])reader[ "tdscollation" ];
+                        var mask = (byte[ ])reader[ "tdscollation" ];
                         iscasesensitive = ( mask[ 2 ] & 0x10 ) == 0;
                     }// if
 
@@ -1464,10 +1431,10 @@ namespace BudgetExecution
                 using var cmd3 =
                     new SqlCommand( @"exec sphelpindex '" + tschma + "." + tablename + "'", conn );
 
-                using var reader = cmd3.ExecuteReader();
-                res.Indexes = new List<IndexSchema>();
+                using var reader = cmd3.ExecuteReader( );
+                res.Indexes = new List<IndexSchema>( );
 
-                while( reader.Read() )
+                while( reader.Read( ) )
                 {
                     var indexname = (string)reader[ "indexname" ];
                     var desc = (string)reader[ "indexdescription" ];
@@ -1491,12 +1458,12 @@ namespace BudgetExecution
             return res;
         }
 
-        /// <summary>
-        /// Validates the type of the data.
-        /// </summary>
-        /// <param name="datatype">The datatype.</param>
-        /// <exception cref="ApplicationException">Validation failed for data type [" +
-        /// datatype + "]</exception>
+        /// <summary> Validates the type of the data. </summary>
+        /// <param name = "datatype" > The datatype. </param>
+        /// <exception cref = "ApplicationException" >
+        /// Validation failed for data type [" +
+        /// datatype + "]
+        /// </exception>
         private void ValidateDataType( string datatype )
         {
             if( datatype == "int"
@@ -1535,15 +1502,13 @@ namespace BudgetExecution
             throw new ApplicationException( "Validation failed for data type [" + datatype + "]" );
         }
 
-        /// <summary>
-        /// Fixes the default value string.
-        /// </summary>
-        /// <param name="coldefault">The coldefault.</param>
-        /// <returns></returns>
+        /// <summary> Fixes the default value string. </summary>
+        /// <param name = "coldefault" > The coldefault. </param>
+        /// <returns> </returns>
         private string FixDefaultValueString( string coldefault )
         {
             var replaced = false;
-            var res = coldefault.Trim();
+            var res = coldefault.Trim( );
 
             // Find first/last indexes in which to search
             var first = -1;
@@ -1571,7 +1536,7 @@ namespace BudgetExecution
                 return res.Substring( first, last - first + 1 );
             }
 
-            var sb = new StringBuilder();
+            var sb = new StringBuilder( );
 
             for( var i = 0; i < res.Length; i++ )
             {
@@ -1585,26 +1550,24 @@ namespace BudgetExecution
 
             return replaced
                 ? "(" + sb + ")"
-                : sb.ToString();
+                : sb.ToString( );
         }
 
-        /// <summary>
-        /// Creates the foreign key schema.
-        /// </summary>
-        /// <param name="conn">The connection.</param>
-        /// <param name="ts">The ts.</param>
+        /// <summary> Creates the foreign key schema. </summary>
+        /// <param name = "conn" > The connection. </param>
+        /// <param name = "ts" > The ts. </param>
         [ SuppressMessage( "ReSharper", "BadParensLineBreaks" ) ]
         private void CreateForeignKeySchema( SqlConnection conn, TableSchema ts )
         {
-            ts.ForeignKeys = new List<ForeignKeySchema>();
+            ts.ForeignKeys = new List<ForeignKeySchema>( );
 
             using var cmd = new SqlCommand(
                 $@"SELECT   ColumnName = CU.COLUMNNAME,   ForeignTableName  = PK.TABLENAME,   ForeignColumnName = PT.COLUMNNAME,   DeleteRule = C.DELETERULE,   IsNullable = COL.ISNULLABLE FROM INFORMATIONSCHEMA.REFERENTIALCONSTRAINTS C INNER JOIN INFORMATIONSCHEMA.TABLECONSTRAINTS FK ON C.CONSTRAINTNAME = FK.CONSTRAINTNAME INNER JOIN INFORMATIONSCHEMA.TABLECONSTRAINTS PK ON C.UNIQUECONSTRAINTNAME = PK.CONSTRAINTNAME INNER JOIN INFORMATIONSCHEMA.KEYCOLUMNUSAGE CU ON C.CONSTRAINTNAME = CU.CONSTRAINTNAME INNER JOIN   (     SELECT i1.TABLENAME, i2.COLUMNNAME     FROM  INFORMATIONSCHEMA.TABLECONSTRAINTS i1     INNER JOIN INFORMATIONSCHEMA.KEYCOLUMNUSAGE i2 ON i1.CONSTRAINTNAME = i2.CONSTRAINTNAME     WHERE i1.CONSTRAINTTYPE = 'PRIMARY KEY'   ) PT ON PT.TABLENAME = PK.TABLENAME INNER JOIN INFORMATIONSCHEMA.COLUMNS AS COL ON CU.COLUMNNAME = COL.COLUMNNAME AND FK.TABLENAME = COL.TABLENAME WHERE FK.TableNAME='{ts.TableName}'",
                 conn );
 
-            using var reader = cmd.ExecuteReader();
+            using var reader = cmd.ExecuteReader( );
 
-            while( reader.Read() )
+            while( reader.Read( ) )
             {
                 var fkc = new ForeignKeySchema
                 {
@@ -1620,15 +1583,15 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Builds the index schema.
-        /// </summary>
-        /// <param name="indexname">The indexname.</param>
-        /// <param name="desc">The desc.</param>
-        /// <param name="keys">The keys.</param>
-        /// <returns></returns>
-        /// <exception cref="ApplicationException">Illegal key name [" + p + "] in
-        /// index [" + indexname + "]</exception>
+        /// <summary> Builds the index schema. </summary>
+        /// <param name = "indexname" > The indexname. </param>
+        /// <param name = "desc" > The desc. </param>
+        /// <param name = "keys" > The keys. </param>
+        /// <returns> </returns>
+        /// <exception cref = "ApplicationException" >
+        /// Illegal key name [" + p + "] in
+        /// index [" + indexname + "]
+        /// </exception>
         private IndexSchema BuildIndexSchema( string indexname, string desc, string keys )
         {
             var res = new IndexSchema
@@ -1643,7 +1606,7 @@ namespace BudgetExecution
             {
                 var p = descparts[ i ];
 
-                if( p.Trim().Contains( "unique" ) )
+                if( p.Trim( ).Contains( "unique" ) )
                 {
                     res.IsUnique = true;
                     break;
@@ -1651,12 +1614,12 @@ namespace BudgetExecution
             }
 
             // Get all key names and check if they are ASCENDING or DESCENDING
-            res.Columns = new List<IndexColumn>();
+            res.Columns = new List<IndexColumn>( );
             var keysparts = keys.Split( ',' );
 
             foreach( var p in keysparts )
             {
-                var m = Keyrx.Match( p.Trim() );
+                var m = Keyrx.Match( p.Trim( ) );
 
                 if( !m.Success )
                 {
@@ -1667,18 +1630,16 @@ namespace BudgetExecution
                         + "]" );
                 }
 
-                var ic = new IndexColumn();
+                var ic = new IndexColumn( );
                 res.Columns.Add( ic );
             }// foreach
 
             return res;
         }
 
-        /// <summary>
-        /// Adjusts the default value.
-        /// </summary>
-        /// <param name="val">The value.</param>
-        /// <returns></returns>
+        /// <summary> Adjusts the default value. </summary>
+        /// <param name = "val" > The value. </param>
+        /// <returns> </returns>
         private string AdjustDefaultValue( string val )
         {
             if( string.IsNullOrEmpty( val ) )
@@ -1693,12 +1654,10 @@ namespace BudgetExecution
                 : val;
         }
 
-        /// <summary>
-        /// Creates the sq lite connection string.
-        /// </summary>
-        /// <param name="path">The path.</param>
-        /// <param name="password">The password.</param>
-        /// <returns></returns>
+        /// <summary> Creates the sq lite connection string. </summary>
+        /// <param name = "path" > The path. </param>
+        /// <param name = "password" > The password. </param>
+        /// <returns> </returns>
         private string CreateSQLiteConnectionString( string path, string password )
         {
             var builder = new SQLiteConnectionStringBuilder
@@ -1717,12 +1676,10 @@ namespace BudgetExecution
             return connstring;
         }
 
-        /// <summary>
-        /// Adds the triggers for foreign keys.
-        /// </summary>
-        /// <param name="path">The path.</param>
-        /// <param name="schema">The schema.</param>
-        /// <param name="password">The password.</param>
+        /// <summary> Adds the triggers for foreign keys. </summary>
+        /// <param name = "path" > The path. </param>
+        /// <param name = "schema" > The schema. </param>
+        /// <param name = "password" > The password. </param>
         private void AddTriggersForForeignKeys( string path, IEnumerable<TableSchema> schema,
             string password )
         {
@@ -1731,7 +1688,7 @@ namespace BudgetExecution
 
             using( var conn = new SQLiteConnection( sqliteconnstring ) )
             {
-                conn.Open();
+                conn.Open( );
 
                 // foreach
                 foreach( var dt in schema )
@@ -1751,11 +1708,9 @@ namespace BudgetExecution
             Log.Debug( "finished adding triggers to schema" );
         }
 
-        /// <summary>
-        /// Adds the table triggers.
-        /// </summary>
-        /// <param name="conn">The connection.</param>
-        /// <param name="dt">The dt.</param>
+        /// <summary> Adds the table triggers. </summary>
+        /// <param name = "conn" > The connection. </param>
+        /// <param name = "dt" > The dt. </param>
         private void AddTableTriggers( SQLiteConnection conn, TableSchema dt )
         {
             var triggers = TriggerBuilder.GetForeignKeyTriggers( dt );
@@ -1764,7 +1719,7 @@ namespace BudgetExecution
             {
                 var trigger = triggers[ i ];
                 using var cmd = new SQLiteCommand( WriteTriggerSchema( trigger ), conn );
-                cmd.ExecuteNonQuery();
+                cmd.ExecuteNonQuery( );
             }
         }
     }

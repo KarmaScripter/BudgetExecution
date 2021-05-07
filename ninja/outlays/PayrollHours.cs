@@ -173,12 +173,12 @@ namespace BudgetExecution
             {
                 return Verify.Map( Args )
                     ? Args
-                    : default;
+                    : default( IDictionary<string, object> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IDictionary<string, object> );
             }
         }
 
@@ -414,12 +414,12 @@ namespace BudgetExecution
             {
                 return Hours?.GetFunding() > -1.0
                     ? Hours
-                    : default;
+                    : default( IAmount );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAmount );
             }
         }
 
@@ -450,16 +450,16 @@ namespace BudgetExecution
 
                     return dict.Any()
                         ? dict
-                        : default;
+                        : default( Dictionary<string, object> );
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IDictionary<string, object> );
                 }
             }
 
-            return default;
+            return default( IDictionary<string, object> );
         }
 
         /// <summary>
@@ -485,16 +485,16 @@ namespace BudgetExecution
 
                     return dict.Any()
                         ? dict
-                        : default;
+                        : default( Dictionary<string, object> );
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( IDictionary<string, object> );
                 }
             }
 
-            return default;
+            return default( IDictionary<string, object> );
         }
     }
 }

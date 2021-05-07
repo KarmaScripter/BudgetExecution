@@ -1,6 +1,6 @@
-﻿// <copyright file = "ColumnSchema.cs" company = "Terry D. Eppler">
-// Copyright (c) Terry D. Eppler. All rights reserved.
-// </copyright>
+﻿// // <copyright file = "ColumnSchema.cs" company = "Terry D. Eppler">
+// // Copyright (c) Terry D. Eppler. All rights reserved.
+// // </copyright>
 
 namespace BudgetExecution
 {
@@ -8,9 +8,7 @@ namespace BudgetExecution
     using System.Diagnostics.CodeAnalysis;
     using System.Threading;
 
-    /// <summary>
-    /// Contains the schema of a single DB column.
-    /// </summary>
+    /// <summary> Contains the schema of a single DB column. </summary>
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     public class ColumnSchema
     {

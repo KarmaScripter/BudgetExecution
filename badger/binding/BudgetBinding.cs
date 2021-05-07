@@ -86,7 +86,7 @@ namespace BudgetExecution
 
                     DataFilter = datafilter?.Any() == true
                         ? datafilter
-                        : default;
+                        : default( Dictionary<string, object> );
                 }
                 catch( Exception ex )
                 {
@@ -136,12 +136,12 @@ namespace BudgetExecution
             {
                 return Verify.Table( DataSet )
                     ? DataSet
-                    : default;
+                    : default( DataSet );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( DataSet );
             }
         }
     }

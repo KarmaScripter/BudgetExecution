@@ -174,7 +174,7 @@ namespace BudgetExecution
                 }
             }
 
-            return default;
+            return default( ToolStripDropDown );
         }
 
         /// <summary>
@@ -197,7 +197,7 @@ namespace BudgetExecution
                 }
             }
 
-            return default;
+            return default( ToolStripDropDown );
         }
 
         /// <summary>
@@ -224,11 +224,11 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( ToolStripControlHost );
                 }
             }
 
-            return default;
+            return default( ToolStripControlHost );
         }
 
         /// <summary>
@@ -248,7 +248,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IEnumerable<string> );
             }
         }
 
@@ -269,7 +269,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IEnumerable<string> );
             }
         }
 

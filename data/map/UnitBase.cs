@@ -1,6 +1,6 @@
-﻿// <copyright file = "UnitBase.cs" company = "Terry D. Eppler">
-// Copyright (c) Terry D. Eppler. All rights reserved.
-// </copyright>
+﻿// // <copyright file = "UnitBase.cs" company = "Terry D. Eppler">
+// // Copyright (c) Terry D. Eppler. All rights reserved.
+// // </copyright>
 
 namespace BudgetExecution
 {
@@ -12,9 +12,7 @@ namespace BudgetExecution
     using System.Diagnostics.CodeAnalysis;
     using System.Threading;
 
-    /// <summary>
-    /// 
-    /// </summary>
+    /// <summary> </summary>
     [ SuppressMessage( "ReSharper", "MemberCanBeMadeStatic.Global" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeProtected.Global" ) ]
     [ SuppressMessage( "ReSharper", "VirtualMemberNeverOverridden.Global" ) ]
@@ -24,39 +22,24 @@ namespace BudgetExecution
         // ********************************************      PROPERTIES    **********************************************************
         // **************************************************************************************************************************
 
-        /// <summary>
-        /// Gets or sets the name.
-        /// </summary>
-        /// <value>
-        /// The name.
-        /// </value>
+        /// <summary> Gets or sets the name. </summary>
+        /// <value> The name. </value>
         private protected string Name { get; set; }
 
-        /// <summary>
-        /// Gets or sets the value.
-        /// </summary>
-        /// <value>
-        /// The value.
-        /// </value>
+        /// <summary> Gets or sets the value. </summary>
+        /// <value> The value. </value>
         private protected object Data { get; set; }
 
-        /// <summary>
-        /// Gets or sets the value.
-        /// </summary>
-        /// <value>
-        /// The value.
-        /// </value>
+        /// <summary> Gets or sets the value. </summary>
+        /// <value> The value. </value>
         private protected string Value { get; set; }
 
         // **************************************************************************************************************************
         // ********************************************      METHODS    *************************************************************
         // **************************************************************************************************************************
 
-        /// <summary>
-        /// Gets the name.
-        /// </summary>
-        /// <returns>
-        /// </returns>
+        /// <summary> Gets the name. </summary>
+        /// <returns> </returns>
         public virtual void SetName( string name )
         {
             try
@@ -71,18 +54,15 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Gets the value.
-        /// </summary>
-        /// <returns>
-        /// </returns>
+        /// <summary> Gets the value. </summary>
+        /// <returns> </returns>
         public virtual void SetData( object data )
         {
             try
             {
-                Data = Verify.Input( data?.ToString() )
+                Data = Verify.Input( data?.ToString( ) )
                     ? data
-                    : default;
+                    : default( object );
             }
             catch( Exception ex )
             {
@@ -90,17 +70,15 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Gets the value.
-        /// </summary>
-        /// <param name="data">The data.</param>
-        /// <returns></returns>
+        /// <summary> Gets the value. </summary>
+        /// <param name = "data" > The data. </param>
+        /// <returns> </returns>
         public virtual void SetValue( object data )
         {
             try
             {
-                Value = Verify.Input( data?.ToString() )
-                    ? data?.ToString()
+                Value = Verify.Input( data?.ToString( ) )
+                    ? data?.ToString( )
                     : string.Empty;
             }
             catch( Exception ex )
@@ -109,20 +87,12 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Determines whether the specified element is equal.
-        /// </summary>
-        /// <param name = "unit" >
-        /// The element.
-        /// </param>
+        /// <summary> Determines whether the specified element is equal. </summary>
+        /// <param name = "unit" > The element. </param>
         /// <returns>
-        /// <c>
-        /// true
-        /// </c>
+        /// <c> true </c>
         /// if the specified element is equal; otherwise,
-        /// <c>
-        /// false
-        /// </c>
+        /// <c> false </c>
         /// .
         /// </returns>
         public virtual bool IsMatch( IUnit unit )
@@ -131,8 +101,8 @@ namespace BudgetExecution
             {
                 try
                 {
-                    return unit.GetName()?.Equals( Name ) == true 
-                        && unit.GetValue()?.Equals( Value ) == true;
+                    return unit.GetName( )?.Equals( Name ) == true
+                        && unit.GetValue( )?.Equals( Value ) == true;
                 }
                 catch( Exception ex )
                 {
@@ -144,15 +114,13 @@ namespace BudgetExecution
             return false;
         }
 
-        /// <summary>
-        /// Get Error Dialog.
-        /// </summary>
-        /// <param name="ex">The ex.</param>
+        /// <summary> Get Error Dialog. </summary>
+        /// <param name = "ex" > The ex. </param>
         private protected static void Fail( Exception ex )
         {
             using var error = new Error( ex );
-            error?.SetText();
-            error?.ShowDialog();
+            error?.SetText( );
+            error?.ShowDialog( );
         }
     }
 }

@@ -154,12 +154,12 @@ namespace BudgetExecution
             {
                 return Verify.Key( ID )
                     ? ID
-                    : default;
+                    : default( IKey );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IKey );
             }
         }
 
@@ -174,12 +174,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( BFY?.GetValue() )
                     ? BFY
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -194,12 +194,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( Destination?.GetName() )
                     ? Destination
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -214,12 +214,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( FirstName?.GetValue() )
                     ? FirstName
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -234,12 +234,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( MiddleName.GetValue() )
                     ? MiddleName
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -254,12 +254,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( LastName?.GetValue() )
                     ? LastName
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -274,12 +274,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( Email?.GetValue() )
                     ? Email
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -294,12 +294,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( StartDate?.GetValue() )
                     ? StartDate
-                    : default;
+                    : default( ITime );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ITime );
             }
         }
 
@@ -314,12 +314,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( EndDate?.GetValue() )
                     ? EndDate
-                    : default;
+                    : default( ITime );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ITime );
             }
         }
 
@@ -334,12 +334,12 @@ namespace BudgetExecution
             {
                 return Amount?.GetFunding() > -1.0
                     ? Amount
-                    : default;
+                    : default( IAmount );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAmount );
             }
         }
     }

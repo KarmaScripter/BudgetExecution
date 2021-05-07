@@ -1,6 +1,6 @@
-﻿// <copyright file = "CommandBuilder.cs" company = "Terry D. Eppler">
-// Copyright (c) Terry D. Eppler. All rights reserved.
-// </copyright>
+﻿// // <copyright file = "CommandBuilder.cs" company = "Terry D. Eppler">
+// // Copyright (c) Terry D. Eppler. All rights reserved.
+// // </copyright>
 
 namespace BudgetExecution
 {
@@ -14,8 +14,7 @@ namespace BudgetExecution
     using System.Threading;
 
     /// <inheritdoc/>
-    /// <summary>
-    /// </summary>
+    /// <summary> </summary>
     /// <seealso cref = "T:BudgetExecution.ICommandBuilder"/>
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
@@ -26,34 +25,34 @@ namespace BudgetExecution
         // ***************************************************************************************************************************
 
         /// <summary>
-        /// Initializes a new instance of the <see cref = "CommandBuilder"/> class.
+        /// Initializes a new instance of the
+        /// <see cref = "CommandBuilder"/>
+        /// class.
         /// </summary>
-        public CommandBuilder()
+        public CommandBuilder( )
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref = "CommandBuilder"/> class.
+        /// Initializes a new instance of the
+        /// <see cref = "CommandBuilder"/>
+        /// class.
         /// </summary>
-        /// <param name = "sql" >
-        /// The SQL.
-        /// </param>
+        /// <param name = "sql" > The SQL. </param>
         public CommandBuilder( ISqlStatement sql )
         {
             SqlStatement = sql;
-            ConnectionBuilder = SqlStatement.GetConnectionBuilder();
+            ConnectionBuilder = SqlStatement.GetConnectionBuilder( );
             Command = SetCommand( SqlStatement );
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref = "CommandBuilder"/> class.
+        /// Initializes a new instance of the
+        /// <see cref = "CommandBuilder"/>
+        /// class.
         /// </summary>
-        /// <param name = "connectionbuilder" >
-        /// The connectionmanager.
-        /// </param>
-        /// <param name = "sql" >
-        /// The SQL.
-        /// </param>
+        /// <param name = "connectionbuilder" > The connectionmanager. </param>
+        /// <param name = "sql" > The SQL. </param>
         public CommandBuilder( IConnectionBuilder connectionbuilder, ISqlStatement sql )
         {
             SqlStatement = sql;
@@ -65,21 +64,16 @@ namespace BudgetExecution
         // *************************************************    METHODS     *****************************************************
         // **********************************************************************************************************************
 
-        /// <summary>
-        /// Sets the command.
-        /// </summary>
-        /// <param name = "sqlstatement" >
-        /// The sqlstatement.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary> Sets the command. </summary>
+        /// <param name = "sqlstatement" > The sqlstatement. </param>
+        /// <returns> </returns>
         public DbCommand SetCommand( ISqlStatement sqlstatement )
         {
             if( Verify.Ref( sqlstatement ) )
             {
                 try
                 {
-                    var provider = ConnectionBuilder?.GetProvider();
+                    var provider = ConnectionBuilder?.GetProvider( );
 
                     switch( provider )
                     {
@@ -112,37 +106,34 @@ namespace BudgetExecution
 
                         default:
                         {
-                            return default;
+                            return default( DbCommand );
                         }
                     }
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( DbCommand );
                 }
             }
 
-            return default;
+            return default( DbCommand );
         }
 
-        /// <summary>
-        /// Gets the command.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public DbCommand GetCommand()
+        /// <summary> Gets the command. </summary>
+        /// <returns> </returns>
+        public DbCommand GetCommand( )
         {
             try
             {
                 return Verify.Ref( Command )
                     ? Command
-                    : default;
+                    : default( DbCommand );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( DbCommand );
             }
         }
     }

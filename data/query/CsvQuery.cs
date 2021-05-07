@@ -1,6 +1,6 @@
-﻿// <copyright file = "CsvQuery.cs" company = "Terry D. Eppler">
-// Copyright (c) Terry D. Eppler. All rights reserved.
-// </copyright>
+﻿// // <copyright file = "CsvQuery.cs" company = "Terry D. Eppler">
+// // Copyright (c) Terry D. Eppler. All rights reserved.
+// // </copyright>
 
 using DataTable = System.Data.DataTable;
 
@@ -22,8 +22,7 @@ namespace BudgetExecution
     using App = Microsoft.Office.Interop.Excel.Application;
     using DataTable = DataTable;
 
-    /// <summary>
-    /// </summary>
+    /// <summary> </summary>
     /// <seealso cref = "Query"/>
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     public class CsvQuery : Query
@@ -32,12 +31,8 @@ namespace BudgetExecution
         // ********************************************      FIELDS     *************************************************************
         // **************************************************************************************************************************
 
-        /// <summary>
-        /// Gets the provider.
-        /// </summary>
-        /// <value>
-        /// The provider.
-        /// </value>
+        /// <summary> Gets the provider. </summary>
+        /// <value> The provider. </value>
         private Provider Provider { get; } = Provider.CSV;
 
         // **************************************************************************************************************************
@@ -45,66 +40,58 @@ namespace BudgetExecution
         // **************************************************************************************************************************
 
         /// <summary>
-        /// Initializes a new instance of the <see cref = "CsvQuery"/> class.
+        /// Initializes a new instance of the
+        /// <see cref = "CsvQuery"/>
+        /// class.
         /// </summary>
-        public CsvQuery()
+        public CsvQuery( )
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref = "CsvQuery"/> class.
+        /// Initializes a new instance of the
+        /// <see cref = "CsvQuery"/>
+        /// class.
         /// </summary>
-        /// <param name = "filepath" >
-        /// The filepath.
-        /// </param>
-        /// <param name = "command" >
-        /// The command.
-        /// </param>
+        /// <param name = "filepath" > The filepath. </param>
+        /// <param name = "command" > The command. </param>
         public CsvQuery( string filepath, SQL command = SQL.SELECT )
             : base( filepath, command )
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref = "CsvQuery"/> class.
+        /// Initializes a new instance of the
+        /// <see cref = "CsvQuery"/>
+        /// class.
         /// </summary>
-        /// <param name = "filepath" >
-        /// The filepath.
-        /// </param>
-        /// <param name = "dict" >
-        /// The dictionary.
-        /// </param>
+        /// <param name = "filepath" > The filepath. </param>
+        /// <param name = "dict" > The dictionary. </param>
         public CsvQuery( string filepath, IDictionary<string, object> dict )
             : base( filepath, SQL.SELECT, dict )
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref = "CsvQuery"/> class.
+        /// Initializes a new instance of the
+        /// <see cref = "CsvQuery"/>
+        /// class.
         /// </summary>
-        /// <param name = "filepath" >
-        /// The filepath.
-        /// </param>
-        /// <param name = "command" >
-        /// The command.
-        /// </param>
-        /// <param name = "dict" >
-        /// The dictionary.
-        /// </param>
+        /// <param name = "filepath" > The filepath. </param>
+        /// <param name = "command" > The command. </param>
+        /// <param name = "dict" > The dictionary. </param>
         public CsvQuery( string filepath, SQL command, IDictionary<string, object> dict = null )
             : base( filepath, command, dict )
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref = "CsvQuery"/> class.
+        /// Initializes a new instance of the
+        /// <see cref = "CsvQuery"/>
+        /// class.
         /// </summary>
-        /// <param name = "connectionbuilder" >
-        /// The connectionbuilder.
-        /// </param>
-        /// <param name = "sqlstatement" >
-        /// The sqlstatement.
-        /// </param>
+        /// <param name = "connectionbuilder" > The connectionbuilder. </param>
+        /// <param name = "sqlstatement" > The sqlstatement. </param>
         public CsvQuery( IConnectionBuilder connectionbuilder, ISqlStatement sqlstatement )
             : base( connectionbuilder, sqlstatement )
         {
@@ -114,40 +101,24 @@ namespace BudgetExecution
         // ********************************************      PROPERTIES    **********************************************************
         // **************************************************************************************************************************
 
-        /// <summary>
-        /// Gets or sets the data set.
-        /// </summary>
-        /// <value>
-        /// The data set.
-        /// </value>
+        /// <summary> Gets or sets the data set. </summary>
+        /// <value> The data set. </value>
         private DataSet DataSet { get; set; }
 
-        /// <summary>
-        /// Gets or sets the table.
-        /// </summary>
-        /// <value>
-        /// The table.
-        /// </value>
+        /// <summary> Gets or sets the table. </summary>
+        /// <value> The table. </value>
         private DataTable Table { get; set; }
 
-        /// <summary>
-        /// Gets or sets the excel.
-        /// </summary>
-        /// <value>
-        /// The excel.
-        /// </value>
+        /// <summary> Gets or sets the excel. </summary>
+        /// <value> The excel. </value>
         private ExcelPackage Excel { get; set; }
 
         // **************************************************************************************************************************
         // ********************************************      METHODS    *************************************************************
         // **************************************************************************************************************************
 
-        /// <summary>
-        /// Saves the file.
-        /// </summary>
-        /// <param name = "workbook" >
-        /// The workbook.
-        /// </param>
+        /// <summary> Saves the file. </summary>
+        /// <param name = "workbook" > The workbook. </param>
         public void SaveFile( ExcelPackage workbook )
         {
             if( workbook != null )
@@ -160,12 +131,12 @@ namespace BudgetExecution
                         FilterIndex = 1
                     };
 
-                    if( dialog.ShowDialog() == DialogResult.OK )
+                    if( dialog.ShowDialog( ) == DialogResult.OK )
                     {
                         workbook.SaveAs( new FileInfo( dialog.FileName ) );
                         const string msg = "Save Successful!";
                         using var message = new Message( msg );
-                        message?.ShowDialog();
+                        message?.ShowDialog( );
                     }
                 }
                 catch( Exception ex )
@@ -175,14 +146,9 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// CSVs the import.
-        /// </summary>
-        /// <param name = "sheetname" >
-        /// The sheetname.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary> CSVs the import. </summary>
+        /// <param name = "sheetname" > The sheetname. </param>
+        /// <returns> </returns>
         public DataTable CsvImport( ref string sheetname )
         {
             if( Verify.Input( sheetname )
@@ -190,7 +156,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    using var data = new DataSet();
+                    using var data = new DataSet( );
                     var sql = "SELECT * FROM [" + sheetname + "]";
 
                     var conectionstring =
@@ -205,12 +171,12 @@ namespace BudgetExecution
                         {
                             var msg = $"{sheetname} in {sheetname} Does Not Exist!";
                             using var message = new Message( msg );
-                            message?.ShowDialog();
+                            message?.ShowDialog( );
                         }
                     }
                     else
                     {
-                        sheetname = schema?.Rows[ 0 ][ "TABLENAME" ].ToString();
+                        sheetname = schema?.Rows[ 0 ][ "TABLENAME" ].ToString( );
                     }
 
                     using var adapter = new OleDbDataAdapter( sql, connection );
@@ -220,24 +186,17 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( DataTable );
                 }
             }
 
-            return default;
+            return default( DataTable );
         }
 
-        /// <summary>
-        /// CSVs the import.
-        /// </summary>
-        /// <param name = "filename" >
-        /// The filename.
-        /// </param>
-        /// <param name = "sheetname" >
-        /// The sheetname.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary> CSVs the import. </summary>
+        /// <param name = "filename" > The filename. </param>
+        /// <param name = "sheetname" > The sheetname. </param>
+        /// <returns> </returns>
         public DataTable CsvImport( string filename, ref string sheetname )
         {
             if( Verify.Input( filename )
@@ -245,7 +204,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    using var data = new DataSet();
+                    using var data = new DataSet( );
                     var sql = "SELECT * FROM [" + sheetname + "]";
 
                     var conectionstring =
@@ -260,12 +219,12 @@ namespace BudgetExecution
                         {
                             var msg = $"{sheetname} in {filename} Does Not Exist!";
                             using var message = new Message( msg );
-                            message?.ShowDialog();
+                            message?.ShowDialog( );
                         }
                     }
                     else
                     {
-                        sheetname = schema?.Rows[ 0 ][ "TABLENAME" ].ToString();
+                        sheetname = schema?.Rows[ 0 ][ "TABLENAME" ].ToString( );
                     }
 
                     using var adapter = new OleDbDataAdapter( sql, connection );
@@ -275,22 +234,16 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( DataTable );
                 }
             }
 
-            return default;
+            return default( DataTable );
         }
 
-        /// <summary>
-        /// CSVs the export.
-        /// </summary>
-        /// <param name = "table" >
-        /// The table.
-        /// </param>
-        /// <param name = "filepath" >
-        /// The filepath.
-        /// </param>
+        /// <summary> CSVs the export. </summary>
+        /// <param name = "table" > The table. </param>
+        /// <param name = "filepath" > The filepath. </param>
         public void CsvExport( DataTable table, string filepath )
         {
             if( table != null
@@ -315,7 +268,8 @@ namespace BudgetExecution
                     {
                         for( var col = 0; col < columns; col++ )
                         {
-                            worksheet.Cells[ row + 1, col + 1 ].Value = table.Rows[ row - 1 ][ col ];
+                            worksheet.Cells[ row + 1, col + 1 ].Value =
+                                table.Rows[ row - 1 ][ col ];
                         }
                     }
                 }
@@ -326,19 +280,15 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// CSVs the export.
-        /// </summary>
-        /// <param name = "datagrid" >
-        /// The datagrid.
-        /// </param>
+        /// <summary> CSVs the export. </summary>
+        /// <param name = "datagrid" > The datagrid. </param>
         public void CsvExport( DataGridView datagrid )
         {
             if( datagrid?.DataSource != null )
             {
                 try
                 {
-                    var filepath = GetConnectionBuilder().GetFilePath();
+                    var filepath = GetConnectionBuilder( ).GetFilePath( );
                     using var excel = new ExcelPackage( new FileInfo( filepath ) );
                     var workbook = excel.Workbook;
                     var worksheet = workbook.Worksheets[ 1 ];
@@ -355,7 +305,7 @@ namespace BudgetExecution
                                 && worksheet.Cells[ i, j ].Value != null )
                             {
                                 datagrid.Rows[ i - 1 ].Cells[ j - 1 ].Value =
-                                    worksheet.Cells[ i, j ].Value.ToString();
+                                    worksheet.Cells[ i, j ].Value.ToString( );
                             }
                         }
                     }
@@ -367,14 +317,9 @@ namespace BudgetExecution
             }
         }
 
-        /// <summary>
-        /// Creates the CSV file.
-        /// </summary>
-        /// <param name = "filepath" >
-        /// The filepath.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary> Creates the CSV file. </summary>
+        /// <param name = "filepath" > The filepath. </param>
+        /// <returns> </returns>
         public ExcelPackage CreateCsvFile( string filepath )
         {
             if( Verify.Input( filepath ) )
@@ -387,19 +332,16 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( ExcelPackage );
                 }
             }
 
-            return default;
+            return default( ExcelPackage );
         }
 
-        /// <summary>
-        /// Gets the CSV file.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        public string GetCsvFile()
+        /// <summary> Gets the CSV file. </summary>
+        /// <returns> </returns>
+        public string GetCsvFile( )
         {
             try
             {
@@ -414,7 +356,7 @@ namespace BudgetExecution
                     RestoreDirectory = true
                 };
 
-                if( dialog.ShowDialog() == DialogResult.OK )
+                if( dialog.ShowDialog( ) == DialogResult.OK )
                 {
                     fname = dialog.FileName;
                 }
@@ -424,21 +366,14 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( string );
             }
         }
 
-        /// <summary>
-        /// Sheets the exists.
-        /// </summary>
-        /// <param name = "sheetname" >
-        /// The sheetname.
-        /// </param>
-        /// <param name = "datatable" >
-        /// The datatable.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary> Sheets the exists. </summary>
+        /// <param name = "sheetname" > The sheetname. </param>
+        /// <param name = "datatable" > The datatable. </param>
+        /// <returns> </returns>
         private bool SheetExists( string sheetname, DataTable datatable )
         {
             if( Verify.Input( sheetname )
@@ -452,7 +387,7 @@ namespace BudgetExecution
                     {
                         var row = datatable.Rows[ i ];
 
-                        if( sheetname == row[ "TABLENAME" ].ToString() )
+                        if( sheetname == row[ "TABLENAME" ].ToString( ) )
                         {
                             return true;
                         }

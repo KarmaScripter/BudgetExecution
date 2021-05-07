@@ -1,6 +1,6 @@
-﻿// <copyright file = "SQLiteQuery.cs" company = "Terry D. Eppler">
-// Copyright (c) Terry D. Eppler. All rights reserved.
-// </copyright>
+﻿// // <copyright file = "SQLiteQuery.cs" company = "Terry D. Eppler">
+// // Copyright (c) Terry D. Eppler. All rights reserved.
+// // </copyright>
 
 namespace BudgetExecution
 {
@@ -19,8 +19,7 @@ namespace BudgetExecution
     using System.Threading;
     using System.Windows.Forms;
 
-    /// <summary>
-    /// </summary>
+    /// <summary> </summary>
     /// <seealso cref = "Query"/>
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
@@ -32,12 +31,8 @@ namespace BudgetExecution
         // ********************************************      FIELDS     *********************************************************
         // **********************************************************************************************************************
 
-        /// <summary>
-        /// Gets the provider.
-        /// </summary>
-        /// <value>
-        /// The provider.
-        /// </value>
+        /// <summary> Gets the provider. </summary>
+        /// <value> The provider. </value>
         private protected Provider Provider { get; } = Provider.SQLite;
 
         // **********************************************************************************************************************
@@ -45,46 +40,44 @@ namespace BudgetExecution
         // **********************************************************************************************************************
 
         /// <summary>
-        /// Initializes a new instance of the <see cref = "SQLiteQuery"/> class.
+        /// Initializes a new instance of the
+        /// <see cref = "SQLiteQuery"/>
+        /// class.
         /// </summary>
-        public SQLiteQuery()
+        public SQLiteQuery( )
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref = "SQLiteQuery"/> class.
+        /// Initializes a new instance of the
+        /// <see cref = "SQLiteQuery"/>
+        /// class.
         /// </summary>
-        /// <param name = "source" >
-        /// The source.
-        /// </param>
+        /// <param name = "source" > The source. </param>
         public SQLiteQuery( Source source )
             : base( source, Provider.SQLite, SQL.SELECT )
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref = "SQLiteQuery"/> class.
+        /// Initializes a new instance of the
+        /// <see cref = "SQLiteQuery"/>
+        /// class.
         /// </summary>
-        /// <param name = "source" >
-        /// The source.
-        /// </param>
-        /// <param name = "dict" >
-        /// The dictionary.
-        /// </param>
+        /// <param name = "source" > The source. </param>
+        /// <param name = "dict" > The dictionary. </param>
         public SQLiteQuery( Source source, IDictionary<string, object> dict )
             : base( source, Provider.SQLite, dict, SQL.SELECT )
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref = "SQLiteQuery"/> class.
+        /// Initializes a new instance of the
+        /// <see cref = "SQLiteQuery"/>
+        /// class.
         /// </summary>
-        /// <param name = "connectionbuilder" >
-        /// The connectionbuilder.
-        /// </param>
-        /// <param name = "sqlstatement" >
-        /// The sqlstatement.
-        /// </param>
+        /// <param name = "connectionbuilder" > The connectionbuilder. </param>
+        /// <param name = "sqlstatement" > The sqlstatement. </param>
         public SQLiteQuery( IConnectionBuilder connectionbuilder, ISqlStatement sqlstatement )
             : base( connectionbuilder, sqlstatement )
         {
@@ -94,13 +87,10 @@ namespace BudgetExecution
         // ********************************************      PROPERTIES    ******************************************************
         // **********************************************************************************************************************
 
-        /// <summary>
-        /// </summary>
+        /// <summary> </summary>
         public enum ColDataType
         {
-            /// <summary>
-            /// The default
-            /// </summary>
+            /// <summary> The default </summary>
             Default,
 
             Text,
@@ -118,14 +108,9 @@ namespace BudgetExecution
         // ********************************************      METHODS    *********************************************************
         // **********************************************************************************************************************
 
-        /// <summary>
-        /// Gets the data adapter.
-        /// </summary>
-        /// <param name = "command" >
-        /// The command.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary> Gets the data adapter. </summary>
+        /// <param name = "command" > The command. </param>
+        /// <returns> </returns>
         public SQLiteDataAdapter GetDataAdapter( SQLiteCommand command )
         {
             try
@@ -135,39 +120,29 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( SQLiteDataAdapter );
             }
         }
 
-        /// <summary>
-        /// Gets the data reader.
-        /// </summary>
-        /// <param name = "command" >
-        /// The command.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary> Gets the data reader. </summary>
+        /// <param name = "command" > The command. </param>
+        /// <returns> </returns>
         public SQLiteDataReader GetDataReader( SQLiteCommand command )
         {
             try
             {
-                return command.ExecuteReader();
+                return command.ExecuteReader( );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( SQLiteDataReader );
             }
         }
 
-        /// <summary>
-        /// Gets the command builder.
-        /// </summary>
-        /// <param name = "adapter" >
-        /// The adapter.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary> Gets the command builder. </summary>
+        /// <param name = "adapter" > The adapter. </param>
+        /// <returns> </returns>
         private SQLiteCommandBuilder GetCommandBuilder( SQLiteDataAdapter adapter )
         {
             try
@@ -177,16 +152,13 @@ namespace BudgetExecution
             catch( SystemException ex )
             {
                 Fail( ex );
-                return default;
+                return default( SQLiteCommandBuilder );
             }
         }
 
-        /// <summary>
-        /// Gets the excel file path.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        private string GetExcelFilePath()
+        /// <summary> Gets the excel file path. </summary>
+        /// <returns> </returns>
+        private string GetExcelFilePath( )
         {
             try
             {
@@ -201,7 +173,7 @@ namespace BudgetExecution
                     RestoreDirectory = true
                 };
 
-                if( fdlg.ShowDialog() == DialogResult.OK )
+                if( fdlg.ShowDialog( ) == DialogResult.OK )
                 {
                     fname = fdlg.FileName;
                 }
@@ -211,21 +183,14 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( string );
             }
         }
 
-        /// <summary>
-        /// Creates the table from excel file.
-        /// </summary>
-        /// <param name = "filepath" >
-        /// The filepath.
-        /// </param>
-        /// <param name = "sheetname" >
-        /// The sheetname.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary> Creates the table from excel file. </summary>
+        /// <param name = "filepath" > The filepath. </param>
+        /// <param name = "sheetname" > The sheetname. </param>
+        /// <returns> </returns>
         public DataTable CreateTableFromExcelFile( string filepath, ref string sheetname )
         {
             if( Verify.Input( filepath )
@@ -233,25 +198,27 @@ namespace BudgetExecution
             {
                 try
                 {
-                    using var dataset = new DataSet();
-                    var cstring = GetExcelFilePath();
+                    using var dataset = new DataSet( );
+                    var cstring = GetExcelFilePath( );
                     var sql = "SELECT * FROM [" + sheetname + "]";
                     var msg = "Sheet Does Not Exist!";
                     using var excelquery = new ExcelQuery( cstring );
-                    using var connection = excelquery.GetConnection() as OleDbConnection;
-                    connection?.Open();
-                    using var table = connection?.GetOleDbSchemaTable( OleDbSchemaGuid.Tables, null );
+                    using var connection = excelquery.GetConnection( ) as OleDbConnection;
+                    connection?.Open( );
+
+                    using var table =
+                        connection?.GetOleDbSchemaTable( OleDbSchemaGuid.Tables, null );
 
                     if( table != null
                         && table.Rows.Count > 0
                         && CheckIfSheetNameExists( sheetname, table ) )
                     {
                         using var message = new Message( msg );
-                        message?.ShowDialog();
+                        message?.ShowDialog( );
                     }
                     else
                     {
-                        sheetname = table?.Rows[ 0 ][ "TABLENAME" ].ToString();
+                        sheetname = table?.Rows[ 0 ][ "TABLENAME" ].ToString( );
                     }
 
                     using var adapter = new OleDbDataAdapter( sql, connection );
@@ -261,24 +228,17 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( DataTable );
                 }
             }
 
-            return default;
+            return default( DataTable );
         }
 
-        /// <summary>
-        /// Creates the table from CSV file.
-        /// </summary>
-        /// <param name = "filename" >
-        /// The filename.
-        /// </param>
-        /// <param name = "sheetname" >
-        /// The sheetname.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary> Creates the table from CSV file. </summary>
+        /// <param name = "filename" > The filename. </param>
+        /// <param name = "sheetname" > The sheetname. </param>
+        /// <returns> </returns>
         public DataTable CreateTableFromCsvFile( string filename, ref string sheetname )
         {
             if( Verify.Input( filename )
@@ -286,77 +246,65 @@ namespace BudgetExecution
             {
                 try
                 {
-                    using var dataset = new DataSet();
-                    using var datatable = new DataTable();
+                    using var dataset = new DataSet( );
+                    using var datatable = new DataTable( );
                     dataset.DataSetName = filename;
                     datatable.TableName = sheetname;
                     dataset.Tables.Add( datatable );
-                    var cstring = GetExcelFilePath();
+                    var cstring = GetExcelFilePath( );
 
                     if( Verify.Input( cstring ) )
                     {
                         using var csvquery = new CsvQuery( cstring );
-                        var select = csvquery.GetCommand();
-                        using var connection = csvquery.GetConnection() as OleDbConnection;
+                        var select = csvquery.GetCommand( );
+                        using var connection = csvquery.GetConnection( ) as OleDbConnection;
                         using var adapter = new OleDbDataAdapter( select.CommandText, connection );
                         adapter?.Fill( dataset, sheetname );
 
                         return datatable.Columns.Count > 0
                             ? datatable
-                            : default;
+                            : default( DataTable );
                     }
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( DataTable );
                 }
             }
 
-            return default;
+            return default( DataTable );
         }
 
-        /// <summary>
-        /// Gets the parameters.
-        /// </summary>
-        /// <param name = "dict" >
-        /// The dictionary.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary> Gets the parameters. </summary>
+        /// <param name = "dict" > The dictionary. </param>
+        /// <returns> </returns>
         public IEnumerable<DbParameter> GetParameters( Dictionary<string, object> dict )
         {
             try
             {
-                return dict.Keys.Any()
+                return dict.Keys.Any( )
                     ? dict.ToSqlDbParameters( Provider )
-                    : default;
+                    : default( IEnumerable<DbParameter> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IEnumerable<DbParameter> );
             }
         }
 
-        /// <summary>
-        /// Checks if sheet name exists.
-        /// </summary>
-        /// <param name = "sheetname" >
-        /// The sheetname.
-        /// </param>
-        /// <param name = "dtschema" >
-        /// The dtschema.
-        /// </param>
-        /// <returns>
-        /// </returns>
+        /// <summary> Checks if sheet name exists. </summary>
+        /// <param name = "sheetname" > The sheetname. </param>
+        /// <param name = "dtschema" > The dtschema. </param>
+        /// <returns> </returns>
         private bool CheckIfSheetNameExists( string sheetname, DataTable dtschema )
         {
             for( var i = 0; i < dtschema.Rows.Count; i++ )
             {
                 var datarow = dtschema.Rows[ i ];
 
-                if( sheetname == datarow[ "TABLENAME" ].ToString() )
+                if( sheetname == datarow[ "TABLENAME" ].ToString( ) )
                 {
                     return true;
                 }
@@ -365,10 +313,8 @@ namespace BudgetExecution
             return false;
         }
 
-        /// <summary>
-        /// Creates the database.
-        /// </summary>
-        private void CreateDatabase()
+        /// <summary> Creates the database. </summary>
+        private void CreateDatabase( )
         {
             var createtablequery = @"CREATE TABLE IF NOT EXISTS [MyTable] (
                                     [ID] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -379,46 +325,41 @@ namespace BudgetExecution
             SQLiteConnection.CreateFile( "databaseFile.db3" );
             using var connection = new SQLiteConnection( "data source=databaseFile.db3" );
             using var command = new SQLiteCommand( connection );
-            connection.Open();
+            connection.Open( );
             command.CommandText = createtablequery;
-            command.ExecuteNonQuery();
+            command.ExecuteNonQuery( );
             command.CommandText = "INSERT INTO MyTable (Key,Value) Values ('key one','value one')";
-            command.ExecuteNonQuery();
+            command.ExecuteNonQuery( );
 
             // Add another entry into our database 
-            command.CommandText = "INSERT INTO MyTable (Key,Value) Values ('key two','value value')";
+            command.CommandText =
+                "INSERT INTO MyTable (Key,Value) Values ('key two','value value')";
 
             // Execute the query
-            command.ExecuteNonQuery();
+            command.ExecuteNonQuery( );
             command.CommandText = "Select * FROM MyTable";
-            using var reader = command.ExecuteReader();
+            using var reader = command.ExecuteReader( );
 
-            while( reader.Read() )
+            while( reader.Read( ) )
             {
                 Console.WriteLine( reader[ "Key" ] + " : " + reader[ "Value" ] );
             }
 
-            connection.Close();
+            connection.Close( );
         }
 
-        /// <summary>
-        /// Releases unmanaged and - optionally - managed resources.
-        /// </summary>
+        /// <summary> Releases unmanaged and - optionally - managed resources. </summary>
         /// <param name = "disposing" >
-        /// <c>
-        /// true
-        /// </c>
+        /// <c> true </c>
         /// to release both managed and unmanaged resources;
-        /// <c>
-        /// false
-        /// </c>
+        /// <c> false </c>
         /// to release only unmanaged resources.
         /// </param>
         protected override void Dispose( bool disposing )
         {
             if( disposing )
             {
-                base.Dispose();
+                base.Dispose( );
             }
 
             IsDisposed = true;

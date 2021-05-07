@@ -1,6 +1,6 @@
-﻿// <copyright file = "DataWorker.cs" company = "Terry D. Eppler">
-// Copyright (c) Terry D. Eppler. All rights reserved.
-// </copyright>
+﻿// // <copyright file = "DataWorker.cs" company = "Terry D. Eppler">
+// // Copyright (c) Terry D. Eppler. All rights reserved.
+// // </copyright>
 
 namespace BudgetExecution
 {
@@ -24,7 +24,7 @@ namespace BudgetExecution
         // ********************************************   CONSTRUCTORS     **********************************************************
         // **************************************************************************************************************************
 
-        public DataWorker()
+        public DataWorker( )
         {
         }
 
@@ -32,12 +32,8 @@ namespace BudgetExecution
         // ********************************************      PROPERTIES    **********************************************************
         // **************************************************************************************************************************
 
-        /// <summary>
-        /// Gets or sets the binding source.
-        /// </summary>
-        /// <value>
-        /// The binding source.
-        /// </value>
+        /// <summary> Gets or sets the binding source. </summary>
+        /// <value> The binding source. </value>
         public BindingSource BindingSource { get; set; }
 
         // **************************************************************************************************************************

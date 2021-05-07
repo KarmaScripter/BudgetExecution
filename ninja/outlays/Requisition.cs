@@ -139,12 +139,12 @@ namespace BudgetExecution
             {
                 return Verify.Key( ID )
                     ? ID
-                    : default;
+                    : default( IKey );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IKey );
             }
         }
 
@@ -159,12 +159,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( AccountCode.GetValue() )
                     ? AccountCode
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -179,12 +179,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( ModifiedBy.GetValue() )
                     ? ModifiedBy
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -199,12 +199,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( ProjectCode.GetValue() )
                     ? ProjectCode
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -222,7 +222,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ITime );
             }
         }
 
@@ -237,12 +237,12 @@ namespace BudgetExecution
             {
                 return Verify.Input( CreatedBy.GetValue() )
                     ? CreatedBy
-                    : default;
+                    : default( IElement );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IElement );
             }
         }
 
@@ -260,7 +260,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ITime );
             }
         }
 
@@ -278,7 +278,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( ITime );
             }
         }
 
@@ -293,12 +293,12 @@ namespace BudgetExecution
             {
                 return Requested.GetFunding() > -1
                     ? Requested
-                    : default;
+                    : default( IAmount );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAmount );
             }
         }
 
@@ -313,12 +313,12 @@ namespace BudgetExecution
             {
                 return Closed.GetFunding() > -1
                     ? Closed
-                    : default;
+                    : default( IAmount );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAmount );
             }
         }
 
@@ -333,12 +333,12 @@ namespace BudgetExecution
             {
                 return Outstanding.GetFunding() > -1
                     ? Outstanding
-                    : default;
+                    : default( IAmount );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAmount );
             }
         }
 
@@ -353,12 +353,12 @@ namespace BudgetExecution
             {
                 return Expended.GetFunding() > -1
                     ? Expended
-                    : default;
+                    : default( IAmount );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAmount );
             }
         }
 
@@ -373,12 +373,12 @@ namespace BudgetExecution
             {
                 return Reversed.GetFunding() > -1
                     ? Reversed
-                    : default;
+                    : default( IAmount );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IAmount );
             }
         }
 
@@ -393,12 +393,12 @@ namespace BudgetExecution
             {
                 return Verify.Map( Data )
                     ? Data
-                    : default;
+                    : default( IDictionary<string, object> );
             }
             catch( Exception ex )
             {
                 Fail( ex );
-                return default;
+                return default( IDictionary<string, object> );
             }
         }
     }
