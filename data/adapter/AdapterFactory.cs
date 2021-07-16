@@ -52,12 +52,12 @@ namespace BudgetExecution
         /// <see cref = "AdapterFactory"/>
         /// class.
         /// </summary>
-        /// <param name = "connectionbuilder" > The connectionmanager. </param>
-        /// <param name = "sqlstatement" > The sqlstatement. </param>
-        public AdapterFactory( IConnectionBuilder connectionbuilder, ISqlStatement sqlstatement )
+        /// <param name = "connectionBuilder" > The connectionmanager. </param>
+        /// <param name = "sqlStatement" > The sqlStatement. </param>
+        public AdapterFactory( IConnectionBuilder connectionBuilder, ISqlStatement sqlStatement )
         {
-            ConnectionBuilder = connectionbuilder;
-            SqlStatement = sqlstatement;
+            ConnectionBuilder = connectionBuilder;
+            SqlStatement = sqlStatement;
             _adapterBuilder = new AdapterBuilder( ConnectionBuilder, SqlStatement );
             Connection = new ConnectionFactory( ConnectionBuilder )?.GetConnection();
             CommandBuilder = new CommandBuilder( ConnectionBuilder, SqlStatement );
@@ -68,13 +68,13 @@ namespace BudgetExecution
         /// <see cref = "AdapterFactory"/>
         /// class.
         /// </summary>
-        /// <param name = "connectionbuilder" > The connectionbuilder. </param>
-        /// <param name = "commandbuilder" > The commandbuilder. </param>
-        public AdapterFactory( IConnectionBuilder connectionbuilder,
-            ICommandBuilder commandbuilder )
+        /// <param name = "connectionBuilder" > The connectionBuilder. </param>
+        /// <param name = "commandBuilder" > The commandBuilder. </param>
+        public AdapterFactory( IConnectionBuilder connectionBuilder,
+            ICommandBuilder commandBuilder )
         {
-            ConnectionBuilder = connectionbuilder;
-            CommandBuilder = commandbuilder;
+            ConnectionBuilder = connectionBuilder;
+            CommandBuilder = commandBuilder;
             SqlStatement = CommandBuilder.GetSqlStatement();
             _adapterBuilder = new AdapterBuilder( ConnectionBuilder, SqlStatement );
             Connection = new ConnectionFactory( ConnectionBuilder ).GetConnection();
@@ -183,21 +183,23 @@ namespace BudgetExecution
         /// <returns> </returns>
         private SqlDataAdapter GetSqlAdapter()
         {
-            if( Verify.Ref( SqlStatement ) )
+            if( !Verify.Ref( SqlStatement ) )
             {
-                try
-                {
-                    var connection = ConnectionBuilder?.GetConnectionString();
+                return default( SqlDataAdapter );
+            }
 
-                    return Verify.Input( connection )
-                        ? new SqlDataAdapter( SqlStatement.GetSelectStatement(), connection )
-                        : default( SqlDataAdapter );
-                }
-                catch( Exception ex )
-                {
-                    AdapterFactory.Fail( ex );
-                    return default( SqlDataAdapter );
-                }
+            try
+            {
+                var connection = ConnectionBuilder?.GetConnectionString();
+
+                return Verify.Input( connection )
+                    ? new SqlDataAdapter( SqlStatement.GetSelectStatement(), connection )
+                    : default( SqlDataAdapter );
+            }
+            catch( Exception ex )
+            {
+                AdapterFactory.Fail( ex );
+                return default( SqlDataAdapter );
             }
 
             return default( SqlDataAdapter );
