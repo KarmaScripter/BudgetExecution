@@ -30,14 +30,14 @@ namespace BudgetExecution
         /// The connector contains the available connection strings defined within the
         /// App.Config file
         /// </summary>
-        private protected readonly ConnectionStringSettingsCollection Connector =
+        private protected readonly ConnectionStringSettingsCollection connector =
             ConfigurationManager.ConnectionStrings;
 
         /// <summary>
         /// The name value collection containing the file paths to the applications data
         /// providers.
         /// </summary>
-        private protected readonly NameValueCollection ProviderPath =
+        private protected readonly NameValueCollection providerPath =
             ConfigurationManager.AppSettings;
 
         // **************************************************************************************************************************
@@ -185,15 +185,15 @@ namespace BudgetExecution
                 {
                     FilePath = provider switch
                     {
-                        Provider.OleDb => ProviderPath[ "OleDb" ],
-                        Provider.Access => ProviderPath[ "Access" ],
-                        Provider.SQLite => ProviderPath[ "SQLite" ],
-                        Provider.SqlCe => ProviderPath[ "SqlCe" ],
-                        Provider.SqlServer => ProviderPath[ "SqlServer" ],
-                        Provider.CSV => ProviderPath[ "CSV" ],
-                        Provider.Excel => ProviderPath[ "Excel" ],
-                        Provider.NS => ProviderPath[ "Excel" ],
-                        _ => ProviderPath[ "SQLite" ]
+                        Provider.OleDb => providerPath[ "OleDb" ],
+                        Provider.Access => providerPath[ "Access" ],
+                        Provider.SQLite => providerPath[ "SQLite" ],
+                        Provider.SqlCe => providerPath[ "SqlCe" ],
+                        Provider.SqlServer => providerPath[ "SqlServer" ],
+                        Provider.CSV => providerPath[ "CSV" ],
+                        Provider.Excel => providerPath[ "Excel" ],
+                        Provider.NS => providerPath[ "Excel" ],
+                        _ => providerPath[ "SQLite" ]
                     };
                 }
                 catch( Exception ex )

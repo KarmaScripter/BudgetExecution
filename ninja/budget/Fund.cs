@@ -27,7 +27,7 @@ namespace BudgetExecution
         /// <summary>
         /// The source
         /// </summary>
-        private static readonly Source Source = Source.Funds;
+        private static readonly Source _source = Source.Funds;
 
         // ***************************************************************************************************************************
         // *********************************************   CONSTRUCTORS **************************************************************
@@ -48,7 +48,7 @@ namespace BudgetExecution
         /// </param>
         public Fund( FundCode fundcode )
         {
-            Record = new DataBuilder( Source, GetArgs( fundcode ) )?.GetRecord();
+            Record = new DataBuilder( Fund._source, GetArgs( fundcode ) )?.GetRecord();
             ID = new Key( Record, PrimaryKey.FundId );
             Name = new Element( Record, Field.Name );
             Code = new Element( Record, Field.Code );
@@ -65,7 +65,7 @@ namespace BudgetExecution
         /// </param>
         public Fund( string code )
         {
-            Record = new DataBuilder( Source, GetArgs( code ) )?.GetRecord();
+            Record = new DataBuilder( Fund._source, GetArgs( code ) )?.GetRecord();
             ID = new Key( Record, PrimaryKey.FundId );
             Name = new Element( Record, Field.Name );
             Code = new Element( Record, Field.Code );
@@ -435,8 +435,8 @@ namespace BudgetExecution
         {
             try
             {
-                return Verify.Source( Source )
-                    ? Source
+                return Verify.Source( Fund._source )
+                    ? Fund._source
                     : Source.NS;
             }
             catch( Exception ex )

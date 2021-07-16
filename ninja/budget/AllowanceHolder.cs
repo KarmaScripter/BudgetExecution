@@ -60,7 +60,7 @@ namespace BudgetExecution
         /// <summary>
         /// The source
         /// </summary>
-        private static readonly Source Source = Source.AllowanceHolders;
+        private static readonly Source _source = Source.AllowanceHolders;
 
         // ***************************************************************************************************************************
         // *********************************************   CONSTRUCTORS **************************************************************
@@ -127,7 +127,7 @@ namespace BudgetExecution
         /// </param>
         public AllowanceHolder( string ahcode )
         {
-            Record = new DataBuilder( Source, SetArgs( ahcode ) )?.GetRecord();
+            Record = new DataBuilder( AllowanceHolder._source, SetArgs( ahcode ) )?.GetRecord();
             ID = new Key( Record, PrimaryKey.AllowanceHolderId );
             Name = new Element( Record, Field.Name );
             Code = new Element( Record, Field.Code );
@@ -343,8 +343,8 @@ namespace BudgetExecution
         {
             try
             {
-                return Verify.Source( Source )
-                    ? Source
+                return Verify.Source( AllowanceHolder._source )
+                    ? AllowanceHolder._source
                     : Source.NS;
             }
             catch( Exception ex )

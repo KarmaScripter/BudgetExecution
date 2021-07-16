@@ -27,7 +27,7 @@ namespace BudgetExecution
         /// <summary>
         /// The source
         /// </summary>
-        private static readonly Source Source = Source.Accounts;
+        private static readonly Source _source = Source.Accounts;
 
         // ***************************************************************************************************************************
         // *********************************************   CONSTRUCTORS **************************************************************
@@ -108,7 +108,7 @@ namespace BudgetExecution
         /// </param>
         public Account( string code )
         {
-            Record = new DataBuilder( Source, GetArgs( code ) )?.GetRecord();
+            Record = new DataBuilder( Account._source, GetArgs( code ) )?.GetRecord();
             ID = new Key( Record, PrimaryKey.AccountId );
             Code = new Element( Record, Field.Code );
             NpmCode = new Element( Record, Field.NpmCode );
@@ -353,8 +353,8 @@ namespace BudgetExecution
         {
             try
             {
-                return Verify.Source( Source )
-                    ? Source
+                return Verify.Source( Account._source )
+                    ? Account._source
                     : Source.NS;
             }
             catch( Exception ex )

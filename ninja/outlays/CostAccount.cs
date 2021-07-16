@@ -27,7 +27,7 @@ namespace BudgetExecution
         /// <summary>
         /// The PRC
         /// </summary>
-        private protected readonly IProgramResultsCode PRC;
+        private protected readonly IProgramResultsCode prc;
 
         // **************************************************************************************************************************
         // ********************************************   CONSTRUCTORS     **********************************************************
@@ -42,7 +42,7 @@ namespace BudgetExecution
         public CostAccount( DataRow data )
         {
             Record = data;
-            PRC = new ProgramResultsCode( data );
+            prc = new ProgramResultsCode( data );
             ID = new Key( Record, PrimaryKey.PrcId );
             NpmCode = new Element( Record, Field.NpmCode );
             ProgramProjectCode = new Element( Record, Field.ProgramProjectCode );
@@ -141,8 +141,8 @@ namespace BudgetExecution
         {
             try
             {
-                return PRC?.GetAmount()?.GetFunding() > 0.0
-                    ? PRC
+                return prc?.GetAmount()?.GetFunding() > 0.0
+                    ? prc
                     : default( IProgramResultsCode );
             }
             catch( Exception ex )

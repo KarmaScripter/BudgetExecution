@@ -33,7 +33,7 @@ namespace BudgetExecution
         /// <value>
         /// The data file.
         /// </value>
-        private protected IFile DataFile;
+        private protected IFile dataFile;
 
         /// <summary>
         /// The base stream
@@ -146,7 +146,7 @@ namespace BudgetExecution
         {
             try
             {
-                var file = DataFile?.GetFileInfo()?.Directory;
+                var file = dataFile?.GetFileInfo()?.Directory;
 
                 return Verify.Input( file?.FullName )
                     ? Directory.CreateDirectory( file?.FullName )

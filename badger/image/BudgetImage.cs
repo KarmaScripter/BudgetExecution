@@ -24,12 +24,12 @@ namespace BudgetExecution
         /// <summary>
         /// The builder
         /// </summary>
-        private readonly ImageBuilder Builder;
+        private readonly ImageBuilder _builder;
 
         /// <summary>
         /// The factory
         /// </summary>
-        private readonly ImageFactory Factory;
+        private readonly ImageFactory _factory;
 
         // ****************************************************************************************************************************
         // *********************************************   CONSTRUCTORS ***************************************************************
@@ -45,8 +45,8 @@ namespace BudgetExecution
         public BudgetImage( string path )
         {
             Name = Path.GetFileNameWithoutExtension( path );
-            Builder = new ImageBuilder( Path.GetFullPath( path ) );
-            Image = new Bitmap( Builder.GetFilePath() );
+            _builder = new ImageBuilder( Path.GetFullPath( path ) );
+            image = new Bitmap( _builder.GetFilePath() );
         }
 
         /// <summary>
@@ -57,9 +57,9 @@ namespace BudgetExecution
         public BudgetImage( string path, ImageSource source = ImageSource.NS )
         {
             Name = Path.GetFileNameWithoutExtension( path );
-            Builder = new ImageBuilder( Name, source, ImageSizer.Medium );
-            Factory = new ImageFactory( Builder );
-            Image = Factory.CreateImage();
+            _builder = new ImageBuilder( Name, source, ImageSizer.Medium );
+            _factory = new ImageFactory( _builder );
+            image = _factory.CreateImage();
         }
 
         /// <summary>
@@ -70,10 +70,10 @@ namespace BudgetExecution
         /// </param>
         public BudgetImage( ImageBuilder imagebuilder )
         {
-            Builder = imagebuilder;
-            Name = Builder.GetImageName();
-            Factory = new ImageFactory( Builder );
-            Image = Factory.CreateImage();
+            _builder = imagebuilder;
+            Name = _builder.GetImageName();
+            _factory = new ImageFactory( _builder );
+            image = _factory.CreateImage();
         }
 
         /// <summary>
@@ -89,10 +89,10 @@ namespace BudgetExecution
         /// </param>
         public BudgetImage( string name, ImageSource resource, ImageSizer size = ImageSizer.Medium )
         {
-            Builder = new ImageBuilder( name, resource, size );
-            Name = Builder.GetImageName();
-            Factory = new ImageFactory( Builder );
-            Image = Factory.CreateImage();
+            _builder = new ImageBuilder( name, resource, size );
+            Name = _builder.GetImageName();
+            _factory = new ImageFactory( _builder );
+            image = _factory.CreateImage();
         }
 
         /// <summary>
@@ -109,10 +109,10 @@ namespace BudgetExecution
         /// </param>
         public BudgetImage( string name, ImageSource resource, Size size )
         {
-            Builder = new ImageBuilder( name, resource, size );
-            Name = Builder.GetImageName();
-            Factory = new ImageFactory( Builder );
-            Image = Factory.CreateImage();
+            _builder = new ImageBuilder( name, resource, size );
+            Name = _builder.GetImageName();
+            _factory = new ImageFactory( _builder );
+            image = _factory.CreateImage();
         }
 
         // ****************************************************************************************************************************
@@ -128,8 +128,8 @@ namespace BudgetExecution
         {
             try
             {
-                return Verify.Ref( Builder )
-                    ? Builder
+                return Verify.Ref( _builder )
+                    ? _builder
                     : default( ImageBuilder );
             }
             catch( Exception ex )
@@ -148,8 +148,8 @@ namespace BudgetExecution
         {
             try
             {
-                return Verify.Ref( Factory )
-                    ? Factory
+                return Verify.Ref( _factory )
+                    ? _factory
                     : default( ImageFactory );
             }
             catch( Exception ex )
@@ -192,17 +192,17 @@ namespace BudgetExecution
         /// </param>
         public void SetTag( object tag )
         {
-            if( Verify.Ref( Image )
+            if( Verify.Ref( image )
                 && Verify.Ref( tag ) )
             {
                 try
                 {
-                    Image.Tag = tag;
+                    image.Tag = tag;
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    Image?.Dispose();
+                    image?.Dispose();
                 }
             }
         }
@@ -216,8 +216,8 @@ namespace BudgetExecution
         {
             try
             {
-                return Verify.Ref( Image )
-                    ? Image
+                return Verify.Ref( image )
+                    ? image
                     : default( Bitmap );
             }
             catch( Exception ex )

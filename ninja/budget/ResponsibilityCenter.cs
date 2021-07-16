@@ -24,7 +24,7 @@ namespace BudgetExecution
         // ****************************************************     FIELDS    ********************************************************
         // ***************************************************************************************************************************
 
-        private static readonly Source Source = Source.ResponsibilityCenters;
+        private static readonly Source _source = Source.ResponsibilityCenters;
 
         // ***************************************************************************************************************************
         // *********************************************   CONSTRUCTORS **************************************************************
@@ -69,7 +69,7 @@ namespace BudgetExecution
         public ResponsibilityCenter( string rccode )
             : this()
         {
-            Record = new DataBuilder( Source, SetArgs( rccode ) )?.GetRecord();
+            Record = new DataBuilder( ResponsibilityCenter._source, SetArgs( rccode ) )?.GetRecord();
             ResponsibilityCenterId = new Key( Record, PrimaryKey.ResponsibilityCenterId );
             Name = new Element( Record, Field.Name );
             RcCode = new Element( Record, Field.RcCode );
@@ -294,8 +294,8 @@ namespace BudgetExecution
         {
             try
             {
-                return Verify.Source( Source )
-                    ? Source
+                return Verify.Source( ResponsibilityCenter._source )
+                    ? ResponsibilityCenter._source
                     : Source.NS;
             }
             catch( Exception ex )

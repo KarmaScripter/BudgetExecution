@@ -29,7 +29,7 @@ namespace BudgetExecution
         /// <summary>
         /// The source
         /// </summary>
-        private protected readonly Source Source = Source.Divisions;
+        private protected readonly Source source = Source.Divisions;
 
         // **************************************************************************************************************************
         // ********************************************      PROPERTIES    **********************************************************
@@ -225,8 +225,8 @@ namespace BudgetExecution
         {
             try
             {
-                return Verify.Source( Source )
-                    ? Source
+                return Verify.Source( source )
+                    ? source
                     : Source.NS;
             }
             catch( Exception ex )

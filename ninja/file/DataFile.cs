@@ -42,8 +42,8 @@ namespace BudgetExecution
         /// <param name="input">The input.</param>
         public DataFile( string input )
         {
-            Path = new DataPath( input );
-            FileInfo = new FileInfo( Path.GetFullPath() );
+            path = new DataPath( input );
+            FileInfo = new FileInfo( path.GetFullPath() );
             FullName = FileInfo.FullName;
             HasParent = CheckParent();
             Length = FileInfo.Length;
@@ -59,8 +59,8 @@ namespace BudgetExecution
         /// <param name="path">The path.</param>
         public DataFile( IPath path )
         {
-            Path = path;
-            FileInfo = new FileInfo( Path.GetFullPath() );
+            base.path = path;
+            FileInfo = new FileInfo( base.path.GetFullPath() );
             FullName = FileInfo.FullName;
             HasParent = CheckParent();
             Length = FileInfo.Length;
@@ -125,7 +125,7 @@ namespace BudgetExecution
         {
             try
             {
-                var path = Path?.GetFullPath();
+                var path = base.path?.GetFullPath();
 
                 if( Verify.Input( path )
                     && File.Exists( path ) )
@@ -168,7 +168,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var path = Path?.GetFullPath();
+                    var path = base.path?.GetFullPath();
 
                     if( Verify.Input( path )
                         && File.Exists( path ) )
@@ -244,8 +244,8 @@ namespace BudgetExecution
         {
             try
             {
-                return File.Exists( Path?.GetFullPath() )
-                    ? Path
+                return File.Exists( path?.GetFullPath() )
+                    ? path
                     : default( IPath );
             }
             catch( Exception ex )
@@ -263,7 +263,7 @@ namespace BudgetExecution
         {
             try
             {
-                var ext = Path?.GetFileExtension();
+                var ext = path?.GetFileExtension();
 
                 return Verify.Input( ext )
                     ? ext
@@ -284,7 +284,7 @@ namespace BudgetExecution
         {
             try
             {
-                var path = Path?.GetFullPath();
+                var path = base.path?.GetFullPath();
 
                 return Verify.Input( path )
                     ? path

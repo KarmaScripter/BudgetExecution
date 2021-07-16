@@ -30,7 +30,7 @@ namespace BudgetExecution
         /// <summary>
         /// The file
         /// </summary>
-        private readonly IFile DataFile;
+        private readonly IFile _dataFile;
 
         // ***************************************************************************************************************************
         // ****************************************************  CONSTRUCTORS ********************************************************
@@ -49,9 +49,9 @@ namespace BudgetExecution
         /// <param name="datafile">The file.</param>
         public FileWriter( IFile datafile )
         {
-            DataFile = datafile;
-            FileStream = DataFile.GetBaseStream();
-            FileInfo = DataFile.GetFileInfo();
+            _dataFile = datafile;
+            FileStream = _dataFile.GetBaseStream();
+            FileInfo = _dataFile.GetFileInfo();
         }
 
         // ***************************************************************************************************************************
@@ -237,7 +237,7 @@ namespace BudgetExecution
         {
             try
             {
-                var binarydata = File.ReadAllBytes( DataFile.GetFilePath() );
+                var binarydata = File.ReadAllBytes( _dataFile.GetFilePath() );
 
                 if( binarydata?.Any() == true )
                 {

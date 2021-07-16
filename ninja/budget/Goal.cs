@@ -33,7 +33,7 @@ namespace BudgetExecution
         /// <summary>
         /// The source
         /// </summary>
-        private static readonly Source Source = Source.Goals;
+        private static readonly Source _source = Source.Goals;
 
         // ***************************************************************************************************************************
         // *********************************************   CONSTRUCTORS **************************************************************
@@ -99,7 +99,7 @@ namespace BudgetExecution
         /// </param>
         public Goal( string code )
         {
-            Record = new DataBuilder( Source, GetArgs( code ) )?.GetRecord();
+            Record = new DataBuilder( Goal._source, GetArgs( code ) )?.GetRecord();
             ID = new Key( Record, PrimaryKey.GoalId );
             Name = new Element( Record, Field.Name );
             Code = new Element( Record, Field.Code );
@@ -341,8 +341,8 @@ namespace BudgetExecution
         {
             try
             {
-                return Verify.Source( Source )
-                    ? Source
+                return Verify.Source( Goal._source )
+                    ? Goal._source
                     : Source.NS;
             }
             catch( Exception ex )

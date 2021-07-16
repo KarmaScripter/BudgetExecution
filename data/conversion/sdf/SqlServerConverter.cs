@@ -36,16 +36,16 @@ namespace BudgetExecution
         // *************************************************************************************************************************
 
         /// <summary> The cancelled </summary>
-        private bool Cancelled;
+        private bool _cancelled;
 
         /// <summary> The keyrx </summary>
-        private readonly Regex Keyrx = new Regex( @"(([a-zA-ZäöüÄÖÜß0-9\.]|(\s+))+)(\(\-\))?" );
+        private readonly Regex _keyrx = new Regex( @"(([a-zA-ZäöüÄÖÜß0-9\.]|(\s+))+)(\(\-\))?" );
 
         /// <summary> The defaultvaluerx </summary>
-        private readonly Regex Defaultvaluerx = new Regex( @"\(N(\'.*\')\)" );
+        private readonly Regex _defaultvaluerx = new Regex( @"\(N(\'.*\')\)" );
 
         /// <summary> The log </summary>
-        private readonly ILog Log = LogManager.GetLogger( typeof( SqlServerConverter ) );
+        private readonly ILog _log = LogManager.GetLogger( typeof( SqlServerConverter ) );
 
         // **************************************************************************************************************************
         // *******************************************************   CONSTRUCTORS ***************************************************
@@ -83,23 +83,23 @@ namespace BudgetExecution
         private string WriteTriggerSchema( TriggerSchema ts )
         {
             return @"CREATE TRIGGER ["
-                + ts.Name
+                + ts.name
                 + "] "
-                + ts.Type
+                + ts.type
                 + " "
-                + ts.Event
+                + ts.@event
                 + " ON ["
-                + ts.Table
+                + ts.table
                 + "] "
                 + "BEGIN "
-                + ts.Body
+                + ts.body
                 + " END;";
         }
 
         /// <summary> Cancels the conversion. </summary>
         public void CancelConversion( )
         {
-            Cancelled = true;
+            _cancelled = true;
         }
 
         /// <summary> Converts the SQL server to sq lite database. </summary>
@@ -125,7 +125,7 @@ namespace BudgetExecution
             FailedViewDefinitionHandler viewfailurehandler, bool createtriggers, bool createviews )
         {
             // Clear cancelled flag
-            Cancelled = false;
+            _cancelled = false;
 
             ThreadPool.QueueUserWorkItem( delegate
             {
@@ -141,7 +141,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Log.Error( "Failed to convert SQL Server database to SQLite database", ex );
+                    _log.Error( "Failed to convert SQL Server database to SQLite database", ex );
                     IsActive = false;
                     handler( true, false, 100, ex.Message );
                 }// catch
@@ -183,13 +183,13 @@ namespace BudgetExecution
                 viewfailurehandler, createviews );
 
             // Copy all rows from SQL Server tables to the newly created SQLite database
-            CopyDataRows( sqlconnstring, path, ds.Tables, password,
+            CopyDataRows( sqlconnstring, path, ds.tables, password,
                 handler );
 
             // Add triggers based on foreign key constraints
             if( createtriggers )
             {
-                AddTriggersForForeignKeys( path, ds.Tables, password );
+                AddTriggersForForeignKeys( path, ds.tables, password );
             }
         }
 
@@ -204,7 +204,7 @@ namespace BudgetExecution
         {
             CheckCancelled( );
             handler( false, true, 0, "Preparing to insert tables..." );
-            Log.Debug( "preparing to insert tables ..." );
+            _log.Debug( "preparing to insert tables ..." );
 
             // Connect to the SQL Server database
             using var ssconn = new SqlConnection( sqlconnstring );
@@ -239,7 +239,7 @@ namespace BudgetExecution
                             for( var j = 0; j < schema[ i ].Columns.Count; j++ )
                             {
                                 var pname = "@"
-                                    + GetNormalizedName( schema[ i ].Columns[ j ].ColumnName,
+                                    + GetNormalizedName( schema[ i ].Columns[ j ].columnName,
                                         pnames );
 
                                 insert.Parameters[ pname ].Value =
@@ -274,13 +274,13 @@ namespace BudgetExecution
                     handler( false, true, (int)( 100.0 * i / schema.Count ),
                         "Finished inserting rows for table " + schema[ i ].TableName );
 
-                    Log.Debug( "finished inserting all rows for table ["
+                    _log.Debug( "finished inserting all rows for table ["
                         + schema[ i ].TableName
                         + "]" );
                 }
                 catch( Exception ex )
                 {
-                    Log.Error( "unexpected exception", ex );
+                    _log.Error( "unexpected exception", ex );
                     tx.Rollback( );
                     throw;
                 }// catch
@@ -444,7 +444,7 @@ namespace BudgetExecution
 
                 default:
                 {
-                    Log.Error( "argument exception - illegal database type" );
+                    _log.Error( "argument exception - illegal database type" );
 
                     throw new ArgumentException( "Illegal database type ["
                         + Enum.GetName( typeof( DbType ), dt )
@@ -510,7 +510,7 @@ namespace BudgetExecution
 
             for( var i = 0; i < ts.Columns.Count; i++ )
             {
-                sb.Append( "[" + ts.Columns[ i ].ColumnName + "]" );
+                sb.Append( "[" + ts.Columns[ i ].columnName + "]" );
 
                 if( i < ts.Columns.Count - 1 )
                 {
@@ -523,7 +523,7 @@ namespace BudgetExecution
 
             for( var i = 0; i < ts.Columns.Count; i++ )
             {
-                var pname = "@" + GetNormalizedName( ts.Columns[ i ].ColumnName, pnames );
+                var pname = "@" + GetNormalizedName( ts.Columns[ i ].columnName, pnames );
                 sb.Append( pname );
 
                 if( i < ts.Columns.Count - 1 )
@@ -532,7 +532,7 @@ namespace BudgetExecution
                 }
 
                 var dbtype = GetDbTypeOfColumn( ts.Columns[ i ] );
-                var prm = new SQLiteParameter( pname, dbtype, ts.Columns[ i ].ColumnName );
+                var prm = new SQLiteParameter( pname, dbtype, ts.Columns[ i ].columnName );
                 res.Parameters.Add( prm );
 
                 // Remember the dicteter name in order to avoid duplicates
@@ -580,7 +580,7 @@ namespace BudgetExecution
         /// </exception>
         private DbType GetDbTypeOfColumn( ColumnSchema cs )
         {
-            switch( cs.ColumnType )
+            switch( cs.columnType )
             {
                 case "tinyint":
                     return DbType.Byte;
@@ -640,10 +640,10 @@ namespace BudgetExecution
                     return DbType.Int64;
 
                 default:
-                    Log.Error( "illegal db type found" );
+                    _log.Error( "illegal db type found" );
 
                     throw new ApplicationException(
-                        "Illegal DB type found (" + cs.ColumnType + ")" );
+                        "Illegal DB type found (" + cs.columnType + ")" );
             }
         }
 
@@ -657,7 +657,7 @@ namespace BudgetExecution
 
             for( var i = 0; i < ts.Columns.Count; i++ )
             {
-                sb.Append( "[" + ts.Columns[ i ].ColumnName + "]" );
+                sb.Append( "[" + ts.Columns[ i ].columnName + "]" );
 
                 if( i < ts.Columns.Count - 1 )
                 {
@@ -684,11 +684,11 @@ namespace BudgetExecution
             SqlConversionHandler handler, FailedViewDefinitionHandler viewfailurehandler,
             bool createviews )
         {
-            Log.Debug( "Creating SQLite database..." );
+            _log.Debug( "Creating SQLite database..." );
 
             // Create the SQLite database file
             SQLiteConnection.CreateFile( path );
-            Log.Debug( "SQLite file was created successfully at [" + path + "]" );
+            _log.Debug( "SQLite file was created successfully at [" + path + "]" );
 
             // Connect to the newly created database
             var sqliteconnstring = CreateSQLiteConnectionString( path, password );
@@ -700,7 +700,7 @@ namespace BudgetExecution
                 // Create all tables in the new database
                 var count = 0;
 
-                foreach( var dt in schema.Tables )
+                foreach( var dt in schema.tables )
                 {
                     try
                     {
@@ -708,17 +708,17 @@ namespace BudgetExecution
                     }
                     catch( Exception ex )
                     {
-                        Log.Error( "AddSQLiteTable failed", ex );
+                        _log.Error( "AddSQLiteTable failed", ex );
                         throw;
                     }
 
                     count++;
                     CheckCancelled( );
 
-                    handler( false, true, (int)( count * 50.0 / schema.Tables.Count ),
+                    handler( false, true, (int)( count * 50.0 / schema.tables.Count ),
                         "Added table " + dt.TableName + " to the SQLite database" );
 
-                    Log.Debug( "added schema for SQLite table [" + dt.TableName + "]" );
+                    _log.Debug( "added schema for SQLite table [" + dt.TableName + "]" );
                 }// foreach
 
                 // Create all views in the new database
@@ -726,7 +726,7 @@ namespace BudgetExecution
 
                 if( createviews )
                 {
-                    foreach( var vs in schema.Views )
+                    foreach( var vs in schema.views )
                     {
                         try
                         {
@@ -734,22 +734,22 @@ namespace BudgetExecution
                         }
                         catch( Exception ex )
                         {
-                            Log.Error( "AddSQLiteView failed", ex );
+                            _log.Error( "AddSQLiteView failed", ex );
                             throw;
                         }// catch
 
                         count++;
                         CheckCancelled( );
 
-                        handler( false, true, 50 + (int)( count * 50.0 / schema.Views.Count ),
-                            "Added view " + vs.ViewName + " to the SQLite database" );
+                        handler( false, true, 50 + (int)( count * 50.0 / schema.views.Count ),
+                            "Added view " + vs.viewName + " to the SQLite database" );
 
-                        Log.Debug( "added schema for SQLite view [" + vs.ViewName + "]" );
+                        _log.Debug( "added schema for SQLite view [" + vs.viewName + "]" );
                     }// foreach
                 }    // if
             }        // using
 
-            Log.Debug( "finished adding all table/view schemas for SQLite database" );
+            _log.Debug( "finished adding all table/view schemas for SQLite database" );
         }
 
         /// <summary> Adds the sq lite view. </summary>
@@ -760,8 +760,8 @@ namespace BudgetExecution
             FailedViewDefinitionHandler handler )
         {
             // Prepare a CREATE VIEW DDL statement
-            var stmt = vs.ViewSQL;
-            Log.Info( "\n\n" + stmt + "\n\n" );
+            var stmt = vs.viewSQL;
+            _log.Info( "\n\n" + stmt + "\n\n" );
 
             // Execute the query in order to actually create the view.
             var tx = conn.BeginTransaction( );
@@ -783,8 +783,8 @@ namespace BudgetExecution
                 {
                     var updated = new ViewSchema
                     {
-                        ViewName = vs.ViewName,
-                        ViewSQL = vs.ViewSQL
+                        viewName = vs.viewName,
+                        viewSQL = vs.viewSQL
                     };
 
                     // Ask the user to supply the new view definition SQL statement
@@ -796,7 +796,7 @@ namespace BudgetExecution
                     else
                     {
                         // Try to re-create the view with the user-supplied view definition SQL
-                        updated.ViewSQL = sql;
+                        updated.viewSQL = sql;
                         AddSQLiteView( conn, updated, handler );
                     }
                 }
@@ -814,7 +814,7 @@ namespace BudgetExecution
         {
             // Prepare a CREATE TABLE DDL statement
             var stmt = BuildCreateTableQuery( dt );
-            Log.Info( "\n\n" + stmt + "\n\n" );
+            _log.Info( "\n\n" + stmt + "\n\n" );
 
             // Execute the query in order to actually create the table.
             using var cmd = new SQLiteCommand( stmt, conn );
@@ -876,7 +876,7 @@ namespace BudgetExecution
                     var foreignkey = schema.ForeignKeys[ i ];
 
                     var stmt =
-                        $"    FOREIGN KEY ([{foreignkey.ColumnName}])\n        REFERENCES [{foreignkey.ForeignTableName}]([{foreignkey.ForeignColumnName}])";
+                        $"    FOREIGN KEY ([{foreignkey.columnName}])\n        REFERENCES [{foreignkey.foreignTableName}]([{foreignkey.foreignColumnName}])";
 
                     builder.Append( stmt );
 
@@ -913,25 +913,25 @@ namespace BudgetExecution
             var sb = new StringBuilder( );
             sb.Append( "CREATE " );
 
-            if( schema.IsUnique )
+            if( schema.isUnique )
             {
                 sb.Append( "UNIQUE " );
             }
 
-            sb.Append( "INDEX [" + tablename + "" + schema.IndexName + "]\n" );
+            sb.Append( "INDEX [" + tablename + "" + schema.indexName + "]\n" );
             sb.Append( "ON [" + tablename + "]\n" );
             sb.Append( "(" );
 
-            for( var i = 0; i < schema.Columns.Count; i++ )
+            for( var i = 0; i < schema.columns.Count; i++ )
             {
-                sb.Append( "[" + schema.Columns[ i ] + "]" );
+                sb.Append( "[" + schema.columns[ i ] + "]" );
 
-                if( schema.Columns[ i ] != null )
+                if( schema.columns[ i ] != null )
                 {
                     sb.Append( " DESC" );
                 }
 
-                if( i < schema.Columns.Count - 1 )
+                if( i < schema.columns.Count - 1 )
                 {
                     sb.Append( ", " );
                 }
@@ -953,17 +953,17 @@ namespace BudgetExecution
         private string BuildColumnStatement( ColumnSchema col, TableSchema ts, ref bool pkey )
         {
             var sb = new StringBuilder( );
-            sb.Append( "\t[" + col.ColumnName + "]\t" );
+            sb.Append( "\t[" + col.columnName + "]\t" );
 
             // Special treatment for IDENTITY columns
-            if( col.IsIdentity )
+            if( col.isIdentity )
             {
                 if( ts.PrimaryKey.Count == 1
-                    && ( col.ColumnType == "tinyint"
-                        || col.ColumnType == "int"
-                        || col.ColumnType == "smallint"
-                        || col.ColumnType == "bigint"
-                        || col.ColumnType == "integer" ) )
+                    && ( col.columnType == "tinyint"
+                        || col.columnType == "int"
+                        || col.columnType == "smallint"
+                        || col.columnType == "bigint"
+                        || col.columnType == "integer" ) )
                 {
                     sb.Append( "integer PRIMARY KEY AUTOINCREMENT" );
                     pkey = true;
@@ -975,42 +975,42 @@ namespace BudgetExecution
             }
             else
             {
-                switch( col.ColumnType )
+                switch( col.columnType )
                 {
                     case "int":
                         sb.Append( "integer" );
                         break;
 
                     default:
-                        sb.Append( col.ColumnType );
+                        sb.Append( col.columnType );
                         break;
                 }
 
-                if( col.Length > 0 )
+                if( col.length > 0 )
                 {
-                    sb.Append( "(" + col.Length + ")" );
+                    sb.Append( "(" + col.length + ")" );
                 }
             }
 
-            if( !col.IsNullable )
+            if( !col.isNullable )
             {
                 sb.Append( " NOT NULL" );
             }
 
-            if( col.IsCaseSensitivite == false )
+            if( col.isCaseSensitivite == false )
             {
                 sb.Append( " COLLATE NOCASE" );
             }
 
-            var defval = StripParens( col.DefaultValue );
+            var defval = StripParens( col.defaultValue );
             defval = DiscardNational( defval );
-            Log.Debug( "DEFAULT VALUE BEFORE [" + col.DefaultValue + "] AFTER [" + defval + "]" );
+            _log.Debug( "DEFAULT VALUE BEFORE [" + col.defaultValue + "] AFTER [" + defval + "]" );
 
             if( Verify.Input( defval )
                 && defval.ToUpper( ).Contains( "GETDATE" ) )
             {
-                Log.Debug( "converted SQL Server GETDATE() to CURRENTTIMESTAMP for column ["
-                    + col.ColumnName
+                _log.Debug( "converted SQL Server GETDATE() to CURRENTTIMESTAMP for column ["
+                    + col.columnName
                     + "]" );
 
                 sb.Append( " DEFAULT (CURRENTTIMESTAMP)" );
@@ -1135,11 +1135,11 @@ namespace BudgetExecution
                     handler( false, true, (int)( count * 50.0 / tablenames.Count ),
                         "Parsed table " + tname );
 
-                    Log.Debug( "parsed table schema for [" + tname + "]" );
+                    _log.Debug( "parsed table schema for [" + tname + "]" );
                 }// foreach
             }    // using
 
-            Log.Debug( "finished parsing all tables in SQL Server schema" );
+            _log.Debug( "finished parsing all tables in SQL Server schema" );
 
             // Allow the user a chance to select which tables to convert
             var updated = selectionhandler?.Invoke( tables );
@@ -1179,26 +1179,26 @@ namespace BudgetExecution
                         continue;
                     }
 
-                    vs.ViewName = (string)reader[ "TABLENAME" ];
-                    vs.ViewSQL = (string)reader[ "VIEWDEFINITION" ];
+                    vs.viewName = (string)reader[ "TABLENAME" ];
+                    vs.viewSQL = (string)reader[ "VIEWDEFINITION" ];
 
                     // Remove all ".dbo" strings from the view definition
-                    vs.ViewSQL = removedbo.Replace( vs.ViewSQL, string.Empty );
+                    vs.viewSQL = removedbo.Replace( vs.viewSQL, string.Empty );
                     views.Add( vs );
                     count++;
                     CheckCancelled( );
 
                     handler( false, true, 50 + (int)( count * 50.0 / views.Count ),
-                        "Parsed view " + vs.ViewName );
+                        "Parsed view " + vs.viewName );
 
-                    Log.Debug( "parsed view schema for [" + vs.ViewName + "]" );
+                    _log.Debug( "parsed view schema for [" + vs.viewName + "]" );
                 }// while
             }    // using
 
             var ds = new DatabaseSchema
             {
-                Tables = tables,
-                Views = views
+                tables = tables,
+                views = views
             };
 
             return ds;
@@ -1208,7 +1208,7 @@ namespace BudgetExecution
         /// <exception cref = "ApplicationException" > User cancelled the conversion </exception>
         private void CheckCancelled( )
         {
-            if( Cancelled )
+            if( _cancelled )
             {
                 throw new ApplicationException( "User cancelled the conversion" );
             }
@@ -1367,12 +1367,12 @@ namespace BudgetExecution
 
                     var col = new ColumnSchema
                     {
-                        ColumnName = colname,
-                        ColumnType = datatype,
-                        Length = length,
-                        IsNullable = isnullable,
-                        IsIdentity = isidentity,
-                        DefaultValue = AdjustDefaultValue( coldefault )
+                        columnName = colname,
+                        columnType = datatype,
+                        length = length,
+                        isNullable = isnullable,
+                        isIdentity = isidentity,
+                        defaultValue = AdjustDefaultValue( coldefault )
                     };
 
                     res.Columns.Add( col );
@@ -1415,9 +1415,9 @@ namespace BudgetExecution
                         // Update the corresponding column schema.
                         foreach( var csc in res.Columns )
                         {
-                            if( csc.ColumnName == colname )
+                            if( csc.columnName == colname )
                             {
-                                csc.IsCaseSensitivite = iscasesensitive;
+                                csc.isCaseSensitivite = iscasesensitive;
                                 break;
                             }
                         }// foreach
@@ -1452,7 +1452,7 @@ namespace BudgetExecution
             }
             catch( Exception )
             {
-                Log.Warn( "failed to read index information for table [" + tablename + "]" );
+                _log.Warn( "failed to read index information for table [" + tablename + "]" );
             }// catch
 
             return res;
@@ -1571,12 +1571,12 @@ namespace BudgetExecution
             {
                 var fkc = new ForeignKeySchema
                 {
-                    ColumnName = (string)reader[ "ColumnName" ],
-                    ForeignTableName = (string)reader[ "ForeignTableName" ],
-                    ForeignColumnName = (string)reader[ "ForeignColumnName" ],
-                    CascadeOnDelete = (string)reader[ "DeleteRule" ] == "CASCADE",
-                    IsNullable = (string)reader[ "IsNullable" ] == "YES",
-                    TableName = ts.TableName
+                    columnName = (string)reader[ "ColumnName" ],
+                    foreignTableName = (string)reader[ "ForeignTableName" ],
+                    foreignColumnName = (string)reader[ "ForeignColumnName" ],
+                    cascadeOnDelete = (string)reader[ "DeleteRule" ] == "CASCADE",
+                    isNullable = (string)reader[ "IsNullable" ] == "YES",
+                    tableName = ts.TableName
                 };
 
                 ts.ForeignKeys.Add( fkc );
@@ -1596,7 +1596,7 @@ namespace BudgetExecution
         {
             var res = new IndexSchema
             {
-                IndexName = indexname
+                indexName = indexname
             };
 
             // Determine if this is a unique index or not.
@@ -1608,18 +1608,18 @@ namespace BudgetExecution
 
                 if( p.Trim( ).Contains( "unique" ) )
                 {
-                    res.IsUnique = true;
+                    res.isUnique = true;
                     break;
                 }
             }
 
             // Get all key names and check if they are ASCENDING or DESCENDING
-            res.Columns = new List<IndexColumn>( );
+            res.columns = new List<IndexColumn>( );
             var keysparts = keys.Split( ',' );
 
             foreach( var p in keysparts )
             {
-                var m = Keyrx.Match( p.Trim( ) );
+                var m = _keyrx.Match( p.Trim( ) );
 
                 if( !m.Success )
                 {
@@ -1631,7 +1631,7 @@ namespace BudgetExecution
                 }
 
                 var ic = new IndexColumn( );
-                res.Columns.Add( ic );
+                res.columns.Add( ic );
             }// foreach
 
             return res;
@@ -1647,7 +1647,7 @@ namespace BudgetExecution
                 return val;
             }
 
-            var m = Defaultvaluerx.Match( val );
+            var m = _defaultvaluerx.Match( val );
 
             return m.Success
                 ? m.Groups[ 1 ].Value
@@ -1699,13 +1699,13 @@ namespace BudgetExecution
                     }
                     catch( Exception ex )
                     {
-                        Log.Error( "AddTableTriggers failed", ex );
+                        _log.Error( "AddTableTriggers failed", ex );
                         throw;
                     }
                 }
             }// using
 
-            Log.Debug( "finished adding triggers to schema" );
+            _log.Debug( "finished adding triggers to schema" );
         }
 
         /// <summary> Adds the table triggers. </summary>

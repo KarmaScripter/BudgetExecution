@@ -29,7 +29,7 @@ namespace BudgetExecution
         /// <summary>
         /// The path
         /// </summary>
-        private protected IPath Path;
+        private protected IPath path;
 
         /// <summary>
         /// Gets or sets the name of the file.
@@ -113,7 +113,7 @@ namespace BudgetExecution
         /// <returns></returns>
         public string GetInput()
         {
-            var input = Path?.GetFullPath();
+            var input = path?.GetFullPath();
 
             if( Verify.Input( input ) )
             {
@@ -141,7 +141,7 @@ namespace BudgetExecution
         {
             try
             {
-                var root = Path?.GetPathRoot();
+                var root = path?.GetPathRoot();
 
                 return Verify.Input( root )
                     ? root
@@ -162,7 +162,7 @@ namespace BudgetExecution
         {
             try
             {
-                var name = Path?.GetFileName();
+                var name = path?.GetFileName();
 
                 return Verify.Input( name )
                     ? name
@@ -183,7 +183,7 @@ namespace BudgetExecution
         {
             try
             {
-                var ext = Path?.GetFileExtension();
+                var ext = path?.GetFileExtension();
 
                 return Verify.Input( ext )
                     ? (EXT)Enum.Parse( typeof( EXT ), ext )
@@ -261,7 +261,7 @@ namespace BudgetExecution
         {
             try
             {
-                var file = Path?.GetFullName();
+                var file = path?.GetFullName();
 
                 if( Verify.Input( file )
                     && File.Exists( file ) )
@@ -389,7 +389,7 @@ namespace BudgetExecution
         {
             try
             {
-                var file = Path?.GetFullPath();
+                var file = path?.GetFullPath();
 
                 return Verify.Input( file ) && File.Exists( file )
                     ? new FileInfo( file )?.Create()

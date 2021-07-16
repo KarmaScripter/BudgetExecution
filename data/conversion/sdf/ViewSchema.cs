@@ -11,9 +11,9 @@ namespace BudgetExecution
     public class ViewSchema
     {
         /// <summary> Contains the view name </summary>
-        public string ViewName;
+        public string viewName;
 
         /// <summary> Contains the view SQL statement </summary>
-        public string ViewSQL;
+        public string viewSQL;
     }
 }

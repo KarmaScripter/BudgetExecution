@@ -32,17 +32,17 @@ namespace BudgetExecution
         /// <summary>
         /// The header information
         /// </summary>
-        public readonly ToolTipInfo HeaderInfo;
+        public readonly ToolTipInfo headerInfo;
 
         /// <summary>
         /// The body information
         /// </summary>
-        public readonly ToolTipInfo BodyInfo;
+        public readonly ToolTipInfo bodyInfo;
 
         /// <summary>
         /// The footer information
         /// </summary>
-        public readonly ToolTipInfo FooterInfo;
+        public readonly ToolTipInfo footerInfo;
 
         // ***************************************************************************************************************************
         // ******************************************************  CONSTRUCTORS  *****************************************************
@@ -66,41 +66,41 @@ namespace BudgetExecution
             MetroColor = ColorConfig.BackColorBlack;
 
             // Header Properties
-            HeaderInfo = new ToolTipInfo();
-            HeaderInfo.BackColor = ColorConfig.BackColorBlack;
-            HeaderInfo.BorderColor = ColorConfig.BorderColorLight;
-            HeaderInfo.ForeColor = ColorConfig.ForeColorGray;
-            HeaderInfo.Separator = true;
-            HeaderInfo.Header.ForeColor = ColorConfig.ForeColorGray;
-            HeaderInfo.Header.Font = FontConfig.FontSizeMedium;
-            HeaderInfo.Header.TextAlign = ContentAlignment.MiddleCenter;
-            HeaderInfo.Header.TextMargin = ControlConfig.Margin;
-            HeaderInfo.Header.ImageAlign = ContentAlignment.MiddleLeft;
-            HeaderInfo.Header.TextImageRelation = ToolTipTextImageRelation.ImageBeforeText;
+            headerInfo = new ToolTipInfo();
+            headerInfo.BackColor = ColorConfig.BackColorBlack;
+            headerInfo.BorderColor = ColorConfig.BorderColorLight;
+            headerInfo.ForeColor = ColorConfig.ForeColorGray;
+            headerInfo.Separator = true;
+            headerInfo.Header.ForeColor = ColorConfig.ForeColorGray;
+            headerInfo.Header.Font = FontConfig.FontSizeMedium;
+            headerInfo.Header.TextAlign = ContentAlignment.MiddleCenter;
+            headerInfo.Header.TextMargin = ControlConfig.Margin;
+            headerInfo.Header.ImageAlign = ContentAlignment.MiddleLeft;
+            headerInfo.Header.TextImageRelation = ToolTipTextImageRelation.ImageBeforeText;
             HeaderItems = new List<string>();
 
             // Body Properties
-            BodyInfo = new ToolTipInfo();
-            BodyInfo.BackColor = ColorConfig.BackColorBlack;
-            BodyInfo.BorderColor = ColorConfig.BorderColorLight;
-            BodyInfo.ForeColor = ColorConfig.ForeColorGray;
-            BodyInfo.Separator = true;
-            BodyInfo.Body.ForeColor = ColorConfig.ForeColorGray;
-            BodyInfo.Body.Font = FontConfig.FontSizeMedium;
-            BodyInfo.Body.TextAlign = ContentAlignment.MiddleCenter;
-            BodyInfo.Body.TextMargin = ControlConfig.Margin;
+            bodyInfo = new ToolTipInfo();
+            bodyInfo.BackColor = ColorConfig.BackColorBlack;
+            bodyInfo.BorderColor = ColorConfig.BorderColorLight;
+            bodyInfo.ForeColor = ColorConfig.ForeColorGray;
+            bodyInfo.Separator = true;
+            bodyInfo.Body.ForeColor = ColorConfig.ForeColorGray;
+            bodyInfo.Body.Font = FontConfig.FontSizeMedium;
+            bodyInfo.Body.TextAlign = ContentAlignment.MiddleCenter;
+            bodyInfo.Body.TextMargin = ControlConfig.Margin;
             BodyItems = new List<string>();
 
             // Footer Properties
-            FooterInfo = new ToolTipInfo();
-            FooterInfo.BackColor = ColorConfig.BackColorBlack;
-            FooterInfo.BorderColor = ColorConfig.BorderColorLight;
-            FooterInfo.ForeColor = ColorConfig.ForeColorGray;
-            FooterInfo.Separator = true;
-            FooterInfo.Footer.ForeColor = ColorConfig.ForeColorGray;
-            FooterInfo.Footer.Font = FontConfig.FontSizeSmall;
-            FooterInfo.Footer.TextAlign = ContentAlignment.MiddleCenter;
-            FooterInfo.Footer.TextMargin = ControlConfig.Margin;
+            footerInfo = new ToolTipInfo();
+            footerInfo.BackColor = ColorConfig.BackColorBlack;
+            footerInfo.BorderColor = ColorConfig.BorderColorLight;
+            footerInfo.ForeColor = ColorConfig.ForeColorGray;
+            footerInfo.Separator = true;
+            footerInfo.Footer.ForeColor = ColorConfig.ForeColorGray;
+            footerInfo.Footer.Font = FontConfig.FontSizeSmall;
+            footerInfo.Footer.TextAlign = ContentAlignment.MiddleCenter;
+            footerInfo.Footer.TextMargin = ControlConfig.Margin;
             FooterItems = new List<string>();
         }
 
@@ -114,9 +114,9 @@ namespace BudgetExecution
         public HoverInfo( Component control, Info info )
             : this()
         {
-            HeaderInfo.Header.Text = ControlConfig.GetText( info.Header );
-            BodyInfo.Body.Text = ControlConfig.GetText( info.Body );
-            FooterInfo.Footer.Text = ControlConfig.GetText( info.Footer );
+            headerInfo.Header.Text = ControlConfig.GetText( info.Header );
+            bodyInfo.Body.Text = ControlConfig.GetText( info.Body );
+            footerInfo.Footer.Text = ControlConfig.GetText( info.Footer );
         }
 
         // ***************************************************************************************************************************
@@ -207,7 +207,7 @@ namespace BudgetExecution
         {
             try
             {
-                return HeaderInfo;
+                return headerInfo;
             }
             catch( Exception ex )
             {
@@ -243,7 +243,7 @@ namespace BudgetExecution
         {
             try
             {
-                return BodyInfo;
+                return bodyInfo;
             }
             catch( Exception ex )
             {
@@ -279,7 +279,7 @@ namespace BudgetExecution
         {
             try
             {
-                return FooterInfo;
+                return footerInfo;
             }
             catch( Exception ex )
             {
@@ -317,19 +317,19 @@ namespace BudgetExecution
             {
                 try
                 {
-                    if( Verify.Input( HeaderInfo?.Header?.Text ) )
+                    if( Verify.Input( headerInfo?.Header?.Text ) )
                     {
-                        SetToolTip( control, HeaderInfo );
+                        SetToolTip( control, headerInfo );
                     }
 
-                    if( Verify.Input( BodyInfo?.Body?.Text ) )
+                    if( Verify.Input( bodyInfo?.Body?.Text ) )
                     {
-                        SetToolTip( control, BodyInfo );
+                        SetToolTip( control, bodyInfo );
                     }
 
-                    if( Verify.Input( FooterInfo?.Footer?.Text ) )
+                    if( Verify.Input( footerInfo?.Footer?.Text ) )
                     {
-                        SetToolTip( control, FooterInfo );
+                        SetToolTip( control, footerInfo );
                     }
                 }
                 catch( Exception ex )

@@ -32,7 +32,7 @@ namespace BudgetExecution
         /// <summary>
         /// The source
         /// </summary>
-        private static readonly Source Source = Source.WorkCodes;
+        private static readonly Source _source = Source.WorkCodes;
 
         // ***************************************************************************************************************************
         // *********************************************   CONSTRUCTORS **************************************************************
@@ -426,8 +426,8 @@ namespace BudgetExecution
         {
             try
             {
-                return Verify.Source( Source )
-                    ? Source
+                return Verify.Source( WorkCode._source )
+                    ? WorkCode._source
                     : Source.NS;
             }
             catch( Exception ex )

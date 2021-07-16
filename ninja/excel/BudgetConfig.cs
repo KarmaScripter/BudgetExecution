@@ -108,7 +108,7 @@ namespace BudgetExecution
                     comment.From.Column = range.Start.Column;
                     comment.To.Row = range.End.Row;
                     comment.To.Column = range.End.Column;
-                    comment.BackgroundColor = PrimaryBackColor;
+                    comment.BackgroundColor = primaryBackColor;
                     comment.Font.FontName = "Consolas";
                     comment.Font.Size = 8;
                     comment.Font.Color = Color.Black;
@@ -198,17 +198,17 @@ namespace BudgetExecution
             {
                 worksheet = Workbook.Worksheets[ 1 ];
                 worksheet.View.ShowGridLines = false;
-                worksheet.View.ZoomScale = ZoomLevel;
+                worksheet.View.ZoomScale = zoomLevel;
                 worksheet.View.PageLayoutView = true;
                 worksheet.View.ShowHeaders = true;
-                worksheet.DefaultRowHeight = RowHeight;
-                worksheet.DefaultColWidth = ColumnWidth;
+                worksheet.DefaultRowHeight = rowHeight;
+                worksheet.DefaultColWidth = columnWidth;
                 worksheet.PrinterSettings.ShowHeaders = false;
                 worksheet.PrinterSettings.ShowGridLines = false;
-                worksheet.PrinterSettings.LeftMargin = LeftMargin;
-                worksheet.PrinterSettings.RightMargin = RightMargin;
-                worksheet.PrinterSettings.TopMargin = TopMargin;
-                worksheet.PrinterSettings.BottomMargin = BottomMarging;
+                worksheet.PrinterSettings.LeftMargin = leftMargin;
+                worksheet.PrinterSettings.RightMargin = rightMargin;
+                worksheet.PrinterSettings.TopMargin = topMargin;
+                worksheet.PrinterSettings.BottomMargin = bottomMarging;
                 worksheet.PrinterSettings.HorizontalCentered = true;
                 worksheet.PrinterSettings.VerticalCentered = true;
                 worksheet.PrinterSettings.FitToPage = true;

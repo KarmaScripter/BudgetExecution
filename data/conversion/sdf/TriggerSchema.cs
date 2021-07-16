@@ -25,14 +25,14 @@ namespace BudgetExecution
 
     public class TriggerSchema
     {
-        public string Body;
+        public string body;
 
-        public TriggerEvent Event;
+        public TriggerEvent @event;
 
-        public string Name;
+        public string name;
 
-        public string Table;
+        public string table;
 
-        public TriggerType Type;
+        public TriggerType type;
     }
 }

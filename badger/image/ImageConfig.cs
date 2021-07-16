@@ -26,7 +26,7 @@ namespace BudgetExecution
         /// <summary>
         /// The image
         /// </summary>
-        private protected Bitmap Image;
+        private protected Bitmap image;
 
         /// <summary>
         /// The small
@@ -294,13 +294,13 @@ namespace BudgetExecution
             {
                 try
                 {
-                    for( var i = 0; i < Image.Width; i++ )
+                    for( var i = 0; i < image.Width; i++ )
                     {
-                        for( var j = 0; j < Image.Height; j++ )
+                        for( var j = 0; j < image.Height; j++ )
                         {
-                            if( Image.GetPixel( i, j ) != Color.Transparent )
+                            if( image.GetPixel( i, j ) != Color.Transparent )
                             {
-                                Image.SetPixel( i, j, newcolor );
+                                image.SetPixel( i, j, newcolor );
                             }
                         }
                     }
@@ -308,7 +308,7 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    Image.Dispose();
+                    image.Dispose();
                 }
             }
         }

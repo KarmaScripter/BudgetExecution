@@ -33,7 +33,7 @@ namespace BudgetExecution
         /// <summary>
         /// The source
         /// </summary>
-        private static readonly Source Source = Source.HumanResourceOrganizations;
+        private static readonly Source _source = Source.HumanResourceOrganizations;
 
         // ***************************************************************************************************************************
         // *********************************************   CONSTRUCTORS **************************************************************
@@ -232,7 +232,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var pers = new Builder( Source, Args )?.GetData()?.Select( r => r );
+                    var pers = new Builder( HumanResourceOrganization._source, Args )?.GetData()?.Select( r => r );
                     var query = pers?.Select( h => new HumanResourceOrganization( h ) );
 
                     return query?.Any() == true
@@ -328,8 +328,8 @@ namespace BudgetExecution
         {
             try
             {
-                return Verify.Source( Source )
-                    ? Source
+                return Verify.Source( HumanResourceOrganization._source )
+                    ? HumanResourceOrganization._source
                     : Source.NS;
             }
             catch( Exception ex )

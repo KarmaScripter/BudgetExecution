@@ -12,18 +12,18 @@ namespace BudgetExecution
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     public class ColumnSchema
     {
-        public string ColumnName;
+        public string columnName;
 
-        public string ColumnType;
+        public string columnType;
 
-        public string DefaultValue;
+        public string defaultValue;
 
-        public bool? IsCaseSensitivite = null;
+        public bool? isCaseSensitivite = null;
 
-        public bool IsIdentity;
+        public bool isIdentity;
 
-        public bool IsNullable;
+        public bool isNullable;
 
-        public int Length;
+        public int length;
     }
 }

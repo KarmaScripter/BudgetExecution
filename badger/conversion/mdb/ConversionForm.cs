@@ -29,17 +29,17 @@ namespace BudgetExecution
         /// <summary>
         /// The access connect
         /// </summary>
-        private AccessConnect AccessConnect;
+        private AccessConnect _accessConnect;
 
         /// <summary>
         /// The count
         /// </summary>
-        private int Count;
+        private int _count;
 
         /// <summary>
         /// The selected
         /// </summary>
-        private int Selected;
+        private int _selected;
 
         /// <summary>
         /// 
@@ -49,12 +49,12 @@ namespace BudgetExecution
         /// <summary>
         /// The updater
         /// </summary>
-        private UpdateStatusDelegate Updater;
+        private UpdateStatusDelegate _updater;
 
         /// <summary>
         /// The worker
         /// </summary>
-        private Thread Worker;
+        private Thread _worker;
 
         // ***************************************************************************************************************************
         // ****************************************************  CONSTRUCTORS ********************************************************
@@ -77,8 +77,8 @@ namespace BudgetExecution
         /// </summary>
         private void GetTables()
         {
-            AccessConnect = new AccessConnect( AccessPath.Text );
-            var tables = AccessConnect.GetTableNames();
+            _accessConnect = new AccessConnect( AccessPath.Text );
+            var tables = _accessConnect.GetTableNames();
 
             foreach( var s in tables )
             {
@@ -102,7 +102,7 @@ namespace BudgetExecution
                 }
             }
 
-            Selected = result.Count;
+            _selected = result.Count;
             return result;
         }
 
@@ -111,10 +111,10 @@ namespace BudgetExecution
         /// </summary>
         private void UpdateStatus()
         {
-            Count++;
-            lblstatus.Text = Count + "/" + Selected;
+            _count++;
+            lblstatus.Text = _count + "/" + _selected;
 
-            if( Count >= Selected )
+            if( _count >= _selected )
             {
                 MessageBox.Show( "Operation completed" );
             }
@@ -138,7 +138,7 @@ namespace BudgetExecution
             {
                 var table = tables[ i ];
                 db.CreateTable( table );
-                var dt = AccessConnect.GetTable( table );
+                var dt = _accessConnect.GetTable( table );
 
                 for( var j = 0; j < dt.Rows.Count; j++ )
                 {
@@ -148,7 +148,7 @@ namespace BudgetExecution
                 }
 
                 //sending operation status to update current status
-                Invoke( Updater );
+                Invoke( _updater );
             }
         }
 
@@ -169,11 +169,11 @@ namespace BudgetExecution
                 return;
             }
 
-            Updater = UpdateStatus;
+            _updater = UpdateStatus;
 
             //running conversation in a thread to prevent windows from freezing! because of heavy operation
-            Worker = new Thread( Convert );
-            Worker.Start();
+            _worker = new Thread( Convert );
+            _worker.Start();
         }
 
         /// <summary>

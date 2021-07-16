@@ -27,7 +27,7 @@ namespace BudgetExecution
         // *********************************************      FIELDS    **************************************************************
         // ***************************************************************************************************************************
 
-        private readonly ICommandBuilder CommandBuilder;
+        private readonly ICommandBuilder _commandBuilder;
 
         // ***************************************************************************************************************************
         // *********************************************   CONSTRUCTORS **************************************************************
@@ -35,8 +35,8 @@ namespace BudgetExecution
 
         public CommandFactory( ICommandBuilder commandbuilder )
         {
-            CommandBuilder = commandbuilder;
-            SqlStatement = CommandBuilder?.GetSqlStatement( );
+            _commandBuilder = commandbuilder;
+            SqlStatement = _commandBuilder?.GetSqlStatement( );
             ConnectionFactory = new ConnectionFactory( SqlStatement?.GetConnectionBuilder( ) );
         }
 
@@ -311,11 +311,11 @@ namespace BudgetExecution
         {
             if( datatable != null
                 && Verify.Input( name )
-                && CommandBuilder != null )
+                && _commandBuilder != null )
             {
                 try
                 {
-                    var provider = CommandBuilder?.GetProvider( );
+                    var provider = _commandBuilder?.GetProvider( );
                     var sql = $"ALTER TABLE {datatable.TableName} RENAME {name};";
 
                     if( Enum.IsDefined( typeof( Provider ), provider )
@@ -372,7 +372,7 @@ namespace BudgetExecution
         {
             try
             {
-                return CommandBuilder?.GetCommand( );
+                return _commandBuilder?.GetCommand( );
             }
             catch( Exception ex )
             {
@@ -387,7 +387,7 @@ namespace BudgetExecution
         {
             try
             {
-                return CommandBuilder?.GetCommand( );
+                return _commandBuilder?.GetCommand( );
             }
             catch( Exception ex )
             {
@@ -402,7 +402,7 @@ namespace BudgetExecution
         {
             try
             {
-                return CommandBuilder?.GetCommand( );
+                return _commandBuilder?.GetCommand( );
             }
             catch( Exception ex )
             {
@@ -417,7 +417,7 @@ namespace BudgetExecution
         {
             try
             {
-                return CommandBuilder?.GetCommand( );
+                return _commandBuilder?.GetCommand( );
             }
             catch( Exception ex )
             {

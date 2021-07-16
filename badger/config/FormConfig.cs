@@ -69,7 +69,7 @@ namespace BudgetExecution
         /// <summary>
         /// The form
         /// </summary>
-        private protected static MetroForm Form;
+        private protected static MetroForm form;
 
         //***************************************************************************************************************************
         // ******************************************************  CONSTRUCTORS  *****************************************************
@@ -90,7 +90,7 @@ namespace BudgetExecution
         /// </param>
         public FormConfig( MetroForm form )
         {
-            Form = form;
+            FormConfig.form = form;
         }
 
         // ***************************************************************************************************************************
