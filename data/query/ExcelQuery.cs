@@ -1,6 +1,6 @@
-﻿// // <copyright file = "ExcelQuery.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+﻿// <copyright file = "ExcelQuery.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 using DataTable = System.Data.DataTable;
 

@@ -1,6 +1,6 @@
-﻿// // <copyright file = "DataConfig.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+﻿// <copyright file = "DataConfig.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 namespace BudgetExecution
 {

@@ -1,6 +1,6 @@
-﻿// // <copyright file = "SqlConfig.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+﻿// <copyright file = "SqlConfig.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 namespace BudgetExecution
 {
@@ -19,6 +19,7 @@ namespace BudgetExecution
     using System.Threading;
 
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
+    [ SuppressMessage( "ReSharper", "InconsistentNaming" ) ]
     public abstract class SqlConfig : SqlBase, IProvider, ISource
     {
         // ***************************************************************************************************************************
@@ -71,7 +72,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                SqlConfig.Fail( ex );
+                Fail( ex );
                 return default( Source );
             }
         }
@@ -88,7 +89,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                SqlConfig.Fail( ex );
+                Fail( ex );
                 return default( Provider );
             }
         }
@@ -106,7 +107,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                SqlConfig.Fail( ex );
+                Fail( ex );
                 return default( SQL );
             }
         }
@@ -124,7 +125,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    SqlConfig.Fail( ex );
+                    Fail( ex );
                     return new Dictionary<string, object>();
                 }
             }
@@ -145,7 +146,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                SqlConfig.Fail( ex );
+                Fail( ex );
                 return default( ConnectionBuilder );
             }
         }
@@ -162,7 +163,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                SqlConfig.Fail( ex );
+                Fail( ex );
                 return default( string );
             }
         }
@@ -178,21 +179,21 @@ namespace BudgetExecution
                 {
                     var directory = providerPath[ $"{Provider}" ] + $@"\{CommandType}";
 
-                    if( Verify.Input( directory )
-                        && Directory.Exists( directory ) )
+                    if( !Verify.Input( directory )
+                        || !Directory.Exists( directory ) )
                     {
-                        var scriptfiles = Directory.GetFiles( directory );
-
-                        return scriptfiles?.Any() == true
-                            ? scriptfiles
-                            : default( string[ ] );
+                        return default( IEnumerable<string> );
                     }
 
-                    return default( IEnumerable<string> );
+                    var _scriptfiles = Directory.GetFiles( directory );
+
+                    return _scriptfiles?.Any() == true
+                        ? _scriptfiles
+                        : default( string[ ] );
                 }
                 catch( Exception ex )
                 {
-                    SqlConfig.Fail( ex );
+                    Fail( ex );
                     return default( IEnumerable<string> );
                 }
             }
