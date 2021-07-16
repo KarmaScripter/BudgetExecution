@@ -20,10 +20,10 @@ namespace BudgetExecution
 
         /// <summary> Gets the connection. </summary>
         /// <returns> </returns>
-        DbConnection GetConnection( );
+        DbConnection GetConnection();
 
         /// <summary> Gets the connection manager. </summary>
         /// <returns> </returns>
-        IConnectionBuilder GetConnectionBuilder( );
+        IConnectionBuilder GetConnectionBuilder();
     }
 }

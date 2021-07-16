@@ -15,6 +15,6 @@ namespace BudgetExecution
     {
         /// <summary> Gets the source. </summary>
         /// <returns> </returns>
-        Source GetSource( );
+        Source GetSource();
     }
 }

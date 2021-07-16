@@ -55,10 +55,9 @@ namespace BudgetExecution
             ConnectionBuilder = new ConnectionBuilder( source, provider );
             SqlStatement = new SqlStatement( ConnectionBuilder, SQL.SELECT );
             SetQuery( ConnectionBuilder, SqlStatement );
-            ProgramElements = GetSeries( GetDataTable() );
+            ProgramElements = Builder.GetSeries( GetDataTable() );
 
-            Record = GetData()
-                ?.FirstOrDefault();
+            Record = GetData()?.FirstOrDefault();
 
             Args = Record?.ToDictionary();
         }
@@ -78,7 +77,7 @@ namespace BudgetExecution
             ConnectionBuilder = new ConnectionBuilder( source, provider );
             SqlStatement = new SqlStatement( ConnectionBuilder, dict, SQL.SELECT );
             SetQuery( ConnectionBuilder, SqlStatement );
-            ProgramElements = GetSeries( GetDataTable() );
+            ProgramElements = Builder.GetSeries( GetDataTable() );
             Record = GetRecord();
             Args = Record?.ToDictionary();
         }
@@ -97,7 +96,7 @@ namespace BudgetExecution
             ConnectionBuilder = new ConnectionBuilder( Source, Provider );
             SqlStatement = new SqlStatement( ConnectionBuilder, dict, SQL.SELECT );
             SetQuery( ConnectionBuilder, SqlStatement );
-            ProgramElements = GetSeries( GetDataTable() );
+            ProgramElements = Builder.GetSeries( GetDataTable() );
             Record = GetRecord();
             Args = Record?.ToDictionary();
         }
@@ -115,7 +114,7 @@ namespace BudgetExecution
             Provider = ConnectionBuilder.GetProvider();
             ConnectionBuilder = Query.GetConnectionBuilder();
             SqlStatement = Query.GetSqlStatement();
-            ProgramElements = GetSeries( GetDataTable() );
+            ProgramElements = Builder.GetSeries( GetDataTable() );
             Record = GetRecord();
             Args = Record?.ToDictionary();
         }
@@ -143,9 +142,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var query = data
-                        ?.Select( p => p.Field<string>( column ) )
-                        ?.Distinct();
+                    var query = data?.Select( p => p.Field<string>( column ) )?.Distinct();
 
                     return query?.Any() == true
                         ? query
@@ -153,7 +150,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    Builder.Fail( ex );
                     return default( IEnumerable<string> );
                 }
             }
@@ -176,8 +173,7 @@ namespace BudgetExecution
                 try
                 {
                     var query = data?.Where( p => p.Field<string>( $"{field}" ).Equals( filter ) )
-                        ?.Select( p => p.Field<string>( $"{field}" ) )
-                        ?.Distinct();
+                        ?.Select( p => p.Field<string>( $"{field}" ) )?.Distinct();
 
                     return query?.Any() == true
                         ? query
@@ -185,7 +181,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    Builder.Fail( ex );
                     return default( IEnumerable<string> );
                 }
             }
@@ -210,9 +206,9 @@ namespace BudgetExecution
                         if( Verify.Input( columns[ i ]?.ColumnName )
                             && columns[ i ]?.DataType == typeof( string ) )
                         {
-                            dict?.Add( columns[ i ]
-                                ?.ColumnName, GetValues( data?.AsEnumerable(), columns[ i ]
-                                ?.ColumnName ) );
+                            dict?.Add( columns[ i ]?.ColumnName,
+                                Builder.GetValues( data?.AsEnumerable(),
+                                    columns[ i ]?.ColumnName ) );
                         }
                     }
 
@@ -222,7 +218,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    Builder.Fail( ex );
                     return default( IDictionary<string, IEnumerable<string>> );
                 }
             }
@@ -248,7 +244,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    Builder.Fail( ex );
                     return default( DataTable );
                 }
             }
@@ -284,12 +280,11 @@ namespace BudgetExecution
                     if( schematable != null )
                     {
                         var datatable = schematable?.AsEnumerable()
-                            ?.Where( r => r.Field<string>( "TABLE_NAME" ).Contains( "FilterDatabase" ) )
-                            ?.Select( r => r )
-                            ?.CopyToDataTable();
+                            ?.Where( r =>
+                                r.Field<string>( "TABLE_NAME" ).Contains( "FilterDatabase" ) )
+                            ?.Select( r => r )?.CopyToDataTable();
 
-                        sheetname = datatable.Rows[ 0 ][ "TABLE_NAME" ]
-                                             .ToString();
+                        sheetname = datatable.Rows[ 0 ][ "TABLE_NAME" ].ToString();
                     }
 
                     using var command = new OleDbCommand();
@@ -303,7 +298,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    Builder.Fail( ex );
                     return default( DataTable );
                 }
             }
@@ -365,7 +360,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    Builder.Fail( ex );
                     return default( DataTable );
                 }
             }
@@ -390,22 +385,18 @@ namespace BudgetExecution
                     var datatable = data.CopyToDataTable();
                     var columns = datatable?.Columns;
                     var dict = new Dictionary<string, IEnumerable<string>>();
-                    var values = GetValues( data, field, filter );
+                    var values = Builder.GetValues( data, field, filter );
 
                     if( values?.Any() == true )
                     {
                         for( var i = 0; i < columns?.Count; i++ )
                         {
-                            var name = columns[ i ]
-                                .ColumnName;
+                            var name = columns[ i ].ColumnName;
 
                             if( Verify.Input( name )
-                                && columns[ i ]
-                                    ?.DataType
-                                == typeof( string ) )
+                                && columns[ i ]?.DataType == typeof( string ) )
                             {
-                                dict.Add( columns[ i ]
-                                    .ColumnName, values );
+                                dict.Add( columns[ i ].ColumnName, values );
                             }
                         }
 
@@ -418,7 +409,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    Builder.Fail( ex );
                     return default( IDictionary<string, IEnumerable<string>> );
                 }
             }
@@ -438,7 +429,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                Builder.Fail( ex );
                 return default( IBuilder );
             }
         }
@@ -467,7 +458,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    Builder.Fail( ex );
                     return default( IEnumerable<DataRow> );
                 }
             }

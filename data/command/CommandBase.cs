@@ -84,10 +84,9 @@ namespace BudgetExecution
         {
             try
             {
-                ConnectionBuilder = Verify.Source( source ) 
-                    && Verify.Provider( provider )
-                        ? new ConnectionBuilder( source, provider )
-                        : default( ConnectionBuilder );
+                ConnectionBuilder = Verify.Source( source ) && Verify.Provider( provider )
+                    ? new ConnectionBuilder( source, provider )
+                    : default( ConnectionBuilder );
             }
             catch( Exception ex )
             {

@@ -29,18 +29,18 @@ namespace BudgetExecution
 
         /// <summary> Gets the primary key. </summary>
         /// <returns> </returns>
-        IKey GetKey( );
+        IKey GetKey();
 
         /// <summary> Gets the elements. </summary>
         /// <returns> </returns>
-        IEnumerable<IElement> GetElements( );
+        IEnumerable<IElement> GetElements();
 
         /// <summary> Gets the input. </summary>
         /// <returns> </returns>
-        IDictionary<string, object> GetInput( );
+        IDictionary<string, object> GetInput();
 
         /// <summary> Gets the output. </summary>
         /// <returns> </returns>
-        IDictionary<string, object> GetOutput( );
+        IDictionary<string, object> GetOutput();
     }
 }

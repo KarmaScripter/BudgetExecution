@@ -34,7 +34,7 @@ namespace BudgetExecution
         /// <see cref = "Element"/>
         /// class.
         /// </summary>
-        public Key( )
+        public Key()
         {
         }
 
@@ -48,8 +48,8 @@ namespace BudgetExecution
         {
             SetName( kvp.Key );
             SetPrimaryKey( Name );
-            SetIndex( int.Parse( kvp.Value.ToString( ) ) );
-            Data = Index.ToString( );
+            SetIndex( int.Parse( kvp.Value.ToString() ) );
+            Data = Index.ToString();
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace BudgetExecution
             SetPrimaryKey( name );
             SetName( name );
             SetIndex( value );
-            Data = Index.ToString( );
+            Data = Index.ToString();
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace BudgetExecution
             SetPrimaryKey( data, field );
             SetName( data, field );
             SetIndex( data, field );
-            Data = Index.ToString( );
+            Data = Index.ToString();
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace BudgetExecution
             SetPrimaryKey( field );
             SetName( field );
             SetIndex( int.Parse( value ) );
-            Data = Index.ToString( );
+            Data = Index.ToString();
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace BudgetExecution
             SetPrimaryKey( data );
             SetName( data, PrimaryKey );
             SetIndex( data, PrimaryKey );
-            Data = Index.ToString( );
+            Data = Index.ToString();
         }
 
         // ***************************************************************************************************************************
@@ -117,7 +117,7 @@ namespace BudgetExecution
 
         /// <summary> Gets the value. </summary>
         /// <returns> </returns>
-        public int GetIndex( )
+        public int GetIndex()
         {
             try
             {
@@ -127,14 +127,14 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                Key.Fail( ex );
                 return (int)PrimaryKey.NS;
             }
         }
 
         /// <summary> Gets the field. </summary>
         /// <returns> </returns>
-        public PrimaryKey GetPrimaryKey( )
+        public PrimaryKey GetPrimaryKey()
         {
             try
             {
@@ -144,7 +144,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                Key.Fail( ex );
                 return PrimaryKey.NS;
             }
         }
@@ -155,7 +155,7 @@ namespace BudgetExecution
         /// <see cref = "string"/>
         /// that represents this instance.
         /// </returns>
-        public override string ToString( )
+        public override string ToString()
         {
             try
             {
@@ -165,7 +165,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                Key.Fail( ex );
                 return string.Empty;
             }
         }
@@ -184,11 +184,11 @@ namespace BudgetExecution
             {
                 try
                 {
-                    return key?.GetIndex( ) == Index && key?.GetName( )?.Equals( Name ) == true;
+                    return key?.GetIndex() == Index && key?.GetName()?.Equals( Name ) == true;
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    Key.Fail( ex );
                     return false;
                 }
             }
@@ -208,18 +208,18 @@ namespace BudgetExecution
         public static bool IsMatch( IKey primary, IKey secondary )
         {
             if( primary != null
-                && primary.GetIndex( ) > -1
+                && primary.GetIndex() > -1
                 && secondary != null
-                && secondary.GetIndex( ) > -1 )
+                && secondary.GetIndex() > -1 )
             {
                 try
                 {
-                    return primary?.GetIndex( ) == secondary?.GetIndex( )
-                        && primary?.GetName( ).Equals( secondary?.GetName( ) ) == true;
+                    return primary?.GetIndex() == secondary?.GetIndex()
+                        && primary?.GetName().Equals( secondary?.GetName() ) == true;
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    Key.Fail( ex );
                     return false;
                 }
             }

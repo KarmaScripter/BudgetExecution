@@ -30,43 +30,43 @@ namespace BudgetExecution
 
         /// <summary> Gets the input. </summary>
         /// <returns> </returns>
-        DataRow GetRecord( );
+        DataRow GetRecord();
 
         /// <summary> Gets the column ordinals. </summary>
         /// <returns> </returns>
-        IEnumerable<int> GetColumnOrdinals( );
+        IEnumerable<int> GetColumnOrdinals();
 
         /// <summary> Gets the data elements. </summary>
         /// <returns> </returns>
-        IEnumerable<Field> GetFields( );
+        IEnumerable<Field> GetFields();
 
         /// <summary> Gets the data elements. </summary>
         /// <returns> </returns>
-        IEnumerable<IElement> GetElements( );
+        IEnumerable<IElement> GetElements();
 
         /// <summary> Gets the provider. </summary>
         /// <returns> </returns>
-        Provider GetProvider( );
+        Provider GetProvider();
 
         /// <summary> Gets the query. </summary>
         /// <returns> </returns>
-        IQuery GetQuery( );
+        IQuery GetQuery();
 
         /// <summary> Gets the data. </summary>
         /// <returns> </returns>
-        IEnumerable<DataRow> GetData( );
+        IEnumerable<DataRow> GetData();
 
         /// <summary> Gets the data table. </summary>
         /// <returns> </returns>
-        DataTable GetDataTable( );
+        DataTable GetDataTable();
 
         /// <summary> Gets the data set. </summary>
         /// <returns> </returns>
-        DataSet GetDataSet( );
+        DataSet GetDataSet();
 
         /// <summary> Gets the column schema. </summary>
         /// <returns> </returns>
-        DataColumnCollection GetColumnSchema( );
+        DataColumnCollection GetColumnSchema();
 
         /// <summary> Gets the primary keys. </summary>
         /// <param name = "data" > The data. </param>

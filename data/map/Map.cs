@@ -28,7 +28,7 @@ namespace BudgetExecution
         /// <see cref = "Map"/>
         /// class.
         /// </summary>
-        public Map( )
+        public Map()
         {
         }
 
@@ -43,8 +43,8 @@ namespace BudgetExecution
             SetInput( dict );
             SetOutput( Input );
             SetData( dict );
-            Names = GetNames( );
-            Values = GetValues( );
+            Names = GetNames();
+            Values = GetValues();
             Count = Output.Count;
         }
 
@@ -56,11 +56,11 @@ namespace BudgetExecution
         /// <param name = "data" > The data. </param>
         public Map( DataRow data )
         {
-            SetInput( data?.ToDictionary( ) );
+            SetInput( data?.ToDictionary() );
             SetOutput( Input );
             SetData( data );
-            Names = GetNames( );
-            Values = GetValues( );
+            Names = GetNames();
+            Values = GetValues();
             Count = Output.Count;
         }
 
@@ -78,34 +78,34 @@ namespace BudgetExecution
 
         /// <summary> Gets the input. </summary>
         /// <returns> </returns>
-        public IDictionary<string, object> GetInput( )
+        public IDictionary<string, object> GetInput()
         {
             try
             {
-                return Input?.Any( ) == true
+                return Input?.Any() == true
                     ? Input
                     : default( IDictionary<string, object> );
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                Map.Fail( ex );
                 return default( IDictionary<string, object> );
             }
         }
 
         /// <summary> Gets the output. </summary>
         /// <returns> </returns>
-        public IDictionary<string, object> GetOutput( )
+        public IDictionary<string, object> GetOutput()
         {
             try
             {
-                return Output?.Any( ) == true
+                return Output?.Any() == true
                     ? Output
                     : default( IDictionary<string, object> );
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                Map.Fail( ex );
                 return default( IDictionary<string, object> );
             }
         }
@@ -117,15 +117,15 @@ namespace BudgetExecution
         /// <c> false </c>
         /// .
         /// </returns>
-        public bool HasPrimaryKey( )
+        public bool HasPrimaryKey()
         {
             try
             {
-                return Input?.HasPrimaryKey( ) == true;
+                return Input?.HasPrimaryKey() == true;
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                Map.Fail( ex );
                 return false;
             }
         }
@@ -137,9 +137,9 @@ namespace BudgetExecution
         /// <c> false </c>
         /// .
         /// </returns>
-        public bool HasElements( )
+        public bool HasElements()
         {
-            if( Input?.Any( ) == true )
+            if( Input?.Any() == true )
             {
                 try
                 {
@@ -156,7 +156,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    Map.Fail( ex );
                     return default( bool );
                 }
             }
@@ -166,13 +166,13 @@ namespace BudgetExecution
 
         /// <summary> Gets the primary key. </summary>
         /// <returns> </returns>
-        public IKey GetKey( )
+        public IKey GetKey()
         {
-            if( Input?.HasPrimaryKey( ) == true )
+            if( Input?.HasPrimaryKey() == true )
             {
                 try
                 {
-                    var data = Input.GetPrimaryKey( );
+                    var data = Input.GetPrimaryKey();
 
                     return Verify.Input( data.Key )
                         ? new Key( data )
@@ -180,7 +180,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    Map.Fail( ex );
                     return default( IKey );
                 }
             }
@@ -190,13 +190,13 @@ namespace BudgetExecution
 
         /// <summary> Gets the output elements. </summary>
         /// <returns> </returns>
-        public IEnumerable<IElement> GetElements( )
+        public IEnumerable<IElement> GetElements()
         {
-            if( Output?.Any( ) == true )
+            if( Output?.Any() == true )
             {
                 try
                 {
-                    var output = new List<IElement>( );
+                    var output = new List<IElement>();
                     var fields = Enum.GetNames( typeof( Field ) );
 
                     foreach( var kvp in Output )
@@ -208,13 +208,13 @@ namespace BudgetExecution
                         }
                     }
 
-                    return output?.Any( ) == true
+                    return output?.Any() == true
                         ? output
                         : default( List<IElement> );
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    Map.Fail( ex );
                     return default( IEnumerable<IElement> );
                 }
             }

@@ -20,34 +20,34 @@ namespace BudgetExecution
 
         /// <summary> Gets the source. </summary>
         /// <returns> </returns>
-        Source GetSource( );
+        Source GetSource();
 
         /// <summary> Gets the provider. </summary>
         /// <returns> </returns>
-        Provider GetProvider( );
+        Provider GetProvider();
 
         /// <summary> Gets the file path. </summary>
         /// <returns> </returns>
-        string GetFilePath( );
+        string GetFilePath();
 
         /// <summary> Gets the file extension. </summary>
         /// <returns> </returns>
-        EXT GetFileExtension( );
+        EXT GetFileExtension();
 
         /// <summary> Gets the name of the file. </summary>
         /// <returns> </returns>
-        string GetFileName( );
+        string GetFileName();
 
         /// <summary> Gets the provider path. </summary>
         /// <returns> </returns>
-        string GetProviderPath( );
+        string GetProviderPath();
 
         /// <summary> Gets the connection string. </summary>
         /// <returns> </returns>
-        string GetConnectionString( );
+        string GetConnectionString();
 
         /// <summary> Gets the name of the table. </summary>
         /// <returns> </returns>
-        string GetTableName( );
+        string GetTableName();
     }
 }

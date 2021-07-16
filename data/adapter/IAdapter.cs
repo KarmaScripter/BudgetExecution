@@ -19,22 +19,22 @@ namespace BudgetExecution
 
         /// <summary> Gets the connection. </summary>
         /// <returns> </returns>
-        DbConnection GetConnection( );
+        DbConnection GetConnection();
 
         /// <summary> Gets the select command. </summary>
         /// <returns> </returns>
-        DbCommand GetSelectCommand( );
+        DbCommand GetSelectCommand();
 
         /// <summary> Gets the insert command. </summary>
         /// <returns> </returns>
-        DbCommand GetInsertCommand( );
+        DbCommand GetInsertCommand();
 
         /// <summary> Gets the update command. </summary>
         /// <returns> </returns>
-        DbCommand GetUpdateCommand( );
+        DbCommand GetUpdateCommand();
 
         /// <summary> Gets the delete command. </summary>
         /// <returns> </returns>
-        DbCommand GetDeleteCommand( );
+        DbCommand GetDeleteCommand();
     }
 }

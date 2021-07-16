@@ -34,7 +34,7 @@ namespace BudgetExecution
 
         /// <summary> Gets the query. </summary>
         /// <returns> </returns>
-        public IQuery GetQuery( )
+        public IQuery GetQuery()
         {
             try
             {
@@ -42,18 +42,18 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                DataAccess.Fail( ex );
                 return default( IQuery );
             }
         }
 
         /// <summary> Gets the data. </summary>
         /// <returns> </returns>
-        public IEnumerable<DataRow> GetData( )
+        public IEnumerable<DataRow> GetData()
         {
             try
             {
-                var data = GetDataTable( )?.AsEnumerable( );
+                var data = GetDataTable()?.AsEnumerable();
 
                 return Verify.Rows( data )
                     ? data
@@ -61,28 +61,25 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                DataAccess.Fail( ex );
                 return default( IEnumerable<DataRow> );
             }
         }
 
         /// <summary> Gets the data table. </summary>
         /// <returns> </returns>
-        public DataTable GetDataTable( )
+        public DataTable GetDataTable()
         {
             if( Verify.Source( Source ) )
             {
                 try
                 {
-                    R6 = new DataSet( $"{Source}" )
-                    {
-                        DataSetName = $"{Source}"
-                    };
+                    R6 = new DataSet( $"{Source}" ) { DataSetName = $"{Source}" };
 
                     var datatable = new DataTable( $"{Source}" );
                     datatable.TableName = $"{Source}";
                     R6.Tables.Add( datatable );
-                    var adapter = Query?.GetAdapter( );
+                    var adapter = Query?.GetAdapter();
                     adapter?.Fill( R6, datatable.TableName );
                     SetColumnCaptions( datatable );
 
@@ -92,7 +89,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    DataAccess.Fail( ex );
                     return default( DataTable );
                 }
             }
@@ -102,21 +99,18 @@ namespace BudgetExecution
 
         /// <summary> Gets the data set. </summary>
         /// <returns> </returns>
-        public DataSet GetDataSet( )
+        public DataSet GetDataSet()
         {
             if( Enum.IsDefined( typeof( Source ), Source ) )
             {
                 try
                 {
-                    R6 = new DataSet( "R6" )
-                    {
-                        DataSetName = "R6"
-                    };
+                    R6 = new DataSet( "R6" ) { DataSetName = "R6" };
 
                     var datatable = new DataTable( $"{Source}" );
                     datatable.TableName = $"{Source}";
                     R6.Tables.Add( datatable );
-                    var adapter = Query?.GetAdapter( );
+                    var adapter = Query?.GetAdapter();
                     adapter?.Fill( R6, datatable?.TableName );
                     SetColumnCaptions( datatable );
 
@@ -126,7 +120,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    DataAccess.Fail( ex );
                     return default( DataSet );
                 }
             }
@@ -146,42 +140,39 @@ namespace BudgetExecution
                     {
                         if( column?.ColumnName?.Length < 5 )
                         {
-                            var caption = column.ColumnName.ToUpper( );
+                            var caption = column.ColumnName.ToUpper();
                             column.Caption = caption;
                             continue;
                         }
 
                         if( column?.ColumnName?.Length >= 5 )
                         {
-                            column.Caption = column.ColumnName.SplitPascal( );
+                            column.Caption = column.ColumnName.SplitPascal();
                         }
                     }
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    DataAccess.Fail( ex );
                 }
             }
         }
 
         /// <summary> Gets the column schema. </summary>
         /// <returns> </returns>
-        public DataColumnCollection GetColumnSchema( )
+        public DataColumnCollection GetColumnSchema()
         {
             try
             {
-                var table = GetDataTable( );
+                var table = GetDataTable();
                 SetColumnCaptions( table );
 
-                R6 = new DataSet( $"{Source}" )
-                {
-                    DataSetName = $"{Source}"
-                };
+                R6 = new DataSet( $"{Source}" ) { DataSetName = $"{Source}" };
 
                 var datatable = new DataTable( $"{Source}" );
                 datatable.TableName = $"{Source}";
                 R6.Tables.Add( datatable );
-                using var adapter = Query?.GetAdapter( );
+                using var adapter = Query?.GetAdapter();
                 adapter?.Fill( R6, datatable.TableName );
                 SetColumnCaptions( datatable );
 
@@ -191,7 +182,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                DataAccess.Fail( ex );
                 return default( DataColumnCollection );
             }
         }
@@ -202,20 +193,20 @@ namespace BudgetExecution
         public IEnumerable<int> GetPrimaryIndexes( IEnumerable<DataRow> data )
         {
             if( Verify.Input( data )
-                && data?.HasPrimaryKey( ) == true )
+                && data?.HasPrimaryKey() == true )
             {
                 try
                 {
-                    var table = data?.CopyToDataTable( );
-                    var list = table?.GetPrimaryKeyValues( );
+                    var table = data?.CopyToDataTable();
+                    var list = table?.GetPrimaryKeyValues();
 
-                    return list?.Any( ) == true
-                        ? list.ToArray( )
+                    return list?.Any() == true
+                        ? list.ToArray()
                         : default( IEnumerable<int> );
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    DataAccess.Fail( ex );
                     return default( IEnumerable<int> );
                 }
             }
@@ -232,10 +223,10 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var list = data.ToList( );
-                    var values = new List<int>( );
+                    var list = data.ToList();
+                    var values = new List<int>();
 
-                    if( list?.Any( ) == true )
+                    if( list?.Any() == true )
                     {
                         foreach( var column in list )
                         {
@@ -243,13 +234,13 @@ namespace BudgetExecution
                         }
                     }
 
-                    return values?.Any( ) == true
-                        ? values.ToArray( )
+                    return values?.Any() == true
+                        ? values.ToArray()
                         : default( int[ ] );
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    DataAccess.Fail( ex );
                     return default( IEnumerable<int> );
                 }
             }

@@ -55,7 +55,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    AmountBase.Fail( ex );
                 }
             }
         }
@@ -72,7 +72,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var names = datarow?.Table?.GetColumnNames( );
+                    var names = datarow?.Table?.GetColumnNames();
 
                     Name = names?.Contains( colname ) == true
                         ? colname
@@ -80,7 +80,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    AmountBase.Fail( ex );
                 }
             }
         }
@@ -95,12 +95,12 @@ namespace BudgetExecution
                 try
                 {
                     Name = Verify.Numeric( numeric )
-                        ? numeric.ToString( )
+                        ? numeric.ToString()
                         : default( string );
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    AmountBase.Fail( ex );
                 }
             }
         }
@@ -116,15 +116,15 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var names = datarow?.Table?.GetColumnNames( );
+                    var names = datarow?.Table?.GetColumnNames();
 
-                    Name = names?.Contains( numeric.ToString( ) ) == true
-                        ? numeric.ToString( )
+                    Name = names?.Contains( numeric.ToString() ) == true
+                        ? numeric.ToString()
                         : default( string );
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    AmountBase.Fail( ex );
                 }
             }
         }
@@ -147,7 +147,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    AmountBase.Fail( ex );
                 }
             }
         }
@@ -164,9 +164,9 @@ namespace BudgetExecution
                 try
                 {
                     var numeric = (Numeric)Enum.Parse( typeof( Numeric ), name );
-                    var names = data?.Table?.GetColumnNames( );
+                    var names = data?.Table?.GetColumnNames();
 
-                    if( names?.Any( ) == true )
+                    if( names?.Any() == true )
                     {
                         Numeric = names?.Contains( $"{numeric}" ) == true
                             ? numeric
@@ -175,7 +175,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    AmountBase.Fail( ex );
                 }
             }
         }
@@ -193,7 +193,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                AmountBase.Fail( ex );
             }
         }
 
@@ -208,15 +208,15 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var columns = data.Table.GetColumnNames( );
+                    var columns = data.Table.GetColumnNames();
 
-                    Numeric = columns.Contains( numeric.ToString( ) )
+                    Numeric = columns.Contains( numeric.ToString() )
                         ? numeric
                         : Numeric.NS;
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    AmountBase.Fail( ex );
                 }
             }
         }
@@ -236,7 +236,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                AmountBase.Fail( ex );
             }
         }
 
@@ -252,15 +252,15 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var columns = data.Table.GetColumnNames( );
+                    var columns = data.Table.GetColumnNames();
 
                     Value = columns.Contains( value )
-                        ? data[ value ].ToString( )
+                        ? data[ value ].ToString()
                         : string.Empty;
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    AmountBase.Fail( ex );
                 }
             }
         }
@@ -276,22 +276,22 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var columns = data.Table.GetColumnNames( );
+                    var columns = data.Table.GetColumnNames();
 
-                    Value = columns.Contains( numeric.ToString( ) )
-                        ? data[ $"{numeric}" ].ToString( )
+                    Value = columns.Contains( numeric.ToString() )
+                        ? data[ $"{numeric}" ].ToString()
                         : string.Empty;
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    AmountBase.Fail( ex );
                 }
             }
         }
 
         /// <summary> Gets the value. </summary>
         /// <returns> </returns>
-        public double GetFunding( )
+        public double GetFunding()
         {
             try
             {
@@ -299,18 +299,18 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                AmountBase.Fail( ex );
                 return 0.0;
             }
         }
 
         /// <summary> Gets the amount. </summary>
         /// <returns> </returns>
-        public IAmount GetAmount( )
+        public IAmount GetAmount()
         {
             try
             {
-                var amount = GetFunding( );
+                var amount = GetFunding();
 
                 return amount != default( double )
                     ? new Amount( amount )
@@ -318,7 +318,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                AmountBase.Fail( ex );
                 return Amount.Default;
             }
         }
@@ -328,8 +328,8 @@ namespace BudgetExecution
         private protected static new void Fail( Exception ex )
         {
             using var error = new Error( ex );
-            error.SetText( );
-            error.ShowDialog( );
+            error.SetText();
+            error.ShowDialog();
         }
     }
 }

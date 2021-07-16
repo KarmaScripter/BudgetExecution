@@ -55,7 +55,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var args = new Dictionary<string, object>( );
+                    var args = new Dictionary<string, object>();
                     var fields = Enum.GetNames( typeof( Field ) );
 
                     foreach( var kvp in dict )
@@ -67,13 +67,13 @@ namespace BudgetExecution
                         }
                     }
 
-                    Input = args?.Any( ) == true
+                    Input = args?.Any() == true
                         ? args
                         : default( Dictionary<string, object> );
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    Arg.Fail( ex );
                 }
             }
         }
@@ -87,11 +87,11 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var args = new Dictionary<string, object>( );
+                    var args = new Dictionary<string, object>();
 
-                    if( Values?.Any( ) == true )
+                    if( Values?.Any() == true )
                     {
-                        var data = Values.ToArray( );
+                        var data = Values.ToArray();
 
                         foreach( var kvp in dict )
                         {
@@ -104,33 +104,33 @@ namespace BudgetExecution
                             }
                         }
 
-                        Output = args?.Any( ) == true
+                        Output = args?.Any() == true
                             ? args
                             : default( Dictionary<string, object> );
                     }
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    Arg.Fail( ex );
                 }
             }
         }
 
         /// <summary> Gets the values. </summary>
         /// <returns> </returns>
-        public IEnumerable<string> GetValues( )
+        public IEnumerable<string> GetValues()
         {
-            if( Output?.Any( ) == true )
+            if( Output?.Any() == true )
             {
                 try
                 {
-                    var data = Output?.Values?.ToArray( );
-                    var values = data?.Select( o => o.ToString( ) );
+                    var data = Output?.Values?.ToArray();
+                    var values = data?.Select( o => o.ToString() );
                     var fields = Enum.GetNames( typeof( Field ) );
-                    var list = new List<string>( );
+                    var list = new List<string>();
 
-                    if( values?.Any( ) == true
-                        && fields?.Any( ) == true )
+                    if( values?.Any() == true
+                        && fields?.Any() == true )
                     {
                         foreach( var value in values )
                         {
@@ -142,13 +142,13 @@ namespace BudgetExecution
                         }
                     }
 
-                    return values?.Any( ) == true
+                    return values?.Any() == true
                         ? values
                         : default( IEnumerable<string> );
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    Arg.Fail( ex );
                     return default( IEnumerable<string> );
                 }
             }
@@ -158,17 +158,17 @@ namespace BudgetExecution
 
         /// <summary> Gets the output values. </summary>
         /// <returns> </returns>
-        public IEnumerable<string> GetNames( )
+        public IEnumerable<string> GetNames()
         {
-            if( Output?.Any( ) == true )
+            if( Output?.Any() == true )
             {
                 try
                 {
                     var keys = Output?.Keys;
                     var fields = Enum.GetNames( typeof( Field ) );
-                    var list = new List<string>( );
+                    var list = new List<string>();
 
-                    if( keys?.Any( ) == true )
+                    if( keys?.Any() == true )
                     {
                         foreach( var key in keys )
                         {
@@ -180,13 +180,13 @@ namespace BudgetExecution
                         }
                     }
 
-                    return list?.Any( ) == true
+                    return list?.Any() == true
                         ? list
                         : default( List<string> );
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    Arg.Fail( ex );
                     return default( IEnumerable<string> );
                 }
             }

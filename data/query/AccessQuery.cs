@@ -28,7 +28,7 @@ namespace BudgetExecution
         /// <see cref = "AccessQuery"/>
         /// class.
         /// </summary>
-        public AccessQuery( )
+        public AccessQuery()
         {
         }
 
@@ -76,7 +76,7 @@ namespace BudgetExecution
         {
             if( disposing )
             {
-                Dispose( );
+                Dispose();
             }
 
             IsDisposed = true;

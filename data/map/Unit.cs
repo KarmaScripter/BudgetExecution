@@ -28,7 +28,7 @@ namespace BudgetExecution
         /// <see cref = "Unit"/>
         /// class.
         /// </summary>
-        public Unit( )
+        public Unit()
         {
         }
 
@@ -51,7 +51,7 @@ namespace BudgetExecution
 
         /// <summary> Gets the name. </summary>
         /// <returns> </returns>
-        public virtual string GetName( )
+        public virtual string GetName()
         {
             try
             {
@@ -61,14 +61,14 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                Unit.Fail( ex );
                 return string.Empty;
             }
         }
 
         /// <summary> Gets the value. </summary>
         /// <returns> </returns>
-        public virtual string GetValue( )
+        public virtual string GetValue()
         {
             try
             {
@@ -78,14 +78,14 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                Unit.Fail( ex );
                 return string.Empty;
             }
         }
 
         /// <summary> Gets the data. </summary>
         /// <returns> </returns>
-        public virtual object GetData( )
+        public virtual object GetData()
         {
             try
             {
@@ -95,7 +95,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                Unit.Fail( ex );
                 return default( object );
             }
         }
@@ -106,7 +106,7 @@ namespace BudgetExecution
         /// <see cref = "string"/>
         /// that represents this instance.
         /// </returns>
-        public override string ToString( )
+        public override string ToString()
         {
             try
             {
@@ -116,7 +116,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                Unit.Fail( ex );
                 return string.Empty;
             }
         }

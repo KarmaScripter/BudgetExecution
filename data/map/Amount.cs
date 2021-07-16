@@ -36,7 +36,7 @@ namespace BudgetExecution
         /// <see cref = "Amount"/>
         /// class.
         /// </summary>
-        public Amount( )
+        public Amount()
         {
         }
 
@@ -52,7 +52,7 @@ namespace BudgetExecution
             Data = value;
             Funding = value;
             Numeric = numeric;
-            Name = Numeric.ToString( );
+            Name = Numeric.ToString();
             Initial = Funding;
             Delta = Initial - Funding;
         }
@@ -69,7 +69,7 @@ namespace BudgetExecution
             Data = value;
             Funding = value;
             Numeric = numeric;
-            Name = Numeric.ToString( );
+            Name = Numeric.ToString();
             Initial = Funding;
             Delta = Initial - Funding;
         }
@@ -83,10 +83,10 @@ namespace BudgetExecution
         /// <param name = "numeric" > The numeric. </param>
         public Amount( DataRow data, Numeric numeric = Numeric.Amount )
         {
-            Funding = double.Parse( data[ $"{numeric}" ].ToString( ) );
-            Data = Funding.ToString( );
+            Funding = double.Parse( data[ $"{numeric}" ].ToString() );
+            Data = Funding.ToString();
             Numeric = numeric;
-            Name = Numeric.ToString( );
+            Name = Numeric.ToString();
             Initial = Funding;
             Delta = Initial - Funding;
         }
@@ -97,41 +97,41 @@ namespace BudgetExecution
 
         /// <summary> Gets the original. </summary>
         /// <returns> </returns>
-        public double GetOriginal( )
+        public double GetOriginal()
         {
             try
             {
                 return Initial > 0
                     ? Initial
-                    : Default.GetFunding( );
+                    : Amount.Default.GetFunding();
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                Amount.Fail( ex );
                 return 0;
             }
         }
 
         /// <summary> Gets the change. </summary>
         /// <returns> </returns>
-        public double GetDelta( )
+        public double GetDelta()
         {
             try
             {
                 return Delta != 0
                     ? Delta
-                    : Default.GetFunding( );
+                    : Amount.Default.GetFunding();
             }
             catch( Exception ex )
             {
-                Fail( ex );
-                return Default.GetFunding( );
+                Amount.Fail( ex );
+                return Amount.Default.GetFunding();
             }
         }
 
         /// <summary> Gets the numeric. </summary>
         /// <returns> </returns>
-        public Numeric GetNumeric( )
+        public Numeric GetNumeric()
         {
             try
             {
@@ -141,7 +141,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                Amount.Fail( ex );
                 return default( Numeric );
             }
         }
@@ -162,7 +162,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                Amount.Fail( ex );
             }
         }
 
@@ -186,7 +186,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                Amount.Fail( ex );
             }
         }
 
@@ -196,17 +196,17 @@ namespace BudgetExecution
         /// <see cref = "string"/>
         /// that represents this instance.
         /// </returns>
-        public override string ToString( )
+        public override string ToString()
         {
             try
             {
-                return Verify.Input( Data?.ToString( ) )
-                    ? Data?.ToString( )
+                return Verify.Input( Data?.ToString() )
+                    ? Data?.ToString()
                     : string.Empty;
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                Amount.Fail( ex );
                 return string.Empty;
             }
         }
@@ -222,19 +222,19 @@ namespace BudgetExecution
         public bool IsEqual( IAmount amount )
         {
             if( amount != null
-                && amount.GetFunding( ) != Default.GetFunding( ) )
+                && amount.GetFunding() != Amount.Default.GetFunding() )
             {
                 try
                 {
-                    if( amount?.GetFunding( ) == Funding
-                        && amount?.GetName( )?.Equals( Name ) == true )
+                    if( amount?.GetFunding() == Funding
+                        && amount?.GetName()?.Equals( Name ) == true )
                     {
                         return true;
                     }
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    Amount.Fail( ex );
                     return false;
                 }
             }
@@ -254,21 +254,21 @@ namespace BudgetExecution
         public static bool IsEqual( IAmount first, IAmount second )
         {
             if( first != null
-                && first != Default
+                && first != Amount.Default
                 && first != null
-                && second != Default )
+                && second != Amount.Default )
             {
                 try
                 {
-                    if( first?.GetFunding( ).Equals( second?.GetFunding( ) ) == true
-                        && first?.GetName( )?.Equals( second?.GetName( ) ) == true )
+                    if( first?.GetFunding().Equals( second?.GetFunding() ) == true
+                        && first?.GetName()?.Equals( second?.GetName() ) == true )
                     {
                         return true;
                     }
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    Amount.Fail( ex );
                     return false;
                 }
             }
@@ -295,7 +295,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                Amount.Fail( ex );
             }
         }
     }

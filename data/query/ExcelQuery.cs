@@ -44,7 +44,7 @@ namespace BudgetExecution
         /// <see cref = "ExcelQuery"/>
         /// class.
         /// </summary>
-        public ExcelQuery( )
+        public ExcelQuery()
         {
         }
 
@@ -127,21 +127,20 @@ namespace BudgetExecution
                 {
                     using var dialog = new SaveFileDialog
                     {
-                        Filter = "Excel files (*.xlsx)|*.xlsx",
-                        FilterIndex = 1
+                        Filter = "Excel files (*.xlsx)|*.xlsx", FilterIndex = 1
                     };
 
-                    if( dialog.ShowDialog( ) == DialogResult.OK )
+                    if( dialog.ShowDialog() == DialogResult.OK )
                     {
                         workbook.SaveAs( dialog.FileName );
                         const string msg = "Save Successful!";
                         using var message = new Message( msg );
-                        message?.ShowDialog( );
+                        message?.ShowDialog();
                     }
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    ExcelQuery.Fail( ex );
                 }
             }
         }
@@ -155,7 +154,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    using var excel = ReadExcelFile( filepath );
+                    using var excel = ExcelQuery.ReadExcelFile( filepath );
                     var filename = Path.GetFileNameWithoutExtension( filepath );
                     var worksheet = excel.Workbook.Worksheets.Add( filename );
                     var columns = table.Columns.Count;
@@ -177,7 +176,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    ExcelQuery.Fail( ex );
                 }
             }
         }
@@ -196,7 +195,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    ExcelQuery.Fail( ex );
                     return default( ExcelPackage );
                 }
             }
@@ -206,7 +205,7 @@ namespace BudgetExecution
 
         /// <summary> Gets the file path. </summary>
         /// <returns> </returns>
-        public string GetExcelFile( )
+        public string GetExcelFile()
         {
             try
             {
@@ -214,14 +213,12 @@ namespace BudgetExecution
 
                 using var dialog = new OpenFileDialog
                 {
-                    Title = "Excel File Dialog",
-                    InitialDirectory = @"c:\",
-                    Filter = "All files (*.*)|*.*|All files (*.*)|*.*",
-                    FilterIndex = 2,
+                    Title = "Excel File Dialog", InitialDirectory = @"c:\",
+                    Filter = "All files (*.*)|*.*|All files (*.*)|*.*", FilterIndex = 2,
                     RestoreDirectory = true
                 };
 
-                if( dialog.ShowDialog( ) == DialogResult.OK )
+                if( dialog.ShowDialog() == DialogResult.OK )
                 {
                     fname = dialog.FileName;
                 }
@@ -230,7 +227,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                ExcelQuery.Fail( ex );
                 return default( string );
             }
         }
@@ -244,9 +241,9 @@ namespace BudgetExecution
             {
                 try
                 {
-                    using var dataset = new DataSet( );
-                    using var connection = GetConnection( );
-                    connection?.Open( );
+                    using var dataset = new DataSet();
+                    using var connection = GetConnection();
+                    connection?.Open();
                     var sql = "SELECT * FROM [" + sheetname + "]";
 
                     var schema =
@@ -259,11 +256,11 @@ namespace BudgetExecution
                     {
                         const string msg = "Sheet Does Not Exist!";
                         using var message = new Message( msg );
-                        message?.ShowDialog( );
+                        message?.ShowDialog();
                     }
                     else
                     {
-                        sheetname = schema?.Rows[ 0 ][ "TABLENAME" ].ToString( );
+                        sheetname = schema?.Rows[ 0 ][ "TABLENAME" ].ToString();
                     }
 
                     using var adapter = new OleDbDataAdapter( sql, connection as OleDbConnection );
@@ -272,7 +269,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    ExcelQuery.Fail( ex );
                     return default( DataTable );
                 }
             }
@@ -291,7 +288,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    using var data = new DataSet( );
+                    using var data = new DataSet();
                     var sql = "SELECT * FROM [" + sheetname + "]";
 
                     var conectionstring =
@@ -307,12 +304,12 @@ namespace BudgetExecution
                         {
                             var msg = $"{sheetname} in {filename} Does Not Exist!";
                             using var message = new Message( msg );
-                            message?.ShowDialog( );
+                            message?.ShowDialog();
                         }
                     }
                     else
                     {
-                        sheetname = schema?.Rows[ 0 ][ "TABLENAME" ].ToString( );
+                        sheetname = schema?.Rows[ 0 ][ "TABLENAME" ].ToString();
                     }
 
                     using var adapter = new OleDbDataAdapter( sql, connection );
@@ -321,7 +318,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    ExcelQuery.Fail( ex );
                     return default( DataTable );
                 }
             }
@@ -335,8 +332,8 @@ namespace BudgetExecution
         {
             try
             {
-                var filepath = GetConnectionBuilder( )?.GetFilePath( );
-                var excel = new App( );
+                var filepath = GetConnectionBuilder()?.GetFilePath();
+                var excel = new App();
                 var workbook = excel.Workbooks.Open( filepath );
                 Worksheet worksheet = workbook.Sheets[ 1 ];
                 var range = worksheet.UsedRange;
@@ -353,7 +350,7 @@ namespace BudgetExecution
                             && range.Cells[ i, j ].Value2 != null )
                         {
                             datagrid.Rows[ i - 1 ].Cells[ j - 1 ].Value =
-                                range.Cells[ i, j ].Value2.ToString( );
+                                range.Cells[ i, j ].Value2.ToString();
                         }
                     }
                 }
@@ -362,7 +359,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                ExcelQuery.Fail( ex );
             }
         }
 
@@ -383,7 +380,7 @@ namespace BudgetExecution
                     {
                         var datarow = datatable.Rows[ i ];
 
-                        if( sheetname == datarow[ "TABLENAME" ].ToString( ) )
+                        if( sheetname == datarow[ "TABLENAME" ].ToString() )
                         {
                             return true;
                         }
@@ -393,7 +390,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    ExcelQuery.Fail( ex );
                 }
             }
 
@@ -410,18 +407,18 @@ namespace BudgetExecution
         {
             try
             {
-                GC.Collect( );
-                GC.WaitForPendingFinalizers( );
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
                 Marshal.ReleaseComObject( range );
                 Marshal.ReleaseComObject( worksheet );
-                workbook.Close( );
+                workbook.Close();
                 Marshal.ReleaseComObject( workbook );
-                excel.Quit( );
+                excel.Quit();
                 Marshal.ReleaseComObject( excel );
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                ExcelQuery.Fail( ex );
             }
         }
 
@@ -431,7 +428,7 @@ namespace BudgetExecution
         {
             if( disposing )
             {
-                base.Dispose( );
+                base.Dispose();
             }
 
             IsDisposed = true;

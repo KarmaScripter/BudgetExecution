@@ -36,8 +36,8 @@ namespace BudgetExecution
         public CommandFactory( ICommandBuilder commandbuilder )
         {
             _commandBuilder = commandbuilder;
-            SqlStatement = _commandBuilder?.GetSqlStatement( );
-            ConnectionFactory = new ConnectionFactory( SqlStatement?.GetConnectionBuilder( ) );
+            SqlStatement = _commandBuilder?.GetSqlStatement();
+            ConnectionFactory = new ConnectionFactory( SqlStatement?.GetConnectionBuilder() );
         }
 
         // **********************************************************************************************************************
@@ -64,8 +64,8 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var connectionbuilder = GetConnectionBuilder( );
-                    var provider = connectionbuilder.GetProvider( );
+                    var connectionbuilder = GetConnectionBuilder();
+                    var provider = connectionbuilder.GetProvider();
                     var sql = $"CREATE TABLE {table}";
 
                     if( Verify.Provider( provider )
@@ -108,7 +108,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    CommandFactory.Fail( ex );
                     return default( DbCommand );
                 }
             }
@@ -123,16 +123,16 @@ namespace BudgetExecution
         /// <returns> </returns>
         public DbCommand GetCreateViewCommand( string view, IEnumerable<DataColumn> columns )
         {
-            var connectionbuilder = ConnectionFactory?.GetConnectionBuilder( );
+            var connectionbuilder = ConnectionFactory?.GetConnectionBuilder();
 
             if( Verify.Input( view )
-                && columns?.Any( ) == true
+                && columns?.Any() == true
                 && connectionbuilder != null
-                && connectionbuilder.GetProvider( ) != Provider.SqlCe )
+                && connectionbuilder.GetProvider() != Provider.SqlCe )
             {
                 try
                 {
-                    var provider = connectionbuilder.GetProvider( );
+                    var provider = connectionbuilder.GetProvider();
                     var sql = $"CREATE VIEW {view};";
 
                     switch( provider )
@@ -164,7 +164,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    CommandFactory.Fail( ex );
                     return default( DbCommand );
                 }
             }
@@ -178,7 +178,7 @@ namespace BudgetExecution
         /// <returns> </returns>
         public DbCommand GetDropTableCommand( DataTable datatable )
         {
-            var connectionbuilder = ConnectionFactory?.GetConnectionBuilder( );
+            var connectionbuilder = ConnectionFactory?.GetConnectionBuilder();
 
             if( datatable != null
                 && connectionbuilder != null )
@@ -186,7 +186,7 @@ namespace BudgetExecution
                 try
                 {
                     var sql = $"DROP {datatable.TableName};";
-                    var provider = connectionbuilder.GetProvider( );
+                    var provider = connectionbuilder.GetProvider();
 
                     if( Verify.Input( sql )
                         && Enum.IsDefined( typeof( Provider ), provider ) )
@@ -228,7 +228,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    CommandFactory.Fail( ex );
                     return default( DbCommand );
                 }
             }
@@ -243,7 +243,7 @@ namespace BudgetExecution
         /// <returns> </returns>
         public DbCommand GetAlterCommand( DataTable datatable, DataColumn column )
         {
-            var connectionbuilder = ConnectionFactory?.GetConnectionBuilder( );
+            var connectionbuilder = ConnectionFactory?.GetConnectionBuilder();
 
             if( datatable != null
                 && column != null
@@ -251,7 +251,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var provider = connectionbuilder?.GetProvider( );
+                    var provider = connectionbuilder?.GetProvider();
                     var sql = $"ALTER TABLE {datatable.TableName} ADD COLUMN {column.ColumnName};";
 
                     if( Verify.Input( sql )
@@ -294,7 +294,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    CommandFactory.Fail( ex );
                     return default( DbCommand );
                 }
             }
@@ -315,7 +315,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var provider = _commandBuilder?.GetProvider( );
+                    var provider = _commandBuilder?.GetProvider();
                     var sql = $"ALTER TABLE {datatable.TableName} RENAME {name};";
 
                     if( Enum.IsDefined( typeof( Provider ), provider )
@@ -358,7 +358,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    CommandFactory.Fail( ex );
                     return default( DbCommand );
                 }
             }
@@ -368,60 +368,60 @@ namespace BudgetExecution
 
         /// <summary> Gets the select command. </summary>
         /// <returns> </returns>
-        public DbCommand GetSelectCommand( )
+        public DbCommand GetSelectCommand()
         {
             try
             {
-                return _commandBuilder?.GetCommand( );
+                return _commandBuilder?.GetCommand();
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                CommandFactory.Fail( ex );
                 return default( DbCommand );
             }
         }
 
         /// <summary> Gets the insert command. </summary>
         /// <returns> </returns>
-        public DbCommand GetInsertCommand( )
+        public DbCommand GetInsertCommand()
         {
             try
             {
-                return _commandBuilder?.GetCommand( );
+                return _commandBuilder?.GetCommand();
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                CommandFactory.Fail( ex );
                 return default( DbCommand );
             }
         }
 
         /// <summary> Gets the update command. </summary>
         /// <returns> </returns>
-        public DbCommand GetUpdateCommand( )
+        public DbCommand GetUpdateCommand()
         {
             try
             {
-                return _commandBuilder?.GetCommand( );
+                return _commandBuilder?.GetCommand();
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                CommandFactory.Fail( ex );
                 return default( DbCommand );
             }
         }
 
         /// <summary> Gets the delete command. </summary>
         /// <returns> </returns>
-        public DbCommand GetDeleteCommand( )
+        public DbCommand GetDeleteCommand()
         {
             try
             {
-                return _commandBuilder?.GetCommand( );
+                return _commandBuilder?.GetCommand();
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                CommandFactory.Fail( ex );
                 return default( DbCommand );
             }
         }

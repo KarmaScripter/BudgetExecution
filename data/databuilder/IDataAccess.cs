@@ -21,7 +21,7 @@ namespace BudgetExecution
 
         /// <summary> Gets the query. </summary>
         /// <returns> </returns>
-        IQuery GetQuery( );
+        IQuery GetQuery();
 
         /// <summary> Gets the query. </summary>
         /// <param name = "connectionbuilder" > The connectionbuilder. </param>
@@ -31,15 +31,15 @@ namespace BudgetExecution
 
         /// <summary> Gets the record. </summary>
         /// <returns> </returns>
-        DataRow GetRecord( );
+        DataRow GetRecord();
 
         /// <summary> Gets the data. </summary>
         /// <returns> </returns>
-        IEnumerable<DataRow> GetData( );
+        IEnumerable<DataRow> GetData();
 
         /// <summary> Gets the data table. </summary>
         /// <returns> </returns>
-        DataTable GetDataTable( );
+        DataTable GetDataTable();
 
         /// <summary> Sets the column captions. </summary>
         /// <param name = "datatable" > The datatable. </param>
@@ -47,7 +47,7 @@ namespace BudgetExecution
 
         /// <summary> Gets the column schema. </summary>
         /// <returns> </returns>
-        DataColumnCollection GetColumnSchema( );
+        DataColumnCollection GetColumnSchema();
 
         /// <summary> Gets the schema table. </summary>
         /// <param name = "datatable" > The datatable. </param>
@@ -66,6 +66,6 @@ namespace BudgetExecution
 
         /// <summary> Gets the data set. </summary>
         /// <returns> </returns>
-        DataSet GetDataSet( );
+        DataSet GetDataSet();
     }
 }

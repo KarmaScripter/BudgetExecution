@@ -24,7 +24,7 @@ namespace BudgetExecution
         // ********************************************   CONSTRUCTORS     *****************************************
         // *********************************************************************************************************
 
-        public SqlServerQuery( )
+        public SqlServerQuery()
         {
         }
 
@@ -52,7 +52,7 @@ namespace BudgetExecution
         {
             if( disposing )
             {
-                Dispose( );
+                Dispose();
             }
 
             IsDisposed = true;

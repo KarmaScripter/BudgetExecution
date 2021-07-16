@@ -55,35 +55,35 @@ namespace BudgetExecution
 
         /// <summary> Gets the select command. </summary>
         /// <returns> </returns>
-        DbCommand GetSelectCommand( );
+        DbCommand GetSelectCommand();
 
         /// <summary> Gets the insert command. </summary>
         /// <returns> </returns>
-        DbCommand GetInsertCommand( );
+        DbCommand GetInsertCommand();
 
         /// <summary> Gets the update command. </summary>
         /// <returns> </returns>
-        DbCommand GetUpdateCommand( );
+        DbCommand GetUpdateCommand();
 
         /// <summary> Gets the delete command. </summary>
         /// <returns> </returns>
-        DbCommand GetDeleteCommand( );
+        DbCommand GetDeleteCommand();
 
         /// <summary> Gets the source. </summary>
         /// <returns> </returns>
-        Source GetSource( );
+        Source GetSource();
 
         /// <summary> Gets the provider. </summary>
         /// <returns> </returns>
-        Provider GetProvider( );
+        Provider GetProvider();
 
         /// <summary> Gets the connection manager. </summary>
         /// <returns> </returns>
-        IConnectionBuilder GetConnectionBuilder( );
+        IConnectionBuilder GetConnectionBuilder();
 
         /// <summary> Gets the SQL statement. </summary>
         /// <returns> </returns>
-        ISqlStatement GetSqlStatement( );
+        ISqlStatement GetSqlStatement();
 
         /// <summary> Gets the sq lite command. </summary>
         /// <param name = "sqlstatement" > The sqlstatement. </param>

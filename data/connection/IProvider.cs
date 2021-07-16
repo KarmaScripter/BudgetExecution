@@ -13,6 +13,6 @@ namespace BudgetExecution
         // ****************   METHODS   *******************
         // ************************************************
 
-        Provider GetProvider( );
+        Provider GetProvider();
     }
 }

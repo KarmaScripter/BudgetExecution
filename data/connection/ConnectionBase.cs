@@ -89,7 +89,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                ConnectionBase.Fail( ex );
             }
         }
 
@@ -108,7 +108,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    ConnectionBase.Fail( ex );
                 }
             }
 
@@ -122,7 +122,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    ConnectionBase.Fail( ex );
                 }
             }
         }
@@ -135,13 +135,13 @@ namespace BudgetExecution
             try
             {
                 Provider = Verify.Provider( provider )
-                    && Resource.Providers?.Contains( provider.ToString( ) ) == true
+                    && Resource.Providers?.Contains( provider.ToString() ) == true
                         ? (Provider)Enum.Parse( typeof( Provider ), $"{provider}" )
                         : Provider.NS;
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                ConnectionBase.Fail( ex );
             }
         }
 
@@ -169,7 +169,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    ConnectionBase.Fail( ex );
                 }
             }
         }
@@ -198,7 +198,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    ConnectionBase.Fail( ex );
                 }
             }
         }
@@ -216,7 +216,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                ConnectionBase.Fail( ex );
             }
         }
 
@@ -229,7 +229,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var filext = Path.GetExtension( filepath )?.Trim( '.' )?.ToUpper( );
+                    var filext = Path.GetExtension( filepath )?.Trim( '.' )?.ToUpper();
 
                     FileExtension = Enum.IsDefined( typeof( EXT ), filext )
                         ? (EXT)Enum.Parse( typeof( EXT ), filext )
@@ -237,7 +237,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    ConnectionBase.Fail( ex );
                 }
             }
         }
@@ -259,7 +259,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    ConnectionBase.Fail( ex );
                 }
             }
         }
@@ -285,19 +285,19 @@ namespace BudgetExecution
                         EXT.SDF => ConfigurationManager.AppSettings[ "SqlCeFilePath" ],
                         EXT.MDF => ConfigurationManager.AppSettings[ "SqlServerFilePath" ],
                         EXT.XLS => ConfigurationManager.AppSettings[ "ExcelFilePath" ]
-                                                       .Replace( "{FilePath}", filepath ),
+                            .Replace( "{FilePath}", filepath ),
                         EXT.XLSX => ConfigurationManager.AppSettings[ "ExcelFilePath" ]
-                                                        .Replace( "{FilePath}", filepath ),
+                            .Replace( "{FilePath}", filepath ),
                         EXT.CSV => ConfigurationManager.AppSettings[ "CsvFilePath" ]
-                                                       .Replace( "{FilePath}", filepath ),
+                            .Replace( "{FilePath}", filepath ),
                         EXT.TXT => ConfigurationManager.AppSettings[ "CsvFilePath" ]
-                                                       .Replace( "{FilePath}", filepath ),
+                            .Replace( "{FilePath}", filepath ),
                         _ => ConfigurationManager.AppSettings[ "SQLiteFilePath" ]
                     };
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    ConnectionBase.Fail( ex );
                 }
             }
         }
@@ -318,8 +318,7 @@ namespace BudgetExecution
                         case Provider.CSV:
                         {
                             var connection = ConfigurationManager
-                                             .ConnectionStrings[ provider.ToString( ) ]
-                                             ?.ConnectionString;
+                                .ConnectionStrings[ provider.ToString() ]?.ConnectionString;
 
                             ConnectionString = Verify.Input( connection )
                                 ? connection?.Replace( "{FilePath}", FilePath )
@@ -334,8 +333,7 @@ namespace BudgetExecution
                         case Provider.SqlServer:
                         {
                             var connection = ConfigurationManager
-                                             .ConnectionStrings[ provider.ToString( ) ]
-                                             ?.ConnectionString;
+                                .ConnectionStrings[ provider.ToString() ]?.ConnectionString;
 
                             ConnectionString = Verify.Input( connection )
                                 ? connection
@@ -347,7 +345,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    ConnectionBase.Fail( ex );
                 }
             }
         }
@@ -357,8 +355,8 @@ namespace BudgetExecution
         private protected static void Fail( Exception ex )
         {
             using var error = new Error( ex );
-            error?.SetText( );
-            error?.ShowDialog( );
+            error?.SetText();
+            error?.ShowDialog();
         }
     }
 }

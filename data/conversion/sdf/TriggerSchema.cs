@@ -7,21 +7,9 @@ namespace BudgetExecution
     using System;
     using System.Threading;
 
-    public enum TriggerEvent
-    {
-        Delete,
+    public enum TriggerEvent { Delete, Update, Insert }
 
-        Update,
-
-        Insert
-    }
-
-    public enum TriggerType
-    {
-        After,
-
-        Before
-    }
+    public enum TriggerType { After, Before }
 
     public class TriggerSchema
     {

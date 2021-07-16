@@ -20,18 +20,18 @@ namespace BudgetExecution
 
         /// <summary> Gets the value. </summary>
         /// <returns> </returns>
-        double GetFunding( );
+        double GetFunding();
 
         /// <summary> Gets the name. </summary>
         /// <returns> </returns>
-        string GetName( );
+        string GetName();
 
         /// <summary> Gets the numeric. </summary>
         /// <returns> </returns>
-        Numeric GetNumeric( );
+        Numeric GetNumeric();
 
         /// <summary> Gets the amount. </summary>
         /// <returns> </returns>
-        IAmount GetAmount( );
+        IAmount GetAmount();
     }
 }

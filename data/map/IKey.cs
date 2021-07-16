@@ -16,14 +16,14 @@ namespace BudgetExecution
     {
         /// <summary> Gets the name. </summary>
         /// <returns> </returns>
-        string GetName( );
+        string GetName();
 
         /// <summary> Gets the value. </summary>
         /// <returns> </returns>
-        int GetIndex( );
+        int GetIndex();
 
         /// <summary> Gets the field. </summary>
         /// <returns> </returns>
-        PrimaryKey GetPrimaryKey( );
+        PrimaryKey GetPrimaryKey();
     }
 }

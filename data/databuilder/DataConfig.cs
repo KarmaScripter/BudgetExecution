@@ -60,8 +60,8 @@ namespace BudgetExecution
         /// <param name = "connectionbuilder" > The connectionbuilder. </param>
         private protected void SetQuery( IConnectionBuilder connectionbuilder )
         {
-            var source = connectionbuilder.GetSource( );
-            var provider = connectionbuilder.GetProvider( );
+            var source = connectionbuilder.GetSource();
+            var provider = connectionbuilder.GetProvider();
 
             if( Verify.Source( source )
                 && Verify.Provider( provider ) )
@@ -96,10 +96,10 @@ namespace BudgetExecution
 
                         case Provider.OleDb:
                         {
-                            var filepath = connectionbuilder?.GetFilePath( );
+                            var filepath = connectionbuilder?.GetFilePath();
 
-                            Query = Verify.Input( connectionbuilder?.GetFilePath( ) )
-                                && File.Exists( connectionbuilder?.GetFilePath( ) )
+                            Query = Verify.Input( connectionbuilder?.GetFilePath() )
+                                && File.Exists( connectionbuilder?.GetFilePath() )
                                     ? new ExcelQuery( filepath )
                                     : default( ExcelQuery );
 
@@ -108,14 +108,14 @@ namespace BudgetExecution
 
                         case Provider.Excel:
                         {
-                            var filepath = connectionbuilder?.GetFilePath( );
+                            var filepath = connectionbuilder?.GetFilePath();
                             Query = new ExcelQuery( filepath );
                             break;
                         }
 
                         case Provider.CSV:
                         {
-                            var filepath = connectionbuilder.GetFilePath( );
+                            var filepath = connectionbuilder.GetFilePath();
                             Query = new CsvQuery( filepath );
                             break;
                         }
@@ -132,7 +132,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    DataConfig.Fail( ex );
                 }
             }
         }
@@ -144,9 +144,9 @@ namespace BudgetExecution
         private protected void SetQuery( IConnectionBuilder connectionbuilder,
             ISqlStatement sqlstatement )
         {
-            var source = connectionbuilder.GetSource( );
-            var provider = connectionbuilder.GetProvider( );
-            var args = sqlstatement?.GetArgs( );
+            var source = connectionbuilder.GetSource();
+            var provider = connectionbuilder.GetProvider();
+            var args = sqlstatement?.GetArgs();
 
             if( Verify.Source( source )
                 && Verify.Provider( provider )
@@ -182,7 +182,7 @@ namespace BudgetExecution
 
                         case Provider.OleDb:
                         {
-                            var filepath = connectionbuilder?.GetFilePath( );
+                            var filepath = connectionbuilder?.GetFilePath();
 
                             Query = Verify.Input( filepath ) && File.Exists( filepath )
                                 ? new ExcelQuery( filepath, args )
@@ -193,14 +193,14 @@ namespace BudgetExecution
 
                         case Provider.Excel:
                         {
-                            var filepath = connectionbuilder?.GetFilePath( );
+                            var filepath = connectionbuilder?.GetFilePath();
                             Query = new ExcelQuery( filepath, args );
                             break;
                         }
 
                         case Provider.CSV:
                         {
-                            var filepath = connectionbuilder.GetFilePath( );
+                            var filepath = connectionbuilder.GetFilePath();
                             Query = new CsvQuery( filepath, args );
                             break;
                         }
@@ -217,14 +217,14 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    DataConfig.Fail( ex );
                 }
             }
         }
 
         /// <summary> Gets the source. </summary>
         /// <returns> </returns>
-        public Source GetSource( )
+        public Source GetSource()
         {
             try
             {
@@ -234,14 +234,14 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                DataConfig.Fail( ex );
                 return Source.NS;
             }
         }
 
         /// <summary> Gets the provider. </summary>
         /// <returns> </returns>
-        public Provider GetProvider( )
+        public Provider GetProvider()
         {
             try
             {
@@ -251,14 +251,14 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                DataConfig.Fail( ex );
                 return Provider.NS;
             }
         }
 
         /// <summary> Gets the record. </summary>
         /// <returns> </returns>
-        public DataRow GetRecord( )
+        public DataRow GetRecord()
         {
             try
             {
@@ -268,7 +268,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                DataConfig.Fail( ex );
                 return default( DataRow );
             }
         }
@@ -278,8 +278,8 @@ namespace BudgetExecution
         private protected static void Fail( Exception ex )
         {
             using var error = new Error( ex );
-            error?.SetText( );
-            error?.ShowDialog( );
+            error?.SetText();
+            error?.ShowDialog();
         }
     }
 }

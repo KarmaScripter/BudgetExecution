@@ -24,27 +24,27 @@ namespace BudgetExecution
 
         /// <summary> Gets the arguments. </summary>
         /// <returns> </returns>
-        IDictionary<string, object> GetArgs( );
+        IDictionary<string, object> GetArgs();
 
         /// <summary> Gets the connection manager. </summary>
         /// <returns> </returns>
-        IConnectionBuilder GetConnectionBuilder( );
+        IConnectionBuilder GetConnectionBuilder();
 
         /// <summary> Gets the SQL statement. </summary>
         /// <returns> </returns>
-        ISqlStatement GetSqlStatement( );
+        ISqlStatement GetSqlStatement();
 
         /// <summary> Gets the connection. </summary>
         /// <returns> </returns>
-        DbConnection GetConnection( );
+        DbConnection GetConnection();
 
         /// <summary> Gets the command. </summary>
         /// <returns> </returns>
-        DbCommand GetCommand( );
+        DbCommand GetCommand();
 
         /// <summary> Gets the adapter. </summary>
         /// <returns> </returns>
-        DbDataAdapter GetAdapter( );
+        DbDataAdapter GetAdapter();
 
         /// <summary> Sets the data reader. </summary>
         /// <param name = "command" > The command. </param>

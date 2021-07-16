@@ -28,7 +28,7 @@ namespace BudgetExecution
         /// <see cref = "SqlStatement"/>
         /// class.
         /// </summary>
-        public SqlStatement( )
+        public SqlStatement()
         {
         }
 
@@ -59,7 +59,7 @@ namespace BudgetExecution
             ConnectionBuilder = builder;
             CommandType = SQL.SELECT;
             Args = dict;
-            CommandText = GetCommandText( );
+            CommandText = GetCommandText();
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace BudgetExecution
             ConnectionBuilder = builder;
             SetCommandType( commandtype );
             SetArgs( dict );
-            CommandText = GetCommandText( );
+            CommandText = GetCommandText();
         }
 
         // **********************************************************************************************************************
@@ -86,7 +86,7 @@ namespace BudgetExecution
         /// <inheritdoc/>
         /// <summary> Gets the select statement. </summary>
         /// <returns> </returns>
-        public string GetSelectStatement( )
+        public string GetSelectStatement()
         {
             if( Args != null )
             {
@@ -99,8 +99,8 @@ namespace BudgetExecution
                         vals += $"{kvp.Key} = '{kvp.Value}' AND ";
                     }
 
-                    var values = vals.TrimEnd( " AND".ToCharArray( ) );
-                    var table = ConnectionBuilder?.GetTableName( );
+                    var values = vals.TrimEnd( " AND".ToCharArray() );
+                    var table = ConnectionBuilder?.GetTableName();
                     CommandText = $"{SQL.SELECT} * FROM {table} WHERE {values};";
 
                     return Verify.Input( CommandText )
@@ -109,13 +109,13 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    SqlConfig.Fail( ex );
                     return default( string );
                 }
             }
             else if( Args == null )
             {
-                return $"{SQL.SELECT} * FROM {ConnectionBuilder?.GetTableName( )};";
+                return $"{SQL.SELECT} * FROM {ConnectionBuilder?.GetTableName()};";
             }
 
             return default( string );
@@ -124,7 +124,7 @@ namespace BudgetExecution
         /// <inheritdoc/>
         /// <summary> Gets the update statement. </summary>
         /// <returns> </returns>
-        public string GetUpdateStatement( )
+        public string GetUpdateStatement()
         {
             if( Args != null )
             {
@@ -137,8 +137,8 @@ namespace BudgetExecution
                         update += $" {kvp.Key} = '{kvp.Value}' AND";
                     }
 
-                    var vals = update.TrimEnd( " AND".ToCharArray( ) );
-                    CommandText = $"{SQL.UPDATE} {ConnectionBuilder?.GetTableName( )} SET {vals};";
+                    var vals = update.TrimEnd( " AND".ToCharArray() );
+                    CommandText = $"{SQL.UPDATE} {ConnectionBuilder?.GetTableName()} SET {vals};";
 
                     return Verify.Input( CommandText )
                         ? CommandText
@@ -146,7 +146,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    SqlConfig.Fail( ex );
                     return default( string );
                 }
             }
@@ -157,11 +157,11 @@ namespace BudgetExecution
         /// <inheritdoc/>
         /// <summary> Gets the insert statement. </summary>
         /// <returns> </returns>
-        public string GetInsertStatement( )
+        public string GetInsertStatement()
         {
             try
             {
-                var table = ConnectionBuilder?.GetTableName( );
+                var table = ConnectionBuilder?.GetTableName();
                 var colname = string.Empty;
                 var vals = string.Empty;
 
@@ -172,7 +172,7 @@ namespace BudgetExecution
                 }
 
                 var values =
-                    $"({colname.TrimEnd( ", ".ToCharArray( ) )}) VALUES ({vals.TrimEnd( ", ".ToCharArray( ) )})";
+                    $"({colname.TrimEnd( ", ".ToCharArray() )}) VALUES ({vals.TrimEnd( ", ".ToCharArray() )})";
 
                 CommandText = $"{SQL.INSERT} INTO {table} {values};";
 
@@ -182,7 +182,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                SqlConfig.Fail( ex );
                 return default( string );
             }
         }
@@ -190,7 +190,7 @@ namespace BudgetExecution
         /// <inheritdoc/>
         /// <summary> Gets the delete statement. </summary>
         /// <returns> </returns>
-        public string GetDeleteStatement( )
+        public string GetDeleteStatement()
         {
             try
             {
@@ -200,7 +200,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                SqlConfig.Fail( ex );
                 return default( string );
             }
         }

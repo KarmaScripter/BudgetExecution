@@ -44,7 +44,7 @@ namespace BudgetExecution
         /// <see cref = "CsvQuery"/>
         /// class.
         /// </summary>
-        public CsvQuery( )
+        public CsvQuery()
         {
         }
 
@@ -127,21 +127,20 @@ namespace BudgetExecution
                 {
                     using var dialog = new SaveFileDialog
                     {
-                        Filter = "CSV files (*.csv)|*.csv",
-                        FilterIndex = 1
+                        Filter = "CSV files (*.csv)|*.csv", FilterIndex = 1
                     };
 
-                    if( dialog.ShowDialog( ) == DialogResult.OK )
+                    if( dialog.ShowDialog() == DialogResult.OK )
                     {
                         workbook.SaveAs( new FileInfo( dialog.FileName ) );
                         const string msg = "Save Successful!";
                         using var message = new Message( msg );
-                        message?.ShowDialog( );
+                        message?.ShowDialog();
                     }
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    CsvQuery.Fail( ex );
                 }
             }
         }
@@ -156,7 +155,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    using var data = new DataSet( );
+                    using var data = new DataSet();
                     var sql = "SELECT * FROM [" + sheetname + "]";
 
                     var conectionstring =
@@ -171,12 +170,12 @@ namespace BudgetExecution
                         {
                             var msg = $"{sheetname} in {sheetname} Does Not Exist!";
                             using var message = new Message( msg );
-                            message?.ShowDialog( );
+                            message?.ShowDialog();
                         }
                     }
                     else
                     {
-                        sheetname = schema?.Rows[ 0 ][ "TABLENAME" ].ToString( );
+                        sheetname = schema?.Rows[ 0 ][ "TABLENAME" ].ToString();
                     }
 
                     using var adapter = new OleDbDataAdapter( sql, connection );
@@ -185,7 +184,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    CsvQuery.Fail( ex );
                     return default( DataTable );
                 }
             }
@@ -204,7 +203,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    using var data = new DataSet( );
+                    using var data = new DataSet();
                     var sql = "SELECT * FROM [" + sheetname + "]";
 
                     var conectionstring =
@@ -219,12 +218,12 @@ namespace BudgetExecution
                         {
                             var msg = $"{sheetname} in {filename} Does Not Exist!";
                             using var message = new Message( msg );
-                            message?.ShowDialog( );
+                            message?.ShowDialog();
                         }
                     }
                     else
                     {
-                        sheetname = schema?.Rows[ 0 ][ "TABLENAME" ].ToString( );
+                        sheetname = schema?.Rows[ 0 ][ "TABLENAME" ].ToString();
                     }
 
                     using var adapter = new OleDbDataAdapter( sql, connection );
@@ -233,7 +232,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    CsvQuery.Fail( ex );
                     return default( DataTable );
                 }
             }
@@ -275,7 +274,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    CsvQuery.Fail( ex );
                 }
             }
         }
@@ -288,7 +287,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var filepath = GetConnectionBuilder( ).GetFilePath( );
+                    var filepath = GetConnectionBuilder().GetFilePath();
                     using var excel = new ExcelPackage( new FileInfo( filepath ) );
                     var workbook = excel.Workbook;
                     var worksheet = workbook.Worksheets[ 1 ];
@@ -305,14 +304,14 @@ namespace BudgetExecution
                                 && worksheet.Cells[ i, j ].Value != null )
                             {
                                 datagrid.Rows[ i - 1 ].Cells[ j - 1 ].Value =
-                                    worksheet.Cells[ i, j ].Value.ToString( );
+                                    worksheet.Cells[ i, j ].Value.ToString();
                             }
                         }
                     }
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    CsvQuery.Fail( ex );
                 }
             }
         }
@@ -331,7 +330,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    CsvQuery.Fail( ex );
                     return default( ExcelPackage );
                 }
             }
@@ -341,7 +340,7 @@ namespace BudgetExecution
 
         /// <summary> Gets the CSV file. </summary>
         /// <returns> </returns>
-        public string GetCsvFile( )
+        public string GetCsvFile()
         {
             try
             {
@@ -349,14 +348,12 @@ namespace BudgetExecution
 
                 using var dialog = new OpenFileDialog
                 {
-                    Title = "CSV File Dialog",
-                    InitialDirectory = @"c:\",
-                    Filter = "All files (*.*)|*.*|All files (*.*)|*.*",
-                    FilterIndex = 2,
+                    Title = "CSV File Dialog", InitialDirectory = @"c:\",
+                    Filter = "All files (*.*)|*.*|All files (*.*)|*.*", FilterIndex = 2,
                     RestoreDirectory = true
                 };
 
-                if( dialog.ShowDialog( ) == DialogResult.OK )
+                if( dialog.ShowDialog() == DialogResult.OK )
                 {
                     fname = dialog.FileName;
                 }
@@ -365,7 +362,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                CsvQuery.Fail( ex );
                 return default( string );
             }
         }
@@ -387,7 +384,7 @@ namespace BudgetExecution
                     {
                         var row = datatable.Rows[ i ];
 
-                        if( sheetname == row[ "TABLENAME" ].ToString( ) )
+                        if( sheetname == row[ "TABLENAME" ].ToString() )
                         {
                             return true;
                         }
@@ -397,7 +394,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    CsvQuery.Fail( ex );
                 }
             }
 

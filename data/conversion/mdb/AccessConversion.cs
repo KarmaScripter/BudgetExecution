@@ -36,11 +36,11 @@ namespace BudgetExecution
         /// <see cref = "AccessConversion"/>
         /// class.
         /// </summary>
-        public AccessConversion( )
+        public AccessConversion()
         {
             SQLiteConnection.CreateFile( "MyDatabase.sqlite" );
             _connection = new SQLiteConnection( "Data Source=MyDatabase.sqlite;Version=3;" );
-            _connection.Open( );
+            _connection.Open();
         }
 
         // ***************************************************************************************************************************
@@ -54,7 +54,7 @@ namespace BudgetExecution
         {
             var sql = "CREATE TABLE " + name + " (word varchar(200), image text)";
             var cmd = new SQLiteCommand( sql, _connection );
-            return cmd.ExecuteNonQuery( );
+            return cmd.ExecuteNonQuery();
         }
 
         /// <summary> Inserts the row. </summary>
@@ -68,7 +68,7 @@ namespace BudgetExecution
             var cmd = new SQLiteCommand( sql, _connection );
             cmd.Parameters.AddWithValue( "@word", word );
             cmd.Parameters.AddWithValue( "@image", image );
-            return cmd.ExecuteNonQuery( );
+            return cmd.ExecuteNonQuery();
         }
     }
 }

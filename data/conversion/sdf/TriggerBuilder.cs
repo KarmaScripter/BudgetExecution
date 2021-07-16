@@ -14,13 +14,13 @@ namespace BudgetExecution
     {
         public static IList<TriggerSchema> GetForeignKeyTriggers( TableSchema dt )
         {
-            IList<TriggerSchema> result = new List<TriggerSchema>( );
+            IList<TriggerSchema> result = new List<TriggerSchema>();
 
             foreach( var fks in dt.ForeignKeys )
             {
-                result.Add( GenerateInsertTrigger( fks ) );
-                result.Add( GenerateUpdateTrigger( fks ) );
-                result.Add( GenerateDeleteTrigger( fks ) );
+                result.Add( TriggerBuilder.GenerateInsertTrigger( fks ) );
+                result.Add( TriggerBuilder.GenerateUpdateTrigger( fks ) );
+                result.Add( TriggerBuilder.GenerateDeleteTrigger( fks ) );
             }
 
             return result;
@@ -43,10 +43,8 @@ namespace BudgetExecution
         {
             var trigger = new TriggerSchema
             {
-                name = MakeTriggerName( fks, "fki" ),
-                type = TriggerType.Before,
-                @event = TriggerEvent.Insert,
-                table = fks.tableName
+                name = TriggerBuilder.MakeTriggerName( fks, "fki" ), type = TriggerType.Before,
+                @event = TriggerEvent.Insert, table = fks.tableName
             };
 
             var nullstring = string.Empty;
@@ -80,10 +78,8 @@ namespace BudgetExecution
         {
             var trigger = new TriggerSchema
             {
-                name = MakeTriggerName( fks, "fku" ),
-                type = TriggerType.Before,
-                @event = TriggerEvent.Update,
-                table = fks.tableName
+                name = TriggerBuilder.MakeTriggerName( fks, "fku" ), type = TriggerType.Before,
+                @event = TriggerEvent.Update, table = fks.tableName
             };
 
             var triggername = trigger.name;
@@ -118,10 +114,8 @@ namespace BudgetExecution
         {
             var trigger = new TriggerSchema
             {
-                name = MakeTriggerName( fks, "fkd" ),
-                type = TriggerType.Before,
-                @event = TriggerEvent.Delete,
-                table = fks.foreignTableName
+                name = TriggerBuilder.MakeTriggerName( fks, "fkd" ), type = TriggerType.Before,
+                @event = TriggerEvent.Delete, table = fks.foreignTableName
             };
 
             var triggername = trigger.name;

@@ -44,7 +44,7 @@ namespace BudgetExecution
         /// <see cref = "SQLiteQuery"/>
         /// class.
         /// </summary>
-        public SQLiteQuery( )
+        public SQLiteQuery()
         {
         }
 
@@ -91,17 +91,7 @@ namespace BudgetExecution
         public enum ColDataType
         {
             /// <summary> The default </summary>
-            Default,
-
-            Text,
-
-            DateTime,
-
-            Integer,
-
-            Decimal,
-
-            Blob
+            Default, Text, DateTime, Integer, Decimal, Blob
         }
 
         // **********************************************************************************************************************
@@ -119,7 +109,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                SQLiteQuery.Fail( ex );
                 return default( SQLiteDataAdapter );
             }
         }
@@ -131,11 +121,11 @@ namespace BudgetExecution
         {
             try
             {
-                return command.ExecuteReader( );
+                return command.ExecuteReader();
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                SQLiteQuery.Fail( ex );
                 return default( SQLiteDataReader );
             }
         }
@@ -151,14 +141,14 @@ namespace BudgetExecution
             }
             catch( SystemException ex )
             {
-                Fail( ex );
+                SQLiteQuery.Fail( ex );
                 return default( SQLiteCommandBuilder );
             }
         }
 
         /// <summary> Gets the excel file path. </summary>
         /// <returns> </returns>
-        private string GetExcelFilePath( )
+        private string GetExcelFilePath()
         {
             try
             {
@@ -166,14 +156,12 @@ namespace BudgetExecution
 
                 using var fdlg = new OpenFileDialog
                 {
-                    Title = "Excel File Dialog",
-                    InitialDirectory = @"c:\",
-                    Filter = "All files (*.*)|*.*|All files (*.*)|*.*",
-                    FilterIndex = 2,
+                    Title = "Excel File Dialog", InitialDirectory = @"c:\",
+                    Filter = "All files (*.*)|*.*|All files (*.*)|*.*", FilterIndex = 2,
                     RestoreDirectory = true
                 };
 
-                if( fdlg.ShowDialog( ) == DialogResult.OK )
+                if( fdlg.ShowDialog() == DialogResult.OK )
                 {
                     fname = fdlg.FileName;
                 }
@@ -182,7 +170,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                SQLiteQuery.Fail( ex );
                 return default( string );
             }
         }
@@ -198,13 +186,13 @@ namespace BudgetExecution
             {
                 try
                 {
-                    using var dataset = new DataSet( );
-                    var cstring = GetExcelFilePath( );
+                    using var dataset = new DataSet();
+                    var cstring = GetExcelFilePath();
                     var sql = "SELECT * FROM [" + sheetname + "]";
                     var msg = "Sheet Does Not Exist!";
                     using var excelquery = new ExcelQuery( cstring );
-                    using var connection = excelquery.GetConnection( ) as OleDbConnection;
-                    connection?.Open( );
+                    using var connection = excelquery.GetConnection() as OleDbConnection;
+                    connection?.Open();
 
                     using var table =
                         connection?.GetOleDbSchemaTable( OleDbSchemaGuid.Tables, null );
@@ -214,11 +202,11 @@ namespace BudgetExecution
                         && CheckIfSheetNameExists( sheetname, table ) )
                     {
                         using var message = new Message( msg );
-                        message?.ShowDialog( );
+                        message?.ShowDialog();
                     }
                     else
                     {
-                        sheetname = table?.Rows[ 0 ][ "TABLENAME" ].ToString( );
+                        sheetname = table?.Rows[ 0 ][ "TABLENAME" ].ToString();
                     }
 
                     using var adapter = new OleDbDataAdapter( sql, connection );
@@ -227,7 +215,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    SQLiteQuery.Fail( ex );
                     return default( DataTable );
                 }
             }
@@ -246,18 +234,18 @@ namespace BudgetExecution
             {
                 try
                 {
-                    using var dataset = new DataSet( );
-                    using var datatable = new DataTable( );
+                    using var dataset = new DataSet();
+                    using var datatable = new DataTable();
                     dataset.DataSetName = filename;
                     datatable.TableName = sheetname;
                     dataset.Tables.Add( datatable );
-                    var cstring = GetExcelFilePath( );
+                    var cstring = GetExcelFilePath();
 
                     if( Verify.Input( cstring ) )
                     {
                         using var csvquery = new CsvQuery( cstring );
-                        var select = csvquery.GetCommand( );
-                        using var connection = csvquery.GetConnection( ) as OleDbConnection;
+                        var select = csvquery.GetCommand();
+                        using var connection = csvquery.GetConnection() as OleDbConnection;
                         using var adapter = new OleDbDataAdapter( select.CommandText, connection );
                         adapter?.Fill( dataset, sheetname );
 
@@ -268,7 +256,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    SQLiteQuery.Fail( ex );
                     return default( DataTable );
                 }
             }
@@ -283,13 +271,13 @@ namespace BudgetExecution
         {
             try
             {
-                return dict.Keys.Any( )
+                return dict.Keys.Any()
                     ? dict.ToSqlDbParameters( Provider )
                     : default( IEnumerable<DbParameter> );
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                SQLiteQuery.Fail( ex );
                 return default( IEnumerable<DbParameter> );
             }
         }
@@ -304,7 +292,7 @@ namespace BudgetExecution
             {
                 var datarow = dtschema.Rows[ i ];
 
-                if( sheetname == datarow[ "TABLENAME" ].ToString( ) )
+                if( sheetname == datarow[ "TABLENAME" ].ToString() )
                 {
                     return true;
                 }
@@ -314,7 +302,7 @@ namespace BudgetExecution
         }
 
         /// <summary> Creates the database. </summary>
-        private void CreateDatabase( )
+        private void CreateDatabase()
         {
             var createtablequery = @"CREATE TABLE IF NOT EXISTS [MyTable] (
                                     [ID] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -325,27 +313,27 @@ namespace BudgetExecution
             SQLiteConnection.CreateFile( "databaseFile.db3" );
             using var connection = new SQLiteConnection( "data source=databaseFile.db3" );
             using var command = new SQLiteCommand( connection );
-            connection.Open( );
+            connection.Open();
             command.CommandText = createtablequery;
-            command.ExecuteNonQuery( );
+            command.ExecuteNonQuery();
             command.CommandText = "INSERT INTO MyTable (Key,Value) Values ('key one','value one')";
-            command.ExecuteNonQuery( );
+            command.ExecuteNonQuery();
 
             // Add another entry into our database 
             command.CommandText =
                 "INSERT INTO MyTable (Key,Value) Values ('key two','value value')";
 
             // Execute the query
-            command.ExecuteNonQuery( );
+            command.ExecuteNonQuery();
             command.CommandText = "Select * FROM MyTable";
-            using var reader = command.ExecuteReader( );
+            using var reader = command.ExecuteReader();
 
-            while( reader.Read( ) )
+            while( reader.Read() )
             {
                 Console.WriteLine( reader[ "Key" ] + " : " + reader[ "Value" ] );
             }
 
-            connection.Close( );
+            connection.Close();
         }
 
         /// <summary> Releases unmanaged and - optionally - managed resources. </summary>
@@ -359,7 +347,7 @@ namespace BudgetExecution
         {
             if( disposing )
             {
-                base.Dispose( );
+                base.Dispose();
             }
 
             IsDisposed = true;

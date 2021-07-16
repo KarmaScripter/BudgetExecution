@@ -29,7 +29,7 @@ namespace BudgetExecution
         /// <see cref = "CommandBuilder"/>
         /// class.
         /// </summary>
-        public CommandBuilder( )
+        public CommandBuilder()
         {
         }
 
@@ -42,7 +42,7 @@ namespace BudgetExecution
         public CommandBuilder( ISqlStatement sql )
         {
             SqlStatement = sql;
-            ConnectionBuilder = SqlStatement.GetConnectionBuilder( );
+            ConnectionBuilder = SqlStatement.GetConnectionBuilder();
             Command = SetCommand( SqlStatement );
         }
 
@@ -73,7 +73,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var provider = ConnectionBuilder?.GetProvider( );
+                    var provider = ConnectionBuilder?.GetProvider();
 
                     switch( provider )
                     {
@@ -112,7 +112,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    CommandBuilder.Fail( ex );
                     return default( DbCommand );
                 }
             }
@@ -122,7 +122,7 @@ namespace BudgetExecution
 
         /// <summary> Gets the command. </summary>
         /// <returns> </returns>
-        public DbCommand GetCommand( )
+        public DbCommand GetCommand()
         {
             try
             {
@@ -132,7 +132,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                CommandBuilder.Fail( ex );
                 return default( DbCommand );
             }
         }

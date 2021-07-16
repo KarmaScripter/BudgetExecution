@@ -21,30 +21,30 @@ namespace BudgetExecution
 
         /// <summary> Gets the type of the command. </summary>
         /// <returns> SQL </returns>
-        SQL GetCommandType( );
+        SQL GetCommandType();
 
         /// <summary> Gets the connection manager. </summary>
         /// <returns> </returns>
-        IConnectionBuilder GetConnectionBuilder( );
+        IConnectionBuilder GetConnectionBuilder();
 
         /// <summary> Gets the select statement. </summary>
         /// <returns> </returns>
-        string GetSelectStatement( );
+        string GetSelectStatement();
 
         /// <summary> Gets the update statement. </summary>
         /// <returns> </returns>
-        string GetUpdateStatement( );
+        string GetUpdateStatement();
 
         /// <summary> Gets the insert statement. </summary>
         /// <returns> </returns>
-        string GetInsertStatement( );
+        string GetInsertStatement();
 
         /// <summary> Gets the delete statement. </summary>
         /// <returns> </returns>
-        string GetDeleteStatement( );
+        string GetDeleteStatement();
 
         /// <summary> Gets the arguments. </summary>
         /// <returns> </returns>
-        IDictionary<string, object> GetArgs( );
+        IDictionary<string, object> GetArgs();
     }
 }
