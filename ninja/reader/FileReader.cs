@@ -30,7 +30,7 @@ namespace BudgetExecution
         /// <summary>
         /// The file
         /// </summary>
-        private readonly IFile DataFile;
+        private readonly IFile _dataFile;
 
         // ***************************************************************************************************************************
         // ****************************************************  CONSTRUCTORS ********************************************************
@@ -49,8 +49,8 @@ namespace BudgetExecution
         /// <param name="file">The file.</param>
         public FileReader( IFile file )
         {
-            DataFile = file;
-            FileInfo = DataFile.GetFileInfo();
+            _dataFile = file;
+            FileInfo = _dataFile.GetFileInfo();
         }
 
         // ***************************************************************************************************************************

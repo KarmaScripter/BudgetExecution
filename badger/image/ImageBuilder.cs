@@ -25,17 +25,17 @@ namespace BudgetExecution
         /// <summary>
         /// The file path
         /// </summary>
-        private readonly string FullPath;
+        private readonly string _fullPath;
 
         /// <summary>
         /// The resource
         /// </summary>
-        private readonly ImageSource Source;
+        private readonly ImageSource _source;
 
         /// <summary>
         /// The format
         /// </summary>
-        private readonly ImageFormat Format;
+        private readonly ImageFormat _format;
 
         // ****************************************************************************************************************************
         // *********************************************   CONSTRUCTORS ***************************************************************
@@ -51,20 +51,20 @@ namespace BudgetExecution
         public ImageBuilder( string fullfilepath )
         {
             Name = Path.GetFileNameWithoutExtension( fullfilepath );
-            Source = ImageSource.NS;
+            _source = ImageSource.NS;
             Extension = Path.GetExtension( fullfilepath );
-            FullPath = Path.GetFullPath( fullfilepath );
-            Format = GetFormat( Extension );
+            _fullPath = Path.GetFullPath( fullfilepath );
+            _format = GetFormat( Extension );
             ImageSize = Medium;
         }
 
         public ImageBuilder( ImageSource source )
         {
             Name = source.ToString();
-            Source = GetImageSource( source );
+            _source = GetImageSource( source );
             Extension = ImageFormat.PNG.ToString();
-            FullPath = GetImageFilePath( Name, Source );
-            Format = ImageFormat.PNG;
+            _fullPath = GetImageFilePath( Name, _source );
+            _format = ImageFormat.PNG;
             ImageSize = SizeConfig.GetSize( ImageSizer.Medium );
         }
 
@@ -83,10 +83,10 @@ namespace BudgetExecution
         public ImageBuilder( string name, ImageSource source, ImageSizer size = ImageSizer.Medium )
         {
             Name = GetName( name );
-            Source = GetImageSource( source );
-            Extension = GetExtension( Name, Source );
-            FullPath = GetImageFilePath( Name, Source );
-            Format = GetFormat( Extension );
+            _source = GetImageSource( source );
+            Extension = GetExtension( Name, _source );
+            _fullPath = GetImageFilePath( Name, _source );
+            _format = GetFormat( Extension );
             ImageSize = SizeConfig.GetSize( size );
         }
 
@@ -109,10 +109,10 @@ namespace BudgetExecution
             int height = 16 )
         {
             Name = GetName( name );
-            Source = GetImageSource( source );
-            Extension = GetExtension( Name, Source );
-            FullPath = GetImageFilePath( Name, Source );
-            Format = GetFormat( Extension );
+            _source = GetImageSource( source );
+            Extension = GetExtension( Name, _source );
+            _fullPath = GetImageFilePath( Name, _source );
+            _format = GetFormat( Extension );
             ImageSize = SizeConfig.GetSize( width, height );
         }
 
@@ -131,10 +131,10 @@ namespace BudgetExecution
         public ImageBuilder( string name, ImageSource source, Size size )
         {
             Name = GetName( name );
-            Source = GetImageSource( source );
-            Extension = GetExtension( Name, Source );
-            FullPath = GetImageFilePath( Name, Source );
-            Format = GetFormat( Extension );
+            _source = GetImageSource( source );
+            Extension = GetExtension( Name, _source );
+            _fullPath = GetImageFilePath( Name, _source );
+            _format = GetFormat( Extension );
             ImageSize = SizeConfig.GetSize( size );
         }
 
@@ -218,8 +218,8 @@ namespace BudgetExecution
         {
             try
             {
-                return Enum.IsDefined( typeof( ImageSource ), Source )
-                    ? Source
+                return Enum.IsDefined( typeof( ImageSource ), _source )
+                    ? _source
                     : default( ImageSource );
             }
             catch( Exception ex )
@@ -238,8 +238,8 @@ namespace BudgetExecution
         {
             try
             {
-                return Verify.ImageResource( Source ) && Verify.Input( Resource.Settings[ $"{Source}" ] )
-                    ? Resource.Settings[ $"{Source}" ]
+                return Verify.ImageResource( _source ) && Verify.Input( Resource.Settings[ $"{_source}" ] )
+                    ? Resource.Settings[ $"{_source}" ]
                     : default( string );
             }
             catch( Exception ex )
@@ -258,8 +258,8 @@ namespace BudgetExecution
         {
             try
             {
-                return Verify.Input( FullPath )
-                    ? FullPath
+                return Verify.Input( _fullPath )
+                    ? _fullPath
                     : default( string );
             }
             catch( Exception ex )
@@ -318,8 +318,8 @@ namespace BudgetExecution
         {
             try
             {
-                return Enum.IsDefined( typeof( ImageFormat ), Format )
-                    ? Format
+                return Enum.IsDefined( typeof( ImageFormat ), _format )
+                    ? _format
                     : ImageFormat.PNG;
             }
             catch( Exception ex )
@@ -338,8 +338,8 @@ namespace BudgetExecution
         {
             try
             {
-                return Verify.Input( FullPath ) && File.Exists( FullPath )
-                    ? File.OpenRead( FullPath )
+                return Verify.Input( _fullPath ) && File.Exists( _fullPath )
+                    ? File.OpenRead( _fullPath )
                     : default( FileStream );
             }
             catch( Exception ex )

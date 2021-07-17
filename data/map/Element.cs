@@ -1,6 +1,6 @@
-﻿// // <copyright file = "Element.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+﻿// <copyright file = "Element.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 namespace BudgetExecution
 {
@@ -31,7 +31,7 @@ namespace BudgetExecution
         /// <see cref = "Element"/>
         /// class.
         /// </summary>
-        public Element( )
+        public Element()
         {
         }
 
@@ -45,7 +45,7 @@ namespace BudgetExecution
         {
             SetName( kvp.Key );
             SetField( Name );
-            SetValue( kvp.Value?.ToString( ) );
+            SetValue( kvp.Value?.ToString() );
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace BudgetExecution
         {
             SetField( column.ColumnName );
             SetName( column.ColumnName );
-            SetValue( data, data[ column ].ToString( ) );
+            SetValue( data, data[ column ].ToString() );
             SetData( data, column );
         }
 
@@ -137,7 +137,7 @@ namespace BudgetExecution
 
         /// <summary> Gets the field. </summary>
         /// <returns> </returns>
-        public Field GetField( )
+        public Field GetField()
         {
             try
             {
@@ -147,7 +147,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                Element.Fail( ex );
                 return Field.NS;
             }
         }
@@ -158,7 +158,7 @@ namespace BudgetExecution
         /// <see cref = "string"/>
         /// that represents this instance.
         /// </returns>
-        public override string ToString( )
+        public override string ToString()
         {
             try
             {
@@ -168,7 +168,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                Element.Fail( ex );
                 return string.Empty;
             }
         }
@@ -187,15 +187,15 @@ namespace BudgetExecution
             {
                 try
                 {
-                    if( element.GetValue( )?.Equals( Value ) == true
-                        && element.GetName( )?.Equals( Name ) == true )
+                    if( element.GetValue()?.Equals( Value ) == true
+                        && element.GetName()?.Equals( Name ) == true )
                     {
                         return true;
                     }
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    Element.Fail( ex );
                     return false;
                 }
             }
@@ -215,21 +215,21 @@ namespace BudgetExecution
         public static bool IsMatch( IElement primary, IElement secondary )
         {
             if( Verify.Element( primary )
-                && primary != Default
+                && primary != Element.Default
                 && Verify.Element( secondary )
-                && secondary != Default )
+                && secondary != Element.Default )
             {
                 try
                 {
-                    if( primary.GetValue( ).Equals( secondary.GetValue( ) )
-                        && primary.GetName( ) == secondary.GetName( ) )
+                    if( primary.GetValue().Equals( secondary.GetValue() )
+                        && primary.GetName() == secondary.GetName() )
                     {
                         return true;
                     }
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    Element.Fail( ex );
                     return false;
                 }
             }

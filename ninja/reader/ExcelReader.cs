@@ -27,17 +27,17 @@ namespace BudgetExecution
         // ********************************************      FIELDS     *************************************************************
         // **************************************************************************************************************************
 
-        private protected readonly Provider Provider = Provider.Excel;
+        private protected readonly Provider provider = Provider.Excel;
 
-        private protected readonly string XLS = DataPath.ConnectionString[ "OleDb" ].ToString();
+        private protected readonly string xls = DataPath.ConnectionString[ "OleDb" ].ToString();
 
-        private protected readonly string XLSX = DataPath.ConnectionString[ "Excel" ].ToString();
+        private protected readonly string xlsx = DataPath.ConnectionString[ "Excel" ].ToString();
 
-        private protected readonly string CSV = DataPath.ConnectionString[ "CSV" ].ToString();
+        private protected readonly string csv = DataPath.ConnectionString[ "CSV" ].ToString();
 
-        private protected readonly string ACCDB = DataPath.ConnectionString[ "Access" ].ToString();
+        private protected readonly string accdb = DataPath.ConnectionString[ "Access" ].ToString();
 
-        private protected readonly string MDB = DataPath.ConnectionString[ "OleDb" ].ToString();
+        private protected readonly string mdb = DataPath.ConnectionString[ "OleDb" ].ToString();
 
         // **************************************************************************************************************************
         // ********************************************   CONSTRUCTORS     **********************************************************
@@ -235,7 +235,7 @@ namespace BudgetExecution
                 try
                 {
                     using var dataset = new DataSet();
-                    using var connection = new OleDbConnection( XLSX );
+                    using var connection = new OleDbConnection( xlsx );
                     connection?.Open();
                     var sql = "SELECT * FROM [" + sheetname + "]";
                     var schema = connection?.GetOleDbSchemaTable( OleDbSchemaGuid.Tables, null );

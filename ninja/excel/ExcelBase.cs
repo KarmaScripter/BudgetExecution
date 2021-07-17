@@ -131,7 +131,7 @@ namespace BudgetExecution
                     using var range = grid.GetRange();
                     range.Style.Fill.PatternType = ExcelFillStyle.Solid;
                     range.Style.Fill.BackgroundColor.SetColor( color );
-                    range.Style.HorizontalAlignment = Left;
+                    range.Style.HorizontalAlignment = left;
                 }
                 catch( Exception ex )
                 {

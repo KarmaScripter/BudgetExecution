@@ -26,7 +26,7 @@ namespace BudgetExecution
         /// <summary>
         /// The source
         /// </summary>
-        private static readonly Source Source = Source.Organizations;
+        private static readonly Source _source = Source.Organizations;
 
         // ***************************************************************************************************************************
         // *********************************************   CONSTRUCTORS **************************************************************
@@ -62,7 +62,7 @@ namespace BudgetExecution
         /// </param>
         public Organization( string org )
         {
-            Record = new DataBuilder( Source, GetArgs( org ) )?.GetRecord();
+            Record = new DataBuilder( Organization._source, GetArgs( org ) )?.GetRecord();
             ID = new Key( Record, PrimaryKey.OrganizationId );
             Name = new Element( Record, Field.Name );
             Code = new Element( Record, Field.Code );
@@ -304,8 +304,8 @@ namespace BudgetExecution
         {
             try
             {
-                return Verify.Source( Source )
-                    ? Source
+                return Verify.Source( Organization._source )
+                    ? Organization._source
                     : Source.NS;
             }
             catch( Exception ex )

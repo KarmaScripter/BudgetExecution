@@ -28,27 +28,27 @@ namespace BudgetExecution
         /// <summary>
         /// The builder
         /// </summary>
-        private readonly ImageBuilder Builder;
+        private readonly ImageBuilder _builder;
 
         /// <summary>
         /// The format
         /// </summary>
-        private readonly ImageFormat Format;
+        private readonly ImageFormat _format;
 
         /// <summary>
         /// The stream data
         /// </summary>
-        private readonly IDictionary<string, FileInfo> FileStreams;
+        private readonly IDictionary<string, FileInfo> _fileStreams;
 
         /// <summary>
         /// The file paths
         /// </summary>
-        private readonly IEnumerable<string> Paths;
+        private readonly IEnumerable<string> _paths;
 
         /// <summary>
         /// The file names
         /// </summary>
-        private readonly IEnumerable<string> Names;
+        private readonly IEnumerable<string> _names;
 
         // ****************************************************************************************************************************
         // *********************************************   CONSTRUCTORS ***************************************************************
@@ -62,12 +62,12 @@ namespace BudgetExecution
         /// </param>
         public ImageFactory( ImageBuilder imagebuilder )
         {
-            Builder = imagebuilder;
-            var imagesource = Builder.GetImageSource();
-            Format = Builder.GetExtenstion();
-            Paths = GetPaths( imagesource );
-            Names = GetNames( Paths );
-            FileStreams = GetFileStreams( imagesource );
+            _builder = imagebuilder;
+            var imagesource = _builder.GetImageSource();
+            _format = _builder.GetExtenstion();
+            _paths = GetPaths( imagesource );
+            _names = GetNames( _paths );
+            _fileStreams = GetFileStreams( imagesource );
         }
 
         /// <summary>
@@ -78,12 +78,12 @@ namespace BudgetExecution
         /// </param>
         public ImageFactory( ImageSource imagesource )
         {
-            Builder = new ImageBuilder( imagesource );
-            var source = Builder.GetImageSource();
-            Format = Builder.GetExtenstion();
-            Paths = GetPaths( source );
-            Names = GetNames( Paths );
-            FileStreams = GetFileStreams( source );
+            _builder = new ImageBuilder( imagesource );
+            var source = _builder.GetImageSource();
+            _format = _builder.GetExtenstion();
+            _paths = GetPaths( source );
+            _names = GetNames( _paths );
+            _fileStreams = GetFileStreams( source );
         }
 
         // ****************************************************************************************************************************
@@ -199,8 +199,8 @@ namespace BudgetExecution
         {
             try
             {
-                return Names?.Any() == true
-                    ? Names
+                return _names?.Any() == true
+                    ? _names
                     : default( IEnumerable<string> );
             }
             catch( Exception ex )
@@ -219,8 +219,8 @@ namespace BudgetExecution
         {
             try
             {
-                return Paths?.Any() == true
-                    ? Paths
+                return _paths?.Any() == true
+                    ? _paths
                     : default( IEnumerable<string> );
             }
             catch( Exception ex )
@@ -239,8 +239,8 @@ namespace BudgetExecution
         {
             try
             {
-                return FileStreams?.Any() == true
-                    ? FileStreams
+                return _fileStreams?.Any() == true
+                    ? _fileStreams
                     : default( IDictionary<string, FileInfo> );
             }
             catch( Exception ex )
@@ -257,11 +257,11 @@ namespace BudgetExecution
         /// </returns>
         public Bitmap CreateImage()
         {
-            if( Builder?.GetFileStream() != null )
+            if( _builder?.GetFileStream() != null )
             {
                 try
                 {
-                    using var stream = Builder?.GetFileStream();
+                    using var stream = _builder?.GetFileStream();
 
                     return stream != null
                         ? new Bitmap( stream )
@@ -284,14 +284,14 @@ namespace BudgetExecution
         /// </returns>
         public Icon CreateIcon()
         {
-            if( !Builder.GetSize().IsEmpty )
+            if( !_builder.GetSize().IsEmpty )
             {
                 try
                 {
-                    using var stream = Builder.GetFileStream();
+                    using var stream = _builder.GetFileStream();
 
                     return stream != null
-                        ? new Icon( stream, Builder.GetSize() )
+                        ? new Icon( stream, _builder.GetSize() )
                         : default( Icon );
                 }
                 catch( Exception ex )

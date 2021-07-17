@@ -1,6 +1,6 @@
-﻿// // <copyright file = "Query.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+﻿// <copyright file = "Query.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 namespace BudgetExecution
 {
@@ -32,7 +32,7 @@ namespace BudgetExecution
         /// <see cref = "Query"/>
         /// class.
         /// </summary>
-        public Query( )
+        public Query()
         {
         }
 
@@ -51,9 +51,9 @@ namespace BudgetExecution
             ConnectionFactory = new ConnectionFactory( ConnectionBuilder );
             SqlStatement = new SqlStatement( ConnectionBuilder, commandtype );
             CommandBuilder = new CommandBuilder( ConnectionBuilder, SqlStatement );
-            Adapter = new AdapterFactory( ConnectionBuilder, SqlStatement )?.GetAdapter( );
+            Adapter = new AdapterFactory( ConnectionBuilder, SqlStatement )?.GetAdapter();
             IsDisposed = false;
-            Args = new Dictionary<string, object>( );
+            Args = new Dictionary<string, object>();
         }
 
         /// <summary>
@@ -72,9 +72,9 @@ namespace BudgetExecution
             ConnectionFactory = new ConnectionFactory( ConnectionBuilder );
             SqlStatement = new SqlStatement( ConnectionBuilder, dict, commandtype );
             CommandBuilder = new CommandBuilder( ConnectionBuilder, SqlStatement );
-            Adapter = new AdapterFactory( ConnectionBuilder, SqlStatement )?.GetAdapter( );
+            Adapter = new AdapterFactory( ConnectionBuilder, SqlStatement )?.GetAdapter();
             IsDisposed = false;
-            Args = new Dictionary<string, object>( );
+            Args = new Dictionary<string, object>();
         }
 
         /// <summary>
@@ -90,9 +90,9 @@ namespace BudgetExecution
             ConnectionFactory = new ConnectionFactory( ConnectionBuilder );
             SqlStatement = sqlstatement;
             CommandBuilder = new CommandBuilder( ConnectionBuilder, SqlStatement );
-            Adapter = new AdapterFactory( ConnectionBuilder, SqlStatement )?.GetAdapter( );
+            Adapter = new AdapterFactory( ConnectionBuilder, SqlStatement )?.GetAdapter();
             IsDisposed = false;
-            Args = SqlStatement.GetArgs( );
+            Args = SqlStatement.GetArgs();
         }
 
         /// <summary>
@@ -109,9 +109,9 @@ namespace BudgetExecution
             ConnectionFactory = new ConnectionFactory( ConnectionBuilder );
             SqlStatement = new SqlStatement( ConnectionBuilder, dict, SQL.SELECT );
             CommandBuilder = new CommandBuilder( ConnectionBuilder, SqlStatement );
-            Adapter = new AdapterFactory( ConnectionBuilder, SqlStatement )?.GetAdapter( );
+            Adapter = new AdapterFactory( ConnectionBuilder, SqlStatement )?.GetAdapter();
             IsDisposed = false;
-            Args = SqlStatement?.GetArgs( );
+            Args = SqlStatement?.GetArgs();
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace BudgetExecution
             ConnectionFactory = new ConnectionFactory( ConnectionBuilder );
             SqlStatement = new SqlStatement( ConnectionBuilder, commandtype );
             CommandBuilder = new CommandBuilder( ConnectionBuilder, SqlStatement );
-            Adapter = new AdapterFactory( ConnectionBuilder, SqlStatement )?.GetAdapter( );
+            Adapter = new AdapterFactory( ConnectionBuilder, SqlStatement )?.GetAdapter();
             IsDisposed = false;
         }
 
@@ -145,9 +145,9 @@ namespace BudgetExecution
             ConnectionFactory = new ConnectionFactory( ConnectionBuilder );
             SqlStatement = new SqlStatement( ConnectionBuilder, dict, commandtype );
             CommandBuilder = new CommandBuilder( ConnectionBuilder, SqlStatement );
-            Adapter = new AdapterFactory( ConnectionBuilder, SqlStatement )?.GetAdapter( );
+            Adapter = new AdapterFactory( ConnectionBuilder, SqlStatement )?.GetAdapter();
             IsDisposed = false;
-            Args = SqlStatement?.GetArgs( );
+            Args = SqlStatement?.GetArgs();
         }
 
         // ***************************************************************************************************************************
@@ -170,7 +170,7 @@ namespace BudgetExecution
                 {
                     if( command?.Connection?.State != ConnectionState.Open )
                     {
-                        command?.Connection?.Open( );
+                        command?.Connection?.Open();
                         return command?.ExecuteReader( CommandBehavior.CloseConnection );
                     }
 
@@ -183,10 +183,10 @@ namespace BudgetExecution
                 {
                     if( command?.Connection?.State == ConnectionState.Open )
                     {
-                        command?.Connection?.Close( );
+                        command?.Connection?.Close();
                     }
 
-                    Fail( ex );
+                    Query.Fail( ex );
                     return default( DbDataReader );
                 }
             }
@@ -204,18 +204,18 @@ namespace BudgetExecution
         [ SuppressMessage( "ReSharper", "UnusedParameter.Global" ) ]
         protected virtual void Dispose( bool disposing )
         {
-            if( ConnectionFactory?.GetConnection( ) != null )
+            if( ConnectionFactory?.GetConnection() != null )
             {
                 try
                 {
-                    ConnectionFactory?.GetConnection( )?.Close( );
-                    ConnectionFactory?.GetConnection( )?.Dispose( );
+                    ConnectionFactory?.GetConnection()?.Close();
+                    ConnectionFactory?.GetConnection()?.Dispose();
                     IsDisposed = true;
                 }
                 catch( Exception ex )
                 {
                     IsDisposed = false;
-                    Fail( ex );
+                    Query.Fail( ex );
                 }
             }
         }
@@ -225,7 +225,7 @@ namespace BudgetExecution
         /// Performs application-defined tasks associated with freeing, releasing, or
         /// resetting unmanaged resources.
         /// </summary>
-        public virtual void Dispose( )
+        public virtual void Dispose()
         {
             try
             {
@@ -235,7 +235,7 @@ namespace BudgetExecution
             catch( Exception ex )
             {
                 IsDisposed = false;
-                Fail( ex );
+                Query.Fail( ex );
             }
         }
     }

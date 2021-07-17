@@ -32,7 +32,7 @@ namespace BudgetExecution
         /// <summary>
         /// The source
         /// </summary>
-        private static readonly Source Source = Source.WorkforceData;
+        private static readonly Source _source = Source.WorkforceData;
 
         // ***************************************************************************************************************************
         // *********************************************   CONSTRUCTORS **************************************************************
@@ -471,8 +471,8 @@ namespace BudgetExecution
         {
             try
             {
-                return Verify.Source( Source )
-                    ? Source
+                return Verify.Source( HumanResourceData._source )
+                    ? HumanResourceData._source
                     : Source.NS;
             }
             catch( Exception ex )

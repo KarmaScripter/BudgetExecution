@@ -17,7 +17,7 @@ namespace BudgetExecution
     /// <summary>
     /// 
     /// </summary>
-    /// <seealso cref = "Employee"/>
+    /// <seealso cref = "_employee"/>
     /// <seealso cref = "IEmployee"/>
     /// <seealso cref = "IDataBuilder"/>
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
@@ -34,7 +34,7 @@ namespace BudgetExecution
         /// <summary>
         /// The employee
         /// </summary>
-        private readonly IEmployee Employee;
+        private readonly IEmployee _employee;
 
         // ***************************************************************************************************************************
         // *********************************************   CONSTRUCTORS **************************************************************
@@ -56,11 +56,11 @@ namespace BudgetExecution
         public Personnel( IQuery query )
             : base( query )
         {
-            Employee = new Employee( query );
-            ContactData = GetContactData( Employee );
-            HumanResourceData = GetHumanResourceData( Employee );
-            PayrollData = GetPayrollData( Employee );
-            LeaveData = GetLeaveData( Employee );
+            _employee = new Employee( query );
+            ContactData = GetContactData( _employee );
+            HumanResourceData = GetHumanResourceData( _employee );
+            PayrollData = GetPayrollData( _employee );
+            LeaveData = GetLeaveData( _employee );
         }
 
         /// <summary>
@@ -72,11 +72,11 @@ namespace BudgetExecution
         public Personnel( IBuilder builder )
             : base( builder )
         {
-            Employee = new Employee( builder );
-            ContactData = new ContactFactory( Employee );
-            HumanResourceData = GetHumanResourceData( Employee );
-            PayrollData = GetPayrollData( Employee );
-            LeaveData = GetLeaveData( Employee );
+            _employee = new Employee( builder );
+            ContactData = new ContactFactory( _employee );
+            HumanResourceData = GetHumanResourceData( _employee );
+            PayrollData = GetPayrollData( _employee );
+            LeaveData = GetLeaveData( _employee );
         }
 
         /// <inheritdoc/>
@@ -90,11 +90,11 @@ namespace BudgetExecution
         public Personnel( DataRow data )
             : base( data )
         {
-            Employee = new Employee( data );
-            ContactData = new ContactFactory( Employee );
-            HumanResourceData = GetHumanResourceData( Employee );
-            PayrollData = GetPayrollData( Employee );
-            LeaveData = GetLeaveData( Employee );
+            _employee = new Employee( data );
+            ContactData = new ContactFactory( _employee );
+            HumanResourceData = GetHumanResourceData( _employee );
+            PayrollData = GetPayrollData( _employee );
+            LeaveData = GetLeaveData( _employee );
         }
 
         /// <summary>
@@ -106,11 +106,11 @@ namespace BudgetExecution
         public Personnel( string epanumber )
             : base( epanumber )
         {
-            Employee = new Employee( epanumber );
-            ContactData = new ContactFactory( Employee );
-            HumanResourceData = GetHumanResourceData( Employee );
-            PayrollData = GetPayrollData( Employee );
-            LeaveData = GetLeaveData( Employee );
+            _employee = new Employee( epanumber );
+            ContactData = new ContactFactory( _employee );
+            HumanResourceData = GetHumanResourceData( _employee );
+            PayrollData = GetPayrollData( _employee );
+            LeaveData = GetLeaveData( _employee );
         }
 
         // **********************************************************************************************************************

@@ -31,37 +31,37 @@ namespace BudgetExecution
         /// <summary>
         /// The font color
         /// </summary>
-        private protected readonly Color FontColor = Color.Black;
+        private protected readonly Color fontColor = Color.Black;
 
         /// <summary>
         /// The font
         /// </summary>
-        private protected readonly Font Font = new Font( "Consolas", 8, FontStyle.Regular );
+        private protected readonly Font font = new Font( "Consolas", 8, FontStyle.Regular );
 
         /// <summary>
         /// The title font
         /// </summary>
-        private protected readonly Font TitleFont = new Font( "Consolas", 8, FontStyle.Bold );
+        private protected readonly Font titleFont = new Font( "Consolas", 8, FontStyle.Bold );
 
         /// <summary>
         /// The header image width
         /// </summary>
-        private protected readonly double HeaderImageWidth = 1.75;
+        private protected readonly double headerImageWidth = 1.75;
 
         /// <summary>
         /// The header image height
         /// </summary>
-        private protected readonly double HeaderImageHeight = 0.75;
+        private protected readonly double headerImageHeight = 0.75;
 
         /// <summary>
         /// The footer image width
         /// </summary>
-        private protected readonly double FooterImageWidth = 2.04;
+        private protected readonly double footerImageWidth = 2.04;
 
         /// <summary>
         /// The footer image height
         /// </summary>
-        private protected readonly double FooterImageHeight = 0.70;
+        private protected readonly double footerImageHeight = 0.70;
 
         // ***************************************************************************************************************************
         // *********************************************   CONSTRUCTORS **************************************************************
@@ -72,7 +72,7 @@ namespace BudgetExecution
         /// </summary>
         public ReportFormat()
         {
-            FileInfo = new FileInfo( FilePath );
+            FileInfo = new FileInfo( filePath );
             Excel = new ExcelPackage( FileInfo );
             Workbook = Excel.Workbook;
         }
@@ -89,17 +89,17 @@ namespace BudgetExecution
             Data = table.AsEnumerable();
             Worksheet = Workbook.Worksheets.Add( table.TableName );
             Worksheet.View.ShowGridLines = false;
-            Worksheet.View.ZoomScale = ZoomLevel;
+            Worksheet.View.ZoomScale = zoomLevel;
             Worksheet.View.PageLayoutView = true;
             Worksheet.View.ShowHeaders = true;
-            Worksheet.DefaultRowHeight = RowHeight;
-            Worksheet.DefaultColWidth = ColumnWidth;
+            Worksheet.DefaultRowHeight = rowHeight;
+            Worksheet.DefaultColWidth = columnWidth;
             Worksheet.PrinterSettings.ShowHeaders = false;
             Worksheet.PrinterSettings.ShowGridLines = false;
-            Worksheet.PrinterSettings.LeftMargin = LeftMargin;
-            Worksheet.PrinterSettings.RightMargin = RightMargin;
-            Worksheet.PrinterSettings.TopMargin = TopMargin;
-            Worksheet.PrinterSettings.BottomMargin = BottomMarging;
+            Worksheet.PrinterSettings.LeftMargin = leftMargin;
+            Worksheet.PrinterSettings.RightMargin = rightMargin;
+            Worksheet.PrinterSettings.TopMargin = topMargin;
+            Worksheet.PrinterSettings.BottomMargin = bottomMarging;
             Worksheet.PrinterSettings.HorizontalCentered = true;
             Worksheet.PrinterSettings.VerticalCentered = true;
             Worksheet.PrinterSettings.FitToPage = true;
@@ -143,10 +143,10 @@ namespace BudgetExecution
             {
                 try
                 {
-                    using var font = Font;
-                    SetFontColor( grid, FontColor );
-                    SetBackgroudColor( grid, PrimaryBackColor );
-                    SetHorizontalAligment( grid, Left );
+                    using var font = this.font;
+                    SetFontColor( grid, fontColor );
+                    SetBackgroudColor( grid, primaryBackColor );
+                    SetHorizontalAligment( grid, left );
                 }
                 catch( Exception ex )
                 {
@@ -171,9 +171,9 @@ namespace BudgetExecution
                     using var range = grid.GetRange();
                     var row = range.Start.Row;
                     var column = range.Start.Column;
-                    SetFontColor( grid, FontColor );
-                    SetBackgroudColor( grid, PrimaryBackColor );
-                    SetHorizontalAligment( grid, Left );
+                    SetFontColor( grid, fontColor );
+                    SetBackgroudColor( grid, primaryBackColor );
+                    SetHorizontalAligment( grid, left );
                     worksheet.Cells[ row, column ].Value = "Account";
                     worksheet.Cells[ row, column + 1 ].Value = "Site";
                     worksheet.Cells[ row, column + 2 ].Value = "Travel";
@@ -204,12 +204,12 @@ namespace BudgetExecution
                 {
                     range.Style.Font.Color.SetColor( Color.Black );
 
-                    using( Font )
+                    using( font )
                     {
-                        range.Style.Font.SetFromFont( Font );
+                        range.Style.Font.SetFromFont( font );
                         range.Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        range.Style.Fill.BackgroundColor.SetColor( PrimaryBackColor );
-                        range.Style.HorizontalAlignment = Center;
+                        range.Style.Fill.BackgroundColor.SetColor( primaryBackColor );
+                        range.Style.HorizontalAlignment = center;
                         range.Style.Border.Bottom.Style = ExcelBorderStyle.Hair;
                     }
                 }
@@ -233,14 +233,14 @@ namespace BudgetExecution
             {
                 try
                 {
-                    range.Style.Font.Color.SetColor( FontColor );
+                    range.Style.Font.Color.SetColor( fontColor );
 
-                    using( Font )
+                    using( font )
                     {
-                        range.Style.Font.SetFromFont( Font );
+                        range.Style.Font.SetFromFont( font );
                         range.Style.Fill.PatternType = ExcelFillStyle.Solid;
                         range.Style.Fill.BackgroundColor.SetColor( Color.White );
-                        range.Style.HorizontalAlignment = Center;
+                        range.Style.HorizontalAlignment = center;
                         range.Style.Border.Bottom.Style = ExcelBorderStyle.Hair;
                     }
                 }
@@ -335,12 +335,12 @@ namespace BudgetExecution
                 {
                     SetHeaderText( grid );
                     using var range = grid.GetRange();
-                    using var font = TitleFont;
-                    range.Style.Font.SetFromFont( TitleFont );
+                    using var font = titleFont;
+                    range.Style.Font.SetFromFont( titleFont );
                     range.Style.Border.BorderAround( ExcelBorderStyle.Thin );
                     range.Style.Fill.PatternType = ExcelFillStyle.Solid;
-                    range.Style.Fill.BackgroundColor.SetColor( PrimaryBackColor );
-                    range.Style.HorizontalAlignment = Center;
+                    range.Style.Fill.BackgroundColor.SetColor( primaryBackColor );
+                    range.Style.HorizontalAlignment = center;
                 }
                 catch( Exception ex )
                 {
@@ -372,7 +372,7 @@ namespace BudgetExecution
                         range.Start.Column + 6 ];
 
                     total.Style.Fill.PatternType = ExcelFillStyle.Solid;
-                    total.Style.Fill.BackgroundColor.SetColor( PrimaryBackColor );
+                    total.Style.Fill.BackgroundColor.SetColor( primaryBackColor );
                     data.Style.Border.Bottom.Style = ExcelBorderStyle.Double;
                 }
                 catch( Exception ex )
@@ -398,8 +398,8 @@ namespace BudgetExecution
         [ SuppressMessage( "ReSharper", "UnusedParameter.Global" ) ]
         private protected void Dispose( bool disposing )
         {
-            TitleFont?.Dispose();
-            Font?.Dispose();
+            titleFont?.Dispose();
+            font?.Dispose();
         }
 
         /// <summary>

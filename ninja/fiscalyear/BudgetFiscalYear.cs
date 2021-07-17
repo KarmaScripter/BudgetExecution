@@ -43,7 +43,7 @@ namespace BudgetExecution
         /// <summary>
         /// Gets the source.
         /// </summary>
-        private static readonly Source Source = Source.FiscalYears;
+        private static readonly Source _source = Source.FiscalYears;
 
         // ***************************************************************************************************************************
         // *********************************************   CONSTRUCTORS **************************************************************
@@ -54,7 +54,7 @@ namespace BudgetExecution
         /// </summary>
         public BudgetFiscalYear()
         {
-            Record = new DataBuilder( Source, Provider.SQLite, SetArgs( GetCurrentYear().ToString() ) )
+            Record = new DataBuilder( BudgetFiscalYear._source, Provider.SQLite, SetArgs( GetCurrentYear().ToString() ) )
                 ?.GetRecord();
 
             FiscalYearId = new Key( Record, PrimaryKey.FiscalYearId );
@@ -83,7 +83,7 @@ namespace BudgetExecution
         public BudgetFiscalYear( string bfy )
         {
             InputYear = new Element( Field.BFY, bfy );
-            Record = new DataBuilder( Source, SetArgs( bfy ) )?.GetRecord();
+            Record = new DataBuilder( BudgetFiscalYear._source, SetArgs( bfy ) )?.GetRecord();
             FiscalYearId = new Key( Record, PrimaryKey.FiscalYearId );
             BBFY = new Element( Record, Field.BBFY );
             EBFY = new Element( Record, Field.EBFY );
@@ -161,7 +161,7 @@ namespace BudgetExecution
         /// </param>
         public BudgetFiscalYear( BFY fy )
         {
-            Record = new DataBuilder( Source, Provider.SQLite, SetArgs( fy ) )?.GetRecord();
+            Record = new DataBuilder( BudgetFiscalYear._source, Provider.SQLite, SetArgs( fy ) )?.GetRecord();
             FiscalYearId = new Key( Record, PrimaryKey.FiscalYearId );
             BBFY = new Element( Record, Field.BBFY );
             EBFY = new Element( Record, Field.EBFY );
@@ -413,8 +413,8 @@ namespace BudgetExecution
         {
             try
             {
-                return Verify.Source( Source )
-                    ? Source
+                return Verify.Source( BudgetFiscalYear._source )
+                    ? BudgetFiscalYear._source
                     : Source.NS;
             }
             catch( Exception ex )

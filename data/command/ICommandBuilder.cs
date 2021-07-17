@@ -1,6 +1,6 @@
-﻿// // <copyright file = "ICommandBuilder.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+﻿// <copyright file = "ICommandBuilder.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 namespace BudgetExecution
 {
@@ -24,23 +24,23 @@ namespace BudgetExecution
 
         /// <summary> Gets the command. </summary>
         /// <returns> </returns>
-        DbCommand GetCommand( );
+        DbCommand GetCommand();
 
         /// <summary> Gets the source. </summary>
         /// <returns> </returns>
-        Source GetSource( );
+        Source GetSource();
 
         /// <summary> Gets the provider. </summary>
         /// <returns> </returns>
-        Provider GetProvider( );
+        Provider GetProvider();
 
         /// <summary> Gets the connection manager. </summary>
         /// <returns> </returns>
-        IConnectionBuilder GetConnectionBuilder( );
+        IConnectionBuilder GetConnectionBuilder();
 
         /// <summary> Gets the SQL statement. </summary>
         /// <returns> </returns>
-        ISqlStatement GetSqlStatement( );
+        ISqlStatement GetSqlStatement();
 
         /// <summary> Gets the sq lite command. </summary>
         /// <param name = "sqlstatement" > The sqlstatement. </param>

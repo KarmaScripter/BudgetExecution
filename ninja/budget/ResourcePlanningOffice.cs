@@ -32,7 +32,7 @@ namespace BudgetExecution
         /// <summary>
         /// The source
         /// </summary>
-        private static readonly Source Source = Source.ResourcePlanningOffices;
+        private static readonly Source _source = Source.ResourcePlanningOffices;
 
         // ***************************************************************************************************************************
         // *********************************************   CONSTRUCTORS **************************************************************
@@ -101,7 +101,7 @@ namespace BudgetExecution
         public ResourcePlanningOffice( string rpiocode )
             : this()
         {
-            Record = new DataBuilder( Source, SetArgs( rpiocode ) )?.GetRecord();
+            Record = new DataBuilder( ResourcePlanningOffice._source, SetArgs( rpiocode ) )?.GetRecord();
             ID = new Key( Record, PrimaryKey.ResourcePlanningOfficeId );
             Name = new Element( Record, Field.Name );
             Code = new Element( Record, Field.Code );
@@ -305,8 +305,8 @@ namespace BudgetExecution
         {
             try
             {
-                return Verify.Source( Source )
-                    ? Source
+                return Verify.Source( ResourcePlanningOffice._source )
+                    ? ResourcePlanningOffice._source
                     : Source.NS;
             }
             catch( Exception ex )

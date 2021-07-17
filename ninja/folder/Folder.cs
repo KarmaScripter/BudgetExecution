@@ -40,7 +40,7 @@ namespace BudgetExecution
         /// <param name="file">The file.</param>
         public Folder( IFile file )
         {
-            DataFile = file;
+            dataFile = file;
             DirectoryInfo = GetBaseDirectory();
             FolderName = DirectoryInfo.Name;
             FolderPath = DirectoryInfo.FullName;

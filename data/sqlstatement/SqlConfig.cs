@@ -1,6 +1,6 @@
-﻿// // <copyright file = "SqlConfig.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+﻿// <copyright file = "SqlConfig.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 namespace BudgetExecution
 {
@@ -19,16 +19,17 @@ namespace BudgetExecution
     using System.Threading;
 
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
+    [ SuppressMessage( "ReSharper", "InconsistentNaming" ) ]
     public abstract class SqlConfig : SqlBase, IProvider, ISource
     {
         // ***************************************************************************************************************************
         // *********************************************      FIELDS    **************************************************************
         // ***************************************************************************************************************************
 
-        private protected readonly EXT Extension = EXT.SQL;
+        private protected readonly EXT extension = EXT.SQL;
 
         /// <summary> The provider path </summary>
-        private protected readonly NameValueCollection ProviderPath =
+        private protected readonly NameValueCollection providerPath =
             ConfigurationManager.AppSettings;
 
         // **********************************************************************************************************************
@@ -61,7 +62,7 @@ namespace BudgetExecution
 
         /// <summary> Gets the source. </summary>
         /// <returns> </returns>
-        public Source GetSource( )
+        public Source GetSource()
         {
             try
             {
@@ -78,7 +79,7 @@ namespace BudgetExecution
 
         /// <summary> Gets the provider. </summary>
         /// <returns> </returns>
-        public Provider GetProvider( )
+        public Provider GetProvider()
         {
             try
             {
@@ -96,7 +97,7 @@ namespace BudgetExecution
         /// <inheritdoc/>
         /// <summary> Gets the type of the command. </summary>
         /// <returns> SQL </returns>
-        public SQL GetCommandType( )
+        public SQL GetCommandType()
         {
             try
             {
@@ -114,32 +115,32 @@ namespace BudgetExecution
         /// <inheritdoc/>
         /// <summary> Gets the arguments. </summary>
         /// <returns> </returns>
-        public IDictionary<string, object> GetArgs( )
+        public IDictionary<string, object> GetArgs()
         {
-            if( Args.Any( ) )
+            if( Args.Any() )
             {
                 try
                 {
-                    return Args ?? new Dictionary<string, object>( );
+                    return Args ?? new Dictionary<string, object>();
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return new Dictionary<string, object>( );
+                    return new Dictionary<string, object>();
                 }
             }
 
-            return new Dictionary<string, object>( );
+            return new Dictionary<string, object>();
         }
 
         /// <inheritdoc/>
         /// <summary> Gets the connection manager. </summary>
         /// <returns> </returns>
-        public IConnectionBuilder GetConnectionBuilder( )
+        public IConnectionBuilder GetConnectionBuilder()
         {
             try
             {
-                return Verify.Input( ConnectionBuilder?.GetConnectionString( ) )
+                return Verify.Input( ConnectionBuilder?.GetConnectionString() )
                     ? ConnectionBuilder
                     : default( ConnectionBuilder );
             }
@@ -152,7 +153,7 @@ namespace BudgetExecution
 
         /// <summary> Gets the command text. </summary>
         /// <returns> </returns>
-        public string GetCommandText( )
+        public string GetCommandText()
         {
             try
             {
@@ -169,26 +170,26 @@ namespace BudgetExecution
 
         /// <summary> Gets the script files. </summary>
         /// <returns> </returns>
-        public IEnumerable<string> GetScriptFiles( )
+        public IEnumerable<string> GetScriptFiles()
         {
             if( Verify.Provider( Provider )
                 && Enum.IsDefined( typeof( SQL ), CommandType ) )
             {
                 try
                 {
-                    var directory = ProviderPath[ $"{Provider}" ] + $@"\{CommandType}";
+                    var directory = providerPath[ $"{Provider}" ] + $@"\{CommandType}";
 
-                    if( Verify.Input( directory )
-                        && Directory.Exists( directory ) )
+                    if( !Verify.Input( directory )
+                        || !Directory.Exists( directory ) )
                     {
-                        var scriptfiles = Directory.GetFiles( directory );
-
-                        return scriptfiles?.Any( ) == true
-                            ? scriptfiles
-                            : default( string[ ] );
+                        return default( IEnumerable<string> );
                     }
 
-                    return default( IEnumerable<string> );
+                    var _scriptfiles = Directory.GetFiles( directory );
+
+                    return _scriptfiles?.Any() == true
+                        ? _scriptfiles
+                        : default( string[ ] );
                 }
                 catch( Exception ex )
                 {

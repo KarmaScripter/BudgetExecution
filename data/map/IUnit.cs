@@ -1,6 +1,6 @@
-﻿// // <copyright file = "IUnit.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+﻿// <copyright file = "IUnit.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 namespace BudgetExecution
 {
@@ -19,15 +19,15 @@ namespace BudgetExecution
 
         /// <summary> Gets the name. </summary>
         /// <returns> </returns>
-        string GetName( );
+        string GetName();
 
         /// <summary> Gets the value. </summary>
         /// <returns> </returns>
-        string GetValue( );
+        string GetValue();
 
         /// <summary> Gets the data. </summary>
         /// <returns> </returns>
-        object GetData( );
+        object GetData();
 
         /// <summary> Determines whether the specified unit is equal. </summary>
         /// <param name = "unit" > The unit. </param>
@@ -45,6 +45,6 @@ namespace BudgetExecution
         /// <see cref = "System.String"/>
         /// that represents this instance.
         /// </returns>
-        string ToString( );
+        string ToString();
     }
 }

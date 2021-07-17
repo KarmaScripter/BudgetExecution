@@ -26,7 +26,7 @@ namespace BudgetExecution
         /// <summary>
         /// The source
         /// </summary>
-        private static readonly Source Source = Source.ProgramAreas;
+        private static readonly Source _source = Source.ProgramAreas;
 
         // ***************************************************************************************************************************
         // *********************************************   CONSTRUCTORS **************************************************************
@@ -93,7 +93,7 @@ namespace BudgetExecution
         /// </param>
         public ProgramArea( string code )
         {
-            Record = new DataBuilder( Source, SetArgs( code ) )?.GetRecord();
+            Record = new DataBuilder( ProgramArea._source, SetArgs( code ) )?.GetRecord();
             ID = new Key( Record, PrimaryKey.ProgramAreaId );
             Name = new Element( Record, Field.Name );
             Code = new Element( Record, Field.Code );
@@ -305,8 +305,8 @@ namespace BudgetExecution
         {
             try
             {
-                return Verify.Source( Source )
-                    ? Source
+                return Verify.Source( ProgramArea._source )
+                    ? ProgramArea._source
                     : Source.NS;
             }
             catch( Exception ex )

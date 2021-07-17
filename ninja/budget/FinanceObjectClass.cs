@@ -1,6 +1,6 @@
-﻿// // <copyright file = "FinanceObjectClass.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+﻿// <copyright file = "FinanceObjectClass.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 namespace BudgetExecution
 {
@@ -28,7 +28,7 @@ namespace BudgetExecution
         // **************************************************************************************************************************
 
         /// <summary> The source </summary>
-        private static readonly Source Source = Source.FinanceObjectClass;
+        private static readonly Source _source = Source.FinanceObjectClass;
 
         // ***************************************************************************************************************************
         // *********************************************   CONSTRUCTORS **************************************************************
@@ -96,7 +96,7 @@ namespace BudgetExecution
         /// <param name = "foccode" > The foccode. </param>
         public FinanceObjectClass( string foccode )
         {
-            Record = new DataBuilder( Source, GetArgs( foccode ) )?.GetRecord( );
+            Record = new DataBuilder( FinanceObjectClass._source, GetArgs( foccode ) )?.GetRecord( );
             ID = new Key( Record, PrimaryKey.FinanceObjectClassId );
             Name = new Element( Record, Field.Name );
             Code = new Element( Record, Field.Code );
@@ -273,8 +273,8 @@ namespace BudgetExecution
         {
             try
             {
-                return Verify.Source( Source )
-                    ? Source
+                return Verify.Source( FinanceObjectClass._source )
+                    ? FinanceObjectClass._source
                     : Source.NS;
             }
             catch( SystemException ex )

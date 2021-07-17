@@ -1,6 +1,6 @@
-﻿// // <copyright file = "SqlFactory.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+﻿// <copyright file = "SqlFactory.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 namespace BudgetExecution
 {
@@ -32,12 +32,12 @@ namespace BudgetExecution
         /// <param name = "command" > The command. </param>
         public SqlFactory( IConnectionBuilder builder, SQL command = SQL.SELECT )
         {
-            Source = builder.GetSource( );
-            Provider = builder.GetProvider( );
+            Source = builder.GetSource();
+            Provider = builder.GetProvider();
             CommandType = command;
             ConnectionBuilder = builder;
             SqlStatement = new SqlStatement( ConnectionBuilder, CommandType );
-            FilePath = Path.GetFullPath( ProviderPath[ Provider.ToString( ) ] );
+            FilePath = Path.GetFullPath( providerPath[ Provider.ToString() ] );
             FileName = Path.GetFileNameWithoutExtension( FilePath );
         }
 
@@ -51,12 +51,12 @@ namespace BudgetExecution
         public SqlFactory( string filepath, SQL command = SQL.SELECT )
         {
             ConnectionBuilder = new ConnectionBuilder( filepath );
-            Source = ConnectionBuilder.GetSource( );
-            Provider = ConnectionBuilder.GetProvider( );
+            Source = ConnectionBuilder.GetSource();
+            Provider = ConnectionBuilder.GetProvider();
             CommandType = command;
             SqlStatement = new SqlStatement( ConnectionBuilder, CommandType );
-            FileName = ConnectionBuilder.GetFileName( );
-            FilePath = ConnectionBuilder.GetFilePath( );
+            FileName = ConnectionBuilder.GetFileName();
+            FilePath = ConnectionBuilder.GetFilePath();
         }
     }
 }

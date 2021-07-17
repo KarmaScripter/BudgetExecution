@@ -1,6 +1,6 @@
-﻿// // <copyright file = "SqlBase.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+﻿// <copyright file = "SqlBase.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 namespace BudgetExecution
 {
@@ -53,7 +53,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                SqlBase.Fail( ex );
             }
         }
 
@@ -61,17 +61,17 @@ namespace BudgetExecution
         /// <param name = "dict" > The dictionary. </param>
         private protected void SetArgs( IDictionary<string, object> dict )
         {
-            if( dict?.Any( ) == true )
+            if( dict?.Any() == true )
             {
                 try
                 {
-                    Args = dict?.Any( ) == true
+                    Args = dict?.Any() == true
                         ? dict
-                        : new Dictionary<string, object>( );
+                        : new Dictionary<string, object>();
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    SqlBase.Fail( ex );
                 }
             }
         }
@@ -84,28 +84,28 @@ namespace BudgetExecution
             try
             {
                 CommandType = Enum.IsDefined( typeof( SQL ), commandtype )
-                    && Enum.GetNames( typeof( SQL ) ).Contains( commandtype.ToString( ) )
+                    && Enum.GetNames( typeof( SQL ) ).Contains( commandtype.ToString() )
                         ? commandtype
                         : SQL.SELECT;
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                SqlBase.Fail( ex );
             }
         }
 
         /// <summary> Sets the select statement. </summary>
-        private protected void SetSelectStatement( )
+        private protected void SetSelectStatement()
         {
             try
             {
-                CommandText = Verify.Input( ConnectionBuilder?.GetConnectionString( ) )
-                    ? $"{SQL.SELECT} * FROM {ConnectionBuilder?.GetTableName( )};"
+                CommandText = Verify.Input( ConnectionBuilder?.GetConnectionString() )
+                    ? $"{SQL.SELECT} * FROM {ConnectionBuilder?.GetTableName()};"
                     : string.Empty;
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                SqlBase.Fail( ex );
             }
         }
 
@@ -124,18 +124,18 @@ namespace BudgetExecution
                         vals += $"{kvp.Key} = '{kvp.Value}' AND";
                     }
 
-                    var values = vals.TrimEnd( " AND".ToCharArray( ) );
-                    var table = ConnectionBuilder?.GetTableName( );
+                    var values = vals.TrimEnd( " AND".ToCharArray() );
+                    var table = ConnectionBuilder?.GetTableName();
                     CommandText = $"{SQL.SELECT} * FROM {table} WHERE {values};";
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    SqlBase.Fail( ex );
                 }
             }
             else if( dict == null )
             {
-                CommandText = $"{SQL.SELECT} * FROM {ConnectionBuilder?.GetTableName( )};";
+                CommandText = $"{SQL.SELECT} * FROM {ConnectionBuilder?.GetTableName()};";
             }
         }
 
@@ -154,12 +154,12 @@ namespace BudgetExecution
                         update += $" {kvp.Key} = '{kvp.Value}' AND";
                     }
 
-                    var vals = update.TrimEnd( " AND".ToCharArray( ) );
-                    CommandText = $"{SQL.UPDATE} {ConnectionBuilder?.GetTableName( )} SET {vals};";
+                    var vals = update.TrimEnd( " AND".ToCharArray() );
+                    CommandText = $"{SQL.UPDATE} {ConnectionBuilder?.GetTableName()} SET {vals};";
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    SqlBase.Fail( ex );
                 }
             }
         }
@@ -172,7 +172,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var table = ConnectionBuilder?.GetTableName( );
+                    var table = ConnectionBuilder?.GetTableName();
                     var colname = string.Empty;
                     var vals = string.Empty;
 
@@ -183,13 +183,13 @@ namespace BudgetExecution
                     }
 
                     var values =
-                        $"({colname.TrimEnd( ", ".ToCharArray( ) )}) VALUES ({vals.TrimEnd( ", ".ToCharArray( ) )})";
+                        $"({colname.TrimEnd( ", ".ToCharArray() )}) VALUES ({vals.TrimEnd( ", ".ToCharArray() )})";
 
                     CommandText = $"{SQL.INSERT} INTO {table} {values};";
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    SqlBase.Fail( ex );
                 }
             }
         }
@@ -209,18 +209,18 @@ namespace BudgetExecution
                         vals += $"{kvp.Key} = '{kvp.Value}' AND ";
                     }
 
-                    var values = vals.TrimEnd( " AND".ToCharArray( ) );
-                    var table = ConnectionBuilder?.GetTableName( );
+                    var values = vals.TrimEnd( " AND".ToCharArray() );
+                    var table = ConnectionBuilder?.GetTableName();
                     CommandText = $"{SQL.DELETE} FROM {table} WHERE {values};";
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    SqlBase.Fail( ex );
                 }
             }
             else if( dict == null )
             {
-                CommandText = $"{SQL.DELETE} * FROM {ConnectionBuilder?.GetTableName( )};";
+                CommandText = $"{SQL.DELETE} * FROM {ConnectionBuilder?.GetTableName()};";
             }
         }
 
@@ -236,7 +236,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                SqlBase.Fail( ex );
             }
         }
 
@@ -246,9 +246,9 @@ namespace BudgetExecution
         public void SetCommandText( IDictionary<string, object> dict, SQL command = SQL.SELECT )
         {
             if( dict == null
-                && Verify.Input( ConnectionBuilder?.GetConnectionString( ) ) )
+                && Verify.Input( ConnectionBuilder?.GetConnectionString() ) )
             {
-                SetSelectStatement( );
+                SetSelectStatement();
             }
             else if( Verify.Map( dict ) )
             {
@@ -283,7 +283,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    SqlBase.Fail( ex );
                 }
             }
         }
@@ -293,8 +293,8 @@ namespace BudgetExecution
         private protected static void Fail( Exception ex )
         {
             using var error = new Error( ex );
-            error?.SetText( );
-            error?.ShowDialog( );
+            error?.SetText();
+            error?.ShowDialog();
         }
 
         /// <summary> Converts to string. </summary>
@@ -303,7 +303,7 @@ namespace BudgetExecution
         /// <see cref = "System.String"/>
         /// that represents this instance.
         /// </returns>
-        public override string ToString( )
+        public override string ToString()
         {
             try
             {
@@ -313,7 +313,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                SqlBase.Fail( ex );
                 return string.Empty;
             }
         }

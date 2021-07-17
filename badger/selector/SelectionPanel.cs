@@ -31,7 +31,7 @@ namespace BudgetExecution
         /// <summary>
         /// Defines the AppSettings
         /// </summary>
-        private readonly NameValueCollection Settings = ConfigurationManager.AppSettings;
+        private readonly NameValueCollection _settings = ConfigurationManager.AppSettings;
 
         // **************************************************************************************************************************
         // ********************************************   CONSTRUCTORS     **********************************************************

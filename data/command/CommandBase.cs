@@ -1,6 +1,6 @@
-﻿// // <copyright file = "CommandBase.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+﻿// <copyright file = "CommandBase.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 namespace BudgetExecution
 {
@@ -14,8 +14,10 @@ namespace BudgetExecution
     using System.Data.SqlClient;
     using System.Data.SQLite;
     using System.Data.SqlServerCe;
+    using System.Diagnostics.CodeAnalysis;
     using System.Threading;
 
+    [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     public abstract class CommandBase : ISource, IProvider
     {
         // ***************************************************************************************************************************
@@ -46,7 +48,7 @@ namespace BudgetExecution
 
         /// <summary> Gets the source. </summary>
         /// <returns> </returns>
-        public Source GetSource( )
+        public Source GetSource()
         {
             try
             {
@@ -56,14 +58,14 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                CommandBase.Fail( ex );
                 return default( Source );
             }
         }
 
         /// <summary> Gets the provider. </summary>
         /// <returns> </returns>
-        public Provider GetProvider( )
+        public Provider GetProvider()
         {
             try
             {
@@ -73,7 +75,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                CommandBase.Fail( ex );
                 return default( Provider );
             }
         }
@@ -88,13 +90,13 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                CommandBase.Fail( ex );
             }
         }
 
         /// <summary> Gets the connection manager. </summary>
         /// <returns> </returns>
-        public IConnectionBuilder GetConnectionBuilder( )
+        public IConnectionBuilder GetConnectionBuilder()
         {
             try
             {
@@ -104,14 +106,14 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                CommandBase.Fail( ex );
                 return default( IConnectionBuilder );
             }
         }
 
         /// <summary> Gets the SQL statement. </summary>
         /// <returns> </returns>
-        public ISqlStatement GetSqlStatement( )
+        public ISqlStatement GetSqlStatement()
         {
             try
             {
@@ -121,7 +123,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                CommandBase.Fail( ex );
                 return default( ISqlStatement );
             }
         }
@@ -135,13 +137,13 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var connection = new ConnectionFactory( ConnectionBuilder )?.GetConnection( );
+                    var connection = new ConnectionFactory( ConnectionBuilder )?.GetConnection();
 
-                    switch( sqlstatement?.GetCommandType( ) )
+                    switch( sqlstatement?.GetCommandType() )
                     {
                         case SQL.SELECT:
                         {
-                            var sql = sqlstatement?.GetSelectStatement( );
+                            var sql = sqlstatement?.GetSelectStatement();
 
                             return Verify.Input( sql )
                                 ? new SQLiteCommand( sql, connection as SQLiteConnection )
@@ -150,7 +152,7 @@ namespace BudgetExecution
 
                         case SQL.INSERT:
                         {
-                            var sql = sqlstatement?.GetInsertStatement( );
+                            var sql = sqlstatement?.GetInsertStatement();
 
                             return Verify.Input( sql )
                                 ? new SQLiteCommand( sql, connection as SQLiteConnection )
@@ -159,7 +161,7 @@ namespace BudgetExecution
 
                         case SQL.UPDATE:
                         {
-                            var sql = sqlstatement?.GetUpdateStatement( );
+                            var sql = sqlstatement?.GetUpdateStatement();
 
                             return Verify.Input( sql )
                                 ? new SQLiteCommand( sql, connection as SQLiteConnection )
@@ -168,7 +170,7 @@ namespace BudgetExecution
 
                         case SQL.DELETE:
                         {
-                            var sql = sqlstatement?.GetDeleteStatement( );
+                            var sql = sqlstatement?.GetDeleteStatement();
 
                             return Verify.Input( sql )
                                 ? new SQLiteCommand( sql, connection as SQLiteConnection )
@@ -177,7 +179,7 @@ namespace BudgetExecution
 
                         default:
                         {
-                            var sql = sqlstatement?.GetSelectStatement( );
+                            var sql = sqlstatement?.GetSelectStatement();
 
                             return Verify.Input( sql )
                                 ? new SQLiteCommand( sql, connection as SQLiteConnection )
@@ -187,7 +189,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    CommandBase.Fail( ex );
                     return default( DbCommand );
                 }
             }
@@ -204,15 +206,15 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var connection = new ConnectionFactory( ConnectionBuilder )?.GetConnection( );
+                    var connection = new ConnectionFactory( ConnectionBuilder )?.GetConnection();
 
                     if( Verify.Input( connection?.ConnectionString ) )
                     {
-                        switch( sqlstatement?.GetCommandType( ) )
+                        switch( sqlstatement?.GetCommandType() )
                         {
                             case SQL.SELECT:
                             {
-                                var sql = sqlstatement?.GetSelectStatement( );
+                                var sql = sqlstatement?.GetSelectStatement();
 
                                 return Verify.Input( sql )
                                     ? new SqlCeCommand( sql, connection as SqlCeConnection )
@@ -221,7 +223,7 @@ namespace BudgetExecution
 
                             case SQL.INSERT:
                             {
-                                var sql = sqlstatement?.GetInsertStatement( );
+                                var sql = sqlstatement?.GetInsertStatement();
 
                                 return Verify.Input( sql )
                                     ? new SqlCeCommand( sql, connection as SqlCeConnection )
@@ -230,7 +232,7 @@ namespace BudgetExecution
 
                             case SQL.UPDATE:
                             {
-                                var sql = sqlstatement?.GetUpdateStatement( );
+                                var sql = sqlstatement?.GetUpdateStatement();
 
                                 return Verify.Input( sql )
                                     ? new SqlCeCommand( sql, connection as SqlCeConnection )
@@ -239,7 +241,7 @@ namespace BudgetExecution
 
                             case SQL.DELETE:
                             {
-                                var sql = sqlstatement?.GetDeleteStatement( );
+                                var sql = sqlstatement?.GetDeleteStatement();
 
                                 return Verify.Input( sql )
                                     ? new SqlCeCommand( sql, connection as SqlCeConnection )
@@ -248,7 +250,7 @@ namespace BudgetExecution
 
                             default:
                             {
-                                var sql = sqlstatement?.GetSelectStatement( );
+                                var sql = sqlstatement?.GetSelectStatement();
 
                                 return Verify.Input( sql )
                                     ? new SqlCeCommand( sql, connection as SqlCeConnection )
@@ -259,7 +261,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    CommandBase.Fail( ex );
                     return default( DbCommand );
                 }
             }
@@ -276,13 +278,13 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var connection = new ConnectionFactory( ConnectionBuilder )?.GetConnection( );
+                    var connection = new ConnectionFactory( ConnectionBuilder )?.GetConnection();
 
-                    switch( sqlstatement?.GetCommandType( ) )
+                    switch( sqlstatement?.GetCommandType() )
                     {
                         case SQL.SELECT:
                         {
-                            var sql = sqlstatement?.GetSelectStatement( );
+                            var sql = sqlstatement?.GetSelectStatement();
 
                             return Verify.Input( sql )
                                 ? new SqlCommand( sql, connection as SqlConnection )
@@ -291,7 +293,7 @@ namespace BudgetExecution
 
                         case SQL.INSERT:
                         {
-                            var sql = sqlstatement?.GetInsertStatement( );
+                            var sql = sqlstatement?.GetInsertStatement();
 
                             return Verify.Input( sql )
                                 ? new SqlCommand( sql, connection as SqlConnection )
@@ -300,7 +302,7 @@ namespace BudgetExecution
 
                         case SQL.UPDATE:
                         {
-                            var sql = sqlstatement?.GetUpdateStatement( );
+                            var sql = sqlstatement?.GetUpdateStatement();
 
                             return Verify.Input( sql )
                                 ? new SqlCommand( sql, connection as SqlConnection )
@@ -309,7 +311,7 @@ namespace BudgetExecution
 
                         case SQL.DELETE:
                         {
-                            var sql = sqlstatement?.GetDeleteStatement( );
+                            var sql = sqlstatement?.GetDeleteStatement();
 
                             return Verify.Input( sql )
                                 ? new SqlCommand( sql, connection as SqlConnection )
@@ -318,7 +320,7 @@ namespace BudgetExecution
 
                         default:
                         {
-                            var sql = sqlstatement?.GetSelectStatement( );
+                            var sql = sqlstatement?.GetSelectStatement();
 
                             return Verify.Input( sql )
                                 ? new SqlCommand( sql, connection as SqlConnection )
@@ -328,7 +330,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    CommandBase.Fail( ex );
                     return default( DbCommand );
                 }
             }
@@ -345,13 +347,13 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var connection = new ConnectionFactory( ConnectionBuilder )?.GetConnection( );
+                    var connection = new ConnectionFactory( ConnectionBuilder )?.GetConnection();
 
-                    switch( sqlstatement?.GetCommandType( ) )
+                    switch( sqlstatement?.GetCommandType() )
                     {
                         case SQL.SELECT:
                         {
-                            var sql = sqlstatement?.GetSelectStatement( );
+                            var sql = sqlstatement?.GetSelectStatement();
 
                             return Verify.Input( sql )
                                 ? new OleDbCommand( sql, connection as OleDbConnection )
@@ -360,7 +362,7 @@ namespace BudgetExecution
 
                         case SQL.INSERT:
                         {
-                            var sql = sqlstatement?.GetInsertStatement( );
+                            var sql = sqlstatement?.GetInsertStatement();
 
                             return Verify.Input( sql )
                                 ? new OleDbCommand( sql, connection as OleDbConnection )
@@ -369,7 +371,7 @@ namespace BudgetExecution
 
                         case SQL.UPDATE:
                         {
-                            var sql = sqlstatement.GetUpdateStatement( );
+                            var sql = sqlstatement.GetUpdateStatement();
 
                             return Verify.Input( sql )
                                 ? new OleDbCommand( sql, connection as OleDbConnection )
@@ -378,7 +380,7 @@ namespace BudgetExecution
 
                         case SQL.DELETE:
                         {
-                            var sql = sqlstatement?.GetDeleteStatement( );
+                            var sql = sqlstatement?.GetDeleteStatement();
 
                             return Verify.Input( sql )
                                 ? new OleDbCommand( sql, connection as OleDbConnection )
@@ -387,7 +389,7 @@ namespace BudgetExecution
 
                         default:
                         {
-                            var sql = sqlstatement?.GetSelectStatement( );
+                            var sql = sqlstatement?.GetSelectStatement();
 
                             return Verify.Input( sql )
                                 ? new OleDbCommand( sql, connection as OleDbConnection )
@@ -397,7 +399,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    CommandBase.Fail( ex );
                     return default( DbCommand );
                 }
             }
@@ -410,8 +412,8 @@ namespace BudgetExecution
         private protected static void Fail( Exception ex )
         {
             using var error = new Error( ex );
-            error?.SetText( );
-            error?.ShowDialog( );
+            error?.SetText();
+            error?.ShowDialog();
         }
     }
 }

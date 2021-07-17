@@ -29,7 +29,7 @@ namespace BudgetExecution
         /// <summary>
         /// The payroll
         /// </summary>
-        private readonly IPayrollBase Payroll;
+        private readonly IPayrollBase _payroll;
 
         // ***************************************************************************************************************************
         // *********************************************   CONSTRUCTORS **************************************************************
@@ -43,7 +43,7 @@ namespace BudgetExecution
         /// </param>
         public PayrollFactory( IQuery query )
         {
-            Payroll = new PayrollHours( query );
+            _payroll = new PayrollHours( query );
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace BudgetExecution
         /// </param>
         public PayrollFactory( IBuilder builder )
         {
-            Payroll = new PayrollHours( builder );
+            _payroll = new PayrollHours( builder );
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace BudgetExecution
         /// </param>
         public PayrollFactory( DataRow data )
         {
-            Payroll = new PayrollHours( data );
+            _payroll = new PayrollHours( data );
         }
 
         // ***************************************************************************************************************************
@@ -81,7 +81,7 @@ namespace BudgetExecution
         {
             try
             {
-                return Payroll?.GetId();
+                return _payroll?.GetId();
             }
             catch( Exception ex )
             {
@@ -99,7 +99,7 @@ namespace BudgetExecution
         {
             try
             {
-                return Payroll?.GetRpioCode();
+                return _payroll?.GetRpioCode();
             }
             catch( Exception ex )
             {
@@ -117,7 +117,7 @@ namespace BudgetExecution
         {
             try
             {
-                return Payroll?.GetPayPeriod();
+                return _payroll?.GetPayPeriod();
             }
             catch( Exception ex )
             {
@@ -135,7 +135,7 @@ namespace BudgetExecution
         {
             try
             {
-                return Payroll.GetCalendarDate();
+                return _payroll.GetCalendarDate();
             }
             catch( Exception ex )
             {
@@ -153,7 +153,7 @@ namespace BudgetExecution
         {
             try
             {
-                return Payroll.GetStartDate();
+                return _payroll.GetStartDate();
             }
             catch( Exception ex )
             {
@@ -171,7 +171,7 @@ namespace BudgetExecution
         {
             try
             {
-                return Payroll.GetEndDate();
+                return _payroll.GetEndDate();
             }
             catch( Exception ex )
             {
@@ -189,7 +189,7 @@ namespace BudgetExecution
         {
             try
             {
-                return Payroll?.GetEmployeeNumber();
+                return _payroll?.GetEmployeeNumber();
             }
             catch( Exception ex )
             {
@@ -207,7 +207,7 @@ namespace BudgetExecution
         {
             try
             {
-                return Payroll?.GetHrOrgCode();
+                return _payroll?.GetHrOrgCode();
             }
             catch( Exception ex )
             {
@@ -226,7 +226,7 @@ namespace BudgetExecution
         {
             try
             {
-                return Payroll?.GetHrOrgName();
+                return _payroll?.GetHrOrgName();
             }
             catch( Exception ex )
             {
@@ -244,7 +244,7 @@ namespace BudgetExecution
         {
             try
             {
-                return Payroll?.GetWorkCode();
+                return _payroll?.GetWorkCode();
             }
             catch( Exception ex )
             {
@@ -262,7 +262,7 @@ namespace BudgetExecution
         {
             try
             {
-                return Payroll?.GetReportingCode();
+                return _payroll?.GetReportingCode();
             }
             catch( Exception ex )
             {
@@ -280,7 +280,7 @@ namespace BudgetExecution
         {
             try
             {
-                return Payroll?.GetReportingCodeName();
+                return _payroll?.GetReportingCodeName();
             }
             catch( Exception ex )
             {
@@ -298,7 +298,7 @@ namespace BudgetExecution
         {
             try
             {
-                return Payroll?.GetHours();
+                return _payroll?.GetHours();
             }
             catch( Exception ex )
             {

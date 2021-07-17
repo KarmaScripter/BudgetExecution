@@ -32,7 +32,7 @@ namespace BudgetExecution
         /// <summary>
         /// The source
         /// </summary>
-        private static readonly Source Source = Source.InformationTechnology;
+        private static readonly Source _source = Source.InformationTechnology;
 
         // ***************************************************************************************************************************
         // *********************************************   CONSTRUCTORS **************************************************************
@@ -111,7 +111,7 @@ namespace BudgetExecution
         /// </param>
         public InformationTechnology( string itcode )
         {
-            Record = new DataBuilder( Source, GetArgs( itcode ) )?.GetRecord();
+            Record = new DataBuilder( InformationTechnology._source, GetArgs( itcode ) )?.GetRecord();
             ID = new Key( Record, PrimaryKey.InformationTechnologyId );
             Name = new Element( Record, Field.Name );
             Code = new Element( Record, Field.Code );
@@ -428,8 +428,8 @@ namespace BudgetExecution
         {
             try
             {
-                return Verify.Source( Source )
-                    ? Source
+                return Verify.Source( InformationTechnology._source )
+                    ? InformationTechnology._source
                     : Source.NS;
             }
             catch( Exception ex )

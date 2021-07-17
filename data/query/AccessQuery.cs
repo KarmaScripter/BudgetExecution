@@ -1,6 +1,6 @@
-﻿// // <copyright file = "AccessQuery.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+﻿// <copyright file = "AccessQuery.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 namespace BudgetExecution
 {
@@ -28,7 +28,7 @@ namespace BudgetExecution
         /// <see cref = "AccessQuery"/>
         /// class.
         /// </summary>
-        public AccessQuery( )
+        public AccessQuery()
         {
         }
 
@@ -76,7 +76,7 @@ namespace BudgetExecution
         {
             if( disposing )
             {
-                Dispose( );
+                Dispose();
             }
 
             IsDisposed = true;

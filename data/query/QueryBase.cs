@@ -1,6 +1,6 @@
-﻿// // <copyright file = "QueryBase.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+﻿// <copyright file = "QueryBase.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 namespace BudgetExecution
 {
@@ -74,30 +74,30 @@ namespace BudgetExecution
 
         /// <summary> Gets the source. </summary>
         /// <returns> </returns>
-        public Source GetSource( )
+        public Source GetSource()
         {
             try
             {
-                return ConnectionBuilder?.GetSource( ) ?? default( Source );
+                return ConnectionBuilder?.GetSource() ?? default( Source );
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                QueryBase.Fail( ex );
                 return default( Source );
             }
         }
 
         /// <summary> Gets the provider. </summary>
         /// <returns> </returns>
-        public Provider GetProvider( )
+        public Provider GetProvider()
         {
             try
             {
-                return ConnectionBuilder?.GetProvider( ) ?? Provider.SQLite;
+                return ConnectionBuilder?.GetProvider() ?? Provider.SQLite;
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                QueryBase.Fail( ex );
                 return default( Provider );
             }
         }
@@ -109,13 +109,13 @@ namespace BudgetExecution
         {
             try
             {
-                return dict?.Any( ) == true
+                return dict?.Any() == true
                     ? dict
                     : default( IDictionary<string, object> );
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                QueryBase.Fail( ex );
                 return default( IDictionary<string, object> );
             }
         }
@@ -123,7 +123,7 @@ namespace BudgetExecution
         /// <inheritdoc/>
         /// <summary> Gets the arguments. </summary>
         /// <returns> </returns>
-        public IDictionary<string, object> GetArgs( )
+        public IDictionary<string, object> GetArgs()
         {
             try
             {
@@ -133,7 +133,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                QueryBase.Fail( ex );
                 return default( IDictionary<string, object> );
             }
         }
@@ -153,7 +153,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    QueryBase.Fail( ex );
                 }
             }
         }
@@ -172,7 +172,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    QueryBase.Fail( ex );
                 }
             }
         }
@@ -180,7 +180,7 @@ namespace BudgetExecution
         /// <inheritdoc/>
         /// <summary> Gets the connection manager. </summary>
         /// <returns> </returns>
-        public IConnectionBuilder GetConnectionBuilder( )
+        public IConnectionBuilder GetConnectionBuilder()
         {
             try
             {
@@ -188,14 +188,14 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                QueryBase.Fail( ex );
                 return default( IConnectionBuilder );
             }
         }
 
         /// <summary> Gets the command builder. </summary>
         /// <returns> </returns>
-        public ICommandBuilder GetCommandBuilder( )
+        public ICommandBuilder GetCommandBuilder()
         {
             try
             {
@@ -203,7 +203,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                QueryBase.Fail( ex );
                 return default( ICommandBuilder );
             }
         }
@@ -211,7 +211,7 @@ namespace BudgetExecution
         /// <inheritdoc/>
         /// <summary> Gets the SQL statement. </summary>
         /// <returns> </returns>
-        public ISqlStatement GetSqlStatement( )
+        public ISqlStatement GetSqlStatement()
         {
             try
             {
@@ -219,7 +219,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                QueryBase.Fail( ex );
                 return default( ISqlStatement );
             }
         }
@@ -227,15 +227,15 @@ namespace BudgetExecution
         /// <inheritdoc/>
         /// <summary> Gets the connection. </summary>
         /// <returns> </returns>
-        public DbConnection GetConnection( )
+        public DbConnection GetConnection()
         {
             try
             {
-                return ConnectionFactory?.GetConnection( ) ?? default( DbConnection );
+                return ConnectionFactory?.GetConnection() ?? default( DbConnection );
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                QueryBase.Fail( ex );
                 return default( DbConnection );
             }
         }
@@ -243,7 +243,7 @@ namespace BudgetExecution
         /// <inheritdoc/>
         /// <summary> Gets the command. </summary>
         /// <returns> </returns>
-        public DbCommand GetCommand( )
+        public DbCommand GetCommand()
         {
             if( SqlStatement != null
                 && CommandBuilder != null )
@@ -252,18 +252,18 @@ namespace BudgetExecution
                 {
                     var commandfactory = new CommandFactory( CommandBuilder );
 
-                    return SqlStatement?.GetCommandType( ) switch
+                    return SqlStatement?.GetCommandType() switch
                     {
-                        SQL.SELECT => commandfactory?.GetSelectCommand( ),
-                        SQL.INSERT => commandfactory?.GetSelectCommand( ),
-                        SQL.UPDATE => commandfactory?.GetSelectCommand( ),
-                        SQL.DELETE => commandfactory?.GetDeleteCommand( ),
+                        SQL.SELECT => commandfactory?.GetSelectCommand(),
+                        SQL.INSERT => commandfactory?.GetSelectCommand(),
+                        SQL.UPDATE => commandfactory?.GetSelectCommand(),
+                        SQL.DELETE => commandfactory?.GetDeleteCommand(),
                         _ => default( DbCommand )
                     };
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    QueryBase.Fail( ex );
                 }
             }
 
@@ -273,7 +273,7 @@ namespace BudgetExecution
         /// <inheritdoc/>
         /// <summary> Gets the adapter. </summary>
         /// <returns> </returns>
-        public DbDataAdapter GetAdapter( )
+        public DbDataAdapter GetAdapter()
         {
             try
             {
@@ -281,7 +281,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                QueryBase.Fail( ex );
                 return default( DbDataAdapter );
             }
         }
@@ -291,8 +291,8 @@ namespace BudgetExecution
         private protected static void Fail( Exception ex )
         {
             using var error = new Error( ex );
-            error?.SetText( );
-            error?.ShowDialog( );
+            error?.SetText();
+            error?.ShowDialog();
         }
     }
 }

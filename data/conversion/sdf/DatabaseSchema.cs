@@ -1,6 +1,6 @@
-// // <copyright file = "DatabaseSchema.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+// <copyright file = "DatabaseSchema.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 namespace BudgetExecution
 {
@@ -11,8 +11,8 @@ namespace BudgetExecution
     /// <summary> Contains the entire database schema </summary>
     public class DatabaseSchema
     {
-        public List<TableSchema> Tables = new List<TableSchema>( );
+        public List<TableSchema> tables = new List<TableSchema>();
 
-        public List<ViewSchema> Views = new List<ViewSchema>( );
+        public List<ViewSchema> views = new List<ViewSchema>();
     }
 }

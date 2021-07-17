@@ -1,6 +1,6 @@
-﻿// // <copyright file = "UnitBase.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+﻿// <copyright file = "UnitBase.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 namespace BudgetExecution
 {
@@ -50,7 +50,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                UnitBase.Fail( ex );
             }
         }
 
@@ -60,13 +60,13 @@ namespace BudgetExecution
         {
             try
             {
-                Data = Verify.Input( data?.ToString( ) )
+                Data = Verify.Input( data?.ToString() )
                     ? data
                     : default( object );
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                UnitBase.Fail( ex );
             }
         }
 
@@ -77,13 +77,13 @@ namespace BudgetExecution
         {
             try
             {
-                Value = Verify.Input( data?.ToString( ) )
-                    ? data?.ToString( )
+                Value = Verify.Input( data?.ToString() )
+                    ? data?.ToString()
                     : string.Empty;
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                UnitBase.Fail( ex );
             }
         }
 
@@ -101,12 +101,12 @@ namespace BudgetExecution
             {
                 try
                 {
-                    return unit.GetName( )?.Equals( Name ) == true
-                        && unit.GetValue( )?.Equals( Value ) == true;
+                    return unit.GetName()?.Equals( Name ) == true
+                        && unit.GetValue()?.Equals( Value ) == true;
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    UnitBase.Fail( ex );
                     return false;
                 }
             }
@@ -119,8 +119,8 @@ namespace BudgetExecution
         private protected static void Fail( Exception ex )
         {
             using var error = new Error( ex );
-            error?.SetText( );
-            error?.ShowDialog( );
+            error?.SetText();
+            error?.ShowDialog();
         }
     }
 }

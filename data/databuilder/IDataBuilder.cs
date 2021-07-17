@@ -1,6 +1,6 @@
-﻿// // <copyright file = "IDataBuilder.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+﻿// <copyright file = "IDataBuilder.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 namespace BudgetExecution
 {
@@ -16,6 +16,6 @@ namespace BudgetExecution
         // ***************************************************************************************************************************
         // ************************************************  METHODS   ***************************************************************
         // ****************************************************************************
-        IBuilder GetBuilder( );
+        IBuilder GetBuilder();
     }
 }

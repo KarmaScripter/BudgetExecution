@@ -32,7 +32,7 @@ namespace BudgetExecution
         /// <summary>
         /// The source
         /// </summary>
-        private static readonly Source Source = Source.NationalPrograms;
+        private static readonly Source _source = Source.NationalPrograms;
 
         // ***************************************************************************************************************************
         // *********************************************   CONSTRUCTORS **************************************************************
@@ -107,7 +107,7 @@ namespace BudgetExecution
         /// </param>
         public NationalProgram( string npmcode )
         {
-            Record = new DataBuilder( Source, GetArgs( npmcode ) )?.GetRecord();
+            Record = new DataBuilder( NationalProgram._source, GetArgs( npmcode ) )?.GetRecord();
             ID = new Key( Record, PrimaryKey.NationalProgramId );
             Name = new Element( Record, Field.Name );
             Code = new Element( Record, Field.Code );
@@ -406,8 +406,8 @@ namespace BudgetExecution
         {
             try
             {
-                return Verify.Source( Source )
-                    ? Source
+                return Verify.Source( NationalProgram._source )
+                    ? NationalProgram._source
                     : Source.NS;
             }
             catch( Exception ex )

@@ -1,6 +1,6 @@
-﻿// // <copyright file = "SqlCeQuery.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+﻿// <copyright file = "SqlCeQuery.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 namespace BudgetExecution
 {
@@ -25,7 +25,7 @@ namespace BudgetExecution
         // **********************************************************************************************************************
 
 #pragma warning disable CS0414// The field 'SqlCeQuery.Provider' is assigned but its value is never used
-        private readonly Provider Provider = Provider.SqlCe;
+        private readonly Provider _provider = Provider.SqlCe;
 #pragma warning restore CS0414// The field 'SqlCeQuery.Provider' is assigned but its value is never used
 
         // **********************************************************************************************************************
@@ -38,7 +38,7 @@ namespace BudgetExecution
         /// <see cref = "T:BudgetExecution.SqlCeQuery"/>
         /// class.
         /// </summary>
-        public SqlCeQuery( )
+        public SqlCeQuery()
         {
         }
 
@@ -89,7 +89,7 @@ namespace BudgetExecution
 
         /// <summary> Gets the excel file path. </summary>
         /// <returns> </returns>
-        private string GetExcelFilePath( )
+        private string GetExcelFilePath()
         {
             try
             {
@@ -97,14 +97,12 @@ namespace BudgetExecution
 
                 using var fdlg = new OpenFileDialog
                 {
-                    Title = "Excel File Dialog",
-                    InitialDirectory = @"c:\",
-                    Filter = "All files (*.*)|*.*|All files (*.*)|*.*",
-                    FilterIndex = 2,
+                    Title = "Excel File Dialog", InitialDirectory = @"c:\",
+                    Filter = "All files (*.*)|*.*|All files (*.*)|*.*", FilterIndex = 2,
                     RestoreDirectory = true
                 };
 
-                if( fdlg.ShowDialog( ) == DialogResult.OK )
+                if( fdlg.ShowDialog() == DialogResult.OK )
                 {
                     fname = fdlg.FileName;
                 }
@@ -113,7 +111,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                SqlCeQuery.Fail( ex );
                 return default( string );
             }
         }
@@ -129,19 +127,19 @@ namespace BudgetExecution
             {
                 try
                 {
-                    using var dataset = new DataSet( );
-                    using var datatable = new DataTable( );
+                    using var dataset = new DataSet();
+                    using var datatable = new DataTable();
                     dataset.DataSetName = filename;
                     datatable.TableName = sheetname;
                     dataset.Tables.Add( datatable );
-                    var cstring = GetExcelFilePath( );
+                    var cstring = GetExcelFilePath();
 
                     if( Verify.Input( cstring ) )
                     {
                         using var excelquery = new ExcelQuery( cstring );
-                        using var connection = excelquery.GetConnection( ) as OleDbConnection;
-                        connection?.Open( );
-                        var adapter = excelquery.GetAdapter( );
+                        using var connection = excelquery.GetConnection() as OleDbConnection;
+                        connection?.Open();
+                        var adapter = excelquery.GetAdapter();
                         adapter.Fill( dataset );
 
                         return datatable.Columns.Count > 0
@@ -151,7 +149,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    SqlCeQuery.Fail( ex );
                     return default( DataTable );
                 }
             }
@@ -170,18 +168,18 @@ namespace BudgetExecution
             {
                 try
                 {
-                    using var dataset = new DataSet( );
-                    using var datatable = new DataTable( );
-                    var filename = GetConnectionBuilder( ).GetFileName( );
+                    using var dataset = new DataSet();
+                    using var datatable = new DataTable();
+                    var filename = GetConnectionBuilder().GetFileName();
                     dataset.DataSetName = filename;
                     datatable.TableName = sheetname;
                     dataset.Tables.Add( datatable );
-                    var cstring = GetExcelFilePath( );
+                    var cstring = GetExcelFilePath();
 
                     if( Verify.Input( cstring ) )
                     {
                         using var csvquery = new CsvQuery( cstring );
-                        var adapter = csvquery.GetAdapter( ) as OleDbDataAdapter;
+                        var adapter = csvquery.GetAdapter() as OleDbDataAdapter;
                         adapter?.Fill( dataset, sheetname );
 
                         return datatable.Columns.Count > 0
@@ -191,7 +189,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    SqlCeQuery.Fail( ex );
                     return default( DataTable );
                 }
             }
@@ -209,7 +207,7 @@ namespace BudgetExecution
             {
                 var datarow = schematable.Rows[ i ];
 
-                if( sheetname == datarow[ "TABLENAME" ].ToString( ) )
+                if( sheetname == datarow[ "TABLENAME" ].ToString() )
                 {
                     return true;
                 }
@@ -223,7 +221,7 @@ namespace BudgetExecution
         {
             if( disposing )
             {
-                Dispose( );
+                Dispose();
                 IsDisposed = true;
             }
         }

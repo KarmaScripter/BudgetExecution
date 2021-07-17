@@ -1,6 +1,6 @@
-﻿// // <copyright file = "AdapterBuilder.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+﻿// <copyright file = "AdapterBuilder.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 namespace BudgetExecution
 {
@@ -31,7 +31,7 @@ namespace BudgetExecution
         /// <see cref = "T:BudgetExecution.AdapterBuilder"/>
         /// class.
         /// </summary>
-        public AdapterBuilder( )
+        public AdapterBuilder()
         {
             MissingMappingAction = MissingMappingAction.Passthrough;
             MissingSchemaAction = MissingSchemaAction.AddWithKey;
@@ -42,12 +42,12 @@ namespace BudgetExecution
         }
 
         public AdapterBuilder( ICommandBuilder commandbuilder )
-            : this( )
+            : this()
         {
-            ConnectionBuilder = commandbuilder?.GetConnectionBuilder( );
-            Connection = new ConnectionFactory( ConnectionBuilder )?.GetConnection( );
-            SqlStatement = commandbuilder?.GetSqlStatement( );
-            SelectCommand = new CommandBuilder( ConnectionBuilder, SqlStatement )?.GetCommand( );
+            ConnectionBuilder = commandbuilder?.GetConnectionBuilder();
+            Connection = new ConnectionFactory( ConnectionBuilder )?.GetConnection();
+            SqlStatement = commandbuilder?.GetSqlStatement();
+            SelectCommand = new CommandBuilder( ConnectionBuilder, SqlStatement )?.GetCommand();
         }
 
         /// <inheritdoc/>
@@ -59,12 +59,12 @@ namespace BudgetExecution
         /// <param name = "connectionbuilder" > The connectionmanager. </param>
         /// <param name = "sqlstatement" > The sqlstatement. </param>
         public AdapterBuilder( IConnectionBuilder connectionbuilder, ISqlStatement sqlstatement )
-            : this( )
+            : this()
         {
             ConnectionBuilder = connectionbuilder;
-            Connection = new ConnectionFactory( ConnectionBuilder ).GetConnection( );
+            Connection = new ConnectionFactory( ConnectionBuilder ).GetConnection();
             SqlStatement = sqlstatement;
-            SelectCommand = new CommandBuilder( ConnectionBuilder, SqlStatement ).GetCommand( );
+            SelectCommand = new CommandBuilder( ConnectionBuilder, SqlStatement ).GetCommand();
         }
 
         // **********************************************************************************************************************
@@ -89,7 +89,7 @@ namespace BudgetExecution
 
         /// <summary> Gets the connection. </summary>
         /// <returns> </returns>
-        public DbConnection GetConnection( )
+        public DbConnection GetConnection()
         {
             try
             {
@@ -99,14 +99,14 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                AdapterBuilder.Fail( ex );
                 return default( DbConnection );
             }
         }
 
         /// <summary> Gets the connection builder. </summary>
         /// <returns> </returns>
-        public IConnectionBuilder GetConnectionBuilder( )
+        public IConnectionBuilder GetConnectionBuilder()
         {
             try
             {
@@ -116,7 +116,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                AdapterBuilder.Fail( ex );
                 return default( IConnectionBuilder );
             }
         }
@@ -126,8 +126,8 @@ namespace BudgetExecution
         private protected static void Fail( Exception ex )
         {
             using var error = new Error( ex );
-            error?.SetText( );
-            error?.ShowDialog( );
+            error?.SetText();
+            error?.ShowDialog();
         }
     }
 }

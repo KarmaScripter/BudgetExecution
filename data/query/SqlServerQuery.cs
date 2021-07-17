@@ -1,6 +1,6 @@
-﻿// // <copyright file = "SqlServerQuery.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+﻿// <copyright file = "SqlServerQuery.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 namespace BudgetExecution
 {
@@ -24,7 +24,7 @@ namespace BudgetExecution
         // ********************************************   CONSTRUCTORS     *****************************************
         // *********************************************************************************************************
 
-        public SqlServerQuery( )
+        public SqlServerQuery()
         {
         }
 
@@ -52,7 +52,7 @@ namespace BudgetExecution
         {
             if( disposing )
             {
-                Dispose( );
+                Dispose();
             }
 
             IsDisposed = true;

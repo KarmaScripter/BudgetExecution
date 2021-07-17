@@ -1,6 +1,6 @@
-﻿// // <copyright file = "ElementBase.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+﻿// <copyright file = "ElementBase.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 namespace BudgetExecution
 {
@@ -43,7 +43,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                ElementBase.Fail( ex );
             }
         }
 
@@ -59,15 +59,15 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var names = data.Table?.GetColumnNames( );
+                    var names = data.Table?.GetColumnNames();
 
                     Name = names?.Contains( colname ) == true
                         ? colname
-                        : Field.NS.ToString( );
+                        : Field.NS.ToString();
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    ElementBase.Fail( ex );
                 }
             }
         }
@@ -82,12 +82,12 @@ namespace BudgetExecution
                 try
                 {
                     Name = Verify.Field( field )
-                        ? field.ToString( )
-                        : Field.NS.ToString( );
+                        ? field.ToString()
+                        : Field.NS.ToString();
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    ElementBase.Fail( ex );
                 }
             }
         }
@@ -103,15 +103,15 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var names = data.Table?.GetColumnNames( );
+                    var names = data.Table?.GetColumnNames();
 
-                    Name = names?.Contains( field.ToString( ) ) == true
-                        ? field.ToString( )
-                        : Field.NS.ToString( );
+                    Name = names?.Contains( field.ToString() ) == true
+                        ? field.ToString()
+                        : Field.NS.ToString();
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    ElementBase.Fail( ex );
                 }
             }
         }
@@ -134,7 +134,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    ElementBase.Fail( ex );
                 }
             }
         }
@@ -151,9 +151,9 @@ namespace BudgetExecution
                 try
                 {
                     var field = (Field)Enum.Parse( typeof( Field ), fieldname );
-                    var names = data.Table?.GetColumnNames( );
+                    var names = data.Table?.GetColumnNames();
 
-                    if( names?.Any( ) == true
+                    if( names?.Any() == true
                         && names.Contains( $"{field}" ) )
                     {
                         Field = Enum.GetNames( typeof( Field ) )?.Contains( $"{field}" ) == true
@@ -163,7 +163,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    ElementBase.Fail( ex );
                 }
             }
         }
@@ -181,7 +181,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                ElementBase.Fail( ex );
             }
         }
 
@@ -196,15 +196,15 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var names = data.Table?.GetColumnNames( );
+                    var names = data.Table?.GetColumnNames();
 
-                    Field = names?.Contains( field.ToString( ) ) == true
+                    Field = names?.Contains( field.ToString() ) == true
                         ? field
                         : Field.NS;
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    ElementBase.Fail( ex );
                 }
             }
         }
@@ -222,12 +222,12 @@ namespace BudgetExecution
                 }
                 else if( string.IsNullOrEmpty( value ) )
                 {
-                    Data = Field.NS.ToString( );
+                    Data = Field.NS.ToString();
                 }
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                ElementBase.Fail( ex );
             }
         }
 
@@ -243,15 +243,15 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var names = data.Table?.GetColumnNames( );
+                    var names = data.Table?.GetColumnNames();
 
                     Value = names?.Contains( colname ) == true
-                        ? data[ colname ]?.ToString( )
-                        : Field.NS.ToString( );
+                        ? data[ colname ]?.ToString()
+                        : Field.NS.ToString();
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    ElementBase.Fail( ex );
                 }
             }
         }
@@ -267,15 +267,15 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var names = data.Table?.GetColumnNames( );
+                    var names = data.Table?.GetColumnNames();
 
-                    Value = names?.Contains( field.ToString( ) ) == true
-                        ? data[ $"{field}" ]?.ToString( )
-                        : Field.NS.ToString( );
+                    Value = names?.Contains( field.ToString() ) == true
+                        ? data[ $"{field}" ]?.ToString()
+                        : Field.NS.ToString();
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    ElementBase.Fail( ex );
                 }
             }
         }
@@ -296,7 +296,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    ElementBase.Fail( ex );
                 }
             }
         }
@@ -317,7 +317,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    ElementBase.Fail( ex );
                 }
             }
         }
@@ -338,7 +338,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    ElementBase.Fail( ex );
                 }
             }
         }

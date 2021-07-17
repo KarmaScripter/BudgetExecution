@@ -84,7 +84,7 @@ namespace BudgetExecution
         public Division( IResponsibilityCenter rc )
             : this()
         {
-            Record = new DataBuilder( Source, GetArgs( rc ) )?.GetRecord();
+            Record = new DataBuilder( source, GetArgs( rc ) )?.GetRecord();
             ID = new Key( Record, PrimaryKey.DivisionId );
             Title = new Element( Record, Field.Title );
             Code = new Element( Record, Field.Code );
@@ -122,7 +122,7 @@ namespace BudgetExecution
         public Division( string rccode )
             : this()
         {
-            Record = new DataBuilder( Source, GetArgs( rccode ) )?.GetRecord();
+            Record = new DataBuilder( source, GetArgs( rccode ) )?.GetRecord();
             ID = new Key( Record, PrimaryKey.DivisionId );
             Title = new Element( Record, Field.Title );
             Code = new Element( Record, Field.Code );
@@ -224,7 +224,7 @@ namespace BudgetExecution
         {
             if( bfy != null
                 && Verify.Input( Code?.GetValue() )
-                && Resource.DivisionSources?.Contains( Source ) == true )
+                && Resource.DivisionSources?.Contains( source ) == true )
             {
                 try
                 {
@@ -262,7 +262,7 @@ namespace BudgetExecution
         {
             if( bfy != null
                 && Verify.Input( Code?.GetValue() )
-                && Resource.DivisionSources?.Contains( Source ) == true )
+                && Resource.DivisionSources?.Contains( source ) == true )
             {
                 try
                 {

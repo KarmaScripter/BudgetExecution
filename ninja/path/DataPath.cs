@@ -29,7 +29,7 @@ namespace BudgetExecution
         /// <summary>
         /// The input
         /// </summary>
-        private protected readonly string Input;
+        private protected readonly string input;
 
         /// <summary>
         /// The current directory
@@ -64,12 +64,12 @@ namespace BudgetExecution
         /// <param name="input">The input.</param>
         public DataPath( string input )
         {
-            Input = input;
-            FullName = Path.GetFileNameWithoutExtension( Input );
-            FileName = Path.GetFileName( Input );
-            FullPath = Path.GetFullPath( Input );
-            FileExtension = Path.GetExtension( Input );
-            PathRoot = Path.GetPathRoot( Input );
+            this.input = input;
+            FullName = Path.GetFileNameWithoutExtension( this.input );
+            FileName = Path.GetFileName( this.input );
+            FullPath = Path.GetFullPath( this.input );
+            FileExtension = Path.GetExtension( this.input );
+            PathRoot = Path.GetPathRoot( this.input );
         }
 
         // ***************************************************************************************************************************

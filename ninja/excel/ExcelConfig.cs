@@ -32,42 +32,42 @@ namespace BudgetExecution
         /// <summary>
         /// The font color
         /// </summary>
-        private protected readonly Color FontColor = Color.Black;
+        private protected readonly Color fontColor = Color.Black;
 
         /// <summary>
         /// The data font
         /// </summary>
-        private protected readonly Font DataFont = new Font( "Consolas", 8, FontStyle.Regular );
+        private protected readonly Font dataFont = new Font( "Consolas", 8, FontStyle.Regular );
 
         /// <summary>
         /// The header font
         /// </summary>
-        private protected readonly Font HeaderFont = new Font( "Consolas", 10, FontStyle.Bold );
+        private protected readonly Font headerFont = new Font( "Consolas", 10, FontStyle.Bold );
 
         /// <summary>
         /// The title font
         /// </summary>
-        private protected readonly Font TitleFont = new Font( "Consolas", 12, FontStyle.Bold );
+        private protected readonly Font titleFont = new Font( "Consolas", 12, FontStyle.Bold );
 
         /// <summary>
         /// The header image width
         /// </summary>
-        private protected readonly double HeaderImageWidth = 1.75;
+        private protected readonly double headerImageWidth = 1.75;
 
         /// <summary>
         /// The header image height
         /// </summary>
-        private protected readonly double HeaderImageHeight = 0.85;
+        private protected readonly double headerImageHeight = 0.85;
 
         /// <summary>
         /// The footer image width
         /// </summary>
-        private protected readonly double FooterImageWidth = 2.04;
+        private protected readonly double footerImageWidth = 2.04;
 
         /// <summary>
         /// The footer image height
         /// </summary>
-        private protected readonly double FooterImageHeight = 0.70;
+        private protected readonly double footerImageHeight = 0.70;
 
         // **************************************************************************************************************************
         // ******************************************************   PROPERTIES   ****************************************************
@@ -105,10 +105,10 @@ namespace BudgetExecution
             {
                 try
                 {
-                    using var font = DataFont;
-                    SetFontColor( grid, FontColor );
-                    SetBackgroudColor( grid, PrimaryBackColor );
-                    SetHorizontalAligment( grid, Left );
+                    using var font = dataFont;
+                    SetFontColor( grid, fontColor );
+                    SetBackgroudColor( grid, primaryBackColor );
+                    SetHorizontalAligment( grid, left );
                 }
                 catch( Exception ex )
                 {
@@ -129,9 +129,9 @@ namespace BudgetExecution
             {
                 try
                 {
-                    SetFontColor( grid, FontColor );
-                    SetBackgroudColor( grid, PrimaryBackColor );
-                    SetHorizontalAligment( grid, Left );
+                    SetFontColor( grid, fontColor );
+                    SetBackgroudColor( grid, primaryBackColor );
+                    SetHorizontalAligment( grid, left );
                 }
                 catch( Exception ex )
                 {
@@ -154,11 +154,11 @@ namespace BudgetExecution
                 {
                     using var range = grid.GetRange();
                     range.Style.Font.Color.SetColor( Color.Black );
-                    using var font = DataFont;
-                    range.Style.Font.SetFromFont( DataFont );
+                    using var font = dataFont;
+                    range.Style.Font.SetFromFont( dataFont );
                     range.Style.Fill.PatternType = ExcelFillStyle.Solid;
-                    range.Style.Fill.BackgroundColor.SetColor( PrimaryBackColor );
-                    range.Style.HorizontalAlignment = Center;
+                    range.Style.Fill.BackgroundColor.SetColor( primaryBackColor );
+                    range.Style.HorizontalAlignment = center;
                     range.Style.Border.Bottom.Style = ExcelBorderStyle.Hair;
                 }
                 catch( Exception ex )
@@ -181,12 +181,12 @@ namespace BudgetExecution
                 try
                 {
                     using var range = grid.GetRange();
-                    range.Style.Font.Color.SetColor( FontColor );
-                    using var font = DataFont;
-                    range.Style.Font.SetFromFont( DataFont );
+                    range.Style.Font.Color.SetColor( fontColor );
+                    using var font = dataFont;
+                    range.Style.Font.SetFromFont( dataFont );
                     range.Style.Fill.PatternType = ExcelFillStyle.Solid;
                     range.Style.Fill.BackgroundColor.SetColor( Color.White );
-                    range.Style.HorizontalAlignment = Center;
+                    range.Style.HorizontalAlignment = center;
                     range.Style.Border.Bottom.Style = ExcelBorderStyle.Hair;
                 }
                 catch( Exception ex )
@@ -277,12 +277,12 @@ namespace BudgetExecution
                 {
                     using var range = grid.GetRange();
                     SetCaptionFormat( grid );
-                    using var titlefont = HeaderFont;
+                    using var titlefont = headerFont;
                     range.Style.Font.SetFromFont( font );
                     range.Style.Border.BorderAround( borderstyle );
                     range.Style.Fill.PatternType = ExcelFillStyle.Solid;
-                    range.Style.Fill.BackgroundColor.SetColor( PrimaryBackColor );
-                    range.Style.HorizontalAlignment = Center;
+                    range.Style.Fill.BackgroundColor.SetColor( primaryBackColor );
+                    range.Style.HorizontalAlignment = center;
                 }
                 catch( Exception ex )
                 {
@@ -310,7 +310,7 @@ namespace BudgetExecution
                         range.Start.Column + 6 ];
 
                     total.Style.Fill.PatternType = ExcelFillStyle.Solid;
-                    total?.Style?.Fill?.BackgroundColor?.SetColor( PrimaryBackColor );
+                    total?.Style?.Fill?.BackgroundColor?.SetColor( primaryBackColor );
 
                     var data = worksheet.Cells[ range.Start.Row, range.Start.Column + 1, range.Start.Row,
                         range.Start.Column + 6 ];

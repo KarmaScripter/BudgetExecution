@@ -1,6 +1,6 @@
-﻿// // <copyright file = "KeyBase.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+﻿// <copyright file = "KeyBase.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 namespace BudgetExecution
 {
@@ -49,7 +49,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                KeyBase.Fail( ex );
             }
         }
 
@@ -62,16 +62,16 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var colname = datarow[ 0 ].ToString( );
-                    var names = datarow?.Table?.GetColumnNames( );
+                    var colname = datarow[ 0 ].ToString();
+                    var names = datarow?.Table?.GetColumnNames();
 
                     Name = Verify.Input( colname ) && names?.Contains( colname ) == true
                         ? colname
-                        : PrimaryKey.NS.ToString( );
+                        : PrimaryKey.NS.ToString();
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    KeyBase.Fail( ex );
                 }
             }
         }
@@ -86,12 +86,12 @@ namespace BudgetExecution
                 try
                 {
                     Name = Verify.Field( field )
-                        ? field.ToString( )
+                        ? field.ToString()
                         : default( string );
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    KeyBase.Fail( ex );
                 }
             }
         }
@@ -107,15 +107,15 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var names = datarow?.Table?.GetColumnNames( );
+                    var names = datarow?.Table?.GetColumnNames();
 
-                    Name = names?.Contains( index.ToString( ) ) == true
-                        ? index.ToString( )
-                        : PrimaryKey.NS.ToString( );
+                    Name = names?.Contains( index.ToString() ) == true
+                        ? index.ToString()
+                        : PrimaryKey.NS.ToString();
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    KeyBase.Fail( ex );
                 }
             }
         }
@@ -135,7 +135,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                KeyBase.Fail( ex );
             }
         }
 
@@ -150,14 +150,14 @@ namespace BudgetExecution
                 {
                     var columns = Enum.GetNames( typeof( PrimaryKey ) );
 
-                    if( columns?.Contains( datarow[ 0 ]?.ToString( ) ) == true )
+                    if( columns?.Contains( datarow[ 0 ]?.ToString() ) == true )
                     {
                         var field = (PrimaryKey)Enum.Parse( typeof( PrimaryKey ),
-                            datarow[ 0 ].ToString( ) );
+                            datarow[ 0 ].ToString() );
 
-                        var names = datarow.Table?.GetColumnNames( );
+                        var names = datarow.Table?.GetColumnNames();
 
-                        PrimaryKey = names?.Contains( field.ToString( ) ) == true
+                        PrimaryKey = names?.Contains( field.ToString() ) == true
                             ? field
                             : PrimaryKey.NS;
                     }
@@ -168,7 +168,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    KeyBase.Fail( ex );
                 }
             }
         }
@@ -186,7 +186,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                KeyBase.Fail( ex );
             }
         }
 
@@ -201,15 +201,15 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var names = data?.Table?.GetColumnNames( );
+                    var names = data?.Table?.GetColumnNames();
 
-                    PrimaryKey = names?.Contains( keyname.ToString( ) ) == true
+                    PrimaryKey = names?.Contains( keyname.ToString() ) == true
                         ? keyname
                         : PrimaryKey.NS;
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    KeyBase.Fail( ex );
                 }
             }
         }
@@ -227,7 +227,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                KeyBase.Fail( ex );
             }
         }
 
@@ -242,15 +242,15 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var names = data?.Table?.GetColumnNames( );
+                    var names = data?.Table?.GetColumnNames();
 
-                    Index = names?.Contains( key.ToString( ) ) == true
-                        ? int.Parse( data[ $"{key}" ].ToString( ) )
+                    Index = names?.Contains( key.ToString() ) == true
+                        ? int.Parse( data[ $"{key}" ].ToString() )
                         : (int)PrimaryKey.NS;
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    KeyBase.Fail( ex );
                 }
             }
         }

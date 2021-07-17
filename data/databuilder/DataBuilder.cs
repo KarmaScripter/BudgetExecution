@@ -1,6 +1,6 @@
-﻿// // <copyright file = "DataBuilder.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+﻿// <copyright file = "DataBuilder.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 namespace BudgetExecution
 {
@@ -23,7 +23,7 @@ namespace BudgetExecution
         // **************************************************************************************************************************
 
         /// <summary> Initializes a new instance of the class. </summary>
-        public DataBuilder( )
+        public DataBuilder()
         {
         }
 
@@ -80,7 +80,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var columns = Record.Table?.GetColumnNames( );
+                    var columns = Record.Table?.GetColumnNames();
 
                     if( columns?.Contains( $"{field}" ) == true )
                     {
@@ -97,7 +97,7 @@ namespace BudgetExecution
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    DataBuilder.Fail( ex );
                     return default( DateTime );
                 }
             }
@@ -118,17 +118,17 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var query = GetData( )
-                                ?.Where( p => p.Field<string>( $"{field}" ).Equals( filter ) )
-                                ?.Select( p => p );
+                    var query = GetData()
+                        ?.Where( p => p.Field<string>( $"{field}" ).Equals( filter ) )
+                        ?.Select( p => p );
 
-                    return query?.Any( ) == true
-                        ? query.ToArray( )
+                    return query?.Any() == true
+                        ? query.ToArray()
                         : default( DataRow[ ] );
                 }
                 catch( Exception ex )
                 {
-                    Fail( ex );
+                    DataBuilder.Fail( ex );
                     return default( IEnumerable<DataRow> );
                 }
             }

@@ -1,6 +1,6 @@
-﻿// // <copyright file = "AccessConnect.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+﻿// <copyright file = "AccessConnect.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 namespace BudgetExecution
 {
@@ -21,7 +21,7 @@ namespace BudgetExecution
         // ***************************************************************************************************************************
 
         /// <summary> The connection </summary>
-        private readonly OleDbConnection Connection;
+        private readonly OleDbConnection _connection;
 
         // ***************************************************************************************************************************
         // ****************************************************  CONSTRUCTORS ********************************************************
@@ -39,8 +39,8 @@ namespace BudgetExecution
                 + path
                 + ";Jet OLEDB:Database Password=h@#%^ein;";
 
-            Connection = new OleDbConnection( connectionstring );
-            Connection.Open( );
+            _connection = new OleDbConnection( connectionstring );
+            _connection.Open();
         }
 
         // ***************************************************************************************************************************
@@ -49,18 +49,18 @@ namespace BudgetExecution
 
         /// <summary> Gets the table names. </summary>
         /// <returns> </returns>
-        public IEnumerable<string> GetTableNames( )
+        public IEnumerable<string> GetTableNames()
         {
-            var names = new List<string>( );
+            var names = new List<string>();
             var restrictions = new string[ 4 ];
             restrictions[ 3 ] = "Table";
 
             //getting names of tables
-            var table = Connection.GetSchema( "Tables", restrictions );
+            var table = _connection.GetSchema( "Tables", restrictions );
 
             for( var i = 0; i < table.Rows.Count; i++ )
             {
-                names.Add( table.Rows[ i ][ 2 ].ToString( ) );
+                names.Add( table.Rows[ i ][ 2 ].ToString() );
             }
 
             return names;
@@ -71,8 +71,8 @@ namespace BudgetExecution
         /// <returns> </returns>
         public DataTable GetTable( string name )
         {
-            var table = new DataTable( );
-            var adapter = new OleDbDataAdapter( "SELECT * FROM " + name, Connection );
+            var table = new DataTable();
+            var adapter = new OleDbDataAdapter( "SELECT * FROM " + name, _connection );
             adapter.Fill( table );
             return table;
         }
@@ -82,10 +82,10 @@ namespace BudgetExecution
         /// <returns> </returns>
         public List<string> GetColumnNames( string tablename )
         {
-            var names = new List<string>( );
-            using var command = new OleDbCommand( "select * from " + tablename, Connection );
+            var names = new List<string>();
+            using var command = new OleDbCommand( "select * from " + tablename, _connection );
             using var reader = command.ExecuteReader( CommandBehavior.SchemaOnly );
-            var table = reader.GetSchemaTable( );
+            var table = reader.GetSchemaTable();
             var column = table?.Columns[ "ColumnName" ];
 
             if( table?.Rows != null )
@@ -94,7 +94,7 @@ namespace BudgetExecution
                 {
                     if( column != null )
                     {
-                        names.Add( row[ column ].ToString( ) );
+                        names.Add( row[ column ].ToString() );
                     }
                 }
             }

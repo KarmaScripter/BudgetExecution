@@ -1,6 +1,6 @@
-﻿// // <copyright file = "DataSchema.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+﻿// <copyright file = "DataSchema.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 namespace BudgetExecution
 {
@@ -30,7 +30,7 @@ namespace BudgetExecution
         /// <see cref = "DataSchema"/>
         /// class.
         /// </summary>
-        public DataSchema( )
+        public DataSchema()
         {
         }
 
@@ -43,7 +43,7 @@ namespace BudgetExecution
         public DataSchema( DataTable table )
         {
             Name = table?.TableName;
-            Data = table?.AsEnumerable( );
+            Data = table?.AsEnumerable();
             IsSource = Resource.Sources.Contains( Name );
         }
 
@@ -55,7 +55,7 @@ namespace BudgetExecution
         /// <param name = "data" > The data. </param>
         public DataSchema( IEnumerable<DataRow> data )
         {
-            Name = data?.CopyToDataTable( )?.TableName;
+            Name = data?.CopyToDataTable()?.TableName;
             Data = data;
             IsSource = Resource.Sources.Contains( Name );
         }
@@ -88,12 +88,12 @@ namespace BudgetExecution
 
         /// <summary> Sets the column names. </summary>
         /// <returns> </returns>
-        public IEnumerable<string> GetColumnNames( )
+        public IEnumerable<string> GetColumnNames()
         {
             try
             {
-                var list = new List<string>( );
-                var table = Data?.CopyToDataTable( );
+                var list = new List<string>();
+                var table = Data?.CopyToDataTable();
 
                 if( table?.Columns != null )
                 {
@@ -103,25 +103,25 @@ namespace BudgetExecution
                     }
                 }
 
-                return list?.Any( ) == true
+                return list?.Any() == true
                     ? list
                     : default( List<string> );
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                DataSchema.Fail( ex );
                 return default( IEnumerable<string> );
             }
         }
 
         /// <summary> Gets the column captions. </summary>
         /// <returns> </returns>
-        public IEnumerable<string> GetColumnCaptions( )
+        public IEnumerable<string> GetColumnCaptions()
         {
             try
             {
-                var schema = Data?.CopyToDataTable( )?.Columns;
-                var list = new List<string>( );
+                var schema = Data?.CopyToDataTable()?.Columns;
+                var list = new List<string>();
 
                 if( schema != null )
                 {
@@ -133,30 +133,30 @@ namespace BudgetExecution
                         }
                         else if( Verify.Input( caption.ColumnName ) )
                         {
-                            list.Add( caption.ColumnName.SplitPascal( ) );
+                            list.Add( caption.ColumnName.SplitPascal() );
                         }
                     }
                 }
 
-                return list?.Any( ) == true
+                return list?.Any() == true
                     ? list
                     : default( List<string> );
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                DataSchema.Fail( ex );
                 return default( IEnumerable<string> );
             }
         }
 
         /// <summary> Gets the column ordinals. </summary>
         /// <returns> </returns>
-        public IEnumerable<int> GetColumnOrdinals( )
+        public IEnumerable<int> GetColumnOrdinals()
         {
             try
             {
-                var schema = Data?.CopyToDataTable( )?.Columns;
-                var list = new List<int>( );
+                var schema = Data?.CopyToDataTable()?.Columns;
+                var list = new List<int>();
 
                 if( schema != null )
                 {
@@ -166,25 +166,25 @@ namespace BudgetExecution
                     }
                 }
 
-                return list?.Any( ) == true
+                return list?.Any() == true
                     ? list
                     : default( List<int> );
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                DataSchema.Fail( ex );
                 return default( IEnumerable<int> );
             }
         }
 
         /// <summary> Sets the column types. </summary>
         /// <returns> </returns>
-        public IEnumerable<Type> GetColumnTypes( )
+        public IEnumerable<Type> GetColumnTypes()
         {
             try
             {
-                var list = new List<Type>( );
-                var table = Data?.CopyToDataTable( );
+                var list = new List<Type>();
+                var table = Data?.CopyToDataTable();
 
                 if( table?.Columns != null )
                 {
@@ -194,35 +194,35 @@ namespace BudgetExecution
                     }
                 }
 
-                return list?.Any( ) == true
+                return list?.Any() == true
                     ? list
                     : default( List<Type> );
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                DataSchema.Fail( ex );
                 return default( IEnumerable<Type> );
             }
         }
 
         /// <summary> Sets the primary keys. </summary>
         /// <returns> </returns>
-        public IEnumerable<int> GetIndexes( )
+        public IEnumerable<int> GetIndexes()
         {
             try
             {
-                var list = new List<int>( );
-                var table = Data?.CopyToDataTable( );
+                var list = new List<int>();
+                var table = Data?.CopyToDataTable();
 
                 if( table?.Rows != null )
                 {
                     foreach( DataRow datarow in table?.Rows )
                     {
-                        if( datarow?.HasPrimaryKey( ) == true )
+                        if( datarow?.HasPrimaryKey() == true )
                         {
-                            var key = datarow?.GetPrimaryKey( )?.ToArray( );
+                            var key = datarow?.GetPrimaryKey()?.ToArray();
 
-                            if( key?.Any( ) == true )
+                            if( key?.Any() == true )
                             {
                                 list.Add( (int)key[ 0 ].Value );
                             }
@@ -230,89 +230,89 @@ namespace BudgetExecution
                     }
                 }
 
-                return list?.Any( ) == true
+                return list?.Any() == true
                     ? list
                     : default( List<int> );
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                DataSchema.Fail( ex );
                 return default( IEnumerable<int> );
             }
         }
 
         /// <summary> Gets the primary key columns. </summary>
         /// <returns> </returns>
-        public IEnumerable<DataColumn> GetPrimaryKeyColumn( )
+        public IEnumerable<DataColumn> GetPrimaryKeyColumn()
         {
             try
             {
-                var columns = Data?.CopyToDataTable( )?.PrimaryKey;
+                var columns = Data?.CopyToDataTable()?.PrimaryKey;
 
-                return columns?.Any( ) == true
-                    ? columns?.ToArray( )
+                return columns?.Any() == true
+                    ? columns?.ToArray()
                     : default( DataColumn[ ] );
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                DataSchema.Fail( ex );
                 return default( IEnumerable<DataColumn> );
             }
         }
 
         /// <summary> Gets the column schema. </summary>
         /// <returns> </returns>
-        public DataColumnCollection GetColumnSchema( )
+        public DataColumnCollection GetColumnSchema()
         {
             try
             {
                 return Verify.Rows( Data )
-                    ? Data?.CopyToDataTable( )?.Columns
+                    ? Data?.CopyToDataTable()?.Columns
                     : default( DataColumnCollection );
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                DataSchema.Fail( ex );
                 return default( DataColumnCollection );
             }
         }
 
         /// <summary> Gets the schema table. </summary>
         /// <returns> </returns>
-        public DataTable GetSchemaTable( )
+        public DataTable GetSchemaTable()
         {
             try
             {
-                using var datareader = new DataTableReader( Data.CopyToDataTable( ) );
-                return datareader?.GetSchemaTable( );
+                using var datareader = new DataTableReader( Data.CopyToDataTable() );
+                return datareader?.GetSchemaTable();
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                DataSchema.Fail( ex );
                 return default( DataTable );
             }
         }
 
         /// <summary> Gets the data Table. </summary>
         /// <returns> </returns>
-        public DataTable GetDataTable( )
+        public DataTable GetDataTable()
         {
             try
             {
                 return Verify.Rows( Data )
-                    ? Data?.CopyToDataTable( )
+                    ? Data?.CopyToDataTable()
                     : default( DataTable );
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                DataSchema.Fail( ex );
                 return default( DataTable );
             }
         }
 
         /// <summary> Gets the name of the Table. </summary>
         /// <returns> </returns>
-        public string GetTableName( )
+        public string GetTableName()
         {
             try
             {
@@ -322,14 +322,14 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                DataSchema.Fail( ex );
                 return string.Empty;
             }
         }
 
         /// <summary> Gets the data. </summary>
         /// <returns> </returns>
-        public IEnumerable<DataRow> GetData( )
+        public IEnumerable<DataRow> GetData()
         {
             try
             {
@@ -339,14 +339,14 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                DataSchema.Fail( ex );
                 return default( IEnumerable<DataRow> );
             }
         }
 
         /// <summary> Gets the source. </summary>
         /// <returns> </returns>
-        public Source GetSource( )
+        public Source GetSource()
         {
             try
             {
@@ -356,7 +356,7 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                DataSchema.Fail( ex );
                 return default( Source );
             }
         }
@@ -366,8 +366,8 @@ namespace BudgetExecution
         private protected static void Fail( Exception ex )
         {
             using var error = new Error( ex );
-            error?.SetText( );
-            error?.ShowDialog( );
+            error?.SetText();
+            error?.ShowDialog();
         }
     }
 }

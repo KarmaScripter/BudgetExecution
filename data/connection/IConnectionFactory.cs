@@ -1,6 +1,6 @@
-﻿// // <copyright file = "IConnectionFactory.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+﻿// <copyright file = "IConnectionFactory.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 namespace BudgetExecution
 {
@@ -20,10 +20,10 @@ namespace BudgetExecution
 
         /// <summary> Gets the connection. </summary>
         /// <returns> </returns>
-        DbConnection GetConnection( );
+        DbConnection GetConnection();
 
         /// <summary> Gets the connection manager. </summary>
         /// <returns> </returns>
-        IConnectionBuilder GetConnectionBuilder( );
+        IConnectionBuilder GetConnectionBuilder();
     }
 }

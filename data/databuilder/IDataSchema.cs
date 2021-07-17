@@ -1,6 +1,6 @@
-﻿// // <copyright file = "IDataSchema.cs" company = "Terry D. Eppler">
-// // Copyright (c) Terry D. Eppler. All rights reserved.
-// // </copyright>
+﻿// <copyright file = "IDataSchema.cs" company = "Terry D. Eppler">
+// Copyright (c) Terry D. Eppler. All rights reserved.
+// </copyright>
 
 namespace BudgetExecution
 {
@@ -23,46 +23,46 @@ namespace BudgetExecution
 
         /// <summary> Sets the column names. </summary>
         /// <returns> </returns>
-        IEnumerable<string> GetColumnNames( );
+        IEnumerable<string> GetColumnNames();
 
         /// <summary> Gets the column captions. </summary>
         /// <returns> </returns>
-        IEnumerable<string> GetColumnCaptions( );
+        IEnumerable<string> GetColumnCaptions();
 
         /// <summary> Gets the column ordinals. </summary>
         /// <returns> </returns>
-        IEnumerable<int> GetColumnOrdinals( );
+        IEnumerable<int> GetColumnOrdinals();
 
         /// <summary> Sets the column types. </summary>
         /// <returns> </returns>
-        IEnumerable<Type> GetColumnTypes( );
+        IEnumerable<Type> GetColumnTypes();
 
         /// <summary> Sets the primary keys. </summary>
         /// <returns> </returns>
-        IEnumerable<int> GetIndexes( );
+        IEnumerable<int> GetIndexes();
 
         /// <summary> Gets the primary key columns. </summary>
         /// <returns> </returns>
-        IEnumerable<DataColumn> GetPrimaryKeyColumn( );
+        IEnumerable<DataColumn> GetPrimaryKeyColumn();
 
         /// <summary> Gets the column schema. </summary>
         /// <returns> </returns>
-        DataColumnCollection GetColumnSchema( );
+        DataColumnCollection GetColumnSchema();
 
         /// <summary> Gets the schema table. </summary>
         /// <returns> </returns>
-        DataTable GetSchemaTable( );
+        DataTable GetSchemaTable();
 
         /// <summary> Gets the data Table. </summary>
         /// <returns> </returns>
-        DataTable GetDataTable( );
+        DataTable GetDataTable();
 
         /// <summary> Gets the name of the Table. </summary>
         /// <returns> </returns>
-        string GetTableName( );
+        string GetTableName();
 
         /// <summary> Gets the data. </summary>
         /// <returns> </returns>
-        IEnumerable<DataRow> GetData( );
+        IEnumerable<DataRow> GetData();
     }
 }
