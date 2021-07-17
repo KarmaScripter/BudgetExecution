@@ -11,11 +11,9 @@ namespace BudgetExecution
     using System;
     using System.Collections.Specialized;
     using System.Configuration;
-    using System.Data.Entity.Core.Metadata.Edm;
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Linq;
-    using System.Threading;
 
     /// <summary> </summary>
     [ SuppressMessage( "ReSharper", "MemberCanBeMadeStatic.Global" ) ]

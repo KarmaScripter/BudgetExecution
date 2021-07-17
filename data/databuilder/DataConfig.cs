@@ -12,7 +12,6 @@ namespace BudgetExecution
     using System.Collections.Generic;
     using System.Data;
     using System.IO;
-    using System.Threading;
 
     public abstract class DataConfig : ISource, IProvider
     {

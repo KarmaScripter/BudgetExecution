@@ -1,6 +1,6 @@
-﻿// <copyright file = "Grid.cs" company = "Terry D. Eppler">
-// Copyright (c) Terry D. Eppler. All rights reserved.
-// </copyright>
+﻿// // <copyright file=" <File Name> .cs" company="Terry D. Eppler">
+// // Copyright (c) Terry Eppler. All rights reserved.
+// // </copyright>
 
 namespace BudgetExecution
 {
@@ -11,7 +11,6 @@ namespace BudgetExecution
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
-    using System.Threading;
     using OfficeOpenXml;
 
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
@@ -23,87 +22,54 @@ namespace BudgetExecution
         // ********************************************   CONSTRUCTORS     **********************************************************
         // **************************************************************************************************************************
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref = "Grid"/> class.
-        /// </summary>
         public Grid()
         {
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref = "Grid"/> class.
-        /// </summary>
-        /// <param name = "worksheet" >
-        /// </param>
-        /// <param name = "range" >
-        /// The range.
-        /// </param>
         public Grid( ExcelWorksheet worksheet, ExcelRange range )
         {
             Worksheet = worksheet;
             Range = range;
-            Address = new ExcelAddress( Range.Start.Row, Range.Start.Column, Range.End.Row, Range.End.Row );
+
+            Address = new ExcelAddress( Range.Start.Row, Range.Start.Column, Range.End.Row,
+                Range.End.Row );
+
             From = ( Address.Start.Row, Address.Start.Column );
             To = ( Address.End.Row, Address.End.Column );
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref = "Grid"/> class.
-        /// </summary>
-        /// <param name = "worksheet" >
-        /// The worksheet.
-        /// </param>
-        /// <param name = "address" >
-        /// The address.
-        /// </param>
         public Grid( ExcelWorksheet worksheet, ExcelAddress address )
         {
             Worksheet = worksheet;
             Address = address;
             From = ( Address.Start.Row, Address.Start.Column );
             To = ( Address.End.Row, Address.End.Column );
-            Range = Worksheet.Cells[ From.Row, From.Column, To.Row, To.Column ];
+
+            Range = Worksheet.Cells[ From.Row, From.Column, To.Row,
+                To.Column ];
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref = "Grid"/> class.
-        /// </summary>
-        /// <param name = "worksheet" >
-        /// </param>
-        /// <param name = "fromrow" >
-        /// The fromrow.
-        /// </param>
-        /// <param name = "fromcolumn" >
-        /// The fromcolumn.
-        /// </param>
-        /// <param name = "torow" >
-        /// The torow.
-        /// </param>
-        /// <param name = "tocolumn" >
-        /// The tocolumn.
-        /// </param>
         public Grid( ExcelWorksheet worksheet, int fromrow = 1, int fromcolumn = 1,
-            int torow = 55, int tocolumn = 12 )
+                     int torow = 55, int tocolumn = 12 )
         {
             Worksheet = worksheet;
-            Range = Worksheet.Cells[ fromrow, fromcolumn, torow, tocolumn ];
-            Address = new ExcelAddress( Range.Start.Row, Range.Start.Column, Range.End.Row, Range.End.Row );
+
+            Range = Worksheet.Cells[ fromrow, fromcolumn, torow,
+                tocolumn ];
+
+            Address = new ExcelAddress( Range.Start.Row, Range.Start.Column, Range.End.Row,
+                Range.End.Row );
+
             From = ( Address.Start.Row, Address.Start.Column );
             To = ( Address.End.Row, Address.End.Column );
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref = "Grid"/> class.
-        /// </summary>
-        /// <param name = "worksheet" >
-        /// </param>
-        /// <param name = "cell" >
-        /// The cell.
-        /// </param>
         public Grid( ExcelWorksheet worksheet, IReadOnlyList<int> cell )
         {
             Worksheet = worksheet;
-            Range = Worksheet.Cells[ cell[ 0 ], cell[ 1 ], cell[ 2 ], cell[ 3 ] ];
+
+            Range = Worksheet.Cells[ cell[ 0 ], cell[ 1 ], cell[ 2 ],
+                cell[ 3 ] ];
 
             Address = new ExcelAddress( Range.Start.Row, Range.Start.Column, Range.End.Row,
                 Range.End.Column );
@@ -112,22 +78,17 @@ namespace BudgetExecution
             To = ( Address.End.Row, Address.End.Column );
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref = "Grid"/> class.
-        /// </summary>
-        /// <param name = "worksheet" >
-        /// </param>
-        /// <param name = "from" >
-        /// From.
-        /// </param>
-        /// <param name = "to" >
-        /// To.
-        /// </param>
-        public Grid( ExcelWorksheet worksheet, (int Row, int Column) from, (int Row, int Column) to )
+        public Grid( ExcelWorksheet worksheet, (int Row, int Column) from,
+                     (int Row, int Column) to )
         {
             Worksheet = worksheet;
-            Range = Worksheet.Cells[ from.Row, from.Column, to.Row, to.Column ];
-            Address = new ExcelAddress( Range.Start.Row, Range.Start.Column, Range.End.Row, Range.End.Row );
+
+            Range = Worksheet.Cells[ from.Row, from.Column, to.Row,
+                to.Column ];
+
+            Address = new ExcelAddress( Range.Start.Row, Range.Start.Column, Range.End.Row,
+                Range.End.Row );
+
             From = from;
             To = to;
         }
@@ -148,129 +109,80 @@ namespace BudgetExecution
         // ********************************************      PROPERTIES    **********************************************************
         // **************************************************************************************************************************
 
-        /// <summary>
-        /// The range
-        /// </summary>
         private protected ExcelRange Range { get; set; }
 
-        /// <summary>
-        /// The worksheet
-        /// </summary>
         private protected ExcelWorksheet Worksheet { get; set; }
 
-        /// <summary>
-        /// The address
-        /// </summary>
         private protected ExcelAddress Address { get; set; }
 
-        /// <summary>
-        /// Gets or sets from.
-        /// </summary>
-        /// <value>
-        /// From.
-        /// </value>
         public (int Row, int Column) From { get; set; }
 
-        /// <summary>
-        /// Gets or sets to.
-        /// </summary>
-        /// <value>
-        /// To.
-        /// </value>
         public (int Row, int Column) To { get; set; }
 
         // **************************************************************************************************************************
         // ********************************************      METHODS    *************************************************************
         // **************************************************************************************************************************
 
-        /// <summary>
-        /// Gets the address.
-        /// </summary>
-        /// <returns>
-        /// </returns>
         public ExcelAddress GetAddress()
         {
             try
             {
                 return Address.Columns > 0
                     ? Address
-                    : default( ExcelAddress );
+                    : default;
             }
             catch( Exception ex )
             {
-                Fail( ex );
-                return default( ExcelAddress );
+                Grid.Fail( ex );
+                return default;
             }
         }
 
-        /// <summary>
-        /// Gets the range.
-        /// </summary>
-        /// <returns>
-        /// </returns>
         public ExcelRange GetRange()
         {
             try
             {
                 return Range.Columns > 0
                     ? Range
-                    : default( ExcelRange );
+                    : default;
             }
             catch( Exception ex )
             {
-                Fail( ex );
-                return default( ExcelRange );
+                Grid.Fail( ex );
+                return default;
             }
         }
 
-        /// <summary>
-        /// Gets the worksheet.
-        /// </summary>
-        /// <returns>
-        /// </returns>
         public ExcelWorksheet GetWorksheet()
         {
             try
             {
                 return Verify.Input( Worksheet.Name )
                     ? Worksheet
-                    : default( ExcelWorksheet );
+                    : default;
             }
             catch( Exception ex )
             {
-                Fail( ex );
-                return default( ExcelWorksheet );
+                Grid.Fail( ex );
+                return default;
             }
         }
 
-        /// <summary>
-        /// Counts the cells.
-        /// </summary>
-        /// <param name = "range" >
-        /// The range.
-        /// </param>
-        /// <returns>
-        /// </returns>
         public int CountCells( ExcelRange range )
         {
             try
             {
                 return range != null
                     ? range.Rows * range.Columns
-                    : default( int );
+                    : default;
             }
             catch( Exception ex )
             {
-                Fail( ex );
+                Grid.Fail( ex );
                 return -1;
             }
         }
 
-        /// <summary>
-        /// Gets the row count.
-        /// </summary>
-        /// <returns>
-        /// </returns>
         public int GetRowCount()
         {
             try
@@ -281,16 +193,11 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
-                return default( int );
+                Grid.Fail( ex );
+                return default;
             }
         }
 
-        /// <summary>
-        /// Gets the column count.
-        /// </summary>
-        /// <returns>
-        /// </returns>
         public int GetColumnCount()
         {
             try
@@ -301,15 +208,11 @@ namespace BudgetExecution
             }
             catch( Exception ex )
             {
-                Fail( ex );
-                return default( int );
+                Grid.Fail( ex );
+                return default;
             }
         }
 
-        /// <summary>
-        /// Get Error Dialog.
-        /// </summary>
-        /// <param name="ex">The ex.</param>
         private protected static void Fail( Exception ex )
         {
             using var error = new Error( ex );

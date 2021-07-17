@@ -13,7 +13,6 @@ namespace BudgetExecution
     using System.Data;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
-    using System.Threading;
     using System.Data.OleDb;
     using System.IO;
     using OfficeOpenXml;

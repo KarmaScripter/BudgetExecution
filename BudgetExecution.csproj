@@ -1002,10 +1002,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include=".editorconfig" />
     <None Include="App.config" />
     <None Include="badger\guidance\FundsControlManual.pdf" />
-    <None Include="BudgetExecution.DotSettings" />
     <None Include="db\sqlserver\R6.db" />
     <None Include="db\sqlce\UPDATE\R6.db" />
     <None Include="db\sqlite\UPDATE\R6.db" />
