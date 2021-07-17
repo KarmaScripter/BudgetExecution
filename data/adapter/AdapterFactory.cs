@@ -1,5 +1,5 @@
-﻿// // <copyright file=" <File Name> .cs" company="Terry D. Eppler">
-// // Copyright (c) Terry Eppler. All rights reserved.
+﻿// // <copyright file = "AdapterFactory.cs" company = "Terry D. Eppler">
+// // Copyright (c) Terry D. Eppler. All rights reserved.
 // // </copyright>
 
 namespace BudgetExecution
@@ -38,11 +38,11 @@ namespace BudgetExecution
         /// <see cref = "AdapterFactory"/>
         /// class.
         /// </summary>
-        public AdapterFactory( AdapterBuilder adapterBuilder )
+        public AdapterFactory( AdapterBuilder adapterbuilder )
         {
-            AdapterBuilder = adapterBuilder;
-            ConnectionBuilder = AdapterBuilder.GetConnectionBuilder();
-            Connection = new ConnectionFactory( ConnectionBuilder )?.GetConnection();
+            AdapterBuilder = adapterbuilder;
+            ConnectionBuilder = AdapterBuilder.GetConnectionBuilder( );
+            Connection = new ConnectionFactory( ConnectionBuilder )?.GetConnection( );
             SqlStatement = new SqlStatement( ConnectionBuilder );
             CommandBuilder = new CommandBuilder( ConnectionBuilder, SqlStatement );
         }
@@ -59,7 +59,7 @@ namespace BudgetExecution
             ConnectionBuilder = connectionbuilder;
             SqlStatement = sqlstatement;
             AdapterBuilder = new AdapterBuilder( ConnectionBuilder, SqlStatement );
-            Connection = new ConnectionFactory( ConnectionBuilder )?.GetConnection();
+            Connection = new ConnectionFactory( ConnectionBuilder )?.GetConnection( );
             CommandBuilder = new CommandBuilder( ConnectionBuilder, SqlStatement );
         }
 
@@ -70,13 +70,14 @@ namespace BudgetExecution
         /// </summary>
         /// <param name = "connectionbuilder" > The connectionbuilder. </param>
         /// <param name = "commandbuilder" > The commandbuilder. </param>
-        public AdapterFactory( IConnectionBuilder connectionbuilder, ICommandBuilder commandbuilder )
+        public AdapterFactory( IConnectionBuilder connectionbuilder,
+            ICommandBuilder commandbuilder )
         {
             ConnectionBuilder = connectionbuilder;
             CommandBuilder = commandbuilder;
-            SqlStatement = CommandBuilder.GetSqlStatement();
+            SqlStatement = CommandBuilder.GetSqlStatement( );
             AdapterBuilder = new AdapterBuilder( ConnectionBuilder, SqlStatement );
-            Connection = new ConnectionFactory( ConnectionBuilder ).GetConnection();
+            Connection = new ConnectionFactory( ConnectionBuilder ).GetConnection( );
         }
 
         // **********************************************************************************************************************
@@ -105,32 +106,32 @@ namespace BudgetExecution
 
         /// <summary> Creates this instance. </summary>
         /// <returns> </returns>
-        public DbDataAdapter GetAdapter()
+        public DbDataAdapter GetAdapter( )
         {
-            if( Verify.Input( ConnectionBuilder.GetConnectionString() )
-                && Verify.Input( SqlStatement.GetSelectStatement() ) )
+            if( Verify.Input( ConnectionBuilder.GetConnectionString( ) )
+                && Verify.Input( SqlStatement.GetSelectStatement( ) ) )
             {
                 try
                 {
-                    var provider = ConnectionBuilder.GetProvider();
+                    var provider = ConnectionBuilder.GetProvider( );
 
-                    if( Validate.Provider( provider ) )
+                    if( Verify.Provider( provider ) )
                     {
                         switch( provider )
                         {
                             case Provider.SQLite:
                             {
-                                return GetSQLiteAdapter() ?? default( SQLiteDataAdapter );
+                                return GetSQLiteAdapter( ) ?? default( SQLiteDataAdapter );
                             }
 
                             case Provider.SqlCe:
                             {
-                                return GetSqlCeAdapter() ?? default( SqlCeDataAdapter );
+                                return GetSqlCeAdapter( ) ?? default( SqlCeDataAdapter );
                             }
 
                             case Provider.SqlServer:
                             {
-                                return GetSqlAdapter() ?? default( SqlDataAdapter );
+                                return GetSqlAdapter( ) ?? default( SqlDataAdapter );
                             }
 
                             case Provider.CSV:
@@ -138,7 +139,7 @@ namespace BudgetExecution
                             case Provider.Access:
                             case Provider.Excel:
                             {
-                                return GetOleDbDataAdapter() ?? default( OleDbDataAdapter );
+                                return GetOleDbDataAdapter( ) ?? default( OleDbDataAdapter );
                             }
                         }
                     }
@@ -149,67 +150,67 @@ namespace BudgetExecution
                 }
             }
 
-            return default;
+            return default( DbDataAdapter );
         }
 
         /// <summary> Gets the OLE database data adapter. </summary>
         /// <returns> </returns>
-        private OleDbDataAdapter GetOleDbDataAdapter()
+        private OleDbDataAdapter GetOleDbDataAdapter( )
         {
-            if( Verify.Input( SqlStatement.GetSelectStatement() ) )
+            if( Verify.Input( SqlStatement.GetSelectStatement( ) ) )
             {
                 try
                 {
-                    var connection = ConnectionBuilder?.GetConnectionString();
+                    var connection = ConnectionBuilder?.GetConnectionString( );
 
                     return Verify.Input( connection )
-                        ? new OleDbDataAdapter( SqlStatement.GetSelectStatement(), connection )
-                        : default;
+                        ? new OleDbDataAdapter( SqlStatement.GetSelectStatement( ), connection )
+                        : default( OleDbDataAdapter );
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( OleDbDataAdapter );
                 }
             }
 
-            return default;
+            return default( OleDbDataAdapter );
         }
 
         /// <summary> Gets the SQL server adapter. </summary>
         /// <returns> </returns>
-        private SqlDataAdapter GetSqlAdapter()
+        private SqlDataAdapter GetSqlAdapter( )
         {
             if( Verify.Ref( SqlStatement ) )
             {
                 try
                 {
-                    var connection = ConnectionBuilder?.GetConnectionString();
+                    var connection = ConnectionBuilder?.GetConnectionString( );
 
                     return Verify.Input( connection )
-                        ? new SqlDataAdapter( SqlStatement.GetSelectStatement(), connection )
-                        : default;
+                        ? new SqlDataAdapter( SqlStatement.GetSelectStatement( ), connection )
+                        : default( SqlDataAdapter );
                 }
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( SqlDataAdapter );
                 }
             }
 
-            return default;
+            return default( SqlDataAdapter );
         }
 
         /// <summary> Gets the SQL ce adapter. </summary>
         /// <returns> </returns>
-        private SqlCeDataAdapter GetSqlCeAdapter()
+        private SqlCeDataAdapter GetSqlCeAdapter( )
         {
             if( Verify.Input( Connection?.ConnectionString )
-                && Verify.Input( SqlStatement?.GetSelectStatement() ) )
+                && Verify.Input( SqlStatement?.GetSelectStatement( ) ) )
             {
                 try
                 {
-                    var adapter = new SqlCeDataAdapter( SqlStatement?.GetSelectStatement(),
+                    var adapter = new SqlCeDataAdapter( SqlStatement?.GetSelectStatement( ),
                         Connection as SqlCeConnection );
 
                     return adapter;
@@ -217,22 +218,22 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( SqlCeDataAdapter );
                 }
             }
 
-            return default;
+            return default( SqlCeDataAdapter );
         }
 
         /// <summary> Gets the sq lite adapter. </summary>
         /// <returns> </returns>
-        private SQLiteDataAdapter GetSQLiteAdapter()
+        private SQLiteDataAdapter GetSQLiteAdapter( )
         {
             if( SqlStatement != null )
             {
                 try
                 {
-                    var adapter = new SQLiteDataAdapter( SqlStatement.GetSelectStatement(),
+                    var adapter = new SQLiteDataAdapter( SqlStatement.GetSelectStatement( ),
                         Connection as SQLiteConnection );
 
                     return adapter;
@@ -240,11 +241,11 @@ namespace BudgetExecution
                 catch( Exception ex )
                 {
                     Fail( ex );
-                    return default;
+                    return default( SQLiteDataAdapter );
                 }
             }
 
-            return default;
+            return default( SQLiteDataAdapter );
         }
 
         /// <summary> Releases unmanaged and - optionally - managed resources. </summary>
@@ -260,8 +261,8 @@ namespace BudgetExecution
             {
                 try
                 {
-                    AdapterBuilder?.Dispose();
-                    Connection?.Dispose();
+                    AdapterBuilder?.Dispose( );
+                    Connection?.Dispose( );
                 }
                 catch( Exception ex )
                 {
@@ -275,7 +276,7 @@ namespace BudgetExecution
         /// Performs application-defined tasks associated with freeing, releasing, or
         /// resetting unmanaged resources.
         /// </summary>
-        public void Dispose()
+        public void Dispose( )
         {
             try
             {
@@ -293,8 +294,8 @@ namespace BudgetExecution
         private protected static void Fail( Exception ex )
         {
             using var error = new Error( ex );
-            error.SetText();
-            error.ShowDialog();
+            error.SetText( );
+            error.ShowDialog( );
         }
     }
 }
